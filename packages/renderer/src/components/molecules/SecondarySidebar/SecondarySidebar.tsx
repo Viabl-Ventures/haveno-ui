@@ -17,7 +17,7 @@
 import { Stack, Navbar } from "@mantine/core";
 
 interface SecondarySidebarProps {
-  children: JSX.Element[];
+  children: Array<JSX.Element>;
 }
 
 /**
