@@ -16,20 +16,20 @@
 
 import { UnstyledButton, Group, Text, createStyles } from "@mantine/core";
 
-interface SubSidebarItemProps {
+interface SecondarySidebarItemProps {
   isActive?: boolean;
   label: string;
 }
 
 /**
- * Sub-sidebar menu item.
- * @param   {SubSidebarItemProps}
+ * Secondary sidebar menu item.
+ * @param   {SecondarySidebarItemProps}
  * @returns {JSX.Element}
  */
-export function SubSidebarItem({
+export function SecondarySidebarItem({
   isActive = false,
   label,
-}: SubSidebarItemProps) {
+}: SecondarySidebarItemProps) {
   const { classes } = useStyles({ isActive });
   return (
     <UnstyledButton className={classes.button}>

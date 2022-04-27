@@ -14,27 +14,21 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack, createStyles, Navbar } from "@mantine/core";
+import { Stack, Navbar } from "@mantine/core";
 
-interface SubSidebarProps {
+interface SecondarySidebarProps {
   children: JSX.Element[];
 }
 
 /**
- * Sub-sidebar.
- * @param   {SubSidebarProps}
+ * Secondary sidebar.
+ * @param   {SecondarySidebarProps}
  * @returns {JSX.Element}
  */
-export function SubSidebar({ children }: SubSidebarProps) {
-  const { classes } = useStyles();
-
+export function SecondarySidebar({ children }: SecondarySidebarProps) {
   return (
-    <Stack className={classes.container}>
+    <Stack>
       <Navbar>{children}</Navbar>
     </Stack>
   );
 }
-
-const useStyles = createStyles((theme) => ({
-  container: {},
-}));

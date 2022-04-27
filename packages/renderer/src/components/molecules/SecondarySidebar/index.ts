@@ -14,5 +14,5 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./SubSidebar";
-export * from "./SubSidebarItem";
+export * from "./SecondarySidebar";
+export * from "./SecondarySidebarItem";

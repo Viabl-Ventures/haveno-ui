@@ -15,13 +15,13 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SubSidebar } from "./SubSidebar";
-import { SubSidebarItem } from "./SubSidebarItem";
+import { SecondarySidebar } from "./SecondarySidebar";
+import { SecondarySidebarItem } from "./SecondarySidebarItem";
 
 export default {
-  title: "atoms/SubSidebar",
-  component: SubSidebar,
-} as ComponentMeta<typeof SubSidebar>;
+  title: "atoms/SecondarySidebar",
+  component: SecondarySidebar,
+} as ComponentMeta<typeof SecondarySidebar>;
 
 const menu = [
   {
@@ -42,17 +42,17 @@ const menu = [
   },
 ];
 
-const Template: ComponentStory<typeof SubSidebar> = () => {
+const Template: ComponentStory<typeof SecondarySidebar> = () => {
   return (
-    <SubSidebar>
+    <SecondarySidebar>
       {menu.map((item) => (
-        <SubSidebarItem
+        <SecondarySidebarItem
           key={item.label}
           label={item.label}
           isActive={item.isActive}
         />
       ))}
-    </SubSidebar>
+    </SecondarySidebar>
   );
 };
 
