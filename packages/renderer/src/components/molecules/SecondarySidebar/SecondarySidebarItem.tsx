@@ -43,12 +43,12 @@ export function SecondarySidebarItem({
 const useStyles = createStyles<string, { isActive: boolean }>(
   (theme, { isActive }) => ({
     button: {
-      padding: "20px 0",
-      color: isActive ? "#111" : "#777",
+      padding: `${theme.spacing.lg}px 0`,
+      color: isActive ? theme.colors.dark[9] : theme.colors.gray[6],
       transition: "color 0.1s ease-in-out",
 
       "&:hover": {
-        color: "#111",
+        color: theme.colors.dark[9],
       },
     },
     group: {
@@ -56,22 +56,21 @@ const useStyles = createStyles<string, { isActive: boolean }>(
     },
     text: {
       textTransform: "uppercase",
-      fontSize: "11px",
-      fontWeight: "700",
-      letterSpacing: "0.05em",
-      paddingLeft: isActive ? "20px" : "0",
+      fontSize: theme.fontSizes.xs,
+      fontWeight: 700,
+      paddingLeft: isActive ? 20 : "0",
 
       "&:before": {
         content: '""',
         display: "inline-block",
         width: isActive ? "12px" : "0",
-        height: "3px",
-        backgroundColor: "#0B65DA",
+        height: 3,
+        backgroundColor: theme.colors.brand[6],
         position: "absolute",
         top: "50%",
         marginTop: "-1.5px",
-        left: "0px",
-        borderRadius: "3px",
+        left: 0,
+        borderRadius: 3,
       },
     },
   })
