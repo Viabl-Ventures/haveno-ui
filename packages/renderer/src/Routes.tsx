@@ -32,7 +32,6 @@ export function AppRoutes() {
       <Route path={ROUTES.Home} element={<Home />} />
       <Route path={ROUTES.Welcome} element={<Welcome />} />
       <Route path={ROUTES.Wallet} element={<Wallet />} />
-
       <Route path={ROUTES.Account}>
         <Route
           path={ROUTES.AccountPaymentAccounts}
