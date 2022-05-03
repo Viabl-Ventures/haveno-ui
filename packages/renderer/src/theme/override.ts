@@ -17,9 +17,39 @@
 import type { MantineThemeOverride } from "@mantine/core";
 
 export const themeOverride: MantineThemeOverride = {
-  fontFamily: "Inter",
+  fontFamily: "Inter, sans-serif",
+  fontSizes: {
+    xl: 18,
+    lg: 16,
+    md: 14,
+    sm: 12,
+    xs: 10,
+  },
   headings: {
-    fontFamily: "Inter",
+    fontFamily: "Inter, sans-serif",
+    fontWeight: 600,
+    sizes: {
+      h1: {
+        fontSize: "2.25rem",
+        lineHeight: 1.25,
+      },
+      h2: {
+        fontSize: "1.25rem",
+        lineHeight: 1.25,
+      },
+      h3: {
+        fontSize: "1.125rem",
+        lineHeight: 1.25,
+      },
+      h4: {
+        fontSize: "0.875rem",
+        lineHeight: 1.25,
+      },
+      h5: {
+        fontSize: "0.75rem",
+        lineHeight: 1.25,
+      },
+    },
   },
   other: {
     buttonHeight: 48,
