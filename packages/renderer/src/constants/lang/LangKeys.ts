@@ -20,4 +20,5 @@ export enum LangKeys {
   Header = "app.header",
   ConnectingToNetwork = "app.connectingToNetwork",
   WelcomeToHaveno = "app.welcomeToHaveno",
+  AccountTitle = "account.title",
 }

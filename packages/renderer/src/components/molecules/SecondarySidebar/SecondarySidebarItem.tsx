@@ -19,6 +19,7 @@ import { UnstyledButton, Group, Text, createStyles } from "@mantine/core";
 interface SecondarySidebarItemProps {
   isActive?: boolean;
   label: string;
+  onClick?: (e: Event) => void;
 }
 
 /**
@@ -29,10 +30,12 @@ interface SecondarySidebarItemProps {
 export function SecondarySidebarItem({
   isActive = false,
   label,
+  onClick,
 }: SecondarySidebarItemProps) {
   const { classes } = useStyles({ isActive });
+
   return (
-    <UnstyledButton className={classes.button}>
+    <UnstyledButton className={classes.button} onClick={onClick}>
       <Group className={classes.group}>
         <Text className={classes.text}>{label}</Text>
       </Group>

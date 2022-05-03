@@ -23,6 +23,7 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.Header]: "Haveno",
   [LangKeys.WelcomeToHaveno]:
     "Welcome to Haveno. The world’s first Monero based decentralised exchange.",
+  [LangKeys.AccountTitle]: "Account",
 };
 
 export default LangPackEN;

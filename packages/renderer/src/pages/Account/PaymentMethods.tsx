@@ -17,7 +17,7 @@
 import { useNavigate } from "react-router-dom";
 import { PaymentMethodList } from "@organisms/PaymentMethodList";
 import { NavbarLayout } from "@templates/NavbarLayout";
-import { ROUTES } from "@src/Routes";
+import { ROUTES } from "@constants/routes";
 
 export function PaymentMethods() {
   const navigate = useNavigate();
