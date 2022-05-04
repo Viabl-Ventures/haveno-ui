@@ -26,4 +26,6 @@ export enum LangKeys {
   AccountSidebarWallet = "account.sidebar.wallet",
   AccountSidebarBackup = "account.sidebar.backup",
   AccountSidebarNodeSettings = "account.sidebar.nodeSettings",
+  AccountSecurityTitle = "account.security.title",
+  AccountSecurityDesc = "account.security.desc",
 }

@@ -29,6 +29,9 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountSidebarWallet]: "Wallet",
   [LangKeys.AccountSidebarBackup]: "Backup",
   [LangKeys.AccountSidebarNodeSettings]: "Settings",
+  [LangKeys.AccountSecurityTitle]: "Account Security",
+  [LangKeys.AccountSecurityDesc]:
+    "Haveno does not store any of your data, this happens solely locally on your device. It’s not possible to restore your password when lost. Please make sure you store a copy of it on a safe place.",
 };
 
 export default LangPackEN;
