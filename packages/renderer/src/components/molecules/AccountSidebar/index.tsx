@@ -7,7 +7,7 @@ import {
 } from "@molecules/SecondarySidebar";
 import { useNavLinkActive } from "@src/hooks/useNavLinkActive";
 import { LangKeys } from "@constants/lang";
-import { AccountSidebarItem, accountSidebarMenu } from "./_constants";
+import { accountSidebarMenu } from "./_constants";
 
 interface AccountSidebarItemProps {
   label: string;
@@ -40,7 +40,7 @@ export function AccountSidebar() {
       </Title>
 
       <SecondarySidebar>
-        {accountSidebarMenu.map((item: AccountSidebarItem) => (
+        {accountSidebarMenu.map((item) => (
           <AccountSidebarItem
             key={item.label}
             label={item.label}
