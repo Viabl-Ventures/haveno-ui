@@ -61,12 +61,12 @@ const useStyles = createStyles<string, { isActive: boolean }>(
       textTransform: "uppercase",
       fontSize: theme.fontSizes.xs,
       fontWeight: 700,
-      paddingLeft: isActive ? 20 : "0",
+      paddingLeft: isActive ? "1.25rem" : "0",
 
       "&:before": {
         content: '""',
         display: "inline-block",
-        width: isActive ? "12px" : "0",
+        width: isActive ? "0.75rem" : "0",
         height: 3,
         backgroundColor: theme.colors.blue[6],
         position: "absolute",
