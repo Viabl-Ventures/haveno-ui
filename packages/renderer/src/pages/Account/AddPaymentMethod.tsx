@@ -14,5 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { AddPaymentMethod as AddPaymentMethodOrganism } from "@organisms/AddPaymentMethod";
+import { NavbarLayout } from "@templates/NavbarLayout";
+
+export function AddPaymentMethod() {
+  return (
+    <NavbarLayout>
+      <AddPaymentMethodOrganism />
+    </NavbarLayout>
+  );
+}

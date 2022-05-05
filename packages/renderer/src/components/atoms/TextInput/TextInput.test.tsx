@@ -14,5 +14,20 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { TextInput } from ".";
+
+describe("atoms::TextInput", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(
+      <TextInput
+        id="textfield"
+        label="Email"
+        placeholder="johndoe@gmail.com"
+        type="email"
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

@@ -14,5 +14,19 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { useNavigate } from "react-router-dom";
+import { PaymentMethodList } from "@organisms/PaymentMethodList";
+import { NavbarLayout } from "@templates/NavbarLayout";
+import { ROUTES } from "@src/Routes";
+
+export function PaymentMethods() {
+  const navigate = useNavigate();
+
+  return (
+    <NavbarLayout>
+      <PaymentMethodList
+        onAdd={() => navigate(ROUTES.AccountAddPaymentMethod)}
+      />
+    </NavbarLayout>
+  );
+}

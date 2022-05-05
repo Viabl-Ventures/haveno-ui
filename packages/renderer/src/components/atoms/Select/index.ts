@@ -14,5 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+export * from "./Select";

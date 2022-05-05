@@ -18,7 +18,7 @@ import { Stack, Space, Container, Group } from "@mantine/core";
 import { LangKeys } from "@constants/lang/LangKeys";
 import { CenteredLayout } from "@templates/CenteredLayout";
 import { Button } from "@atoms/Buttons";
-import { BodyTextLg, Heading } from "@atoms/Typography";
+import { BodyText, Heading } from "@atoms/Typography";
 import { CONTENT_MAX_WIDTH } from "./_constants";
 
 export function Welcome() {
@@ -33,9 +33,9 @@ export function Welcome() {
             </Heading>
           </Container>
           <Container size={CONTENT_MAX_WIDTH}>
-            <BodyTextLg>
+            <BodyText size="lg">
               Before you can use Haveno, we&apos;re going to set up your account
-            </BodyTextLg>
+            </BodyText>
           </Container>
         </Stack>
         <Space h="lg" />

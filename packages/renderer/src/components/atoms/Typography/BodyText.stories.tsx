@@ -14,5 +14,24 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { Stack } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { BodyText } from ".";
+
+export default {
+  title: "atoms/Typography/ BodyText",
+  component: BodyText,
+} as ComponentMeta<typeof BodyText>;
+
+const Template: ComponentStory<typeof BodyText> = (args) => {
+  return (
+    <Stack>
+      <BodyText {...args}>Body Text</BodyText>
+    </Stack>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  heavy: false,
+};

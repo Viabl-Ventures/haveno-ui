@@ -14,5 +14,25 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { Select } from ".";
+
+describe("atoms::Select", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(
+      <Select
+        id="select"
+        label="Select your favorite framework"
+        placeholder="Pick one"
+        data={[
+          { value: "react", label: "React" },
+          { value: "ng", label: "Angular" },
+          { value: "svelte", label: "Svelte" },
+          { value: "vue", label: "Vue" },
+        ]}
+      />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

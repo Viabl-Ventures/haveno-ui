@@ -14,5 +14,29 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import type { TextInputProps as MTextInputProps } from "@mantine/core";
+import { createStyles, TextInput as MTextInput } from "@mantine/core";
+
+interface TextInputProps extends MTextInputProps {
+  id: string;
+}
+
+export function TextInput(props: TextInputProps) {
+  const { id, ...rest } = props;
+  const { classes } = useStyles();
+  return <MTextInput classNames={classes} id={id} {...rest} />;
+}
+
+const useStyles = createStyles((theme) => ({
+  label: {
+    fontSize: "0.875rem",
+    fontWeight: 600,
+    marginBottom: theme.spacing.sm,
+  },
+  input: {
+    fontSize: "0.875rem",
+    fontWeight: 700,
+    height: "3rem",
+    padding: "1rem",
+  },
+}));

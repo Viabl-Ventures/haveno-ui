@@ -70,7 +70,7 @@ export const themeOverride: MantineThemeOverride = {
     gray: [
       "#fcfcfc",
       "#f1f3f5",
-      "#ececec",
+      "#E8E7EC",
       "#dee2e6",
       "#ced4da",
       "#adb5bd",
@@ -102,6 +102,18 @@ export const themeOverride: MantineThemeOverride = {
       "#832516",
       "#58190E",
       "#2C0C07",
+    ],
+    white: [
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
+      "#fff",
     ],
   },
 };

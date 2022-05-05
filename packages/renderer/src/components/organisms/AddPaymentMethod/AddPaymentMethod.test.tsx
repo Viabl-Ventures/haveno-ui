@@ -14,5 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { AddPaymentMethod } from ".";
+
+describe("organisms::AddPaymentMethod", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(<AddPaymentMethod />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

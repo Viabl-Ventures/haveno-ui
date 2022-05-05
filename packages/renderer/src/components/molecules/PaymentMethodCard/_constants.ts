@@ -14,5 +14,31 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import type { FC } from "react";
+import { ReactComponent as BtcLogo } from "@assets/btc.svg";
+import { ReactComponent as EthLogo } from "@assets/eth.svg";
+import { ReactComponent as EurLogo } from "@assets/eur.svg";
+import type { SupportedCurrencies } from "./_types";
+
+export const WIDTH = "17rem";
+export const HEIGHT = "7.25rem";
+
+interface CurrencyDetails {
+  Logo: FC<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  name: string;
+}
+
+export const CurrencyLogos: Record<SupportedCurrencies, CurrencyDetails> = {
+  BTC: {
+    Logo: BtcLogo,
+    name: "Bitcoin",
+  },
+  ETH: {
+    Logo: EthLogo,
+    name: "Ethereum",
+  },
+  EUR: {
+    Logo: EurLogo,
+    name: "Euro",
+  },
+};

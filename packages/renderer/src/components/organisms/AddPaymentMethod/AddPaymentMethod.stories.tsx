@@ -14,5 +14,17 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { AddPaymentMethod } from ".";
+
+export default {
+  title: "organisms/Add Payment Method",
+  component: AddPaymentMethod,
+} as ComponentMeta<typeof AddPaymentMethod>;
+
+const Template: ComponentStory<typeof AddPaymentMethod> = () => {
+  return <AddPaymentMethod />;
+};
+
+export const Default = Template.bind({});
+Default.args = {};

@@ -14,5 +14,33 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { Stack } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Heading } from ".";
+
+export default {
+  title: "atoms/Typography/Heading",
+  component: Heading,
+  argTypes: {
+    order: {
+      options: [1, 2, 3, 4, 5],
+      control: {
+        type: "radio",
+      },
+    },
+  },
+} as ComponentMeta<typeof Heading>;
+
+const Template: ComponentStory<typeof Heading> = (args) => {
+  return (
+    <Stack>
+      <Heading {...args} />
+    </Stack>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  order: 1,
+  children: "This is a heading",
+};

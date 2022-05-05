@@ -16,15 +16,15 @@
 
 import { Box, createStyles, keyframes, Stack } from "@mantine/core";
 import { LangKeys } from "@constants/lang/LangKeys";
-import { BodyTextLg } from "@atoms/Typography";
+import { BodyText } from "@atoms/Typography";
 
 export function ConnectionProgress() {
   const { classes } = useStyles();
   return (
     <Stack align="center" justify="center">
-      <BodyTextLg stringId={LangKeys.ConnectingToNetwork}>
+      <BodyText size="lg" stringId={LangKeys.ConnectingToNetwork}>
         Connecting to Monero Network
-      </BodyTextLg>
+      </BodyText>
       <Box className={classes.container}>
         <Box className={classes.bar} />
       </Box>

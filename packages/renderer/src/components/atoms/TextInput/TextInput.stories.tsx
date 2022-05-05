@@ -14,5 +14,26 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { Stack } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { TextInput } from ".";
+
+export default {
+  title: "atoms/TextInput",
+  component: TextInput,
+} as ComponentMeta<typeof TextInput>;
+
+const Template: ComponentStory<typeof TextInput> = (args) => {
+  return (
+    <Stack>
+      <TextInput {...args} />
+    </Stack>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  id: "email",
+  label: "Your email",
+  placeholder: "johndoe@gmail.com",
+};

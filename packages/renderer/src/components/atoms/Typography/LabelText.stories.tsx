@@ -14,5 +14,22 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Heading";
-export * from "./Text";
+import { Stack } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { LabelText } from ".";
+
+export default {
+  title: "atoms/Typography/LabelText",
+  component: LabelText,
+} as ComponentMeta<typeof LabelText>;
+
+const Template: ComponentStory<typeof LabelText> = (args) => {
+  return (
+    <Stack>
+      <LabelText {...args}>Label Text</LabelText>
+    </Stack>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {};
