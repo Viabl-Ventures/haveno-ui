@@ -21,4 +21,9 @@ export enum LangKeys {
   ConnectingToNetwork = "app.connectingToNetwork",
   WelcomeToHaveno = "app.welcomeToHaveno",
   AccountTitle = "account.title",
+  AccountSidebarPaymentAccounts = "account.sidebar.paymentAccounts",
+  AccountSidebarSecurity = "account.sidebar.security",
+  AccountSidebarWallet = "account.sidebar.wallet",
+  AccountSidebarBackup = "account.sidebar.backup",
+  AccountSidebarNodeSettings = "account.sidebar.nodeSettings",
 }
