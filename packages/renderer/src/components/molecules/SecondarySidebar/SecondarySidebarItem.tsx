@@ -19,7 +19,7 @@ import { UnstyledButton, Group, Text, createStyles } from "@mantine/core";
 interface SecondarySidebarItemProps {
   isActive?: boolean;
   label: string;
-  onClick?: (e: Event) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 /**
