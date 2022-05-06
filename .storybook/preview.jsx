@@ -14,9 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-import { RecoilRoot } from "recoil";
-import { HashRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { AppProviders } from "@atoms/AppProviders";
 
 export const parameters = {
@@ -29,10 +26,4 @@ export const parameters = {
   },
 };
 
-export const decorators = [
-  (Story) => (
-    <HashRouter>
-      <AppProviders>{Story()}</AppProviders>
-    </HashRouter>
-  ),
-];
+export const decorators = [(Story) => <AppProviders>{Story()}</AppProviders>];
