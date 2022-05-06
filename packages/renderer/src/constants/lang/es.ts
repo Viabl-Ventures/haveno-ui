@@ -23,12 +23,28 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.Header]: "Haveno",
   [LangKeys.WelcomeToHaveno]:
     "Bienvenido a Haveno. El primer intercambio descentralizado basado en Monero del mundo.",
+  [LangKeys.Save]: "Save",
   [LangKeys.AccountTitle]: "Cuenta",
   [LangKeys.AccountSidebarPaymentAccounts]: "Cuentas de pago",
   [LangKeys.AccountSidebarSecurity]: "Seguridad",
   [LangKeys.AccountSidebarWallet]: "Cartera",
   [LangKeys.AccountSidebarBackup]: "Respaldo",
   [LangKeys.AccountSidebarNodeSettings]: "Ajustes",
+  [LangKeys.AccountSecurityTitle]: "Seguridad de la cuenta",
+  [LangKeys.AccountSecurityDesc]:
+    "Haveno no almacena ninguno de sus datos, esto ocurre únicamente localmente en su dispositivo. No es posible restaurar su contraseña cuando se pierde. Asegúrese de guardar una copia en un lugar seguro.",
+  [LangKeys.AccountNodeSettingsDesc]:
+    "Se recomienda usar un nodo local, pero requiere cargar toda la cadena de bloques. Elija 'nodo remoto' si prefiere una experiencia más rápida pero menos segura.",
+  [LangKeys.AccountNodeSettingsTitle]: "La configuración de tu nodo",
+  [LangKeys.AccountNodeSettingsLocal]: "Nodo Local",
+  [LangKeys.AccountNodeSettingsRemote]: "Nodo Remoto",
+  [LangKeys.AccountNodeFieldBlockchainLocation]:
+    "Ubicación de cadena de bloques",
+  [LangKeys.AccountNodeFieldDeamonAddress]: "Dirección del demonio",
+  [LangKeys.AccountNodeFieldPort]: "Puerto",
+  [LangKeys.AccountNodeFieldDeamonFlags]: "Indicadores de inicio de daemon",
+  [LangKeys.AccountNodeStopDeamon]: "Detener demonio",
+  [LangKeys.AccountSettingsAddNode]: "Agregar un nuevo nodo",
 };
 
 export default LangPackES;

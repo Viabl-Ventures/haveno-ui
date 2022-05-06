@@ -1,0 +1,140 @@
+// Vitest Snapshot v1
+
+exports[`atoms::NodeConnectSwitch > renders without exploding 1`] = `
+<DocumentFragment>
+  <div
+    class="mantine-15po0m8"
+  >
+    <div
+      class="mantine-17do188"
+    >
+      <button
+        class="mantine-1lhe3fe"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        <div
+          class="mantine-xj4138"
+        >
+          <div
+            class="mantine-1c8l6kt"
+          >
+            Current
+          </div>
+          <div
+            class="mantine-eo7i3t"
+          >
+            <svg
+              fill="currentColor"
+              height="62px"
+              viewBox="0 0 32 62"
+              width="32px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M29.6053 24.1055H1.97368C0.829934 24.1055 0 24.8137 0 25.7897V60.316C0 61.292 0.829934 62.0002 1.97368 62.0002H29.6053C30.749 62.0002 31.5789 61.292 31.5789 60.316V25.7897C31.5789 24.8137 30.749 24.1055 29.6053 24.1055Z"
+                fill="currentColor"
+              />
+              <path
+                clip-rule="evenodd"
+                d="M24.6711 34.589C25.2632 34.589 25.658 34.2642 25.658 33.777V29.7168C25.658 29.2296 25.2632 28.9048 24.6711 28.9048H6.90795C6.31585 28.9048 5.92111 29.2296 5.92111 29.7168V33.777C5.92111 34.2642 6.31585 34.589 6.90795 34.589H24.6711ZM25.6571 42.6446C25.6571 43.1318 25.2624 43.4566 24.6703 43.4566H6.90713C6.31502 43.4566 5.92029 43.1318 5.92029 42.6446V38.5844C5.92029 38.0972 6.31502 37.7724 6.90713 37.7724H24.6703C25.2624 37.7724 25.6571 38.0972 25.6571 38.5844V42.6446ZM13.815 48.7621C13.815 49.8458 14.7032 50.7326 15.7887 50.7326C16.8742 50.7326 17.7624 49.8458 17.7624 48.7621C17.7624 47.6783 16.8742 46.7915 15.7887 46.7915C14.7032 46.7915 13.815 47.6783 13.815 48.7621ZM13.815 55.6588C13.815 56.7426 14.7032 57.6294 15.7887 57.6294C16.8742 57.6294 17.7624 56.7426 17.7624 55.6588C17.7624 54.5751 16.8742 53.6883 15.7887 53.6883C14.7032 53.6883 13.815 54.5751 13.815 55.6588Z"
+                fill="#fff"
+                fill-rule="evenodd"
+              />
+              <path
+                d="M13.5814 5.78955L9.47611 2.00008L5.37085 5.78955"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <path
+                d="M9.47606 14.316V2.27394"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <path
+                d="M26.8421 10.8423L22.7369 14.6318L18.6316 10.8423"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <path
+                d="M22.7368 2.31579V14.3579"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div
+            class="mantine-15d1cwf"
+          >
+            Local Node
+          </div>
+        </div>
+      </button>
+      <button
+        class="mantine-1lhe3fe"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        <div
+          class="mantine-xj4138"
+        >
+          <div
+            class="mantine-eo7i3t"
+          >
+            <svg
+              fill="none"
+              height="54px"
+              viewBox="0 0 58 54"
+              width="58px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M43.8339 7.56984C41.5907 3.08354 36.9294 0 31.5427 0C25.2052 0 19.8717 4.2683 18.299 10.0676C17.5276 9.7233 16.672 9.53174 15.7714 9.53174C12.8205 9.53174 10.3534 11.588 9.74421 14.3362C9.47095 14.3111 9.19411 14.2983 8.91425 14.2983C3.99105 14.2983 0 18.2611 0 23.1493C0 28.0376 3.99105 32.0003 8.91425 32.0003C8.95701 32.0003 8.99969 32 9.0423 31.9994H45.1782L45.257 31.9996C52.0737 31.9996 57.5998 26.5128 57.5998 19.7444C57.5998 12.9761 52.0737 7.48926 45.257 7.48926C44.7757 7.48926 44.3008 7.51661 43.8339 7.56984Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+              <path
+                d="M26.2105 43.7896L22.1053 40.0001L18 43.7896"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <path
+                d="M22.1052 52.316V40.2739"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <path
+                d="M39.4713 48.8423L35.366 52.6318L31.2607 48.8423"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <path
+                d="M35.366 40.3158V52.3579"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div
+            class="mantine-15d1cwf"
+          >
+            Remote Node
+          </div>
+        </div>
+      </button>
+       
+    </div>
+  </div>
+</DocumentFragment>
+`;
