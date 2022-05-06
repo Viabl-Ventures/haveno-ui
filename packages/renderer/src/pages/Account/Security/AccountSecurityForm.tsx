@@ -38,6 +38,7 @@ export function AccountSecurityForm() {
         <Stack spacing="lg">
           <TextInput
             id={"password"}
+            type={"password"}
             required
             label={
               <FormattedMessage
@@ -50,6 +51,7 @@ export function AccountSecurityForm() {
           <TextInput
             id={"confirmPassword"}
             required
+            type={"password"}
             label={
               <FormattedMessage
                 id={LangKeys.AccountSecurityFieldRepeatPassword}
@@ -60,6 +62,7 @@ export function AccountSecurityForm() {
           />
           <TextInput
             id={"currentPassword"}
+            type={"password"}
             required
             label={
               <FormattedMessage
