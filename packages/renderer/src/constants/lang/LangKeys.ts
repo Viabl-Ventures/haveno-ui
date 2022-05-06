@@ -20,6 +20,7 @@ export enum LangKeys {
   Header = "app.header",
   ConnectingToNetwork = "app.connectingToNetwork",
   WelcomeToHaveno = "app.welcomeToHaveno",
+  Save = "app.save",
   AccountTitle = "account.title",
   AccountSidebarPaymentAccounts = "account.sidebar.paymentAccounts",
   AccountSidebarSecurity = "account.sidebar.security",
@@ -28,4 +29,7 @@ export enum LangKeys {
   AccountSidebarNodeSettings = "account.sidebar.nodeSettings",
   AccountSecurityTitle = "account.security.title",
   AccountSecurityDesc = "account.security.desc",
+  AccountSecurityFieldPassword = "account.security.field.password",
+  AccountSecurityFieldRepeatPassword = "account.security.field.repeatPassword",
+  AccountSecurityFieldCurrentPassword = "account.security.field.currentPassword",
 }

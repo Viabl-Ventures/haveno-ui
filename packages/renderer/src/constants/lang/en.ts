@@ -32,6 +32,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountSecurityTitle]: "Account Security",
   [LangKeys.AccountSecurityDesc]:
     "Haveno does not store any of your data, this happens solely locally on your device. It’s not possible to restore your password when lost. Please make sure you store a copy of it on a safe place.",
+  [LangKeys.AccountSecurityFieldPassword]: "Password",
+  [LangKeys.AccountSecurityFieldRepeatPassword]: "Repeat new password",
 };
 
 export default LangPackEN;

@@ -17,7 +17,7 @@ export function AccountSecurity() {
               defaultMessage={"Account Security"}
             />
           </Title>
-          <Text>
+          <Text size={"sm"}>
             <FormattedMessage
               id={LangKeys.AccountSecurityDesc}
               defaultMessage={
