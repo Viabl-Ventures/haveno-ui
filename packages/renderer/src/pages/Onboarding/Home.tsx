@@ -20,8 +20,16 @@ import { CenteredLayout } from "@templates/CenteredLayout";
 import { ConnectionProgress } from "@atoms/ConnectionProgress";
 import { Heading } from "@atoms/Typography";
 import Logo from "@assets/logo.svg";
+import { useBalances } from "@src/hooks/useBalances";
+import { useEffect } from "react";
 
 export function Home() {
+  const { data, error, isError, isSuccess } = useBalances();
+
+  useEffect(() => {
+    console.log({ data, error, isError, isSuccess });
+  }, [isSuccess, isError]);
+
   return (
     <CenteredLayout>
       <Stack align="center" justify="center" sx={{ flex: 1 }}>
