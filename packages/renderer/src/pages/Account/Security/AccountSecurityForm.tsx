@@ -1,12 +1,11 @@
-import { LangKeys } from "@constants/lang";
-import { Stack, Box, TextInput, Button, Group } from "@mantine/core";
-import { useForm, yupResolver } from "@mantine/form";
 import { FormattedMessage } from "react-intl";
+import { Stack, Box, Group } from "@mantine/core";
+import { useForm, yupResolver } from "@mantine/form";
+import { TextInput } from "@atoms/TextInput";
+import { LangKeys } from "@constants/lang";
 import { AccountSecurityFormSchema } from "./_constants";
+import { Button } from "@atoms/Buttons";
 
-/**
- * Account security form.
- */
 export function AccountSecurityForm() {
   const form = useForm({
     initialValues: {
@@ -22,6 +21,7 @@ export function AccountSecurityForm() {
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <Stack spacing="lg">
           <TextInput
+            id={"password"}
             required
             label={
               <FormattedMessage
@@ -32,6 +32,7 @@ export function AccountSecurityForm() {
             {...form.getInputProps("password")}
           />
           <TextInput
+            id={"confirmPassword"}
             required
             label={
               <FormattedMessage
@@ -42,6 +43,7 @@ export function AccountSecurityForm() {
             {...form.getInputProps("confirmPassword")}
           />
           <TextInput
+            id={"currentPassword"}
             required
             label={
               <FormattedMessage
@@ -52,7 +54,7 @@ export function AccountSecurityForm() {
             {...form.getInputProps("currentPassword")}
           />
           <Group position="right" mt="md">
-            <Button size="md">
+            <Button size="md" type={"submit"}>
               <FormattedMessage id={LangKeys.Save} defaultMessage={"Save"} />
             </Button>
           </Group>
