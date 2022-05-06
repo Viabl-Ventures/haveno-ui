@@ -16,7 +16,7 @@
 
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import { Routes, HashRouter, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AppProviders } from "@atoms/AppProviders";
 import { AccountSidebar } from "./AccountSidebar";
 
@@ -24,11 +24,9 @@ describe("molecules::AccountSidebar", () => {
   it("renders without exploding", () => {
     const { asFragment } = render(
       <AppProviders>
-        <HashRouter>
-          <Routes>
-            <Route path={"/"} element={<AccountSidebar />} />
-          </Routes>
-        </HashRouter>
+        <Routes>
+          <Route path={"/"} element={<AccountSidebar />} />
+        </Routes>
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();
