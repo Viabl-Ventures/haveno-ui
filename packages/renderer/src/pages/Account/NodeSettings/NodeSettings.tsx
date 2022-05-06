@@ -19,6 +19,7 @@ import { FormattedMessage } from "react-intl";
 import { AccountLayout } from "@templates/AccountLayout";
 import { LangKeys } from "@constants/lang";
 import { NodeSettingsSwitch } from "./NoteSettingsSwitch";
+import { WIDTH } from "./_constants";
 
 export function AccountNodeSettings() {
   const { classes } = useStyles();
@@ -50,7 +51,7 @@ export function AccountNodeSettings() {
 
 const useStyles = createStyles((theme) => ({
   content: {
-    maxWidth: "470px",
+    maxWidth: WIDTH,
   },
   paragraph: {
     marginBottom: theme.spacing.xl,

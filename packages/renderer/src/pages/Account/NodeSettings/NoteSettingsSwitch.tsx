@@ -41,7 +41,7 @@ export function NodeSettingsSwitch() {
             defaultMessage={"Local Node"}
           />
         }
-        icon={<ServerIcon width="32px" height="62px" />}
+        icon={<ServerIcon width={32} height={62} />}
       >
         <NodeLocalForm />
       </NodeConnectSwitch.Method>
@@ -54,7 +54,7 @@ export function NodeSettingsSwitch() {
             defaultMessage={"Remote Node"}
           />
         }
-        icon={<CloudIcon width="58px" height="54px" />}
+        icon={<CloudIcon width={58} height={54} />}
       >
         <NodeRemoteStatus />
       </NodeConnectSwitch.Method>
