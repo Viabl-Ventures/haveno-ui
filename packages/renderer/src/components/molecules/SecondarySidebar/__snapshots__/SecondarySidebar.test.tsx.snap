@@ -16,7 +16,7 @@ exports[`molecules::SecondarySidebar > renders without exploding 1`] = `
           class="mantine-Group-root mantine-2jlg77"
         >
           <div
-            class="mantine-Text-root mantine-Group-child mantine-vsd4jp"
+            class="mantine-Text-root mantine-Group-child mantine-1c1t80j"
           >
             Active item
           </div>
@@ -30,7 +30,7 @@ exports[`molecules::SecondarySidebar > renders without exploding 1`] = `
           class="mantine-Group-root mantine-2jlg77"
         >
           <div
-            class="mantine-Text-root mantine-Group-child mantine-govdvw"
+            class="mantine-Text-root mantine-Group-child mantine-17vcv21"
           >
             Inactive item
           </div>
@@ -44,7 +44,7 @@ exports[`molecules::SecondarySidebar > renders without exploding 1`] = `
           class="mantine-Group-root mantine-2jlg77"
         >
           <div
-            class="mantine-Text-root mantine-Group-child mantine-vsd4jp"
+            class="mantine-Text-root mantine-Group-child mantine-1c1t80j"
           >
             Active item
           </div>

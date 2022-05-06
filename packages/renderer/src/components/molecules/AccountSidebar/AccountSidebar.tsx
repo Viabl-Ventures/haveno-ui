@@ -2,7 +2,7 @@ import { createStyles, Box, Title } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { SecondarySidebar } from "@molecules/SecondarySidebar";
 import { LangKeys } from "@constants/lang";
-import { useGetAccountSidebarMenu } from "./_constants";
+import { useGetAccountSidebarMenu, WIDTH } from "./_constants";
 import { AccountSidebarItem } from "./AccountSidebarItem";
 
 export function AccountSidebar() {
@@ -12,7 +12,7 @@ export function AccountSidebar() {
 
   return (
     <Box className={classes.accountSidebar}>
-      <Title className={classes.title} order={5}>
+      <Title className={classes.title} order={3}>
         <FormattedMessage id={LangKeys.AccountTitle} defaultMessage="Account" />
       </Title>
 
@@ -34,6 +34,7 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: theme.spacing.lg,
     paddingRight: theme.spacing.lg,
     paddingTop: theme.spacing.md,
+    minWidth: WIDTH,
   },
   title: {
     marginBottom: theme.spacing.md,

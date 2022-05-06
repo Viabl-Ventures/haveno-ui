@@ -59,19 +59,19 @@ const useStyles = createStyles<string, { isActive: boolean }>(
     },
     text: {
       textTransform: "uppercase",
-      fontSize: theme.fontSizes.xs,
+      fontSize: theme.fontSizes.sm,
       fontWeight: 700,
-      paddingLeft: isActive ? "1.25rem" : "0",
+      paddingLeft: isActive ? 20 : 0,
 
       "&:before": {
         content: '""',
         display: "inline-block",
-        width: isActive ? "0.75rem" : "0",
+        width: isActive ? 12 : 0,
         height: 3,
         backgroundColor: theme.colors.blue[6],
         position: "absolute",
         top: "50%",
-        marginTop: "-1.5px",
+        marginTop: -1.5,
         left: 0,
         borderRadius: 3,
       },

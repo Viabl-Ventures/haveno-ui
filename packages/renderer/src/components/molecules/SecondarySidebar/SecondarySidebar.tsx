@@ -38,6 +38,6 @@ export function SecondarySidebar({ children }: SecondarySidebarProps) {
 const useStyles = createStyles<string>(() => ({
   navbar: {
     background: "transparent",
-    border: "0",
+    border: 0,
   },
 }));
