@@ -18,7 +18,8 @@ import { createStyles, Box, Title } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { SecondarySidebar } from "@molecules/SecondarySidebar";
 import { LangKeys } from "@constants/lang";
-import { useGetAccountSidebarMenu, WIDTH } from "./_constants";
+import { WIDTH } from "./_constants";
+import { useGetAccountSidebarMenu } from "./_hooks";
 import { AccountSidebarItem } from "./AccountSidebarItem";
 
 export function AccountSidebar() {
