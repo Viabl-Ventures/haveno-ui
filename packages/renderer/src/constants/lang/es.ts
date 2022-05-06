@@ -23,12 +23,19 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.Header]: "Haveno",
   [LangKeys.WelcomeToHaveno]:
     "Bienvenido a Haveno. El primer intercambio descentralizado basado en Monero del mundo.",
+  [LangKeys.Save]: "Guardar",
   [LangKeys.AccountTitle]: "Cuenta",
   [LangKeys.AccountSidebarPaymentAccounts]: "Cuentas de pago",
   [LangKeys.AccountSidebarSecurity]: "Seguridad",
   [LangKeys.AccountSidebarWallet]: "Cartera",
   [LangKeys.AccountSidebarBackup]: "Respaldo",
   [LangKeys.AccountSidebarNodeSettings]: "Ajustes",
+  [LangKeys.AccountSecurityTitle]: "Seguridad de la cuenta",
+  [LangKeys.AccountSecurityDesc]:
+    "Haveno no almacena ninguno de sus datos, esto ocurre únicamente localmente en su dispositivo. No es posible restaurar su contraseña cuando se pierde. Asegúrese de guardar una copia en un lugar seguro.",
+  [LangKeys.AccountSecurityFieldPassword]: "Clave",
+  [LangKeys.AccountSecurityFieldRepeatPassword]: "Repita la nueva contraseña",
+  [LangKeys.AccountSecurityFieldCurrentPassword]: "Contraseña actual",
 };
 
 export default LangPackES;
