@@ -65,7 +65,7 @@ const useStyles = createStyles<string, { isActive: boolean }>(
         display: "inline-block",
         width: isActive ? "12px" : "0",
         height: 3,
-        backgroundColor: theme.colors.brand[6],
+        backgroundColor: theme.colors.blue[6],
         position: "absolute",
         top: "50%",
         marginTop: "-1.5px",

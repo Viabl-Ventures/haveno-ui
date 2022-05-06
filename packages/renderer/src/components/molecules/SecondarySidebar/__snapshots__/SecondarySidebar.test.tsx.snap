@@ -6,45 +6,45 @@ exports[`molecules::SecondarySidebar > renders without exploding 1`] = `
     class="mantine-Stack-root mantine-lfk3cq"
   >
     <nav
-      class="mantine-Navbar-root mantine-1t4bztj"
+      class="mantine-Navbar-root mantine-1tps18r"
     >
       <button
-        class="mantine-UnstyledButton-root mantine-14d6gb1"
+        class="mantine-UnstyledButton-root mantine-8x6xy1"
         type="button"
       >
         <div
           class="mantine-Group-root mantine-2jlg77"
         >
           <div
-            class="mantine-Text-root mantine-Group-child mantine-1kj6it3"
+            class="mantine-Text-root mantine-Group-child mantine-1ga3coc"
           >
             Active item
           </div>
         </div>
       </button>
       <button
-        class="mantine-UnstyledButton-root mantine-1puva5q"
+        class="mantine-UnstyledButton-root mantine-1us1eqc"
         type="button"
       >
         <div
           class="mantine-Group-root mantine-2jlg77"
         >
           <div
-            class="mantine-Text-root mantine-Group-child mantine-1y6azky"
+            class="mantine-Text-root mantine-Group-child mantine-govdvw"
           >
             Inactive item
           </div>
         </div>
       </button>
       <button
-        class="mantine-UnstyledButton-root mantine-14d6gb1"
+        class="mantine-UnstyledButton-root mantine-8x6xy1"
         type="button"
       >
         <div
           class="mantine-Group-root mantine-2jlg77"
         >
           <div
-            class="mantine-Text-root mantine-Group-child mantine-1kj6it3"
+            class="mantine-Text-root mantine-Group-child mantine-1ga3coc"
           >
             Active item
           </div>
