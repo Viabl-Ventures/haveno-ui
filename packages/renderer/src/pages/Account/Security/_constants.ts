@@ -18,12 +18,22 @@ import * as Yup from "yup";
 
 export const WIDTH = 475;
 
+// The minimum characters that should password field contain.
+const MIN_PASSWORD_CHARS = 8;
+
+const getPasswordRegex = () => {
+  return RegExp(
+    `^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{${MIN_PASSWORD_CHARS},})`,
+    "g"
+  );
+};
+
 export const AccountSecurityFormSchema = Yup.object().shape({
   password: Yup.string()
     .required("Please enter your password")
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number"
+      getPasswordRegex(),
+      `Must Contain ${MIN_PASSWORD_CHARS} Characters, One Uppercase, One Lowercase, One Number`
     ),
   confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), null],
