@@ -15,14 +15,12 @@
 // =============================================================================
 
 import { useQuery } from "react-query";
+import { QueryKeys } from "@constants/query-keys";
 import { useHavenoClient } from "./useHavenoClient";
 
 export function useBalances() {
-  const client = useHavenoClient({
-    url: "http://localhost:8080",
-    password: "apitest",
-  });
-  return useQuery("balances", async () => {
+  const client = useHavenoClient();
+  return useQuery(QueryKeys.Balances, async () => {
     return client.getBalances();
   });
 }

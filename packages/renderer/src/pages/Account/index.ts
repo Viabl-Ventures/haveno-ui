@@ -14,5 +14,5 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./AddPaymentMethod";
+export * from "./AddPaymentAccount";
 export * from "./PaymentMethods";

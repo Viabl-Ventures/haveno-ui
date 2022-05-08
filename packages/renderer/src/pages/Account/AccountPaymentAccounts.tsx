@@ -14,12 +14,19 @@
 //  limitations under the License.
 // =============================================================================
 
+import { ROUTES } from "@constants/routes";
+import { PaymentMethodList } from "@organisms/PaymentMethodList";
 import { AccountLayout } from "@templates/AccountLayout";
+import { useNavigate } from "react-router-dom";
 
 export function AccountPaymentAccounts() {
+  const navigate = useNavigate();
+
   return (
     <AccountLayout>
-      <h1>Payment accounts</h1>
+      <PaymentMethodList
+        onAdd={() => navigate(ROUTES.AccountAddPaymentAccount)}
+      />
     </AccountLayout>
   );
 }

@@ -14,13 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
-import { AddPaymentMethod as AddPaymentMethodOrganism } from "@organisms/AddPaymentMethod";
-import { NavbarLayout } from "@templates/NavbarLayout";
+export enum IpcChannels {
+  GetAccountInfo = "store:accountInfo",
+  SetPassword = "store:accountinfo.password",
+  SetPrimaryFiat = "store:accountinfo.primaryFiat",
+  GetPreferences = "store:preferences",
+  SetMoneroNode = "store:preferences.moneroNode",
 
-export function AddPaymentMethod() {
-  return (
-    <NavbarLayout>
-      <AddPaymentMethodOrganism />
-    </NavbarLayout>
-  );
+  EnvVars = "envvars",
 }

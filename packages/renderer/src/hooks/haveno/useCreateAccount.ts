@@ -14,24 +14,16 @@
 //  limitations under the License.
 // =============================================================================
 
-import { HavenoClient } from "haveno-ts";
-import { useMemo, useRef } from "react";
+import { useMutation } from "react-query";
+import { useHavenoClient } from "./useHavenoClient";
 
 interface Variables {
-  url: string;
   password: string;
 }
 
-export function useHavenoClient({ url, password }: Variables) {
-  const client = useRef<HavenoClient>();
-
-  return useMemo(() => {
-    if (!client.current) {
-      console.log("creating haveno client");
-      client.current = new HavenoClient(url, password);
-    } else {
-      console.log("returning haveno client");
-    }
-    return client.current;
-  }, [url, password]);
+export function useCreateAccount() {
+  const client = useHavenoClient();
+  return useMutation(async (variables: Variables) =>
+    client.createAccount(variables.password)
+  );
 }

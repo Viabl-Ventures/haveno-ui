@@ -15,23 +15,23 @@
 // =============================================================================
 
 import { Routes, Route } from "react-router-dom";
+import { ROUTES } from "@constants/routes";
 import { Home, Welcome } from "@pages/Onboarding";
-import { Wallet } from "@pages/Wallet";
 import { AccountPaymentAccounts } from "@pages/Account/AccountPaymentAccounts";
 import { AccountNodeSettings } from "@pages/Account/NodeSettings";
 import { AccountBackup } from "@pages/Account/AccountBackup";
 import { AccountWallet } from "@pages/Account/AccountWallet";
 import { AccountSecurity } from "@pages/Account/Security";
-import { ROUTES } from "@constants/routes";
 import { PaymentMethods } from "@pages/Account";
-import { AddPaymentMethod } from "@organisms/AddPaymentMethod";
+import { AddPaymentAccount } from "@pages/Account";
+import { CreateAccount } from "@pages/Onboarding/CreateAccount";
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path={ROUTES.Home} element={<Home />} />
       <Route path={ROUTES.Welcome} element={<Welcome />} />
-      <Route path={ROUTES.Wallet} element={<Wallet />} />
+      <Route path={ROUTES.CreateAccount} element={<CreateAccount />} />
       <Route path={ROUTES.Account}>
         <Route
           path={ROUTES.AccountPaymentAccounts}
@@ -45,12 +45,12 @@ export function AppRoutes() {
         <Route path={ROUTES.AccountWallet} element={<AccountWallet />} />
         <Route path={ROUTES.AccountSecurity} element={<AccountSecurity />} />
         <Route
-          path={ROUTES.AccountPaymentMethods}
+          path={ROUTES.AccountPaymentAccounts}
           element={<PaymentMethods />}
         />
         <Route
-          path={ROUTES.AccountAddPaymentMethod}
-          element={<AddPaymentMethod />}
+          path={ROUTES.AccountAddPaymentAccount}
+          element={<AddPaymentAccount />}
         />
       </Route>
     </Routes>

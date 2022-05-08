@@ -43,7 +43,6 @@ export function Button<TComponent = "button">(props: ButtonProps<TComponent>) {
 
 const useStyles = createStyles((theme) => ({
   common: {
-    borderRadius: 10,
     fontSize: "0.875rem",
     fontWeight: 600,
     height: theme.other.buttonHeight,

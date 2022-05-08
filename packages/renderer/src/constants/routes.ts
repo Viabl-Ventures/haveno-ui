@@ -16,18 +16,17 @@
 
 export const ROUTES = {
   Home: "/",
-  Welcome: "/onboarding/welcome",
-  RestoreBackup: "/onboarding/restore-backup",
-  SetupAccount: "/onboarding/setup",
-  Wallet: "/wallet",
+  Login: "/login",
+  Welcome: "/onboarding/setup/welcome",
+  CreateAccount: "/onboarding/setup/create-account",
+  RestoreBackup: "/onboarding/setup/restore-backup",
 
   // Account routes.
   Account: "/account",
   AccountPaymentAccounts: "/account/payment-accounts",
+  AccountAddPaymentAccount: "/account/payment-accounts/add",
   AccountNodeSettings: "/account/node-settings",
   AccountBackup: "/account/backup",
   AccountWallet: "/account/wallet",
   AccountSecurity: "/account/security",
-  AccountPaymentMethods: "/account/payment-methods",
-  AccountAddPaymentMethod: "/account/payment-methods/add",
 };

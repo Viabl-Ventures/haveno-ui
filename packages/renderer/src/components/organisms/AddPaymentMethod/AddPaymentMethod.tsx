@@ -121,6 +121,6 @@ const schema = Joi.object({
 });
 
 const Currencies = SupportedCurrencies.map((curr) => ({
-  value: curr.id,
   label: curr.name,
+  value: curr.id,
 }));

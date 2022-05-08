@@ -17,17 +17,26 @@
 import { Box, Space, Stack } from "@mantine/core";
 import { LangKeys } from "@constants/lang/LangKeys";
 import { CenteredLayout } from "@templates/CenteredLayout";
-import { ConnectionProgress } from "@atoms/ConnectionProgress";
 import { Heading } from "@atoms/Typography";
 import Logo from "@assets/logo.svg";
-import { useBalances } from "@src/hooks/useBalances";
+import { useAccountInfo } from "@src/hooks/storage/useGetAccountInfo";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@constants/routes";
 
 export function Home() {
-  const { data, error, isError, isSuccess } = useBalances();
+  const { data: accountInfo, isSuccess, isError } = useAccountInfo();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log({ data, error, isError, isSuccess });
+    if (isSuccess) {
+      console.log({ accountInfo });
+      if (!accountInfo) {
+        navigate(ROUTES.Welcome, { replace: true });
+      } else {
+        navigate(ROUTES.Login, { replace: true });
+      }
+    }
   }, [isSuccess, isError]);
 
   return (
@@ -44,7 +53,6 @@ export function Home() {
           </Heading>
         </Stack>
         <Space h="lg" />
-        <ConnectionProgress />
       </Stack>
     </CenteredLayout>
   );

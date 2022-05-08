@@ -52,6 +52,7 @@ const LangPackEN: { [key in LangKeys]: string } = {
     "contain atleast {minChars} characters, one uppercase, one lowercase and one number.",
   [LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg]:
     "Password confirmation doesn't match Password.",
+  [LangKeys.CreatePassword]: "Create password",
 };
 
 export default LangPackEN;

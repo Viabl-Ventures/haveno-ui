@@ -14,6 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
+import { useMemo } from "react";
 import {
   Box,
   createStyles,
@@ -23,36 +24,41 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import { ReactComponent as MenuIcon } from "@assets/ellipsis.svg";
-import { HEIGHT, WIDTH, CurrencyLogos } from "./_constants";
-import type { SupportedCurrencies } from "./_types";
+import { HEIGHT, WIDTH } from "./_constants";
 import { BodyText } from "@atoms/Typography";
-import { useMemo } from "react";
+import type { PaymentAccount } from "@src/types";
+import {
+  getPaymentAccountLogo,
+  getPaymentAccountName,
+  getPaymentAccountNumber,
+} from "@src/utils/payment-account";
 
 interface PaymentMethodCardProps {
-  currency: SupportedCurrencies;
-  accountId: string;
+  data: PaymentAccount;
 }
 
 export function PaymentMethodCard(props: PaymentMethodCardProps) {
-  const { accountId, currency } = props;
+  const { data } = props;
   const { classes } = useStyles();
 
-  const Logo = useMemo(() => CurrencyLogos[currency].Logo, [currency]);
+  console.log(data.paymentMethod.id);
+
+  const Logo = useMemo(() => getPaymentAccountLogo(data), [data]);
 
   return (
     <Box className={classes.card}>
       <Stack>
         <Group position="apart">
           <Group>
-            <Logo className={classes.logo} />
-            <Text className={classes.name}>{CurrencyLogos[currency].name}</Text>
+            <Logo />
+            <Text className={classes.name}>{getPaymentAccountName(data)}</Text>
           </Group>
           <UnstyledButton>
             <MenuIcon className={classes.menuIcon} />
           </UnstyledButton>
         </Group>
         <BodyText heavy sx={{ wordBreak: "break-word" }}>
-          {accountId}
+          {getPaymentAccountNumber(data)}
         </BodyText>
       </Stack>
     </Box>

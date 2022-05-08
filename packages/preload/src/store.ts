@@ -16,12 +16,25 @@
 
 import { ipcRenderer } from "electron";
 import { exposeInMainWorld } from "./exposeInMainWorld";
-import type { UserInfoInputType } from "./types";
+import type { AccountInfoDto, IPreferences } from "./types";
+import { IpcChannels } from "./types";
 
 // Export for types in contracts.d.ts
 export const store = {
-  storeUserinfo: async (data?: UserInfoInputType) =>
-    ipcRenderer.invoke("store:userinfo", data),
+  setPassword: async (value: string): Promise<void> =>
+    ipcRenderer.invoke(IpcChannels.SetPassword, value),
+
+  setPrimaryFiat: async (value: string): Promise<void> =>
+    ipcRenderer.invoke(IpcChannels.SetPrimaryFiat, value),
+
+  getAccountInfo: async (): Promise<AccountInfoDto> =>
+    ipcRenderer.invoke(IpcChannels.GetAccountInfo),
+
+  setMoneroNode: async (value: string): Promise<void> =>
+    ipcRenderer.invoke(IpcChannels.SetMoneroNode, value),
+
+  getPreferences: async (): Promise<IPreferences> =>
+    ipcRenderer.invoke(IpcChannels.GetPreferences),
 };
 
 exposeInMainWorld("electronStore", store);

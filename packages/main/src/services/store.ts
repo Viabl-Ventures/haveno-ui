@@ -16,45 +16,47 @@
 
 import { ipcMain, safeStorage } from "electron";
 import Store from "electron-store";
-import type {
-  IStoreSchema,
-  IUserInfo,
-  UserInfoInputType,
-  IUserPermission,
-} from "@src/types";
-import { StoreKeys, StoreSchema } from "@src/types";
+import type { AccountInfoDto, IPreferences, IStoreSchema } from "@src/types";
+import { StorageKeys } from "@src/types";
+import { IpcChannels, StoreSchema } from "@src/types";
+import { hashPassword } from "@src/utils/password";
 
 const store = new Store<IStoreSchema>({ schema: StoreSchema });
 
 export function registerStoreHandlers() {
-  ipcMain.handle("store:userinfo", async (_, payload?: UserInfoInputType) => {
-    const prevData = store.get(StoreKeys.UserInfo);
-    // retrieve encrypted data like so:
-    // safeStorage.decryptString(Buffer.from(prevData.password));
-    if (!payload) {
-      return prevData;
+  ipcMain.handle(IpcChannels.SetPassword, async (_, value: string) => {
+    const hash = await hashPassword(value);
+    if (!hash) {
+      throw new Error("Unable to save password");
     }
-    const userInfo: IUserInfo = {
-      ...payload,
-      // encrypt sensitive data before storage
-      password: safeStorage.encryptString(payload.password),
-    };
-    store.set(StoreKeys.UserInfo, {
-      ...(prevData ?? {}),
-      ...userInfo,
-    });
-    return store.get(StoreKeys.UserInfo);
+    store.set(
+      StorageKeys.AccountInfo_Password,
+      safeStorage.encryptString(hash)
+    );
   });
 
-  ipcMain.handle(
-    "store:permissions",
-    async (_, permissions?: Array<IUserPermission>) => {
-      const prevData = store.get(StoreKeys.Permissions);
-      if (!permissions) {
-        return prevData;
-      }
-      store.set(StoreKeys.Permissions, [...(prevData || []), ...permissions]);
-      return store.get(StoreKeys.Permissions);
+  ipcMain.handle(IpcChannels.SetPrimaryFiat, (_, value: string) => {
+    store.set(StorageKeys.AccountInfo_PrimaryFiat, value);
+  });
+
+  ipcMain.handle(IpcChannels.GetAccountInfo, (): AccountInfoDto | null => {
+    const password = store.get(StorageKeys.AccountInfo_Password);
+    if (!password) {
+      return null;
     }
-  );
+    return {
+      password: safeStorage.decryptString(Buffer.from(password)),
+      primaryFiat: store.get(StorageKeys.AccountInfo_PrimaryFiat),
+    };
+  });
+
+  ipcMain.handle(IpcChannels.SetMoneroNode, (_, value: string) => {
+    store.set(StorageKeys.Preferences_MoneroNode, value);
+  });
+
+  ipcMain.handle(IpcChannels.GetPreferences, (): IPreferences => {
+    return {
+      moneroNode: store.get(StorageKeys.Preferences_MoneroNode),
+    };
+  });
 }
