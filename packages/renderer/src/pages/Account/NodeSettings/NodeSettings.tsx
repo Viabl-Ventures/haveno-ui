@@ -14,12 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Text, Title, Stack, Box, createStyles } from "@mantine/core";
-import { FormattedMessage } from "react-intl";
+import { Stack, Box, createStyles } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
 import { LangKeys } from "@constants/lang";
 import { NodeSettingsSwitch } from "./NodeSettingsSwitch";
 import { WIDTH } from "./_constants";
+import { BodyText, Heading } from "@atoms/Typography";
 
 export function AccountNodeSettings() {
   const { classes } = useStyles();
@@ -28,20 +28,18 @@ export function AccountNodeSettings() {
     <AccountLayout>
       <Box className={classes.content}>
         <Stack spacing={"sm"}>
-          <Title order={3}>
-            <FormattedMessage
-              id={LangKeys.AccountNodeSettingsTitle}
-              defaultMessage={"Your node settings"}
-            />
-          </Title>
-          <Text size={"md"} className={classes.paragraph}>
-            <FormattedMessage
-              id={LangKeys.AccountNodeSettingsDesc}
-              defaultMessage={
-                "Using a local node is recommended, but does require loading the entire blockchain. Choose ‘remote node’ if you prefer a faster but less secure experience."
-              }
-            />
-          </Text>
+          <Heading stringId={LangKeys.AccountNodeSettingsTitle} order={3}>
+            Your node settings
+          </Heading>
+          <BodyText
+            stringId={LangKeys.AccountNodeSettingsDesc}
+            size={"md"}
+            className={classes.paragraph}
+          >
+            Using a local node is recommended, but does require loading the
+            entire blockchain. Choose ‘remote node’ if you prefer a faster but
+            less secure experience.
+          </BodyText>
           <NodeSettingsSwitch />
         </Stack>
       </Box>
