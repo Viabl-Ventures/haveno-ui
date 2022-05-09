@@ -21,4 +21,6 @@ export enum QueryKeys {
 
   StorageAccountInfo = "Storage.AccountInfo",
   StoragePreferences = "Storage.Preferences",
+
+  AuthSession = "AuthSession",
 }

@@ -41,8 +41,6 @@ export function PaymentMethodCard(props: PaymentMethodCardProps) {
   const { data } = props;
   const { classes } = useStyles();
 
-  console.log(data.paymentMethod.id);
-
   const Logo = useMemo(() => getPaymentAccountLogo(data), [data]);
 
   return (

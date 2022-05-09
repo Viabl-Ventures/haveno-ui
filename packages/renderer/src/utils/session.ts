@@ -14,23 +14,20 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
-import { Container, Stack } from "@mantine/core";
-import { HeaderWithLogo } from "@atoms/Header";
+const SESSION_KEY = "AUTH_TOKEN";
 
-interface CenteredLayoutProps {
-  showHeader?: boolean;
-  size?: number;
+export async function createSession(authToken: string) {
+  window.sessionStorage.setItem(SESSION_KEY, authToken);
 }
 
-export const CenteredLayout: FC<CenteredLayoutProps> = (props) => {
-  const { children, showHeader = false, size } = props;
-  return (
-    <Stack sx={{ width: "100%" }}>
-      {showHeader && <HeaderWithLogo />}
-      <Container p="sm" size={size} sx={{ display: "flex", flex: 1 }}>
-        {children}
-      </Container>
-    </Stack>
-  );
-};
+export async function validateSession(): Promise<boolean> {
+  const token = window.sessionStorage.getItem(SESSION_KEY);
+  if (!token) {
+    return false;
+  }
+  return window.electronStore.verifyAuthToken(token);
+}
+
+export async function deleteSession() {
+  window.sessionStorage.removeItem(SESSION_KEY);
+}

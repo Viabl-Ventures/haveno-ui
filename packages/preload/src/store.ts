@@ -24,6 +24,12 @@ export const store = {
   setPassword: async (value: string): Promise<void> =>
     ipcRenderer.invoke(IpcChannels.SetPassword, value),
 
+  verifyPassword: async (plainText: string): Promise<string | null> =>
+    ipcRenderer.invoke(IpcChannels.VerifyPassword, plainText),
+
+  verifyAuthToken: async (token: string): Promise<boolean> =>
+    ipcRenderer.invoke(IpcChannels.VerifyAuthToken, token),
+
   setPrimaryFiat: async (value: string): Promise<void> =>
     ipcRenderer.invoke(IpcChannels.SetPrimaryFiat, value),
 

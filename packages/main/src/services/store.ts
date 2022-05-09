@@ -19,7 +19,12 @@ import Store from "electron-store";
 import type { AccountInfoDto, IPreferences, IStoreSchema } from "@src/types";
 import { StorageKeys } from "@src/types";
 import { IpcChannels, StoreSchema } from "@src/types";
-import { hashPassword } from "@src/utils/password";
+import {
+  createAuthToken,
+  hashPassword,
+  verifyAuthAuthToken,
+  verifyPassword,
+} from "@src/utils/password";
 
 const store = new Store<IStoreSchema>({ schema: StoreSchema });
 
@@ -40,23 +45,54 @@ export function registerStoreHandlers() {
   });
 
   ipcMain.handle(IpcChannels.GetAccountInfo, (): AccountInfoDto | null => {
-    const password = store.get(StorageKeys.AccountInfo_Password);
-    if (!password) {
+    const encryptedPassword = store.get(StorageKeys.AccountInfo_Password);
+    if (!encryptedPassword) {
       return null;
     }
     return {
-      password: safeStorage.decryptString(Buffer.from(password)),
+      passwordHash: safeStorage.decryptString(Buffer.from(encryptedPassword)),
       primaryFiat: store.get(StorageKeys.AccountInfo_PrimaryFiat),
     };
   });
 
-  ipcMain.handle(IpcChannels.SetMoneroNode, (_, value: string) => {
+  // returns null if password is incorrect. returns jwt if password is correct
+  ipcMain.handle(
+    IpcChannels.VerifyPassword,
+    async (_, plainText: string): Promise<string | null> => {
+      const encryptedPassword = store.get(StorageKeys.AccountInfo_Password);
+      if (!encryptedPassword) {
+        return null;
+      }
+      const hash = safeStorage.decryptString(Buffer.from(encryptedPassword));
+      if (!(await verifyPassword(plainText, hash))) {
+        return null;
+      }
+      return createAuthToken(hash);
+    }
+  );
+
+  ipcMain.handle(
+    IpcChannels.VerifyAuthToken,
+    async (_, token: string): Promise<boolean> => {
+      const encryptedPassword = store.get(StorageKeys.AccountInfo_Password);
+      if (!encryptedPassword) {
+        return false;
+      }
+      const hash = safeStorage.decryptString(Buffer.from(encryptedPassword));
+      return verifyAuthAuthToken(token, hash);
+    }
+  );
+
+  ipcMain.handle(IpcChannels.SetMoneroNode, async (_, value: string) => {
     store.set(StorageKeys.Preferences_MoneroNode, value);
   });
 
-  ipcMain.handle(IpcChannels.GetPreferences, (): IPreferences => {
-    return {
-      moneroNode: store.get(StorageKeys.Preferences_MoneroNode),
-    };
-  });
+  ipcMain.handle(
+    IpcChannels.GetPreferences,
+    async (): Promise<IPreferences> => {
+      return {
+        moneroNode: store.get(StorageKeys.Preferences_MoneroNode),
+      };
+    }
+  );
 }

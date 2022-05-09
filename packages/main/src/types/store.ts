@@ -35,7 +35,7 @@ export interface IAccountInfo {
 }
 
 export interface AccountInfoDto extends Omit<IAccountInfo, "password"> {
-  password: string;
+  passwordHash: string;
 }
 
 export interface IPreferences {

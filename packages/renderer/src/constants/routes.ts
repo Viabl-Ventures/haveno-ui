@@ -15,14 +15,14 @@
 // =============================================================================
 
 export const ROUTES = {
-  Home: "/",
+  Home: "",
+  HomeAlias: "/",
   Login: "/login",
-  Welcome: "/onboarding/setup/welcome",
-  CreateAccount: "/onboarding/setup/create-account",
-  RestoreBackup: "/onboarding/setup/restore-backup",
+  Welcome: "/onboarding/welcome",
+  CreateAccount: "/onboarding/create-account",
+  RestoreBackup: "/onboarding/restore-backup",
 
-  // Account routes.
-  Account: "/account",
+  // Account routes
   AccountPaymentAccounts: "/account/payment-accounts",
   AccountAddPaymentAccount: "/account/payment-accounts/add",
   AccountNodeSettings: "/account/node-settings",

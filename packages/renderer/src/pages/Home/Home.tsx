@@ -14,15 +14,16 @@
 //  limitations under the License.
 // =============================================================================
 
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Space, Stack } from "@mantine/core";
 import { LangKeys } from "@constants/lang/LangKeys";
 import { CenteredLayout } from "@templates/CenteredLayout";
 import { Heading } from "@atoms/Typography";
 import Logo from "@assets/logo.svg";
 import { useAccountInfo } from "@src/hooks/storage/useGetAccountInfo";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@constants/routes";
+import { showNotification } from "@mantine/notifications";
 
 export function Home() {
   const { data: accountInfo, isSuccess, isError } = useAccountInfo();
@@ -30,12 +31,17 @@ export function Home() {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log({ accountInfo });
       if (!accountInfo) {
-        navigate(ROUTES.Welcome, { replace: true });
+        setTimeout(() => navigate(ROUTES.Welcome, { replace: true }), 1000);
       } else {
-        navigate(ROUTES.Login, { replace: true });
+        setTimeout(() => navigate(ROUTES.Login, { replace: true }), 1000);
       }
+    } else if (isError) {
+      showNotification({
+        color: "red",
+        title: "Unable to load account",
+        message: "Failed to load account details",
+      });
     }
   }, [isSuccess, isError]);
 

@@ -50,16 +50,13 @@ export function CreateAccount() {
     setStep(Steps.SelectNode);
   };
 
-  const handleCreateAccount = ({
-    url,
-    password,
-  }: {
+  const handleCreateAccount = (moneroNode: {
     url: string;
     password: string;
   }) => {
     createAccount(
       {
-        moneroNode: url,
+        moneroNode: moneroNode.url,
         password,
         primaryFiat: fiat,
       },

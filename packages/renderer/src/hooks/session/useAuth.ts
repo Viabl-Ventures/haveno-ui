@@ -14,23 +14,22 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
-import { Container, Stack } from "@mantine/core";
-import { HeaderWithLogo } from "@atoms/Header";
+import { QueryKeys } from "@constants/query-keys";
+import { validateSession } from "@src/utils/session";
+import { useQuery } from "react-query";
 
-interface CenteredLayoutProps {
-  showHeader?: boolean;
-  size?: number;
-}
-
-export const CenteredLayout: FC<CenteredLayoutProps> = (props) => {
-  const { children, showHeader = false, size } = props;
-  return (
-    <Stack sx={{ width: "100%" }}>
-      {showHeader && <HeaderWithLogo />}
-      <Container p="sm" size={size} sx={{ display: "flex", flex: 1 }}>
-        {children}
-      </Container>
-    </Stack>
+export function useAuth() {
+  return useQuery(
+    QueryKeys.AuthSession,
+    async () => {
+      if (await validateSession()) {
+        return true;
+      }
+      return false;
+    },
+    {
+      staleTime: 60000,
+      retry: false,
+    }
   );
-};
+}

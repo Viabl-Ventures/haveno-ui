@@ -24,8 +24,13 @@ export function usePaymentAccounts() {
   return useQuery<Array<PaymentAccount>, Error>(
     QueryKeys.PaymentAccounts,
     async () => {
-      const accounts = await client.getPaymentAccounts();
-      return accounts.map((acc) => acc.toObject());
+      try {
+        const accounts = await client.getPaymentAccounts();
+        return accounts.map((acc) => acc.toObject());
+      } catch (ex) {
+        console.error(ex);
+        return [];
+      }
     }
   );
 }

@@ -18,7 +18,6 @@ import { Stack, Space, Group } from "@mantine/core";
 import { BodyText, Heading } from "@atoms/Typography";
 import { Button, TextButton } from "@atoms/Buttons";
 import { Select } from "@atoms/Select";
-import { LangKeys } from "@constants/lang";
 import type { FormEvent } from "react";
 
 interface SelectMoneroNodeProps {
@@ -31,6 +30,7 @@ export function SelectMoneroNode(props: SelectMoneroNodeProps) {
 
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
+    // TODO: fix
     onNext({
       url: "http://192.168.29.59:8080",
       password: "apitest",
@@ -40,9 +40,7 @@ export function SelectMoneroNode(props: SelectMoneroNodeProps) {
   return (
     <form onSubmit={handleSubmit}>
       <Stack>
-        <Heading order={1} stringId={LangKeys.CreatePassword}>
-          Select a node
-        </Heading>
+        <Heading order={1}>Select a node</Heading>
         <BodyText size="lg">
           We found a local node running on your machine, it’s recommended to use
           this one. Alternatively you can select one of the curated nodes below

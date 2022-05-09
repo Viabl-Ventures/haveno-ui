@@ -14,23 +14,21 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
-import { Container, Stack } from "@mantine/core";
-import { HeaderWithLogo } from "@atoms/Header";
+import { createSession } from "@src/utils/session";
+import { useMutation } from "react-query";
 
-interface CenteredLayoutProps {
-  showHeader?: boolean;
-  size?: number;
+interface Variables {
+  password: string;
 }
 
-export const CenteredLayout: FC<CenteredLayoutProps> = (props) => {
-  const { children, showHeader = false, size } = props;
-  return (
-    <Stack sx={{ width: "100%" }}>
-      {showHeader && <HeaderWithLogo />}
-      <Container p="sm" size={size} sx={{ display: "flex", flex: 1 }}>
-        {children}
-      </Container>
-    </Stack>
-  );
-};
+export function useLogin() {
+  return useMutation<void, Error, Variables>(async (variables: Variables) => {
+    const authToken = await window.electronStore.verifyPassword(
+      variables.password
+    );
+    if (!authToken) {
+      throw new Error("Invalid password");
+    }
+    createSession(authToken);
+  });
+}

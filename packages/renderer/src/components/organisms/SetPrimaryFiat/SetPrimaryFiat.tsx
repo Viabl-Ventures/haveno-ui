@@ -20,7 +20,6 @@ import Joi from "joi";
 import { BodyText, Heading } from "@atoms/Typography";
 import { Button, TextButton } from "@atoms/Buttons";
 import { Select } from "@atoms/Select";
-import { LangKeys } from "@constants/lang";
 import { SupportedCurrencies } from "@constants/currencies";
 
 interface SetSetPrimaryFiatProps {
@@ -45,7 +44,7 @@ export function SetPrimaryFiat(props: SetSetPrimaryFiatProps) {
   return (
     <form onSubmit={onSubmit(handleSubmit)}>
       <Stack>
-        <Heading order={1} stringId={LangKeys.CreatePassword}>
+        <Heading order={1}>
           Choose the fiat currency you want to primarily use.
         </Heading>
         <BodyText size="lg">

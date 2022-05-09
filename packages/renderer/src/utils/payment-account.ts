@@ -22,8 +22,8 @@ import { ReactComponent as UnknownLogo } from "@assets/unknown.svg";
 import type { PaymentAccount } from "@src/types";
 
 export function getPaymentAccountName(account: PaymentAccount): string {
-  if (account.selectedTradeCurrency?.name) {
-    return account.selectedTradeCurrency?.name;
+  if (account?.selectedTradeCurrency?.name) {
+    return account.selectedTradeCurrency.name;
   }
   try {
     return account.accountName.split(" ")[0];
@@ -33,15 +33,15 @@ export function getPaymentAccountName(account: PaymentAccount): string {
 }
 
 export function getPaymentAccountCode(account: PaymentAccount): string {
-  if (account.selectedTradeCurrency?.code) {
-    return account.selectedTradeCurrency?.code;
+  if (account?.selectedTradeCurrency?.code) {
+    return account.selectedTradeCurrency.code;
   }
   return account.paymentMethod.id;
 }
 
 export function getPaymentAccountNumber(account: PaymentAccount): string {
-  if (account.paymentAccountPayload.cryptoCurrencyAccountPayload?.address) {
-    return account.paymentAccountPayload.cryptoCurrencyAccountPayload?.address;
+  if (account?.paymentAccountPayload?.cryptoCurrencyAccountPayload?.address) {
+    return account.paymentAccountPayload.cryptoCurrencyAccountPayload.address;
   }
   // TODO
   return "";

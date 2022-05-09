@@ -29,8 +29,6 @@ interface PaymentMethodsProps {
 export function PaymentMethodList({ onAdd }: PaymentMethodsProps) {
   const { data: paymentAccounts, isLoading } = usePaymentAccounts();
 
-  console.log(paymentAccounts);
-
   return (
     <Stack spacing="lg">
       <Stack sx={{ maxWidth: "32rem" }}>

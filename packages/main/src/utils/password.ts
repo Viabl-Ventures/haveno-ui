@@ -15,6 +15,7 @@
 // =============================================================================
 
 import { randomBytes, scrypt, timingSafeEqual } from "crypto";
+import jwt from "jsonwebtoken";
 
 const SALT_LENGTH = 32;
 const KEY_LENGTH = 64;
@@ -42,7 +43,42 @@ export async function verifyPassword(
       if (err) {
         return reject(err);
       }
-      return timingSafeEqual(origKey, derivedKey);
+      resolve(timingSafeEqual(origKey, derivedKey));
     });
   });
+}
+
+interface AuthToken {
+  createdAt: number;
+  randomStr: string;
+}
+
+export async function createAuthToken(
+  saltAndPassword: string
+): Promise<string> {
+  const [randomStr, secret] = saltAndPassword.split(":");
+  const token = jwt.sign(
+    {
+      createdAt: new Date().getTime(),
+      randomStr,
+    },
+    secret
+  );
+  return token;
+}
+
+export async function verifyAuthAuthToken(
+  token: string,
+  saltAndPassword: string
+): Promise<boolean> {
+  if (!token) {
+    return false;
+  }
+  const [randomStr, secret] = saltAndPassword.split(":");
+  try {
+    const payload = jwt.verify(token, secret) as AuthToken;
+    return payload.randomStr === randomStr;
+  } catch (_ex) {
+    return false;
+  }
 }

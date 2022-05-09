@@ -14,23 +14,26 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
-import { Container, Stack } from "@mantine/core";
-import { HeaderWithLogo } from "@atoms/Header";
+import type { ReactNode } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@hooks/session/useAuth";
+import { deleteSession } from "@src/utils/session";
+import { ROUTES } from "@constants/routes";
 
-interface CenteredLayoutProps {
-  showHeader?: boolean;
-  size?: number;
+export function ProtectedRoute({ children }: { children: ReactNode }) {
+  const { data: isAuthed, isLoading, isSuccess } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+    if (!isAuthed) {
+      deleteSession();
+      navigate(ROUTES.Login);
+    }
+  }, [isLoading, isAuthed]);
+
+  return isSuccess ? <>{children}</> : null;
 }
-
-export const CenteredLayout: FC<CenteredLayoutProps> = (props) => {
-  const { children, showHeader = false, size } = props;
-  return (
-    <Stack sx={{ width: "100%" }}>
-      {showHeader && <HeaderWithLogo />}
-      <Container p="sm" size={size} sx={{ display: "flex", flex: 1 }}>
-        {children}
-      </Container>
-    </Stack>
-  );
-};
