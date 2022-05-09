@@ -14,7 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
+import { LangKeys } from "@constants/lang";
 import { Box } from "@mantine/core";
+import { FormattedMessage } from "react-intl";
 import { useControlStyles } from "./NodeConnectSwitch.style";
 
 interface SettingTabProps {
@@ -55,11 +57,18 @@ export function NodeConnectSwitchMethod({
       role="tab"
       {...rest}
     >
-      <div className={classes.tabInner}>
-        {current && <div className={cx(classes.tabCurrent)}>Current</div>}
-        {icon && <div className={classes.tabIcon}>{icon}</div>}
-        {label && <div className={classes.tabLabel}>{label}</div>}
-      </div>
+      <Box className={classes.tabInner}>
+        {current && (
+          <Box className={cx(classes.tabCurrent)}>
+            <FormattedMessage
+              id={LangKeys.AccountSettingsCurrent}
+              defaultMessage={"Current"}
+            />
+          </Box>
+        )}
+        {icon && <Box className={classes.tabIcon}>{icon}</Box>}
+        {label && <Box className={classes.tabLabel}>{label}</Box>}
+      </Box>
     </Box>
   );
 }

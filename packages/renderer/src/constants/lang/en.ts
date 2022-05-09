@@ -44,6 +44,7 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountNodeFieldDeamonFlags]: "Deamon startup flags",
   [LangKeys.AccountNodeStopDeamon]: "Stop deamon",
   [LangKeys.AccountSettingsAddNode]: "Add a new node",
+  [LangKeys.AccountSettingsCurrent]: "Current",
 };
 
 export default LangPackEN;

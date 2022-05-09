@@ -15,15 +15,15 @@ exports[`atoms::NodeConnectSwitch > renders without exploding 1`] = `
         type="button"
       >
         <div
-          class="mantine-xj4138"
+          class="mantine-199rwtt"
         >
           <div
-            class="mantine-bn64xx"
+            class="mantine-1jn9p7a"
           >
             Current
           </div>
           <div
-            class="mantine-eo7i3t"
+            class="mantine-9bd5vi"
           >
             <svg
               height="62px"
@@ -50,7 +50,7 @@ exports[`atoms::NodeConnectSwitch > renders without exploding 1`] = `
             </svg>
           </div>
           <div
-            class="mantine-15d1cwf"
+            class="mantine-1wlt8yk"
           >
             Local Node
           </div>
@@ -63,10 +63,10 @@ exports[`atoms::NodeConnectSwitch > renders without exploding 1`] = `
         type="button"
       >
         <div
-          class="mantine-xj4138"
+          class="mantine-199rwtt"
         >
           <div
-            class="mantine-eo7i3t"
+            class="mantine-9bd5vi"
           >
             <svg
               fill="none"
@@ -108,7 +108,7 @@ exports[`atoms::NodeConnectSwitch > renders without exploding 1`] = `
             </svg>
           </div>
           <div
-            class="mantine-15d1cwf"
+            class="mantine-1wlt8yk"
           >
             Remote Node
           </div>

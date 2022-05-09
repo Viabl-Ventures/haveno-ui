@@ -45,6 +45,7 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountNodeFieldDeamonFlags]: "Indicadores de inicio de daemon",
   [LangKeys.AccountNodeStopDeamon]: "Detener demonio",
   [LangKeys.AccountSettingsAddNode]: "Agregar un nuevo nodo",
+  [LangKeys.AccountSettingsCurrent]: "Actual",
 };
 
 export default LangPackES;
