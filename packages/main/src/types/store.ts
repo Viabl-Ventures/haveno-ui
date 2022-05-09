@@ -55,3 +55,12 @@ export const StoreSchema: Schema<IStoreSchema> = {
     type: "string",
   },
 };
+
+export interface SetPasswordInput {
+  newPassword: string;
+}
+
+export interface ChangePasswordInput {
+  currentPassword: string;
+  newPassword: string;
+}

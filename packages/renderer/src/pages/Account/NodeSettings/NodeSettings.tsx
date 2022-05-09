@@ -18,7 +18,6 @@ import { Stack, Box, createStyles } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
 import { LangKeys } from "@constants/lang";
 import { NodeSettingsSwitch } from "./NodeSettingsSwitch";
-import { WIDTH } from "./_constants";
 import { BodyText, Heading } from "@atoms/Typography";
 
 export function AccountNodeSettings() {
@@ -49,7 +48,7 @@ export function AccountNodeSettings() {
 
 const useStyles = createStyles((theme) => ({
   content: {
-    maxWidth: WIDTH,
+    maxWidth: theme.other.contentWidthMd,
   },
   paragraph: {
     marginBottom: theme.spacing.xl,

@@ -23,10 +23,10 @@ import {
   Text,
   UnstyledButton,
 } from "@mantine/core";
+import type { PaymentAccount } from "haveno-ts";
 import { ReactComponent as MenuIcon } from "@assets/ellipsis.svg";
 import { HEIGHT, WIDTH } from "./_constants";
 import { BodyText } from "@atoms/Typography";
-import type { PaymentAccount } from "@src/types";
 import {
   getPaymentAccountLogo,
   getPaymentAccountName,

@@ -14,4 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./AccountSecurity";
+export * from "./ChangePassword";

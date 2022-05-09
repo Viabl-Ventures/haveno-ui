@@ -16,35 +16,36 @@
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import type { FC } from "react";
+import type { PaymentAccount } from "haveno-ts";
 import { CurrencyLogos } from "@molecules/PaymentMethodCard/_constants";
 import type { SupportedCurrencies } from "@molecules/PaymentMethodCard/_types";
 import { ReactComponent as UnknownLogo } from "@assets/unknown.svg";
-import type { PaymentAccount } from "@src/types";
 
 export function getPaymentAccountName(account: PaymentAccount): string {
-  if (account?.selectedTradeCurrency?.name) {
-    return account.selectedTradeCurrency.name;
-  }
+  const name = account.getAccountName();
   try {
-    return account.accountName.split(" ")[0];
+    return name.split(" ")[0];
   } catch (_ex) {
-    return account.accountName;
+    return name;
   }
 }
 
 export function getPaymentAccountCode(account: PaymentAccount): string {
-  if (account?.selectedTradeCurrency?.code) {
-    return account.selectedTradeCurrency.code;
-  }
-  return account.paymentMethod.id;
+  return (
+    account.getSelectedTradeCurrency()?.getCode() ??
+    account.getPaymentMethod()?.getId() ??
+    getPaymentAccountName(account)
+  );
 }
 
 export function getPaymentAccountNumber(account: PaymentAccount): string {
-  if (account?.paymentAccountPayload?.cryptoCurrencyAccountPayload?.address) {
-    return account.paymentAccountPayload.cryptoCurrencyAccountPayload.address;
-  }
-  // TODO
-  return "";
+  // TODO: how to get account id/number for other payment accounts?
+  return (
+    account
+      .getPaymentAccountPayload()
+      ?.getCryptoCurrencyAccountPayload()
+      ?.getAddress() ?? ""
+  );
 }
 
 export function getPaymentAccountLogo(account: PaymentAccount): FC<any> {

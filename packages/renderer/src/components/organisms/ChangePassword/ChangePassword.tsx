@@ -17,26 +17,56 @@
 import { FormattedMessage } from "react-intl";
 import { Stack, Box, Group } from "@mantine/core";
 import { useForm, joiResolver } from "@mantine/form";
+import { showNotification } from "@mantine/notifications";
 import { TextInput } from "@atoms/TextInput";
 import { LangKeys } from "@constants/lang";
-import { useAccountSecurityFormSchema } from "./_hooks";
 import { Button } from "@atoms/Buttons";
+import { useChangePassword } from "@hooks/storage/useChangePassword";
+import { useAccountSecurityFormSchema } from "./_hooks";
+import type { ChangePasswordFormValues } from "./_types";
 
-export function AccountSecurityForm() {
+export function ChangePassword() {
   const accountSecurityFormSchema = useAccountSecurityFormSchema();
+  const { mutate: changePassword } = useChangePassword();
 
-  const form = useForm({
+  const form = useForm<ChangePasswordFormValues>({
     initialValues: {
       currentPassword: "",
-      password: "",
+      newPassword: "",
       confirmPassword: "",
     },
     schema: joiResolver(accountSecurityFormSchema),
   });
 
+  const handleSubmit = (values: ChangePasswordFormValues) => {
+    changePassword(
+      {
+        currentPassword: values.currentPassword,
+        newPassword: values.newPassword,
+      },
+      {
+        onError: (err) => {
+          console.dir(err);
+          showNotification({
+            color: "red",
+            message: err.message,
+            title: "Something went wrong",
+          });
+        },
+        onSuccess: () => {
+          showNotification({
+            color: "green",
+            message: "Password updated successfully",
+          });
+          form.reset();
+        },
+      }
+    );
+  };
+
   return (
     <Box>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack spacing="lg">
           <TextInput
             id="password"
@@ -48,7 +78,7 @@ export function AccountSecurityForm() {
                 defaultMessage="Password"
               />
             }
-            {...form.getInputProps("password")}
+            {...form.getInputProps("newPassword")}
           />
           <TextInput
             id="confirmPassword"

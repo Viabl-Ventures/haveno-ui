@@ -15,22 +15,34 @@
 // =============================================================================
 
 import { QueryKeys } from "@constants/query-keys";
-import type { PaymentAccount } from "haveno-ts";
-import { useQuery } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { getIpcError } from "@src/utils/get-ipc-error";
+import { createSession } from "@src/utils/session";
+import { useMutation, useQueryClient } from "react-query";
 
-export function usePaymentAccounts() {
-  const client = useHavenoClient();
-  return useQuery<Array<PaymentAccount>, Error>(
-    QueryKeys.PaymentAccounts,
-    async () => {
+interface Variables {
+  currentPassword: string;
+  newPassword: string;
+}
+
+export function useChangePassword() {
+  const queryClient = useQueryClient();
+
+  return useMutation<string, Error, Variables>(
+    async (variables: Variables) => {
       try {
-        const accounts = await client.getPaymentAccounts();
-        return accounts.map((acc) => acc);
+        const authToken = await window.electronStore.changePassword(variables);
+        return authToken;
       } catch (ex) {
-        console.error(ex);
-        return [];
+        throw new Error(getIpcError(ex as Error));
       }
+    },
+    {
+      onSuccess: (authToken) => {
+        // update the session jwt
+        createSession(authToken).then(() => {
+          queryClient.invalidateQueries(QueryKeys.StorageAccountInfo);
+        });
+      },
     }
   );
 }

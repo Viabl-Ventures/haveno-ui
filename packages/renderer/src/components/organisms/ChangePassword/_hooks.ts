@@ -17,7 +17,9 @@
 import { LangKeys } from "@constants/lang";
 import Joi from "joi";
 import { useIntl } from "react-intl";
-import { MIN_PASSWORD_CHARS } from "./_constants";
+import type { ChangePasswordFormValues } from "./_types";
+
+const MIN_PASSWORD_CHARS = 8;
 
 const getPasswordRegex = () => {
   return RegExp(
@@ -29,37 +31,26 @@ const getPasswordRegex = () => {
 export const useAccountSecurityFormSchema = () => {
   const { formatMessage } = useIntl();
 
-  return Joi.object({
-    password: Joi.string()
+  return Joi.object<ChangePasswordFormValues>({
+    newPassword: Joi.string()
       .required()
-      .regex(
-        getPasswordRegex(),
-        formatMessage(
-          {
-            id: LangKeys.AccountSecurityFieldPasswordFormatMsg,
-            defaultMessage: `contain atleast ${MIN_PASSWORD_CHARS} characters, one uppercase, one lowercase and one number`,
-          },
-          {
-            minChars: MIN_PASSWORD_CHARS,
-          }
-        )
-      )
-      .label(
-        formatMessage({
-          id: LangKeys.AccountSecurityFieldPassword,
-          defaultMessage: "Password",
-        })
-      ),
-    confirmPassword: Joi.string()
-      .valid(Joi.ref("password"))
-      .required()
+      .regex(getPasswordRegex())
       .options({
         messages: {
-          "any.only": formatMessage({
-            id: LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg,
-            defaultMessage: "Password confirmation doesn't match Password.",
+          "string.pattern.base": formatMessage({
+            id: LangKeys.AccountSecurityFieldPasswordFormatMsg,
+            defaultMessage: "This password is too weak",
           }),
         },
+      }),
+    confirmPassword: Joi.string()
+      .required()
+      .valid(Joi.ref("newPassword"))
+      .messages({
+        "any.only": formatMessage({
+          id: LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg,
+          defaultMessage: "Passwords don't match",
+        }),
       }),
     currentPassword: Joi.string()
       .required()

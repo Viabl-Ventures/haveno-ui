@@ -114,7 +114,7 @@ export function AddPaymentMethod() {
   );
 }
 
-const schema = Joi.object({
+const schema = Joi.object<FormValues>({
   currency: Joi.string().required(),
   paymentMethod: Joi.string().required(),
   accountNumber: Joi.string().required(),

@@ -17,24 +17,8 @@
 import { LangKeys } from "@constants/lang";
 import { Stack, Box, createStyles, Group } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
-import { AccountSecurityForm } from "./AccountSecurityForm";
 import { Heading, BodyText } from "@atoms/Typography";
-import { WIDTH } from "./_constants";
-
-function AccountSecurityHeader() {
-  return (
-    <Group spacing="sm">
-      <Heading stringId={LangKeys.AccountSecurityTitle} order={3}>
-        Account Security
-      </Heading>
-      <BodyText stringId={LangKeys.AccountSecurityDesc} size="md">
-        Haveno does not store any of your data, this happens solely locally on
-        your device. It’s not possible to restore your password when lost.
-        Please make sure you store a copy of it on a safe place.
-      </BodyText>
-    </Group>
-  );
-}
+import { ChangePassword } from "@organisms/ChangePassword";
 
 export function AccountSecurity() {
   const { classes } = useStyles();
@@ -43,16 +27,26 @@ export function AccountSecurity() {
     <AccountLayout>
       <Box className={classes.content}>
         <Stack spacing="lg">
-          <AccountSecurityHeader />
-          <AccountSecurityForm />
+          <Group spacing="sm">
+            <Heading stringId={LangKeys.AccountSecurityTitle} order={3}>
+              Account Security
+            </Heading>
+            <BodyText heavy stringId={LangKeys.AccountSecurityDesc} size="md">
+              Haveno does not store any of your data, this happens solely
+              locally on your device. It’s not possible to restore your password
+              when lost. Please make sure you store a copy of it on a safe
+              place.
+            </BodyText>
+          </Group>
+          <ChangePassword />
         </Stack>
       </Box>
     </AccountLayout>
   );
 }
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   content: {
-    maxWidth: WIDTH,
+    maxWidth: theme.other.contentWidthMd,
   },
 }));

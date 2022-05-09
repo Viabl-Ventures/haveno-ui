@@ -14,4 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-export const WIDTH = 470;
+export interface ChangePasswordFormValues {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}

@@ -29,7 +29,7 @@ export function useCreateAccount() {
   return useMutation<void, Error, Variables>(
     async (variables: Variables) => {
       await Promise.all([
-        window.electronStore.setPassword(variables.password),
+        window.electronStore.setPassword({ newPassword: variables.password }),
         window.electronStore.setPrimaryFiat(variables.primaryFiat),
         window.electronStore.setMoneroNode(variables.moneroNode),
       ]);

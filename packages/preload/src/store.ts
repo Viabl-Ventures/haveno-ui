@@ -16,14 +16,24 @@
 
 import { ipcRenderer } from "electron";
 import { exposeInMainWorld } from "./exposeInMainWorld";
-import type { AccountInfoDto, IPreferences } from "./types";
+import type {
+  AccountInfoDto,
+  ChangePasswordInput,
+  IPreferences,
+  SetPasswordInput,
+} from "./types";
 import { IpcChannels } from "./types";
 
 // Export for types in contracts.d.ts
 export const store = {
-  setPassword: async (value: string): Promise<void> =>
-    ipcRenderer.invoke(IpcChannels.SetPassword, value),
+  setPassword: async (data: SetPasswordInput): Promise<void> =>
+    ipcRenderer.invoke(IpcChannels.SetPassword, data),
 
+  // returns jwt on success
+  changePassword: async (data: ChangePasswordInput): Promise<string> =>
+    ipcRenderer.invoke(IpcChannels.ChangePassword, data),
+
+  // returns jwt on success; null on failure
   verifyPassword: async (plainText: string): Promise<string | null> =>
     ipcRenderer.invoke(IpcChannels.VerifyPassword, plainText),
 

@@ -44,7 +44,7 @@ export function PaymentMethodList({ onAdd }: PaymentMethodsProps) {
       {!isLoading && paymentAccounts?.length && (
         <Group spacing="xl">
           {paymentAccounts.map((account) => (
-            <PaymentMethodCard key={account.id} data={account} />
+            <PaymentMethodCard key={account.getId()} data={account} />
           ))}
           <AddPaymentMethodButton onClick={onAdd} />
         </Group>

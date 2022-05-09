@@ -14,7 +14,19 @@
 //  limitations under the License.
 // =============================================================================
 
-export const WIDTH = 475;
+const REGEX = /\[\[(.+)\]\]/;
 
-// The minimum characters that should password field contain.
-export const MIN_PASSWORD_CHARS = 8;
+export function getIpcError(err: Error, fallback?: string) {
+  const message = err?.message;
+  if (message && REGEX.test(message)) {
+    const matches = message.match(REGEX);
+    if (matches && matches[1] && matches[1].length) {
+      return matches[1];
+    }
+    const index = message.lastIndexOf("Error:");
+    return index !== -1
+      ? message.slice(index + 6)
+      : fallback ?? "Something went wrong";
+  }
+  return fallback ?? "Something went wrong";
+}

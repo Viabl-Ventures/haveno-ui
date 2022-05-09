@@ -16,7 +16,13 @@
 
 import { ipcMain, safeStorage } from "electron";
 import Store from "electron-store";
-import type { AccountInfoDto, IPreferences, IStoreSchema } from "@src/types";
+import type {
+  AccountInfoDto,
+  ChangePasswordInput,
+  IPreferences,
+  IStoreSchema,
+  SetPasswordInput,
+} from "@src/types";
 import { StorageKeys } from "@src/types";
 import { IpcChannels, StoreSchema } from "@src/types";
 import {
@@ -29,16 +35,44 @@ import {
 const store = new Store<IStoreSchema>({ schema: StoreSchema });
 
 export function registerStoreHandlers() {
-  ipcMain.handle(IpcChannels.SetPassword, async (_, value: string) => {
-    const hash = await hashPassword(value);
-    if (!hash) {
-      throw new Error("Unable to save password");
+  ipcMain.handle(IpcChannels.SetPassword, async (_, data: SetPasswordInput) => {
+    const encryptedPassword = store.get(StorageKeys.AccountInfo_Password);
+    if (encryptedPassword) {
+      throw new Error("[[Can't set password]]");
     }
+    const hash = await hashPassword(data.newPassword);
     store.set(
       StorageKeys.AccountInfo_Password,
       safeStorage.encryptString(hash)
     );
   });
+
+  ipcMain.handle(
+    IpcChannels.ChangePassword,
+    async (_, data: ChangePasswordInput): Promise<string> => {
+      const encryptedPassword = store.get(StorageKeys.AccountInfo_Password);
+      if (!encryptedPassword) {
+        throw new Error("[[No password currently set]]");
+      }
+      // verify old password
+      const oldPassHash = safeStorage.decryptString(
+        Buffer.from(encryptedPassword)
+      );
+      if (!("currentPassword" in data)) {
+        throw new Error("[[Current password required]]");
+      }
+      if (!(await verifyPassword(data.currentPassword, oldPassHash))) {
+        throw new Error("[[Current password doesn't match]]");
+      }
+      const hash = await hashPassword(data.newPassword);
+      store.set(
+        StorageKeys.AccountInfo_Password,
+        safeStorage.encryptString(hash)
+      );
+      // generate and return a new authToken
+      return createAuthToken(hash);
+    }
+  );
 
   ipcMain.handle(IpcChannels.SetPrimaryFiat, (_, value: string) => {
     store.set(StorageKeys.AccountInfo_PrimaryFiat, value);

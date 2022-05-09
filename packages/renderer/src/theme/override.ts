@@ -116,5 +116,6 @@ export const themeOverride: MantineThemeOverride = {
   },
   other: {
     buttonHeight: 48,
+    contentWidthMd: "30rem",
   },
 };

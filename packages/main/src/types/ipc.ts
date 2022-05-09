@@ -16,7 +16,8 @@
 
 export enum IpcChannels {
   GetAccountInfo = "store:accountInfo",
-  SetPassword = "store:accountinfo.password",
+  SetPassword = "store:accountinfo.setPassword",
+  ChangePassword = "store:accountinfo.changePassword",
   VerifyPassword = "store:accountinfo.verifyPassword",
   SetPrimaryFiat = "store:accountinfo.primaryFiat",
   GetPreferences = "store:preferences",
