@@ -3,7 +3,7 @@
 exports[`atoms::NodeStatus > renders without exploding 1`] = `
 <DocumentFragment>
   <div
-    class="mantine-dstoau"
+    class="mantine-18xx7au"
   >
     <div
       class="mantine-Text-root mantine-14byb36"
@@ -19,7 +19,7 @@ exports[`atoms::NodeStatus > renders without exploding 1`] = `
     </div>
   </div>
   <div
-    class="mantine-dstoau"
+    class="mantine-18xx7au"
   >
     <div
       class="mantine-Text-root mantine-14byb36"
@@ -30,7 +30,7 @@ exports[`atoms::NodeStatus > renders without exploding 1`] = `
       class="mantine-17do188"
     >
       <div
-        class="mantine-1lp5vts"
+        class="mantine-1cipvbv"
       />
     </div>
   </div>

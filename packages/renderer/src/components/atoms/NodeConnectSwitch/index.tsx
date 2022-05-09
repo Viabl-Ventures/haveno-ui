@@ -15,4 +15,3 @@
 // =============================================================================
 
 export * from "./NodeConnectSwitch";
-export * from "./NodeConnectSwitchMethod";
