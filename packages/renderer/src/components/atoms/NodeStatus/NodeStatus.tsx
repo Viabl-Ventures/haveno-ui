@@ -45,8 +45,9 @@ export const useStyles = createStyles<string, { status: NodeStatusType }>(
   (theme, { status }) => {
     return {
       root: {
-        background: "#FFFFFF",
-        border: "1px solid #E8E7EC",
+        backgroundColor:
+          theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+        border: `1px solid ${theme.colors.gray[2]}`,
         borderRadius: theme.radius.md,
         padding: "0.91rem",
         display: "flex",
@@ -65,7 +66,10 @@ export const useStyles = createStyles<string, { status: NodeStatusType }>(
         height: "0.625rem",
         width: "0.625rem",
         borderRadius: "0.625rem",
-        background: status === NodeStatusType.Active ? "#75B377" : "#bbb",
+        background:
+          status === NodeStatusType.Active
+            ? theme.colors.green[4]
+            : theme.colors.gray[4],
         margin: "auto",
       },
     };

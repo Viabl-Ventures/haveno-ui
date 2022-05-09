@@ -18,7 +18,7 @@ import { Text, Title, Stack, Box, createStyles } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { AccountLayout } from "@templates/AccountLayout";
 import { LangKeys } from "@constants/lang";
-import { NodeSettingsSwitch } from "./NoteSettingsSwitch";
+import { NodeSettingsSwitch } from "./NodeSettingsSwitch";
 import { WIDTH } from "./_constants";
 
 export function AccountNodeSettings() {

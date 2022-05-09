@@ -94,9 +94,9 @@ export const useControlStyles = createStyles<
       top: "0.6rem",
       left: "0.7rem",
       background: active
-        ? "rgba(255, 255, 255, 0.15)"
-        : "rgba(11, 101, 218, 0.15)",
-      color: active ? "#fff" : "#0B65DA",
+        ? theme.fn.rgba(theme.white, 0.15)
+        : theme.fn.rgba(theme.colors.blue[6], 0.15),
+      color: active ? theme.white : theme.black,
     },
   };
 });

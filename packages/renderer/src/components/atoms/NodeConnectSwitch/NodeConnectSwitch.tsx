@@ -14,7 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import React from "react";
+import type { ReactElement, ReactNode } from "react";
+import { cloneElement, Children } from "react";
 import { Box } from "@mantine/core";
 import { useUncontrolled } from "@mantine/hooks";
 import { NodeConnectSwitchMethod } from "./NodeConnectSwitchMethod";
@@ -22,7 +23,7 @@ import { useTabsStyles } from "./NodeConnectSwitch.style";
 
 interface NodeConnectSwitchProps {
   /** <Tab /> components only */
-  children?: React.ReactNode;
+  children?: ReactNode;
 
   /** Key of active tab */
   active?: string;
@@ -49,7 +50,7 @@ export function NodeConnectSwitch({
 }: NodeConnectSwitchProps) {
   const { classes, cx } = useTabsStyles();
 
-  const tabs = React.Children.toArray(children) as React.ReactElement[];
+  const tabs = Children.toArray(children) as Array<ReactElement>;
 
   const [_activeTab, handleActiveTabChange] = useUncontrolled({
     value: active,
@@ -62,7 +63,7 @@ export function NodeConnectSwitch({
   });
 
   const panes = tabs.map((tab, index) =>
-    React.cloneElement(tab, {
+    cloneElement(tab, {
       key: index,
       active: _activeTab === tab.props.tabKey,
       onClick: () => handleActiveTabChange(tab.props.tabKey),
