@@ -21,10 +21,12 @@ import {
   HAVENO_DAEMON_URL,
 } from "@constants/haveno-daemon";
 
+let havenoClient: HavenoClient;
+
 export function useHavenoClient() {
-  const client = useRef<HavenoClient>();
+  const client = useRef<HavenoClient>(havenoClient);
   if (!client.current) {
-    client.current = new HavenoClient(
+    client.current = havenoClient = new HavenoClient(
       HAVENO_DAEMON_URL,
       HAVENO_DAEMON_PASSWORD
     );
