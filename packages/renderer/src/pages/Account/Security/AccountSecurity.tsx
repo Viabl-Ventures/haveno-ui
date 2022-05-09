@@ -15,29 +15,23 @@
 // =============================================================================
 
 import { LangKeys } from "@constants/lang";
-import { Title, Text, Stack, Box, createStyles, Group } from "@mantine/core";
+import { Stack, Box, createStyles, Group } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
-import { FormattedMessage } from "react-intl";
 import { AccountSecurityForm } from "./AccountSecurityForm";
+import { Heading, BodyText } from "@atoms/Typography";
 import { WIDTH } from "./_constants";
 
 function AccountSecurityHeader() {
   return (
-    <Group spacing={"sm"}>
-      <Title order={3}>
-        <FormattedMessage
-          id={LangKeys.AccountSecurityTitle}
-          defaultMessage={"Account Security"}
-        />
-      </Title>
-      <Text size={"md"}>
-        <FormattedMessage
-          id={LangKeys.AccountSecurityDesc}
-          defaultMessage={
-            "Haveno does not store any of your data, this happens solely locally on your device. It’s not possible to restore your password when lost. Please make sure you store a copy of it on a safe place."
-          }
-        />
-      </Text>
+    <Group spacing="sm">
+      <Heading stringId={LangKeys.AccountSecurityTitle} order={3}>
+        Account Security
+      </Heading>
+      <BodyText stringId={LangKeys.AccountSecurityDesc} size="md">
+        Haveno does not store any of your data, this happens solely locally on
+        your device. It’s not possible to restore your password when lost.
+        Please make sure you store a copy of it on a safe place.
+      </BodyText>
     </Group>
   );
 }
