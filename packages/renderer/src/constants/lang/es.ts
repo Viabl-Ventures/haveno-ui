@@ -23,7 +23,7 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.Header]: "Haveno",
   [LangKeys.WelcomeToHaveno]:
     "Bienvenido a Haveno. El primer intercambio descentralizado basado en Monero del mundo.",
-  [LangKeys.Save]: "Save",
+  [LangKeys.Save]: "Guardar",
   [LangKeys.AccountTitle]: "Cuenta",
   [LangKeys.AccountSidebarPaymentAccounts]: "Cuentas de pago",
   [LangKeys.AccountSidebarSecurity]: "Seguridad",
@@ -46,6 +46,13 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountNodeStopDeamon]: "Detener demonio",
   [LangKeys.AccountSettingsAddNode]: "Agregar un nuevo nodo",
   [LangKeys.AccountSettingsCurrent]: "Actual",
+  [LangKeys.AccountSecurityFieldPassword]: "Clave",
+  [LangKeys.AccountSecurityFieldRepeatPassword]: "Repita la nueva contraseña",
+  [LangKeys.AccountSecurityFieldCurrentPassword]: "Contraseña actual",
+  [LangKeys.AccountSecurityFieldPasswordFormatMsg]:
+    "contener al menos {minChars} caracteres, una mayúscula, una minúscula y un número.",
+  [LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg]:
+    "La confirmación de la contraseña no coincide con la contraseña.",
 };
 
 export default LangPackES;

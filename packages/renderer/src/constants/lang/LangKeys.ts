@@ -40,4 +40,9 @@ export enum LangKeys {
   AccountNodeStopDeamon = "account.nodeSecurity.stopDeamon",
   AccountSettingsAddNode = "account.settings.addNewNode",
   AccountSettingsCurrent = "account.settings.current",
+  AccountSecurityFieldPassword = "account.security.field.password",
+  AccountSecurityFieldRepeatPassword = "account.security.field.repeatPassword",
+  AccountSecurityFieldCurrentPassword = "account.security.field.currentPassword",
+  AccountSecurityFieldPasswordFormatMsg = "account.security.field.password.format.message",
+  AccountSecurityFieldRepeatPasswordMatchMsg = "account.security.field.repeatPassword.match.message",
 }
