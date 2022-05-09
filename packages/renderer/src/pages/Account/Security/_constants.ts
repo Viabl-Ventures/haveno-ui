@@ -14,30 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-import * as Yup from "yup";
-
 export const WIDTH = 475;
 
 // The minimum characters that should password field contain.
-const MIN_PASSWORD_CHARS = 8;
-
-const getPasswordRegex = () => {
-  return RegExp(
-    `^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{${MIN_PASSWORD_CHARS},})`,
-    "g"
-  );
-};
-
-export const AccountSecurityFormSchema = Yup.object().shape({
-  password: Yup.string()
-    .required("Please enter your password")
-    .matches(
-      getPasswordRegex(),
-      `Must Contain ${MIN_PASSWORD_CHARS} Characters, One Uppercase, One Lowercase, One Number`
-    ),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref("password"), null],
-    "Passwords must match."
-  ),
-  currentPassword: Yup.string().required("Current password is required"),
-});
+export const MIN_PASSWORD_CHARS = 8;

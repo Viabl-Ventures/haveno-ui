@@ -32,4 +32,6 @@ export enum LangKeys {
   AccountSecurityFieldPassword = "account.security.field.password",
   AccountSecurityFieldRepeatPassword = "account.security.field.repeatPassword",
   AccountSecurityFieldCurrentPassword = "account.security.field.currentPassword",
+  AccountSecurityFieldPasswordFormatMsg = "account.security.field.password.format.message",
+  AccountSecurityFieldRepeatPasswordMatchMsg = "account.security.field.repeatPassword.match.message",
 }

@@ -16,20 +16,22 @@
 
 import { FormattedMessage } from "react-intl";
 import { Stack, Box, Group } from "@mantine/core";
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm, joiResolver } from "@mantine/form";
 import { TextInput } from "@atoms/TextInput";
 import { LangKeys } from "@constants/lang";
-import { AccountSecurityFormSchema } from "./_constants";
+import { useAccountSecurityFormSchema } from "./_hooks";
 import { Button } from "@atoms/Buttons";
 
 export function AccountSecurityForm() {
+  const accountSecurityFormSchema = useAccountSecurityFormSchema();
+
   const form = useForm({
     initialValues: {
       currentPassword: "",
       password: "",
       confirmPassword: "",
     },
-    schema: yupResolver(AccountSecurityFormSchema),
+    schema: joiResolver(accountSecurityFormSchema),
   });
 
   return (

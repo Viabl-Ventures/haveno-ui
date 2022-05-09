@@ -36,6 +36,10 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountSecurityFieldPassword]: "Password",
   [LangKeys.AccountSecurityFieldRepeatPassword]: "Repeat new password",
   [LangKeys.AccountSecurityFieldCurrentPassword]: "Current password",
+  [LangKeys.AccountSecurityFieldPasswordFormatMsg]:
+    "contain atleast {minChars} characters, one uppercase, one lowercase and one number.",
+  [LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg]:
+    "Password confirmation doesn't match Password.",
 };
 
 export default LangPackEN;

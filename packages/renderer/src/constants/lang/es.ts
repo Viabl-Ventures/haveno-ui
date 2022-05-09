@@ -36,6 +36,10 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountSecurityFieldPassword]: "Clave",
   [LangKeys.AccountSecurityFieldRepeatPassword]: "Repita la nueva contraseña",
   [LangKeys.AccountSecurityFieldCurrentPassword]: "Contraseña actual",
+  [LangKeys.AccountSecurityFieldPasswordFormatMsg]:
+    "contener al menos {minChars} caracteres, una mayúscula, una minúscula y un número.",
+  [LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg]:
+    "La confirmación de la contraseña no coincide con la contraseña.",
 };
 
 export default LangPackES;
