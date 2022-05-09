@@ -37,8 +37,8 @@ export function NodeRemoteStatus() {
       />
       <AddNewNodeButton />
 
-      <Group position="right" mt="sm">
-        <Button size="md">
+      <Group position={"right"} mt={"sm"}>
+        <Button size={"md"}>
           <FormattedMessage id={LangKeys.Save} defaultMessage={"Save"} />
         </Button>
       </Group>
@@ -51,7 +51,7 @@ function AddNewNodeButton({ ...rest }) {
 
   return (
     <Button
-      variant="subtle"
+      variant={"subtle"}
       color={"dark"}
       classNames={{
         root: classes.root,

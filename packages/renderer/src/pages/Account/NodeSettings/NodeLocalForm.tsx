@@ -36,7 +36,7 @@ export function NodeLocalForm() {
       <NodeLocalStopDeamon />
 
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <Stack spacing="lg">
+        <Stack spacing={"lg"}>
           <TextInput
             id={"blockchainLocation"}
             label={
@@ -94,7 +94,7 @@ function NodeLocalStopDeamon() {
 
   return (
     <div className={classes.actions}>
-      <Button flavor="neutral">
+      <Button flavor={"neutral"}>
         <FormattedMessage
           id={LangKeys.AccountNodeStopDeamon}
           defaultMessage={"Stop deamon"}

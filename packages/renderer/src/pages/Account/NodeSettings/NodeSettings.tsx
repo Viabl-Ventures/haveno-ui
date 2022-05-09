@@ -27,7 +27,7 @@ export function AccountNodeSettings() {
   return (
     <AccountLayout>
       <Box className={classes.content}>
-        <Stack spacing="sm">
+        <Stack spacing={"sm"}>
           <Title order={3}>
             <FormattedMessage
               id={LangKeys.AccountNodeSettingsTitle}

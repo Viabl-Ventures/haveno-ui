@@ -28,7 +28,7 @@ export function NodeSettingsSwitch() {
 
   return (
     <NodeConnectSwitch
-      initialTab="local-node"
+      initialTab={"local-node"}
       className={classes.connectSwitch}
     >
       <NodeConnectSwitch.Method
