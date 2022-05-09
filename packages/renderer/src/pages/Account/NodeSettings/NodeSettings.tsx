@@ -27,13 +27,13 @@ export function AccountNodeSettings() {
   return (
     <AccountLayout>
       <Box className={classes.content}>
-        <Stack spacing={"sm"}>
+        <Stack spacing="sm">
           <Heading stringId={LangKeys.AccountNodeSettingsTitle} order={3}>
             Your node settings
           </Heading>
           <BodyText
             stringId={LangKeys.AccountNodeSettingsDesc}
-            size={"md"}
+            size="md"
             className={classes.paragraph}
           >
             Using a local node is recommended, but does require loading the

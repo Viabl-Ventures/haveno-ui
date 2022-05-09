@@ -39,44 +39,44 @@ export function AccountSecurityForm() {
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <Stack spacing="lg">
           <TextInput
-            id={"password"}
-            type={"password"}
+            id="password"
+            type="password"
             required
             label={
               <FormattedMessage
                 id={LangKeys.AccountSecurityFieldPassword}
-                defaultMessage={"Password"}
+                defaultMessage="Password"
               />
             }
             {...form.getInputProps("password")}
           />
           <TextInput
-            id={"confirmPassword"}
+            id="confirmPassword"
             required
-            type={"password"}
+            type="password"
             label={
               <FormattedMessage
                 id={LangKeys.AccountSecurityFieldRepeatPassword}
-                defaultMessage={"Repeat new password"}
+                defaultMessage="Repeat new password"
               />
             }
             {...form.getInputProps("confirmPassword")}
           />
           <TextInput
-            id={"currentPassword"}
-            type={"password"}
+            id="currentPassword"
+            type="password"
             required
             label={
               <FormattedMessage
                 id={LangKeys.AccountSecurityFieldCurrentPassword}
-                defaultMessage={"Current password"}
+                defaultMessage="Current password"
               />
             }
             {...form.getInputProps("currentPassword")}
           />
           <Group position="right" mt="md">
-            <Button size="md" type={"submit"}>
-              <FormattedMessage id={LangKeys.Save} defaultMessage={"Save"} />
+            <Button size="md" type="submit">
+              <FormattedMessage id={LangKeys.Save} defaultMessage="Save" />
             </Button>
           </Group>
         </Stack>
