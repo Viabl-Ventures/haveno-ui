@@ -5,30 +5,17 @@ exports[`molecules::Sync Status > renders without exploding 1`] = `
   <div
     class="mantine-Stack-root mantine-lfk3cq"
   >
-    <span
-      class="mantine-1pbvwpt"
-    />
     <div
-      class="mantine-Text-root mantine-1i25g1x"
+      class="mantine-37276y"
     >
-      Fully Synced
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`molecules::Synce > renders without exploding 1`] = `
-<DocumentFragment>
-  <div
-    class="mantine-Stack-root mantine-lfk3cq"
-  >
-    <span
-      class="mantine-1pbvwpt"
-    />
-    <div
-      class="mantine-Text-root mantine-1i25g1x"
-    >
-      Fully Synced
+      <span
+        class="mantine-13hapr5"
+      />
+      <div
+        class="mantine-Text-root mantine-yt7sml"
+      >
+        Fully Synced
+      </div>
     </div>
   </div>
 </DocumentFragment>

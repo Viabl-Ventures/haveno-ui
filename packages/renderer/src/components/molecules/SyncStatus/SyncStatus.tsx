@@ -24,6 +24,7 @@ export function SyncStatus() {
   const [syncStatus] = useState<SyncStatusOptions>(SyncStatusOptions.Full);
   return (
     <Stack>
+      <Box className={classes.synceback}>
       <Box
         component="span"
         className={cx({
@@ -40,34 +41,33 @@ export function SyncStatus() {
       >
         {syncStatus}
       </BodyText>
+      </Box>
     </Stack>
   );
 }
 
 const useStyles = createStyles((theme) => ({
   synced: {
-    bottom: 5,
+    bottom: 6,
     display: "block",
     fontSize: "0.725rem",
     fontWeight: 600,
-    marginBottom: 5,
-    marginLeft: 40,
-    position: "absolute",
+    marginLeft:35,
+    marginTop:6,
   },
   notSynced: {
-    bottom: 5,
+    bottom: 6,
     color: theme.colors.gray[9],
     display: "block",
     fontSize: "0.725rem",
     fontWeight: 600,
-    marginBottom: 5,
-    marginLeft: 40,
-    position: "absolute",
+    marginLeft:35,
+    marginTop:6,
   },
   syncedot: {
     backgroundColor: theme.colors.green[4],
     borderRadius: 50,
-    bottom: 16,
+    bottom: 12,
     height: 8,
     marginLeft: 20,
     position: "absolute",
@@ -76,10 +76,18 @@ const useStyles = createStyles((theme) => ({
   notSyncedot: {
     backgroundColor: theme.colors.red[4],
     borderRadius: 50,
-    bottom: 16,
+    bottom: 12,
     height: 8,
     marginLeft: 20,
     position: "absolute",
     width: 8,
+  },
+  synceback:{
+    width: 180,
+    height: 32,
+    backgroundColor: theme.colors.gray[2],
+    position: "absolute",
+    bottom:25,
+    borderRadius:8,
   },
 }));
