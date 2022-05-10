@@ -25,22 +25,22 @@ export function SyncStatus() {
   return (
     <Stack>
       <Box className={classes.synceback}>
-      <Box
-        component="span"
-        className={cx({
-          [classes.syncedot]: syncStatus === SyncStatusOptions.Full,
-          [classes.notSyncedot]: syncStatus === SyncStatusOptions.NotSynced,
-        })}
-      />
-      <BodyText
-        heavy
-        className={cx({
-          [classes.synced]: syncStatus === SyncStatusOptions.Full,
-          [classes.notSynced]: syncStatus === SyncStatusOptions.NotSynced,
-        })}
-      >
-        {syncStatus}
-      </BodyText>
+        <Box
+          component="span"
+          className={cx({
+            [classes.syncedot]: syncStatus === SyncStatusOptions.Full,
+            [classes.notSyncedot]: syncStatus === SyncStatusOptions.NotSynced,
+          })}
+        />
+        <BodyText
+          heavy
+          className={cx({
+            [classes.synced]: syncStatus === SyncStatusOptions.Full,
+            [classes.notSynced]: syncStatus === SyncStatusOptions.NotSynced,
+          })}
+        >
+          {syncStatus}
+        </BodyText>
       </Box>
     </Stack>
   );
@@ -52,8 +52,8 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     fontSize: "0.725rem",
     fontWeight: 600,
-    marginLeft:35,
-    marginTop:6,
+    marginLeft: 35,
+    marginTop: 6,
   },
   notSynced: {
     bottom: 6,
@@ -61,8 +61,8 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     fontSize: "0.725rem",
     fontWeight: 600,
-    marginLeft:35,
-    marginTop:6,
+    marginLeft: 35,
+    marginTop: 6,
   },
   syncedot: {
     backgroundColor: theme.colors.green[4],
@@ -74,7 +74,7 @@ const useStyles = createStyles((theme) => ({
     width: 8,
   },
   notSyncedot: {
-    backgroundColor: theme.colors.red[4],
+    backgroundColor: theme.colors.red[5],
     borderRadius: 50,
     bottom: 12,
     height: 8,
@@ -82,12 +82,12 @@ const useStyles = createStyles((theme) => ({
     position: "absolute",
     width: 8,
   },
-  synceback:{
+  synceback: {
     width: 180,
     height: 32,
     backgroundColor: theme.colors.gray[2],
     position: "absolute",
-    bottom:25,
-    borderRadius:8,
+    bottom: 25,
+    borderRadius: 8,
   },
 }));
