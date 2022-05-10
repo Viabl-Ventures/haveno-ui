@@ -16,20 +16,31 @@
 
 import { Stack } from "@mantine/core";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { SyncStatus as SyncStatusOptions } from "@constants/sync-status";
 import { SyncStatus } from ".";
 
 export default {
   title: "molecules/Sync Status",
   component: SyncStatus,
+  argTypes: {
+    status: {
+      options: SyncStatusOptions,
+      control: {
+        type: "radio",
+      },
+    },
+  },
 } as ComponentMeta<typeof SyncStatus>;
 
-const Template: ComponentStory<typeof SyncStatus> = () => {
+const Template: ComponentStory<typeof SyncStatus> = (args) => {
   return (
     <Stack>
-      <SyncStatus />
+      <SyncStatus {...args} />
     </Stack>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  status: SyncStatusOptions.Full,
+};

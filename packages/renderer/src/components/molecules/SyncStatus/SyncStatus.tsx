@@ -14,80 +14,48 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useState } from "react";
-import { Box, createStyles, Stack } from "@mantine/core";
+import { Box, createStyles, Group } from "@mantine/core";
 import { BodyText } from "@atoms/Typography";
-import { SyncStatusOptions } from "./_constants";
+import { SyncStatus as SyncStatusOptions } from "@constants/sync-status";
 
-export function SyncStatus() {
-  const { classes, cx } = useStyles();
-  const [syncStatus] = useState<SyncStatusOptions>(SyncStatusOptions.Full);
+interface SyncStatusProps {
+  status?: SyncStatusOptions;
+}
+
+export function SyncStatus({
+  status = SyncStatusOptions.NotSynced,
+}: SyncStatusProps) {
+  const { classes } = useStyles({ syncStatus: status });
+
   return (
-    <Stack>
-      <Box className={classes.synceback}>
-        <Box
-          component="span"
-          className={cx({
-            [classes.syncedot]: syncStatus === SyncStatusOptions.Full,
-            [classes.notSyncedot]: syncStatus === SyncStatusOptions.NotSynced,
-          })}
-        />
-        <BodyText
-          heavy
-          className={cx({
-            [classes.synced]: syncStatus === SyncStatusOptions.Full,
-            [classes.notSynced]: syncStatus === SyncStatusOptions.NotSynced,
-          })}
-        >
-          {syncStatus}
-        </BodyText>
-      </Box>
-    </Stack>
+    <Group className={classes.container} spacing="sm">
+      <Box component="span" className={classes.syncDot} />
+      <BodyText heavy className={classes.message}>
+        {status}
+      </BodyText>
+    </Group>
   );
 }
 
-const useStyles = createStyles((theme) => ({
-  synced: {
-    bottom: 6,
-    display: "block",
-    fontSize: "0.725rem",
-    fontWeight: 600,
-    marginLeft: 35,
-    marginTop: 6,
-  },
-  notSynced: {
-    bottom: 6,
-    color: theme.colors.gray[9],
-    display: "block",
-    fontSize: "0.725rem",
-    fontWeight: 600,
-    marginLeft: 35,
-    marginTop: 6,
-  },
-  syncedot: {
-    backgroundColor: theme.colors.green[4],
-    borderRadius: 50,
-    bottom: 12,
-    height: 8,
-    marginLeft: 20,
-    position: "absolute",
-    width: 8,
-  },
-  notSyncedot: {
-    backgroundColor: theme.colors.red[5],
-    borderRadius: 50,
-    bottom: 12,
-    height: 8,
-    marginLeft: 20,
-    position: "absolute",
-    width: 8,
-  },
-  synceback: {
-    width: 180,
-    height: 32,
-    backgroundColor: theme.colors.gray[2],
-    position: "absolute",
-    bottom: 25,
-    borderRadius: 8,
-  },
-}));
+const useStyles = createStyles<string, { syncStatus: SyncStatusOptions }>(
+  (theme, { syncStatus }) => ({
+    container: {
+      backgroundColor: theme.colors.gray[1],
+      borderRadius: "0.5rem",
+      padding: "0.75rem 1rem",
+    },
+    message: {},
+    notSynced: {},
+    syncDot: {
+      backgroundColor:
+        syncStatus === SyncStatusOptions.Full
+          ? theme.colors.green[4]
+          : syncStatus === SyncStatusOptions.InProgress
+          ? theme.colors.orange[4]
+          : theme.colors.gray[4],
+      borderRadius: 50,
+      height: "0.5rem",
+      width: "0.5rem",
+    },
+  })
+);

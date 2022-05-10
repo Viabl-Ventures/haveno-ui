@@ -14,7 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum SyncStatusOptions {
+export enum SyncStatus {
   Full = "Fully Synced",
   InProgress = "Syncing",
   NotSynced = "Not Synced",

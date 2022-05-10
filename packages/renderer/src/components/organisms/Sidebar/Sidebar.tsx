@@ -17,15 +17,18 @@
 import { Box, createStyles, Navbar, Stack } from "@mantine/core";
 import { WalletBalance } from "@molecules/WalletBalance";
 import { ReactComponent as Logo } from "@assets/logo-icon.svg";
-import { NavLink } from "./_NavLink";
-import { NAV_LINKS, WIDTH } from "./_constants";
 import { SyncStatus } from "@molecules/SyncStatus";
+import { useSyncStatus } from "@hooks/haveno/useSyncStatus";
+import { NAV_LINKS, WIDTH } from "./_constants";
+import { NavLink } from "./_NavLink";
 
 export function Sidebar() {
   const { classes } = useStyles();
+  const { data: syncStatus } = useSyncStatus();
+
   return (
-    <Stack className={classes.container}>
-      <Navbar height="100%" p={0} pl="sm" width={{ base: WIDTH }}>
+    <Stack className={classes.container} justify="space-between">
+      <Navbar className={classes.nav} width={{ base: WIDTH - 1 }}>
         <Navbar.Section>
           <Box component={Logo} className={classes.logo} />
         </Navbar.Section>
@@ -35,25 +38,38 @@ export function Sidebar() {
           </Navbar.Section>
         ))}
         <Navbar.Section>
-          <Box mt="lg">
+          <Box className={classes.walletBalance}>
             <WalletBalance />
           </Box>
         </Navbar.Section>
-        <Navbar.Section>
-          <SyncStatus />
-        </Navbar.Section>
       </Navbar>
+      <Box className={classes.syncStatusContainer}>
+        <SyncStatus status={syncStatus} />
+      </Box>
     </Stack>
   );
 }
 
 const useStyles = createStyles((theme) => ({
+  container: {
+    borderRight: `solid 1px ${theme.colors.gray[1]}`,
+    position: "relative",
+    width: WIDTH,
+  },
   logo: {
     height: "2rem",
     padding: `${theme.spacing.lg}px ${theme.spacing.lg}px`,
   },
-  container: {
-    width: WIDTH,
-    position: "relative",
+  nav: {
+    border: 0,
+    padding: 0,
+    paddingLeft: theme.spacing.md,
+  },
+  syncStatusContainer: {
+    margin: theme.spacing.lg,
+  },
+  walletBalance: {
+    marginRight: theme.spacing.lg,
+    marginTop: theme.spacing.lg,
   },
 }));
