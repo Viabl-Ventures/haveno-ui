@@ -17,13 +17,32 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { AppProviders } from "@atoms/AppProviders";
+import { SyncStatus as SyncStatusOptions } from "@constants/sync-status";
 import { SyncStatus } from ".";
 
-describe("molecules::Sync Status", () => {
-  it("renders without exploding", () => {
+describe("atoms::Sync Status", () => {
+  it("renders the not synced status by default", () => {
     const { asFragment } = render(
       <AppProviders>
         <SyncStatus />
+      </AppProviders>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("renders the fully synced status", () => {
+    const { asFragment } = render(
+      <AppProviders>
+        <SyncStatus status={SyncStatusOptions.Full} />
+      </AppProviders>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("renders the sync in progress status", () => {
+    const { asFragment } = render(
+      <AppProviders>
+        <SyncStatus status={SyncStatusOptions.InProgress} />
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();

@@ -17,7 +17,7 @@
 import { Box, createStyles, Navbar, Stack } from "@mantine/core";
 import { WalletBalance } from "@molecules/WalletBalance";
 import { ReactComponent as Logo } from "@assets/logo-icon.svg";
-import { SyncStatus } from "@molecules/SyncStatus";
+import { SyncStatus } from "@atoms/SyncStatus";
 import { useSyncStatus } from "@hooks/haveno/useSyncStatus";
 import { NAV_LINKS, WIDTH } from "./_constants";
 import { NavLink } from "./_NavLink";
