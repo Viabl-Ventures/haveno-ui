@@ -1,0 +1,35 @@
+// Vitest Snapshot v1
+
+exports[`molecules::Sync Status > renders without exploding 1`] = `
+<DocumentFragment>
+  <div
+    class="mantine-Stack-root mantine-lfk3cq"
+  >
+    <span
+      class="mantine-1pbvwpt"
+    />
+    <div
+      class="mantine-Text-root mantine-1i25g1x"
+    >
+      Fully Synced
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`molecules::Synce > renders without exploding 1`] = `
+<DocumentFragment>
+  <div
+    class="mantine-Stack-root mantine-lfk3cq"
+  >
+    <span
+      class="mantine-1pbvwpt"
+    />
+    <div
+      class="mantine-Text-root mantine-1i25g1x"
+    >
+      Fully Synced
+    </div>
+  </div>
+</DocumentFragment>
+`;
