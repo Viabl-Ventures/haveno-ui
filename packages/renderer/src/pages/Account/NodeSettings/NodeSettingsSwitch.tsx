@@ -22,6 +22,7 @@ import { ReactComponent as CloudIcon } from "@assets/setting-cloud.svg";
 import { ReactComponent as ServerIcon } from "@assets/setting-server.svg";
 import { NodeLocalForm } from "./NodeLocalForm";
 import { NodeRemoteStatus } from "./NodeRemoteStatus";
+import { LocalNodeSettingsBoot } from "./NodeSettingsBoot";
 
 export function NodeSettingsSwitch() {
   const { classes } = useStyles();
@@ -43,7 +44,9 @@ export function NodeSettingsSwitch() {
         }
         icon={<ServerIcon width={32} height={62} />}
       >
-        <NodeLocalForm />
+        <LocalNodeSettingsBoot>
+          <NodeLocalForm />
+        </LocalNodeSettingsBoot>
       </NodeConnectSwitch.Method>
 
       <NodeConnectSwitch.Method

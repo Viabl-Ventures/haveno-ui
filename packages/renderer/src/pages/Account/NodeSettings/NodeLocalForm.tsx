@@ -14,28 +14,63 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Box, Stack, Grid, createStyles } from "@mantine/core";
+import { Box, Stack, Grid, Group } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { Button } from "@atoms/Buttons";
 import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { TextInput } from "@atoms/TextInput";
+import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
+import { useSetMoneroNodeSettings } from "@hooks/haveno/useSetMoneroNodeSettings";
+import { showNotification } from "@mantine/notifications";
+import { NodeLocalStopDeamon } from "./NodeLocalStopDeamon";
+
+interface NodeLocalFormValues {
+  blockchainLocation: string;
+  startupFlags: string;
+  deamonAddress: string;
+  port: string;
+}
 
 export function NodeLocalForm() {
-  const form = useForm({
+  const { data: nodeSettings } = useMoneroNodeSettings();
+  const { mutateAsync: updateNodeSettings } = useSetMoneroNodeSettings();
+
+  const form = useForm<NodeLocalFormValues>({
     initialValues: {
-      blockchainLocation: "",
-      startupFlags: "",
+      blockchainLocation: nodeSettings?.getBlockchainPath() || "",
+      startupFlags: nodeSettings?.getStartupFlagsList().join(", ") || "",
       deamonAddress: "",
       port: "",
     },
   });
 
+  const handleFormSubmit = (values: NodeLocalFormValues) => {
+    updateNodeSettings({
+      blockchainPath: values.blockchainLocation,
+      startupFlags: values.startupFlags.split(", "),
+    })
+      .then(() => {
+        showNotification({
+          color: "green",
+          message: "Local node settings updated successfully",
+        });
+      })
+      .catch((err) => {
+        console.dir(err);
+        showNotification({
+          color: "red",
+          message: err.message,
+          title: "Something went wrong",
+        });
+      });
+  };
+
   return (
     <Box>
       <NodeLocalStopDeamon />
 
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit(handleFormSubmit)}>
         <Stack spacing="lg">
           <TextInput
             id="blockchainLocation"
@@ -48,7 +83,7 @@ export function NodeLocalForm() {
             {...form.getInputProps("blockchainLocation")}
           />
           <TextInput
-            id="deamonFlags"
+            id="startupFlags"
             label={
               <FormattedMessage
                 id={LangKeys.AccountNodeFieldDeamonFlags}
@@ -83,29 +118,14 @@ export function NodeLocalForm() {
               />
             </Grid.Col>
           </Grid>
+
+          <Group position="right" mt="md">
+            <Button size="md" type="submit">
+              <FormattedMessage id={LangKeys.Save} defaultMessage="Save" />
+            </Button>
+          </Group>
         </Stack>
       </form>
     </Box>
   );
 }
-
-function NodeLocalStopDeamon() {
-  const { classes } = useStyles();
-
-  return (
-    <div className={classes.actions}>
-      <Button flavor="neutral">
-        <FormattedMessage
-          id={LangKeys.AccountNodeStopDeamon}
-          defaultMessage="Stop deamon"
-        />
-      </Button>
-    </div>
-  );
-}
-
-const useStyles = createStyles((theme) => ({
-  actions: {
-    marginBottom: theme.spacing.xl,
-  },
-}));

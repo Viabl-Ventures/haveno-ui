@@ -39,6 +39,7 @@ export enum LangKeys {
   AccountNodeFieldDeamonFlags = "account.nodeSecurity.deamonFlags",
   AccountNodeFieldPort = "account.nodeSecurity.port",
   AccountNodeStopDeamon = "account.nodeSecurity.stopDeamon",
+  AccountNodeStartDeamon = "account.nodeSecurity.startDeamon",
   AccountSettingsAddNode = "account.settings.addNewNode",
   AccountSettingsCurrent = "account.settings.current",
   AccountSecurityFieldPassword = "account.security.field.password",

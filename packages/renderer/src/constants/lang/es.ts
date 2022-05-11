@@ -44,6 +44,7 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountNodeFieldPort]: "Puerto",
   [LangKeys.AccountNodeFieldDeamonFlags]: "Indicadores de inicio de daemon",
   [LangKeys.AccountNodeStopDeamon]: "Detener demonio",
+  [LangKeys.AccountNodeStartDeamon]: "Comienzo demonio",
   [LangKeys.AccountSettingsAddNode]: "Agregar un nuevo nodo",
   [LangKeys.AccountSettingsCurrent]: "Actual",
   [LangKeys.AccountSecurityFieldPassword]: "Clave",

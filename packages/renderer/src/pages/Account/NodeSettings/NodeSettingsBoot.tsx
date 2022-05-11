@@ -14,15 +14,22 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum QueryKeys {
-  HavenoVersion = "Haveno.Version",
-  Balances = "Haveno.Balances",
-  PaymentAccounts = "Haveno.PaymentAccounts",
-  MoneroNodeSettings = "Haveno.MoneroNodeSettings",
-  MoneroNodeIsRunning = "Haveno.MoneroNodeIsRunning",
+import type { ReactNode } from "react";
+import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
+import { BodyText } from "@atoms/Typography";
+import { useIsMoneroNodeRunning } from "@hooks/haveno/useIsMoneroNodeRunning";
 
-  StorageAccountInfo = "Storage.AccountInfo",
-  StoragePreferences = "Storage.Preferences",
+interface NodeSettingsBootProps {
+  children: ReactNode;
+}
 
-  AuthSession = "AuthSession",
+export function LocalNodeSettingsBoot({ children }: NodeSettingsBootProps) {
+  const { isLoading: isNodeSettingsLoading } = useMoneroNodeSettings();
+  const { isLoading: isMoneroNodeIsLoading } = useIsMoneroNodeRunning();
+
+  return isNodeSettingsLoading || isMoneroNodeIsLoading ? (
+    <BodyText>Loading settings...</BodyText>
+  ) : (
+    <>{children}</>
+  );
 }
