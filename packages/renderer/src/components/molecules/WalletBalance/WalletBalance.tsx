@@ -25,10 +25,21 @@ import {
 } from "@mantine/core";
 import { ReactComponent as XMRLogo } from "@assets/xmr-logo-1.svg";
 import { ReactComponent as ArrowDown } from "@assets/arrow-down.svg";
+import { useBalances } from "@hooks/haveno/useBalances";
+interface balances {
+  xmrBalances: string;
+}
 
 export function WalletBalance() {
   const [isOpen, setOpen] = useState(false);
   const { classes } = useStyles({ isOpen });
+  const { data: xmrBalances } = useBalances();
+  function getTotal() {
+    return (
+      Number(xmrBalances?.getLockedBalance()) +
+      Number(xmrBalances?.getReservedTradeBalance())
+    );
+  }
   return (
     <UnstyledButton
       className={classes.btnToggle}
@@ -43,7 +54,7 @@ export function WalletBalance() {
         </Group>
         <Stack spacing={4}>
           <Group>
-            <Text className={classes.xmr}>10.647382650365</Text>
+            <Text className={classes.xmr}>{xmrBalances?.getBalance()}</Text>
             <ArrowDown className={classes.toggleIcon} />
           </Group>
           <Text className={classes.fiat}>(EUR 2441,02)</Text>
@@ -52,15 +63,19 @@ export function WalletBalance() {
           <Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Total</Text>
-              <Text className={classes.balanceValue}>14.048212174412</Text>
+              <Text className={classes.balanceValue}>{getTotal()}</Text>
             </Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Reserved</Text>
-              <Text className={classes.balanceValue}>2.874598526325</Text>
+              <Text className={classes.balanceValue}>
+                {xmrBalances?.getReservedTradeBalance()}
+              </Text>
             </Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Locked</Text>
-              <Text className={classes.balanceValue}>0.854975624859</Text>
+              <Text className={classes.balanceValue}>
+                {xmrBalances?.getLockedBalance()}
+              </Text>
             </Stack>
           </Stack>
         </Collapse>
