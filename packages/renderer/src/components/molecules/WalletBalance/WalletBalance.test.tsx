@@ -16,16 +16,11 @@
 
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import { AppProviders } from "@atoms/AppProviders";
 import { WalletBalance } from ".";
 
 describe("molecules::WalletBalance", () => {
   it("renders without exploding", () => {
-    const { asFragment } = render(
-      <AppProviders>
-        <WalletBalance />
-      </AppProviders>
-    );
+    const { asFragment } = render(<WalletBalance />);
     expect(asFragment()).toMatchSnapshot();
   });
 });
