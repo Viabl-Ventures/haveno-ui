@@ -53,4 +53,10 @@ export enum LangKeys {
   AccountWalletTitle = "account.wallet.title",
   AccountWalletDesc = "account.wallet.desc",
   AccountWalletPassword = "account.wallet.field.password",
+  AccountBackupDownloadTitle = "account.backup.download.title",
+  AccountBackupDownloadDesc = "account.backup.download.desc",
+  AccountBackupDownloadBtn = "account.backup.download.btn",
+  AccountBackupRestoreTitle = "account.backup.restore.title",
+  AccountBackupRestoreDesc = "account.backup.restore.desc",
+  AccountBackupRestoreBtn = "account.backup.restore.btn",
 }
