@@ -3,7 +3,7 @@
 exports[`molecules::WalletBalance > renders without exploding 1`] = `
 <DocumentFragment>
   <button
-    class="mantine-UnstyledButton-root mantine-qmn0rn"
+    class="mantine-UnstyledButton-root mantine-3om9so"
     type="button"
   >
     <div
@@ -58,9 +58,7 @@ exports[`molecules::WalletBalance > renders without exploding 1`] = `
         >
           <div
             class="mantine-Text-root mantine-Group-child mantine-q5labh"
-          >
-            10.647382650365
-          </div>
+          />
           <svg
             class="mantine-Group-child mantine-qg5oag"
             fill="none"
@@ -105,7 +103,7 @@ exports[`molecules::WalletBalance > renders without exploding 1`] = `
               <div
                 class="mantine-Text-root mantine-14d5cdm"
               >
-                14.048212174412
+                NaN
               </div>
             </div>
             <div
@@ -118,9 +116,7 @@ exports[`molecules::WalletBalance > renders without exploding 1`] = `
               </div>
               <div
                 class="mantine-Text-root mantine-14d5cdm"
-              >
-                2.874598526325
-              </div>
+              />
             </div>
             <div
               class="mantine-Stack-root mantine-1kb6t4k"
@@ -132,9 +128,7 @@ exports[`molecules::WalletBalance > renders without exploding 1`] = `
               </div>
               <div
                 class="mantine-Text-root mantine-14d5cdm"
-              >
-                0.854975624859
-              </div>
+              />
             </div>
           </div>
         </div>
