@@ -14,7 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Collapse,
   createStyles,
@@ -26,20 +26,17 @@ import {
 import { ReactComponent as XMRLogo } from "@assets/xmr-logo-1.svg";
 import { ReactComponent as ArrowDown } from "@assets/arrow-down.svg";
 import { useBalances } from "@hooks/haveno/useBalances";
-export interface balances {
-  xmrBalances: string;
-}
 
 export function WalletBalance() {
   const [isOpen, setOpen] = useState(false);
   const { classes } = useStyles({ isOpen });
   const { data: xmrBalances } = useBalances();
-  function getTotal() {
+  const memozied = useMemo(() => {
     return (
-      Number(xmrBalances?.getLockedBalance()) +
-      Number(xmrBalances?.getReservedTradeBalance())
-    );
-  }
+      Number(xmrBalances?.getLockedBalance() || 0) +
+      Number(xmrBalances?.getReservedTradeBalance() || 0)
+    ).toString();
+  }, [xmrBalances]);
   return (
     <UnstyledButton
       className={classes.btnToggle}
@@ -54,7 +51,9 @@ export function WalletBalance() {
         </Group>
         <Stack spacing={4}>
           <Group>
-            <Text className={classes.xmr}>{xmrBalances?.getBalance()}</Text>
+            <Text className={classes.xmr}>
+              {xmrBalances?.getBalance() ?? 0}
+            </Text>
             <ArrowDown className={classes.toggleIcon} />
           </Group>
           <Text className={classes.fiat}>(EUR 2441,02)</Text>
@@ -63,18 +62,18 @@ export function WalletBalance() {
           <Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Total</Text>
-              <Text className={classes.balanceValue}>{getTotal()}</Text>
+              <Text className={classes.balanceValue}>{memozied}</Text>
             </Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Reserved</Text>
               <Text className={classes.balanceValue}>
-                {xmrBalances?.getReservedTradeBalance()}
+                {xmrBalances?.getReservedTradeBalance() ?? 0}
               </Text>
             </Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Locked</Text>
               <Text className={classes.balanceValue}>
-                {xmrBalances?.getLockedBalance()}
+                {xmrBalances?.getLockedBalance() ?? 0}
               </Text>
             </Stack>
           </Stack>
