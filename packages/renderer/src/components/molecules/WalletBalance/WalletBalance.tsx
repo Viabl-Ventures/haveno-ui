@@ -30,13 +30,13 @@ import { useBalances } from "@hooks/haveno/useBalances";
 export function WalletBalance() {
   const [isOpen, setOpen] = useState(false);
   const { classes } = useStyles({ isOpen });
-  const { data: xmrBalances } = useBalances();
-  const memozied = useMemo(() => {
+  const { data: availableBalance } = useBalances();
+  const Total = useMemo(() => {
     return (
-      Number(xmrBalances?.getLockedBalance() || 0) +
-      Number(xmrBalances?.getReservedTradeBalance() || 0)
+      Number(availableBalance?.getLockedBalance() || 0) +
+      Number(availableBalance?.getReservedTradeBalance() || 0)
     ).toString();
-  }, [xmrBalances]);
+  }, [availableBalance]);
   return (
     <UnstyledButton
       className={classes.btnToggle}
@@ -62,7 +62,7 @@ export function WalletBalance() {
           <Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Total</Text>
-              <Text className={classes.balanceValue}>{memozied}</Text>
+              <Text className={classes.balanceValue}>{Total}</Text>
             </Stack>
             <Stack spacing={4}>
               <Text className={classes.balanceLabel}>Reserved</Text>
