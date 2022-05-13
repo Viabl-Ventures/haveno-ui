@@ -257,7 +257,9 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                 >
                   <div
                     class="mantine-Text-root mantine-Group-child mantine-q5labh"
-                  />
+                  >
+                    0
+                  </div>
                   <svg
                     class="mantine-Group-child mantine-qg5oag"
                     fill="none"
@@ -302,7 +304,7 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                       <div
                         class="mantine-Text-root mantine-14d5cdm"
                       >
-                        NaN
+                        0
                       </div>
                     </div>
                     <div
@@ -315,7 +317,9 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                       </div>
                       <div
                         class="mantine-Text-root mantine-14d5cdm"
-                      />
+                      >
+                        0
+                      </div>
                     </div>
                     <div
                       class="mantine-Stack-root mantine-1kb6t4k"
@@ -327,7 +331,9 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                       </div>
                       <div
                         class="mantine-Text-root mantine-14d5cdm"
-                      />
+                      >
+                        0
+                      </div>
                     </div>
                   </div>
                 </div>
