@@ -17,6 +17,8 @@
 import { Button } from "@atoms/Buttons";
 import { BodyText, Heading } from "@atoms/Typography";
 import { LangKeys } from "@constants/lang";
+import { useDownloadBackup } from "@hooks/haveno/useDownloadBackup";
+import { useRestoreBackup } from "@hooks/haveno/useRestoreBackup";
 import { Box, createStyles, Stack } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
 import { FormattedMessage } from "react-intl";
@@ -32,6 +34,9 @@ const useStyles = createStyles((theme) => ({
 
 export function AccountBackup() {
   const { classes } = useStyles();
+  const { mutate: downloadBackup, isLoading: isDownloading } =
+    useDownloadBackup();
+  const { mutate: restoreBackup, isLoading: isRestoring } = useRestoreBackup();
 
   return (
     <AccountLayout>
@@ -53,7 +58,12 @@ export function AccountBackup() {
             backup file of your account. Keep it somewhere safe.
           </BodyText>
 
-          <Button>
+          <Button
+            disabled={isRestoring}
+            loading={isDownloading}
+            loaderPosition="right"
+            onClick={() => downloadBackup()}
+          >
             <FormattedMessage
               id={LangKeys.AccountBackupDownloadBtn}
               defaultMessage="Download backup file"
@@ -79,7 +89,13 @@ export function AccountBackup() {
             caution.
           </BodyText>
 
-          <Button flavor="neutral">
+          <Button
+            disabled={isDownloading}
+            loading={isRestoring}
+            loaderPosition="right"
+            flavor="neutral"
+            onClick={() => restoreBackup()}
+          >
             <FormattedMessage
               id={LangKeys.AccountBackupRestoreBtn}
               defaultMessage="Restore backup"

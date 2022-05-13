@@ -14,20 +14,18 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum IpcChannels {
-  // store
-  GetAccountInfo = "store:accountInfo",
-  SetPassword = "store:accountinfo.setPassword",
-  ChangePassword = "store:accountinfo.changePassword",
-  VerifyPassword = "store:accountinfo.verifyPassword",
-  SetPrimaryFiat = "store:accountinfo.primaryFiat",
-  GetPreferences = "store:preferences",
-  SetMoneroNode = "store:preferences.setMoneroNode",
+import { ipcRenderer } from "electron";
+import { exposeInMainWorld } from "./exposeInMainWorld";
+import type { DownloadBackupInput } from "./types";
+import { IpcChannels } from "./types";
 
-  // haveno
-  DownloadBackup = "haveno:downloadBackup",
-  RestoreBackup = "haveno:restoreBackup",
+// Export for types in contracts.d.ts
+export const haveno = {
+  downloadBackup: async (data: DownloadBackupInput): Promise<void> =>
+    ipcRenderer.invoke(IpcChannels.DownloadBackup, data),
 
-  // others
-  VerifyAuthToken = "verifyAuthToken",
-}
+  getBackupData: async (): Promise<Uint8Array> =>
+    ipcRenderer.invoke(IpcChannels.RestoreBackup),
+};
+
+exposeInMainWorld("haveno", haveno);

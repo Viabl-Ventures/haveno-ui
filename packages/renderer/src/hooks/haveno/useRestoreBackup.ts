@@ -14,20 +14,29 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum IpcChannels {
-  // store
-  GetAccountInfo = "store:accountInfo",
-  SetPassword = "store:accountinfo.setPassword",
-  ChangePassword = "store:accountinfo.changePassword",
-  VerifyPassword = "store:accountinfo.verifyPassword",
-  SetPrimaryFiat = "store:accountinfo.primaryFiat",
-  GetPreferences = "store:preferences",
-  SetMoneroNode = "store:preferences.setMoneroNode",
+import { showNotification } from "@mantine/notifications";
+import { useMutation } from "react-query";
+import { useHavenoClient } from "./useHavenoClient";
 
-  // haveno
-  DownloadBackup = "haveno:downloadBackup",
-  RestoreBackup = "haveno:restoreBackup",
-
-  // others
-  VerifyAuthToken = "verifyAuthToken",
+export function useRestoreBackup() {
+  const client = useHavenoClient();
+  return useMutation(
+    async () => {
+      const bytes = await window.haveno.getBackupData();
+      if (!bytes.length) {
+        return;
+      }
+      await client.restoreAccount(bytes);
+      // TODO @ahmed: restart daemon?
+    },
+    {
+      onError: (err: Error) => {
+        showNotification({
+          color: "red",
+          message: err?.message ?? "Unable to restore backup",
+          title: "Something went wrong",
+        });
+      },
+    }
+  );
 }
