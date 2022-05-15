@@ -17,7 +17,7 @@
 import { Box, Stack, Grid, Group } from "@mantine/core";
 import { joiResolver, useForm } from "@mantine/form";
 import { Button } from "@atoms/Buttons";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { TextInput } from "@atoms/TextInput";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
@@ -31,6 +31,7 @@ import { showNotification } from "@mantine/notifications";
 export function NodeLocalForm() {
   const { data: nodeSettings } = useMoneroNodeSettings();
   const { mutateAsync: updateNodeSettings } = useSetMoneroNodeSettings();
+  const intl = useIntl();
 
   const validation = useNodeLocalFormValidation();
 
@@ -54,7 +55,10 @@ export function NodeLocalForm() {
       .then(() => {
         showNotification({
           color: "green",
-          message: "Local node settings updated successfully",
+          message: intl.formatMessage({
+            id: LangKeys.AccountNodeLocalSaveNotification,
+            defaultMessage: "Local node settings updated successfully",
+          }),
         });
       })
       .catch((err) => {

@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
+import { FormattedMessage, useIntl } from "react-intl";
 import { createStyles } from "@mantine/core";
 import { Button } from "@atoms/Buttons";
-import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
 import { showNotification } from "@mantine/notifications";
@@ -26,6 +26,8 @@ import { useStartMoneroNode } from "@hooks/haveno/useStartMoneroNode";
 
 export function NodeLocalStopDeamon() {
   const { classes } = useStyles();
+  const intl = useIntl();
+
   const { mutateAsync: stopMoneroNode } = useStopMoneroNode();
   const { data: isMoneroNodeRunning } = useIsMoneroNodeRunning();
   const { mutateAsync: startMoneroNode } = useStartMoneroNode();
@@ -38,7 +40,10 @@ export function NodeLocalStopDeamon() {
       .then(() => {
         showNotification({
           color: "green",
-          message: "Deamon stopped successfully",
+          message: intl.formatMessage({
+            id: LangKeys.AccountNodeDeamonStoppedNotif,
+            defaultMessage: "Deamon stopped successfully",
+          }),
         });
       })
       .catch((err) => {
@@ -53,11 +58,14 @@ export function NodeLocalStopDeamon() {
   // Handle the start button click.
   const handleStartBtnClick = () => {
     if (nodeSettings) {
-      startMoneroNode(nodeSettings)
+      startMoneroNode()
         .then(() => {
           showNotification({
             color: "green",
-            message: "Deamon started successfully",
+            message: intl.formatMessage({
+              id: LangKeys.AccountNodeDeamonStartedNotif,
+              defaultMessage: "Deamon started successfully",
+            }),
           });
         })
         .catch((err) => {
