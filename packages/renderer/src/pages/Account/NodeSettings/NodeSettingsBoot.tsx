@@ -15,9 +15,10 @@
 // =============================================================================
 
 import type { ReactNode } from "react";
-import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
 import { BodyText } from "@atoms/Typography";
+import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
 import { useIsMoneroNodeRunning } from "@hooks/haveno/useIsMoneroNodeRunning";
+import { useMoneroRemoteNodes } from "@hooks/haveno/useMoneroRemoteNodes";
 
 interface NodeSettingsBootProps {
   children: ReactNode;
@@ -28,6 +29,22 @@ export function LocalNodeSettingsBoot({ children }: NodeSettingsBootProps) {
   const { isLoading: isMoneroNodeIsLoading } = useIsMoneroNodeRunning();
 
   return isNodeSettingsLoading || isMoneroNodeIsLoading ? (
+    <BodyText>Loading settings...</BodyText>
+  ) : (
+    <>{children}</>
+  );
+}
+
+interface RemoteNodeSettingsBootProps {
+  children: ReactNode;
+}
+
+export function RemoteNodeSettingsBoot({
+  children,
+}: RemoteNodeSettingsBootProps) {
+  const { isLoading: isMoneroRemoteLoading } = useMoneroRemoteNodes();
+
+  return isMoneroRemoteLoading ? (
     <BodyText>Loading settings...</BodyText>
   ) : (
     <>{children}</>
