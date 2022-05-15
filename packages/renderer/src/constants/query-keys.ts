@@ -22,6 +22,8 @@ export enum QueryKeys {
   MoneroNodeIsRunning = "Haveno.MoneroNodeIsRunning",
   MoneroRemoteNodes = "Haveno.MoneroRemoteNodes",
 
+  SyncStatus = "Haveno.SyncStatus",
+
   StorageAccountInfo = "Storage.AccountInfo",
   StoragePreferences = "Storage.Preferences",
 
