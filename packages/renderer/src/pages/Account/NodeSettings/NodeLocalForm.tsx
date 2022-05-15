@@ -15,40 +15,41 @@
 // =============================================================================
 
 import { Box, Stack, Grid, Group } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { joiResolver, useForm } from "@mantine/form";
 import { Button } from "@atoms/Buttons";
 import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { TextInput } from "@atoms/TextInput";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
 import { useSetMoneroNodeSettings } from "@hooks/haveno/useSetMoneroNodeSettings";
-import { showNotification } from "@mantine/notifications";
 import { NodeLocalStopDeamon } from "./NodeLocalStopDeamon";
-
-interface NodeLocalFormValues {
-  blockchainLocation: string;
-  startupFlags: string;
-  deamonAddress: string;
-  port: string;
-}
+import type { NodeLocalFormValues } from "./_hooks";
+import { useNodeLocalFormValidation } from "./_hooks";
+import { transformSettingsRequestToForm } from "./_utils";
+import { showNotification } from "@mantine/notifications";
 
 export function NodeLocalForm() {
   const { data: nodeSettings } = useMoneroNodeSettings();
   const { mutateAsync: updateNodeSettings } = useSetMoneroNodeSettings();
 
+  const validation = useNodeLocalFormValidation();
+
   const form = useForm<NodeLocalFormValues>({
     initialValues: {
-      blockchainLocation: nodeSettings?.getBlockchainPath() || "",
-      startupFlags: nodeSettings?.getStartupFlagsList().join(", ") || "",
+      blockchainLocation: "",
+      startupFlags: "",
       deamonAddress: "",
       port: "",
+      ...(nodeSettings ? transformSettingsRequestToForm(nodeSettings) : {}),
     },
+    validate: joiResolver(validation),
   });
 
   const handleFormSubmit = (values: NodeLocalFormValues) => {
     updateNodeSettings({
       blockchainPath: values.blockchainLocation,
       startupFlags: values.startupFlags.split(", "),
+      bootstrapUrl: `${values.deamonAddress}:${values.port}`,
     })
       .then(() => {
         showNotification({
@@ -102,6 +103,7 @@ export function NodeLocalForm() {
                     defaultMessage="Deamon Address"
                   />
                 }
+                required
                 {...form.getInputProps("deamonAddress")}
               />
             </Grid.Col>
@@ -114,6 +116,7 @@ export function NodeLocalForm() {
                     defaultMessage="Port"
                   />
                 }
+                required
                 {...form.getInputProps("port")}
               />
             </Grid.Col>

@@ -22,10 +22,12 @@ import { useHavenoClient } from "./useHavenoClient";
 export function useMoneroNodeSettings() {
   const client = useHavenoClient();
 
-  return useQuery<MoneroNodeSettings | undefined, Error>(
+  return useQuery<MoneroNodeSettings.AsObject | undefined, Error>(
     QueryKeys.MoneroNodeSettings,
     async () => {
-      return client.getMoneroNodeSettings();
+      const settings = await client.getMoneroNodeSettings();
+
+      return settings?.toObject();
     }
   );
 }
