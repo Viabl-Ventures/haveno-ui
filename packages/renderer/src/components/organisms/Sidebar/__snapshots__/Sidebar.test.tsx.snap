@@ -3,10 +3,10 @@
 exports[`molecules::Sidebar > renders without exploding 1`] = `
 <DocumentFragment>
   <div
-    class="mantine-Stack-root mantine-dczm8e"
+    class="mantine-Stack-root mantine-zbavia"
   >
     <nav
-      class="mantine-Navbar-root mantine-pjloqa"
+      class="mantine-Navbar-root mantine-1kodx9a"
     >
       <div
         class="mantine-khtkeg"
@@ -199,7 +199,7 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
         class="mantine-khtkeg"
       >
         <div
-          class="mantine-b98ato"
+          class="mantine-865t33"
         >
           <button
             class="mantine-UnstyledButton-root mantine-3om9so"
@@ -258,7 +258,7 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                   <div
                     class="mantine-Text-root mantine-Group-child mantine-q5labh"
                   >
-                    10.647382650365
+                    0
                   </div>
                   <svg
                     class="mantine-Group-child mantine-qg5oag"
@@ -304,7 +304,7 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                       <div
                         class="mantine-Text-root mantine-14d5cdm"
                       >
-                        14.048212174412
+                        0
                       </div>
                     </div>
                     <div
@@ -318,7 +318,7 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                       <div
                         class="mantine-Text-root mantine-14d5cdm"
                       >
-                        2.874598526325
+                        0
                       </div>
                     </div>
                     <div
@@ -332,7 +332,7 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
                       <div
                         class="mantine-Text-root mantine-14d5cdm"
                       >
-                        0.854975624859
+                        0
                       </div>
                     </div>
                   </div>
@@ -343,6 +343,22 @@ exports[`molecules::Sidebar > renders without exploding 1`] = `
         </div>
       </div>
     </nav>
+    <div
+      class="mantine-1o6xp10"
+    >
+      <div
+        class="mantine-Group-root mantine-33bl97"
+      >
+        <span
+          class="mantine-Group-child mantine-1mmj0t1"
+        />
+        <div
+          class="mantine-Text-root mantine-Group-child mantine-1mga3um"
+        >
+          Not Synced
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;
