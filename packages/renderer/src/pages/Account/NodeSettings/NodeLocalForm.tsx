@@ -41,7 +41,9 @@ export function NodeLocalForm() {
       startupFlags: "",
       deamonAddress: "",
       port: "",
-      ...(nodeSettings ? transformSettingsRequestToForm(nodeSettings) : {}),
+      ...(nodeSettings
+        ? transformSettingsRequestToForm(nodeSettings.toObject())
+        : {}),
     },
     validate: joiResolver(validation),
   });

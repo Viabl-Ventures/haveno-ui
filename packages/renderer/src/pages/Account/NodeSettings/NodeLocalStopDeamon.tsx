@@ -58,7 +58,7 @@ export function NodeLocalStopDeamon() {
   // Handle the start button click.
   const handleStartBtnClick = () => {
     if (nodeSettings) {
-      startMoneroNode()
+      startMoneroNode(nodeSettings)
         .then(() => {
           showNotification({
             color: "green",
@@ -92,7 +92,7 @@ export function NodeLocalStopDeamon() {
         <Button
           flavor="neutral"
           onClick={handleStartBtnClick}
-          disabled={Boolean(isNodeSettingsLoading || nodeSettings)}
+          disabled={Boolean(isNodeSettingsLoading || !nodeSettings)}
         >
           <FormattedMessage
             id={LangKeys.AccountNodeStopDeamon}
