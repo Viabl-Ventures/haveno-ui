@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { Stack, createStyles, Group } from "@mantine/core";
+import { FormattedMessage } from "react-intl";
 import { Button } from "@atoms/Buttons";
 import { NodeStatus, NodeStatusType } from "@atoms/NodeStatus";
-import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useMoneroRemoteNodes } from "@hooks/haveno/useMoneroRemoteNodes";
 

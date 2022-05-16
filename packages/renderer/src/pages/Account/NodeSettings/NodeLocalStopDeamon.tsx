@@ -16,10 +16,10 @@
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { createStyles } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
-import { showNotification } from "@mantine/notifications";
 import { useStopMoneroNode } from "@hooks/haveno/useStopMoneroNode";
 import { useIsMoneroNodeRunning } from "@hooks/haveno/useIsMoneroNodeRunning";
 import { useStartMoneroNode } from "@hooks/haveno/useStartMoneroNode";
@@ -57,26 +57,27 @@ export function NodeLocalStopDeamon() {
   };
   // Handle the start button click.
   const handleStartBtnClick = () => {
-    if (nodeSettings) {
-      startMoneroNode(nodeSettings)
-        .then(() => {
-          showNotification({
-            color: "green",
-            message: intl.formatMessage({
-              id: LangKeys.AccountNodeDeamonStartedNotif,
-              defaultMessage: "Deamon started successfully",
-            }),
-          });
-        })
-        .catch((err) => {
-          console.dir(err);
-          showNotification({
-            color: "red",
-            message: err.message,
-            title: "Something went wrong",
-          });
-        });
+    if (!nodeSettings) {
+      return;
     }
+    startMoneroNode(nodeSettings)
+      .then(() => {
+        showNotification({
+          color: "green",
+          message: intl.formatMessage({
+            id: LangKeys.AccountNodeDeamonStartedNotif,
+            defaultMessage: "Deamon started successfully",
+          }),
+        });
+      })
+      .catch((err) => {
+        console.dir(err);
+        showNotification({
+          color: "red",
+          message: err.message,
+          title: "Something went wrong",
+        });
+      });
   };
 
   return (

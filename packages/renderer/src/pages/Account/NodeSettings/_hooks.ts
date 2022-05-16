@@ -23,11 +23,11 @@ export interface NodeLocalFormValues {
   port: string;
 }
 
-export const useNodeLocalFormValidation = () => {
+export function useNodeLocalFormValidation() {
   return Joi.object<NodeLocalFormValues>({
     blockchainLocation: Joi.string().empty("").uri({ relativeOnly: true }),
     startupFlags: Joi.string().empty(""),
     deamonAddress: Joi.string().uri({ allowRelative: false }),
     port: Joi.number().port(),
   });
-};
+}

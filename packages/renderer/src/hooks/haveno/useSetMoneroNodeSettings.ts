@@ -14,11 +14,11 @@
 //  limitations under the License.
 // =============================================================================
 
-import { QueryKeys } from "@constants/query-keys";
 import { useMutation, useQueryClient } from "react-query";
+import { QueryKeys } from "@constants/query-keys";
 import { useHavenoClient } from "./useHavenoClient";
 
-interface SetMeneroNodeSettingsQueryData {
+interface SetMeneroNodeSettingsVariables {
   blockchainPath?: string;
   bootstrapUrl?: string;
   startupFlags?: Array<string>;
@@ -29,7 +29,7 @@ export function useSetMoneroNodeSettings() {
   const client = useHavenoClient();
 
   return useMutation(
-    async (data: SetMeneroNodeSettingsQueryData) => {
+    async (data: SetMeneroNodeSettingsVariables) => {
       const nodeSettings = await client.getMoneroNodeSettings();
 
       data.blockchainPath &&

@@ -16,8 +16,9 @@
 
 import { Box, Stack, Grid, Group } from "@mantine/core";
 import { joiResolver, useForm } from "@mantine/form";
-import { Button } from "@atoms/Buttons";
 import { FormattedMessage, useIntl } from "react-intl";
+import { showNotification } from "@mantine/notifications";
+import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 import { TextInput } from "@atoms/TextInput";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
@@ -26,7 +27,6 @@ import { NodeLocalStopDeamon } from "./NodeLocalStopDeamon";
 import type { NodeLocalFormValues } from "./_hooks";
 import { useNodeLocalFormValidation } from "./_hooks";
 import { transformSettingsRequestToForm } from "./_utils";
-import { showNotification } from "@mantine/notifications";
 
 export function NodeLocalForm() {
   const { data: nodeSettings } = useMoneroNodeSettings();
