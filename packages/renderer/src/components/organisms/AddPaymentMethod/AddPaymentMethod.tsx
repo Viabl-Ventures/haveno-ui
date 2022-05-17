@@ -23,6 +23,7 @@ import { Select } from "@atoms/Select";
 import { SupportedCurrencies } from "@constants/currencies";
 import { PaymentMethods as _PaymentMethods } from "@constants/payment-methods";
 import { TextInput } from "@atoms/TextInput";
+import { usePaymentMethods } from "@hooks/haveno/usePaymentMethods";
 
 interface FormValues {
   currency: string;
@@ -31,6 +32,9 @@ interface FormValues {
 }
 
 export function AddPaymentMethod() {
+  const { data: paymentMethods } = usePaymentMethods();
+
+  console.log({ paymentMethods });
   const { getInputProps, onSubmit, setFieldValue, values } =
     useForm<FormValues>({
       schema: joiResolver(schema),

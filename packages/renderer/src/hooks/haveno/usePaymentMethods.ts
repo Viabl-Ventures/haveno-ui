@@ -22,16 +22,14 @@ export function usePaymentMethods() {
   const client = useHavenoClient();
   return useQuery(QueryKeys.PaymentMethods, async () => {
     // TODO: replace with getSupportedAssets(): TradeCurrency[]
-    // const mns = await client.getMoneroNodeSettings();
-    const mns = await client._moneroNodeClient.getMoneroNodeSettings({}, {});
-    console.log("monero node settings: ", mns?.toObject());
-    if (mns) {
-      const mns2 = mns.setStartupFlagsList(["foo1"]);
-      mns;
-    }
     const assetCodes = await client.getSupportedAssetCodes();
+    console.log({ assetCodes });
     return await Promise.all(
-      assetCodes.map((assetCode) => client.getPaymentMethods(assetCode))
+      assetCodes.map((assetCode) =>
+        client
+          .getPaymentMethods(assetCode)
+          .then((pMethods) => pMethods.map((pm) => pm.toObject()))
+      )
     );
   });
 }
