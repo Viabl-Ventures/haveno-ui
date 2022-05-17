@@ -70,6 +70,10 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountBackupRestoreDesc]:
     "When you restore an existing backup file of your Haveno account, you will lose the account you’re using currently. Please use with caution.",
   [LangKeys.AccountBackupRestoreBtn]: "Restore backup",
+  [LangKeys.AccountBackupDownloadSuccessNotif]:
+    "The backup has been downloaded successfully.",
+  [LangKeys.AccountBackupRestoreSuccessNotif]:
+    "The backup has been restored successfully.",
 };
 
 export default LangPackEN;

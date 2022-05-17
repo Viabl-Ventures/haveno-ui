@@ -14,6 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
+import { showNotification } from "@mantine/notifications";
 import { Button } from "@atoms/Buttons";
 import { BodyText, Heading } from "@atoms/Typography";
 import { LangKeys } from "@constants/lang";
@@ -21,7 +22,7 @@ import { useDownloadBackup } from "@hooks/haveno/useDownloadBackup";
 import { useRestoreBackup } from "@hooks/haveno/useRestoreBackup";
 import { Box, createStyles, Stack } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -34,9 +35,35 @@ const useStyles = createStyles((theme) => ({
 
 export function AccountBackup() {
   const { classes } = useStyles();
-  const { mutate: downloadBackup, isLoading: isDownloading } =
+  const intl = useIntl();
+
+  const { mutateAsync: downloadBackup, isLoading: isDownloading } =
     useDownloadBackup();
-  const { mutate: restoreBackup, isLoading: isRestoring } = useRestoreBackup();
+  const { mutateAsync: restoreBackup, isLoading: isRestoring } =
+    useRestoreBackup();
+
+  const handleDownloadBtnClick = () => {
+    downloadBackup().then(() => {
+      showNotification({
+        color: "green",
+        message: intl.formatMessage({
+          id: LangKeys.AccountBackupDownloadSuccessNotif,
+          defaultMessage: "The backup downloaded successfully.",
+        }),
+      });
+    });
+  };
+  const handleRestoreBtnClick = () => {
+    restoreBackup().then(() => {
+      showNotification({
+        color: "green",
+        message: intl.formatMessage({
+          id: LangKeys.AccountBackupRestoreSuccessNotif,
+          defaultMessage: "The backup restored successfully.",
+        }),
+      });
+    });
+  };
 
   return (
     <AccountLayout>
@@ -62,7 +89,7 @@ export function AccountBackup() {
             disabled={isRestoring}
             loading={isDownloading}
             loaderPosition="right"
-            onClick={() => downloadBackup()}
+            onClick={handleDownloadBtnClick}
           >
             <FormattedMessage
               id={LangKeys.AccountBackupDownloadBtn}
@@ -94,7 +121,7 @@ export function AccountBackup() {
             loading={isRestoring}
             loaderPosition="right"
             flavor="neutral"
-            onClick={() => restoreBackup()}
+            onClick={handleRestoreBtnClick}
           >
             <FormattedMessage
               id={LangKeys.AccountBackupRestoreBtn}

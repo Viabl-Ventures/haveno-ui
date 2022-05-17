@@ -59,4 +59,6 @@ export enum LangKeys {
   AccountBackupRestoreTitle = "account.backup.restore.title",
   AccountBackupRestoreDesc = "account.backup.restore.desc",
   AccountBackupRestoreBtn = "account.backup.restore.btn",
+  AccountBackupDownloadSuccessNotif = "account.backup.download.successNotification",
+  AccountBackupRestoreSuccessNotif = "account.backup.restore.successNotification",
 }
