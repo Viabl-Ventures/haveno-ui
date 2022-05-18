@@ -14,22 +14,18 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { LinkProps as RouterLinkProps } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
-import { BodyText } from "@atoms/Typography";
-import type { ReactText } from "react";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { AppProviders } from "@atoms/AppProviders";
+import { Link } from ".";
 
-export interface LinkProps extends RouterLinkProps {
-  children: ReactText;
-}
-
-export function Link(props: LinkProps) {
-  const { children, ...rest } = props;
-  return (
-    <RouterLink {...rest}>
-      <BodyText component="span" heavy>
-        {children}
-      </BodyText>
-    </RouterLink>
-  );
-}
+describe("atoms::Link", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(
+      <AppProviders>
+        <Link to="/">Click me</Link>
+      </AppProviders>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

@@ -14,22 +14,26 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { LinkProps as RouterLinkProps } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
-import { BodyText } from "@atoms/Typography";
-import type { ReactText } from "react";
+import { Stack } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { LinkProps } from ".";
+import { Link } from ".";
 
-export interface LinkProps extends RouterLinkProps {
-  children: ReactText;
-}
+export default {
+  title: "atoms/Link",
+  component: Link,
+} as ComponentMeta<typeof Link>;
 
-export function Link(props: LinkProps) {
-  const { children, ...rest } = props;
+const Template: ComponentStory<typeof Link> = ({ children, to }: LinkProps) => {
   return (
-    <RouterLink {...rest}>
-      <BodyText component="span" heavy>
-        {children}
-      </BodyText>
-    </RouterLink>
+    <Stack>
+      <Link to={to}>{children}</Link>
+    </Stack>
   );
-}
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  children: "Click me",
+  to: "/",
+};
