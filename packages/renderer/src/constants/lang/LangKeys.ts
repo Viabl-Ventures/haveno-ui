@@ -50,7 +50,11 @@ export enum LangKeys {
   AccountSecurityFieldCurrentPassword = "account.security.field.currentPassword",
   AccountSecurityFieldPasswordFormatMsg = "account.security.field.password.format.message",
   AccountSecurityFieldRepeatPasswordMatchMsg = "account.security.field.repeatPassword.match.message",
+
   AccountWalletTitle = "account.wallet.title",
   AccountWalletDesc = "account.wallet.desc",
   AccountWalletPassword = "account.wallet.field.password",
+
+  AccountCardCopyBtn = "accountCard.copyButton",
+  AccountCardQRBtn = "accountCard.qrButton",
 }
