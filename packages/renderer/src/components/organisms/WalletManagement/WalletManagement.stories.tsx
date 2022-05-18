@@ -18,7 +18,7 @@ import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { WalletManagement } from ".";
 
 export default {
-  title: "organisms/Add Payment Method",
+  title: "organisms/Wallet Management",
   component: WalletManagement,
 } as ComponentMeta<typeof WalletManagement>;
 
