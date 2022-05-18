@@ -14,25 +14,18 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum QueryKeys {
-  // Haveno
-  Balances = "Haveno.Balances",
-  HavenoVersion = "Haveno.Version",
-  MoneroConnection = "Haveno.MoneroConnection",
-  MoneroConnections = "Haveno.MoneroConnections",
-  MoneroNodeIsRunning = "Haveno.MoneroNodeIsRunning",
-  MoneroNodeSettings = "Haveno.MoneroNodeSettings",
-  PaymentAccounts = "Haveno.PaymentAccounts",
-  Prices = "Haveno.Prices",
-  PrimaryAddress = "Haveno.PrimaryAddress",
-  SyncStatus = "Haveno.SyncStatus",
-  XmrSeed = "Haveno.XmrSeed",
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { WalletManagement } from ".";
+import { AppProviders } from "@atoms/AppProviders";
 
-  // Storage
-  StorageAccountInfo = "Storage.AccountInfo",
-  StoragePreferences = "Storage.Preferences",
-  StorageRemoteMoneroNode = "Storage.RemoteMoneroNode",
-
-  // Others
-  AuthSession = "AuthSession",
-}
+describe("organisms::WalletManagement", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(
+      <AppProviders>
+        <WalletManagement />
+      </AppProviders>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

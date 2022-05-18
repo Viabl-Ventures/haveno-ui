@@ -14,25 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum QueryKeys {
-  // Haveno
-  Balances = "Haveno.Balances",
-  HavenoVersion = "Haveno.Version",
-  MoneroConnection = "Haveno.MoneroConnection",
-  MoneroConnections = "Haveno.MoneroConnections",
-  MoneroNodeIsRunning = "Haveno.MoneroNodeIsRunning",
-  MoneroNodeSettings = "Haveno.MoneroNodeSettings",
-  PaymentAccounts = "Haveno.PaymentAccounts",
-  Prices = "Haveno.Prices",
-  PrimaryAddress = "Haveno.PrimaryAddress",
-  SyncStatus = "Haveno.SyncStatus",
-  XmrSeed = "Haveno.XmrSeed",
-
-  // Storage
-  StorageAccountInfo = "Storage.AccountInfo",
-  StoragePreferences = "Storage.Preferences",
-  StorageRemoteMoneroNode = "Storage.RemoteMoneroNode",
-
-  // Others
-  AuthSession = "AuthSession",
-}
+export * from "./WalletManagement";
