@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`atoms::ProtectedRoute > doesn't render children if auth session can't be retrieved; redirects to login 1`] = `<DocumentFragment />`;
+
+exports[`atoms::ProtectedRoute > doesn't render children if no auth session exists; redirects to login 1`] = `<DocumentFragment />`;
+
+exports[`atoms::ProtectedRoute > renders children if auth session exists 1`] = `
+<DocumentFragment>
+  <div>
+    Protected content
+  </div>
+</DocumentFragment>
+`;
