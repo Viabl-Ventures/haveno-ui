@@ -21,7 +21,7 @@ import { ReactComponent as CloudIcon } from "@assets/setting-cloud.svg";
 import { ReactComponent as ServerIcon } from "@assets/setting-server.svg";
 import { NodeConnectSwitch } from ".";
 
-describe("atoms::NodeConnectSwitch", () => {
+describe("molecules::NodeConnectSwitch", () => {
   it("renders without exploding", () => {
     const { asFragment, unmount } = render(
       <AppProviders>

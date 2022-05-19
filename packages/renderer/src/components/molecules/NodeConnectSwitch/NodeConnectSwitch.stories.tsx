@@ -21,7 +21,7 @@ import { ReactComponent as ServerIcon } from "@assets/setting-server.svg";
 import { NodeConnectSwitch } from ".";
 
 export default {
-  title: "atoms/NodeConnectSwitch",
+  title: "molecules/NodeConnectSwitch",
   component: NodeConnectSwitch,
 } as ComponentMeta<typeof NodeConnectSwitch>;
 
