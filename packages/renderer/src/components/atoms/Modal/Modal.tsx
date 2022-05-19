@@ -21,7 +21,6 @@ export function Modal({ ...props }: MModalProps) {
       overlayOpacity={0.25}
       padding={25}
       {...props}
-      target="#root"
     />
   );
 }

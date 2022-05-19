@@ -65,6 +65,7 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountWalletPassword]: "Password",
 
   [LangKeys.AccountCardCopyBtn]: "Copy",
+  [LangKeys.AccountCardCopiedBtn]: "Copied",
   [LangKeys.AccountCardQRBtn]: "QR",
 };
 

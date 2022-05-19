@@ -1,8 +1,11 @@
-import type { MouseEventHandler } from "react";
+import { MouseEventHandler, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import QRCode from "react-qr-code";
+import { useModals } from "@mantine/modals";
 import { Anchor, Box, createStyles, Group } from "@mantine/core";
 import { DetailItem } from "@atoms/DetailItem";
 import { LangKeys } from "@constants/lang";
+import { copyTextToClipboard } from "@utils/copy-to-clipboard";
 
 interface AddressCardProps {
   label?: string;
@@ -36,16 +39,56 @@ const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
   addressBtns: {
     marginLeft: "auto",
   },
+  qrRoot: {
+    marginTop: theme.spacing.xl,
+    textAlign: "center",
+  },
 }));
+
+const COPY_TEXT_TIMEOUT = 500;
 
 export function AddressCard({
   label,
   address,
   primary = false,
-  onCopyClick,
-  onQRClick,
 }: AddressCardProps) {
+  const modals = useModals();
   const { classes } = useStyles({ primary });
+  const [isCopied, setIsCopied] = useState(false);
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleCopyClick = () => {
+    copyTextToClipboard(address).then(() => {
+      setIsCopied(true);
+
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        setIsCopied(false);
+      }, COPY_TEXT_TIMEOUT);
+    });
+  };
+
+  const handleQRClick = () => {
+    modals.openConfirmModal({
+      children: (
+        <Box>
+          <DetailItem label="Primary Address">{address}</DetailItem>
+          <Box className={classes.qrRoot}>
+            <QRCode value={address} size={370} />
+          </Box>
+        </Box>
+      ),
+      labels: { confirm: "Confirm", cancel: "Cancel" },
+      onCancel: () => console.log("Cancel"),
+      onConfirm: () => console.log("Confirmed"),
+      size: 690,
+      target: "#root",
+      withCloseButton: false,
+    });
+  };
 
   return (
     <Group className={classes.root}>
@@ -53,13 +96,20 @@ export function AddressCard({
         <Group noWrap>
           <Box className={classes.address}>{address}</Box>
           <Group noWrap className={classes.addressBtns}>
-            <Anchor onClick={onCopyClick} underline>
-              <FormattedMessage
-                id={LangKeys.AccountCardCopyBtn}
-                defaultMessage="Copy"
-              />
+            <Anchor onClick={handleCopyClick} underline>
+              {!isCopied ? (
+                <FormattedMessage
+                  id={LangKeys.AccountCardCopyBtn}
+                  defaultMessage="Copy"
+                />
+              ) : (
+                <FormattedMessage
+                  id={LangKeys.AccountCardCopiedBtn}
+                  defaultMessage="Copied"
+                />
+              )}
             </Anchor>
-            <Anchor onClick={onQRClick} underline>
+            <Anchor onClick={handleQRClick} underline>
               <FormattedMessage
                 id={LangKeys.AccountCardQRBtn}
                 defaultMessage="QR"
