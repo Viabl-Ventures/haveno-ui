@@ -14,24 +14,20 @@
 //  limitations under the License.
 // =============================================================================
 
-import { mergeConfig } from "vite";
-import viteConfig from "./vite.config";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { SetPrimaryFiat } from ".";
 
-/**
- * Config for global end-to-end tests
- * placed in project root tests folder
- * @type {import('vite').UserConfig}
- * @see https://vitest.dev/config/
- */
-const config = mergeConfig(viteConfig, {
-  test: {
-    setupFiles: ["../../tests/setup-tests.ts"],
-    environment: "jsdom",
-    include: ["./src/**/*.{test,spec}.{ts,tsx}"],
-    coverage: {
-      reporter: ["html"],
-    },
-  },
-});
+export default {
+  title: "organisms/Set Primary Fiat",
+  component: SetPrimaryFiat,
+} as ComponentMeta<typeof SetPrimaryFiat>;
 
-export default config;
+const Template: ComponentStory<typeof SetPrimaryFiat> = (args) => {
+  return <SetPrimaryFiat {...args} />;
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  onGoBack: () => console.log("go back"),
+  onNext: (value: string) => console.log(value),
+};

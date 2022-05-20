@@ -15,9 +15,8 @@
 // =============================================================================
 
 import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render } from "@testing-library/react";
-import { screen } from "@testing-library/dom";
-// import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { AppProviders } from "@atoms/AppProviders";
 import { SetPassword } from ".";
 
@@ -55,7 +54,7 @@ describe("organisms::SetPassword", () => {
 
     const { unmount } = render(
       <AppProviders>
-        <SetPassword value="" onGoBack={onBackSpy} onNext={onNextSpy} />
+        <SetPassword onGoBack={onBackSpy} onNext={onNextSpy} />
       </AppProviders>
     );
     expect(onNextSpy).to.not.toHaveBeenCalled();
@@ -67,34 +66,21 @@ describe("organisms::SetPassword", () => {
   it("calls onSubmit if validation succeeds", async () => {
     const onBackSpy = vi.fn();
     const onNextSpy = vi.fn();
-    // const user = userEvent.setup();
-    const { unmount, getByLabelText } = render(
+    const user = userEvent.setup();
+    const { unmount } = render(
       <AppProviders>
-        <SetPassword value="" onGoBack={onBackSpy} onNext={onNextSpy} />
+        <SetPassword onGoBack={onBackSpy} onNext={onNextSpy} />
       </AppProviders>
     );
-    // await user.click(getByLabelText("Enter password"));
-    // await user.keyboard("Qwe$9999{Tab}Qwe$9999");
-
-    // expect(onNextSpy).to.not.toHaveBeenCalled();
-    fireEvent.click(getByLabelText("Enter password"));
-    fireEvent.input(getByLabelText("Enter password"), {
-      currentTarget: {
-        value: "Qwe$9999",
-      },
-      target: {
-        value: "Qwe$9999",
-      },
+    await user.type(screen.getByLabelText("Enter password"), "Qwe$9999", {
+      skipAutoClose: true,
     });
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    fireEvent.blur(getByLabelText("Enter password"));
-    // fireEvent.focus(getByLabelText("Repeat password"));
-    // fireEvent.blur(getByLabelText("Enter password"));
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    fireEvent.submit(getByLabelText("Click to submit"));
-    // expect(onNextSpy).to.toHaveBeenCalledTimes(1);
+    await user.type(screen.getByLabelText("Repeat password"), "Qwe$9999", {
+      skipAutoClose: true,
+    });
+    expect(onNextSpy).to.not.toHaveBeenCalled();
+    fireEvent.submit(screen.getByLabelText("Click to submit"));
+    expect(onNextSpy).to.toHaveBeenCalledTimes(1);
     unmount();
   });
 });

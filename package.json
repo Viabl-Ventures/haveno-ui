@@ -71,6 +71,7 @@
     "eslint-plugin-react": "^7.29.4",
     "happy-dom": "2.41.0",
     "husky": "^7.0.4",
+    "jsdom": "^19.0.0",
     "nano-staged": "^0.7.0",
     "playwright": "1.19.1",
     "prettier": "^2.6.2",

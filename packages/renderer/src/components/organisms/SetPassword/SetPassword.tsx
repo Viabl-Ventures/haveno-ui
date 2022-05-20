@@ -23,14 +23,14 @@ import { Button, TextButton } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 
 interface SetPasswordProps {
-  value: string;
   onGoBack: () => void;
   onNext: (password: string) => void;
+  value?: string;
 }
 
 export function SetPassword(props: SetPasswordProps) {
   const { value, onGoBack, onNext } = props;
-  const { getInputProps, onSubmit, errors, values } = useForm<FormValues>({
+  const { getInputProps, onSubmit } = useForm<FormValues>({
     schema: joiResolver(schema),
     initialValues: {
       password: value ?? "",
@@ -38,11 +38,7 @@ export function SetPassword(props: SetPasswordProps) {
     },
   });
 
-  console.log({ errors, values });
-
   const handleSubmit = (values: FormValues) => {
-    console.log({ errors });
-    console.log("success!");
     onNext(values.password);
   };
 
@@ -60,15 +56,19 @@ export function SetPassword(props: SetPasswordProps) {
         </BodyText>
         <TextInput
           aria-label="Enter password"
+          autoFocus={false}
           id="password"
           label="Password"
+          tabIndex={1}
           type="password"
           {...getInputProps("password")}
         />
         <TextInput
           aria-label="Repeat password"
+          autoFocus={false}
           id="repeatPassword"
           label="Repeat password"
+          tabIndex={2}
           type="password"
           {...getInputProps("repeatPassword")}
         />
