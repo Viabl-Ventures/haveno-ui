@@ -18,7 +18,7 @@ import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { AccountSidebar } from "./AccountSidebar";
 
 export default {
-  title: "molecules/AccountSidebar",
+  title: "organisms/AccountSidebar",
   component: AccountSidebar,
 } as ComponentMeta<typeof AccountSidebar>;
 
