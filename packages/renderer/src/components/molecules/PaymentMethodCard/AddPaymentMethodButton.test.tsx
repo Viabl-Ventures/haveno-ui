@@ -14,5 +14,26 @@
 //  limitations under the License.
 // =============================================================================
 
-// TODO @subir: move this to @constants/currencies
-export type SupportedCurrencies = "BTC" | "ETH" | "EUR";
+import { describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { AddPaymentMethodButton } from ".";
+
+describe("molecules::AddPaymentMethodButton", () => {
+  it("renders without exploding", () => {
+    const spy = vi.fn();
+    const { asFragment, unmount } = render(
+      <AddPaymentMethodButton onClick={spy} />
+    );
+    expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("calls onClick", () => {
+    const spy = vi.fn();
+    const { unmount } = render(<AddPaymentMethodButton onClick={spy} />);
+    expect(spy).to.not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button"));
+    expect(spy).to.toHaveBeenCalledTimes(1);
+    unmount();
+  });
+});
