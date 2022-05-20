@@ -1,6 +1,68 @@
 // Vitest Snapshot v1
 
-exports[`organisms::WalletManagement > renders without exploding 1`] = `
+exports[`molecules::WalletManagement > renders after loading data 1`] = `
+<DocumentFragment>
+  <div
+    class="mantine-Stack-root mantine-lfk3cq"
+  >
+    <div
+      class="mantine-63n06h"
+    />
+    <div
+      class="mantine-Text-root mantine-1ogvxnc"
+    >
+      Loading Wallet Seeds...
+    </div>
+    <ol
+      class="mantine-List-root mantine-14df5ct"
+    >
+      <div
+        class="mantine-Group-root mantine-1qkd5ve"
+      >
+        <li
+          class="mantine-List-item mantine-Group-child mantine-xm6zd"
+        >
+          <div
+            class="__mantine-ref-itemWrapper mantine-1hf9p21 mantine-List-itemWrapper"
+          >
+            <span>
+              baptism
+            </span>
+          </div>
+        </li>
+      </div>
+      <div
+        class="mantine-Group-root mantine-1qkd5ve"
+      >
+        <li
+          class="mantine-List-item mantine-Group-child mantine-xm6zd"
+        >
+          <div
+            class="__mantine-ref-itemWrapper mantine-1hf9p21 mantine-List-itemWrapper"
+          >
+            <span />
+          </div>
+        </li>
+      </div>
+      <div
+        class="mantine-Group-root mantine-1qkd5ve"
+      >
+        <li
+          class="mantine-List-item mantine-Group-child mantine-xm6zd"
+        >
+          <div
+            class="__mantine-ref-itemWrapper mantine-1hf9p21 mantine-List-itemWrapper"
+          >
+            <span />
+          </div>
+        </li>
+      </div>
+    </ol>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`molecules::WalletManagement > renders loading state 1`] = `
 <DocumentFragment>
   <div
     class="mantine-Stack-root mantine-lfk3cq"

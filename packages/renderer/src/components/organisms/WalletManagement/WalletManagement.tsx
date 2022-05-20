@@ -14,36 +14,35 @@
 //  limitations under the License.
 // =============================================================================
 
+import { useState } from "react";
+import { useForm } from "@mantine/hooks";
 import { Group, Space, Stack } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 import { Button } from "@atoms/Buttons";
 import { TextInput } from "@atoms/TextInput";
 import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
-import { showNotification } from "@mantine/notifications";
-import { useState } from "react";
-import { useLogin } from "@hooks/session/useLogin";
-import { useForm } from "@mantine/hooks";
-import { SheedsItem } from "./SheedsItem";
+import { WalletItem } from "./WalletItem";
+import { useValidatePassword } from "@hooks/haveno/useValidatePassword";
 
 export function WalletManagement() {
-  const [check, setcheck] = useState(false);
-  const { mutate: login } = useLogin();
-  const [pvalue, setpvalue] = useState(false);
-  const { getInputProps, onSubmit } = useForm<FormValues>({
+  const [isRevealed, setRevealed] = useState(false);
+  const { mutate: login } = useValidatePassword();
+  const { getInputProps, onSubmit, values, reset } = useForm<FormValues>({
     initialValues: {
       password: "",
     },
   });
-  const ControLayout = () => {
-    if (check) {
+  const ControlLayout = () => {
+    if (isRevealed) {
       return (
         <Stack>
-          <SheedsItem />
+          <WalletItem />
           <Group position="left">
             <Button
               type="submit"
               onClick={() => {
-                setcheck(false);
+                setRevealed(false);
               }}
             >
               Hide Seed Phrase
@@ -55,8 +54,8 @@ export function WalletManagement() {
       const handleSubmit = (values: FormValues) => {
         login(values, {
           onSuccess: () => {
-            setcheck(true);
-            values.password = "";
+            setRevealed(true);
+            reset();
           },
           onError: (err) => {
             showNotification({
@@ -68,13 +67,11 @@ export function WalletManagement() {
         });
       };
       return (
-        <form
-          onSubmit={onSubmit(handleSubmit)}
-          onChange={() => setpvalue(true)}
-        >
+        <form onSubmit={onSubmit(handleSubmit)}>
           <Stack>
             <Space h="sm" />
             <TextInput
+              autoFocus
               id="password"
               type="password"
               required
@@ -88,7 +85,7 @@ export function WalletManagement() {
             />
             <Space h="lg" />
             <Group position="right">
-              <Button type="submit" disabled={pvalue ? false : true}>
+              <Button type="submit" disabled={values.password ? false : true}>
                 Reveal Seed Phrase
               </Button>
             </Group>
@@ -97,8 +94,14 @@ export function WalletManagement() {
       );
     }
   };
-  return <Stack>{ControLayout()}</Stack>;
+
+  return (
+    <Stack>
+      <ControlLayout />
+    </Stack>
+  );
 }
+
 interface FormValues {
   password: string;
 }
