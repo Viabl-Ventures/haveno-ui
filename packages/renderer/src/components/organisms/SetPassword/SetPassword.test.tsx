@@ -26,7 +26,7 @@ describe("organisms::SetPassword", () => {
     const onNextSpy = vi.fn();
     const { asFragment, unmount } = render(
       <AppProviders>
-        <SetPassword value="" onGoBack={onBackSpy} onNext={onNextSpy} />
+        <SetPassword onGoBack={onBackSpy} onNext={onNextSpy} />
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe("organisms::SetPassword", () => {
     const onNextSpy = vi.fn();
     const { unmount } = render(
       <AppProviders>
-        <SetPassword value="" onGoBack={onBackSpy} onNext={onNextSpy} />
+        <SetPassword onGoBack={onBackSpy} onNext={onNextSpy} />
       </AppProviders>
     );
     expect(onBackSpy).to.not.toHaveBeenCalled();

@@ -20,9 +20,9 @@ import { useForm, joiResolver } from "@mantine/form";
 import Joi from "joi";
 import { Button } from "@atoms/Buttons";
 import { Select } from "@atoms/Select";
+import { TextInput } from "@atoms/TextInput";
 import { SupportedCurrencies } from "@constants/currencies";
 import { PaymentMethods as _PaymentMethods } from "@constants/payment-methods";
-import { TextInput } from "@atoms/TextInput";
 
 export function AddPaymentMethod() {
   const { getInputProps, onSubmit, setFieldValue, values } =
@@ -35,7 +35,7 @@ export function AddPaymentMethod() {
       },
     });
 
-  const PaymentMethods = useMemo(() => {
+  const paymentMethods = useMemo(() => {
     if (!values.currency) {
       return [];
     }
@@ -81,7 +81,7 @@ export function AddPaymentMethod() {
           <Collapse in={Boolean(values.currency)}>
             <Select
               creatable
-              data={PaymentMethods}
+              data={paymentMethods}
               id="paymentMethod"
               label="Select your preferred payment method"
               placeholder="Pick one"
