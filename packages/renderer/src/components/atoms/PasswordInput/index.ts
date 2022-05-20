@@ -14,23 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ReactComponent as BtcIcon } from "@assets/btc.svg";
-import { TextInput } from ".";
-
-export default {
-  title: "atoms/TextInput",
-  component: TextInput,
-} as ComponentMeta<typeof TextInput>;
-
-const Template: ComponentStory<typeof TextInput> = () => {
-  return (
-    <Stack>
-      <TextInput id="name" placeholder="Your name" label="Full name" required />
-      <TextInput id="btc" label="Bitcoin" icon={<BtcIcon />} />
-    </Stack>
-  );
-};
-
-export const Default = Template.bind({});
+export * from "./PasswordInput";

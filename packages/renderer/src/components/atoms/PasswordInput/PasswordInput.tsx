@@ -14,23 +14,32 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ReactComponent as BtcIcon } from "@assets/btc.svg";
-import { TextInput } from ".";
+import type { PasswordInputProps as MPasswordInputProps } from "@mantine/core";
+import { createStyles, PasswordInput as MPasswordInput } from "@mantine/core";
 
-export default {
-  title: "atoms/TextInput",
-  component: TextInput,
-} as ComponentMeta<typeof TextInput>;
+interface PasswordInputProps extends MPasswordInputProps {
+  id: string;
+}
 
-const Template: ComponentStory<typeof TextInput> = () => {
-  return (
-    <Stack>
-      <TextInput id="name" placeholder="Your name" label="Full name" required />
-      <TextInput id="btc" label="Bitcoin" icon={<BtcIcon />} />
-    </Stack>
-  );
-};
+export function PasswordInput(props: PasswordInputProps) {
+  const { id, ...rest } = props;
+  const { classes } = useStyles();
+  return <MPasswordInput classNames={classes} id={id} {...rest} />;
+}
 
-export const Default = Template.bind({});
+const useStyles = createStyles((theme) => ({
+  label: {
+    fontSize: "0.875rem",
+    fontWeight: 600,
+    marginBottom: theme.spacing.sm,
+  },
+  innerInput: {
+    fontSize: "0.875rem",
+    fontWeight: 700,
+    height: "3rem",
+    padding: "1rem",
+  },
+  input: {
+    height: "3rem",
+  },
+}));

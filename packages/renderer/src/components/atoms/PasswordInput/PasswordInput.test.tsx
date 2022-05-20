@@ -14,23 +14,15 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ReactComponent as BtcIcon } from "@assets/btc.svg";
-import { TextInput } from ".";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { PasswordInput } from ".";
 
-export default {
-  title: "atoms/TextInput",
-  component: TextInput,
-} as ComponentMeta<typeof TextInput>;
-
-const Template: ComponentStory<typeof TextInput> = () => {
-  return (
-    <Stack>
-      <TextInput id="name" placeholder="Your name" label="Full name" required />
-      <TextInput id="btc" label="Bitcoin" icon={<BtcIcon />} />
-    </Stack>
-  );
-};
-
-export const Default = Template.bind({});
+describe("atoms::PasswordInput", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(
+      <PasswordInput id="pass" label="Enter password" />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

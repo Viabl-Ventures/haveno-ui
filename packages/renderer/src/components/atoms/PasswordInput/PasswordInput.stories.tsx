@@ -16,19 +16,26 @@
 
 import { Stack } from "@mantine/core";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ReactComponent as BtcIcon } from "@assets/btc.svg";
-import { TextInput } from ".";
+import { EyeCheck, EyeOff } from "tabler-icons-react";
+import { PasswordInput } from ".";
 
 export default {
-  title: "atoms/TextInput",
-  component: TextInput,
-} as ComponentMeta<typeof TextInput>;
+  title: "atoms/PasswordInput",
+  component: PasswordInput,
+} as ComponentMeta<typeof PasswordInput>;
 
-const Template: ComponentStory<typeof TextInput> = () => {
+const Template: ComponentStory<typeof PasswordInput> = () => {
   return (
     <Stack>
-      <TextInput id="name" placeholder="Your name" label="Full name" required />
-      <TextInput id="btc" label="Bitcoin" icon={<BtcIcon />} />
+      <PasswordInput
+        id="password"
+        label="Change visibility toggle icon"
+        placeholder="Change visibility toggle icon"
+        defaultValue="secret"
+        visibilityToggleIcon={({ reveal, size }) =>
+          reveal ? <EyeOff size={size} /> : <EyeCheck size={size} />
+        }
+      />
     </Stack>
   );
 };
