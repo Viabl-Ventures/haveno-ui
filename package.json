@@ -51,6 +51,7 @@
     "@storybook/testing-library": "^0.0.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12",
+    "@testing-library/user-event": "^14.2.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash": "^4.14.182",
     "@types/react": "<18.0.0",

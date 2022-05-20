@@ -14,18 +14,17 @@
 //  limitations under the License.
 // =============================================================================
 
-import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
-import { AppProviders } from "@atoms/AppProviders";
-import { AccountSidebar } from "./AccountSidebar";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ChangePassword } from ".";
 
-describe("molecules::AccountSidebar", () => {
-  it("renders without exploding", () => {
-    const { asFragment } = render(
-      <AppProviders>
-        <AccountSidebar />
-      </AppProviders>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-});
+export default {
+  title: "organisms/Change Password",
+  component: ChangePassword,
+} as ComponentMeta<typeof ChangePassword>;
+
+const Template: ComponentStory<typeof ChangePassword> = () => {
+  return <ChangePassword />;
+};
+
+export const Default = Template.bind({});
+Default.args = {};

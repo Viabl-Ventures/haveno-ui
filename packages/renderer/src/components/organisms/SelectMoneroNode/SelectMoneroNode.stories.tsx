@@ -14,18 +14,20 @@
 //  limitations under the License.
 // =============================================================================
 
-import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
-import { AppProviders } from "@atoms/AppProviders";
-import { AccountSidebar } from "./AccountSidebar";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { SelectMoneroNode } from ".";
 
-describe("molecules::AccountSidebar", () => {
-  it("renders without exploding", () => {
-    const { asFragment } = render(
-      <AppProviders>
-        <AccountSidebar />
-      </AppProviders>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-});
+export default {
+  title: "organisms/Select Monero Node",
+  component: SelectMoneroNode,
+} as ComponentMeta<typeof SelectMoneroNode>;
+
+const Template: ComponentStory<typeof SelectMoneroNode> = (args) => {
+  return <SelectMoneroNode {...args} />;
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  onGoBack: () => console.log("go back"),
+  onNext: () => console.log("next"),
+};

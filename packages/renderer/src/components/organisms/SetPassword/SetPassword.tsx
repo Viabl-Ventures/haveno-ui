@@ -30,7 +30,7 @@ interface SetPasswordProps {
 
 export function SetPassword(props: SetPasswordProps) {
   const { value, onGoBack, onNext } = props;
-  const { getInputProps, onSubmit } = useForm<FormValues>({
+  const { getInputProps, onSubmit, errors, values } = useForm<FormValues>({
     schema: joiResolver(schema),
     initialValues: {
       password: value ?? "",
@@ -38,12 +38,16 @@ export function SetPassword(props: SetPasswordProps) {
     },
   });
 
+  console.log({ errors, values });
+
   const handleSubmit = (values: FormValues) => {
+    console.log({ errors });
+    console.log("success!");
     onNext(values.password);
   };
 
   return (
-    <form onSubmit={onSubmit(handleSubmit)}>
+    <form data-testid="change-password-form" onSubmit={onSubmit(handleSubmit)}>
       <Stack>
         <Container>
           <Heading order={1} stringId={LangKeys.CreatePassword}>
@@ -55,12 +59,14 @@ export function SetPassword(props: SetPasswordProps) {
           password.
         </BodyText>
         <TextInput
+          aria-label="Enter password"
           id="password"
           label="Password"
           type="password"
           {...getInputProps("password")}
         />
         <TextInput
+          aria-label="Repeat password"
           id="repeatPassword"
           label="Repeat password"
           type="password"
@@ -68,8 +74,12 @@ export function SetPassword(props: SetPasswordProps) {
         />
         <Space h="lg" />
         <Group position="apart">
-          <TextButton onClick={onGoBack}>Go Back</TextButton>
-          <Button type="submit">Next</Button>
+          <TextButton aria-label="Click to go back" onClick={onGoBack}>
+            Go Back
+          </TextButton>
+          <Button aria-label="Click to submit" type="submit">
+            Next
+          </Button>
         </Group>
       </Stack>
     </form>

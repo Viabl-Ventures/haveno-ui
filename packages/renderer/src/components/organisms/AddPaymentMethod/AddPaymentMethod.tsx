@@ -24,12 +24,6 @@ import { SupportedCurrencies } from "@constants/currencies";
 import { PaymentMethods as _PaymentMethods } from "@constants/payment-methods";
 import { TextInput } from "@atoms/TextInput";
 
-interface FormValues {
-  currency: string;
-  paymentMethod: string;
-  accountNumber: string;
-}
-
 export function AddPaymentMethod() {
   const { getInputProps, onSubmit, setFieldValue, values } =
     useForm<FormValues>({
@@ -61,6 +55,7 @@ export function AddPaymentMethod() {
       .sort((a, b) => (a.label > b.label ? 1 : -1));
   }, [values?.currency]);
 
+  // TODO @subir
   const handleSubmit = (values: FormValues) => console.log(values);
 
   useEffect(() => {
@@ -112,6 +107,12 @@ export function AddPaymentMethod() {
       <Stack></Stack>
     </Stack>
   );
+}
+
+interface FormValues {
+  currency: string;
+  paymentMethod: string;
+  accountNumber: string;
 }
 
 const schema = Joi.object<FormValues>({
