@@ -14,21 +14,16 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Wallet } from ".";
+import { ConnectingMonero } from ".";
 
 export default {
-  title: "pages/Wallet",
-  component: Wallet,
-} as ComponentMeta<typeof Wallet>;
+  title: "pages/Onboarding/Connecting Monero",
+  component: ConnectingMonero,
+} as ComponentMeta<typeof ConnectingMonero>;
 
-const Template: ComponentStory<typeof Wallet> = () => {
-  return (
-    <Stack>
-      <Wallet />
-    </Stack>
-  );
+const Template: ComponentStory<typeof ConnectingMonero> = () => {
+  return <ConnectingMonero />;
 };
 
 export const Default = Template.bind({});

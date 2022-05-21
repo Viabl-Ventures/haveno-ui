@@ -14,4 +14,17 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Wallet";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { CreateAccount } from ".";
+
+export default {
+  title: "pages/Onboarding/Create Account",
+  component: CreateAccount,
+} as ComponentMeta<typeof CreateAccount>;
+
+const Template: ComponentStory<typeof CreateAccount> = () => {
+  return <CreateAccount />;
+};
+
+export const Default = Template.bind({});
+Default.args = {};
