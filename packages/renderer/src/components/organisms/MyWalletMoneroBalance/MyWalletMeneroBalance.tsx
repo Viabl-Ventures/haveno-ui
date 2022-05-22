@@ -18,7 +18,7 @@ import { useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useBalances } from "@hooks/haveno/useBalances";
 import { MoneroBalance } from "@organisms/MoneroBalance";
-import { MyWalletMoneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
+import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
 
 interface MyWalletMoneroBalanceBootProps {
   children: JSX.Element;
@@ -77,7 +77,7 @@ export function MyWalletMoneroBalanceBoot({
   const { isLoading: isBalancesLoading } = useBalances();
 
   return isBalancesLoading ? (
-    <MyWalletMoneroBalanceSkeleton />
+    <MyWalletMeneroBalanceSkeleton />
   ) : (
     <>{children}</>
   );

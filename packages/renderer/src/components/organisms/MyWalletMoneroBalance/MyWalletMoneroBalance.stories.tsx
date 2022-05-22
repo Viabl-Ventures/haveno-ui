@@ -15,30 +15,17 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { MoneroBalance } from "./MoneroBalance";
+import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 
 export default {
-  title: "molecules/MoneroBalance",
-  component: MoneroBalance,
-} as ComponentMeta<typeof MoneroBalance>;
+  title: "organisms/MyWalletMoneroBalance",
+  component: MyWalletMoneroBalance,
+} as ComponentMeta<typeof MyWalletMoneroBalance>;
 
-const Template: ComponentStory<typeof MoneroBalance> = () => {
-  return (
-    <MoneroBalance>
-      <MoneroBalance.Detail label="AVAILABLE BALANCE">
-        14.048212174412
-      </MoneroBalance.Detail>
-
-      <MoneroBalance.Detail label="AVAILABLE BALANCE">
-        14.048212174412
-      </MoneroBalance.Detail>
-
-      <MoneroBalance.Detail label="AVAILABLE BALANCE">
-        14.048212174412
-      </MoneroBalance.Detail>
-    </MoneroBalance>
-  );
+const Template: ComponentStory<typeof MyWalletMoneroBalance> = () => {
+  return <MyWalletMoneroBalance />;
 };
 
 export const Default = Template.bind({});
+
 Default.args = {};

@@ -14,12 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
+import { useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { Skeleton } from "@mantine/core";
 import { MoneroBalance } from "@organisms/MoneroBalance";
-import { useIntl } from "react-intl";
 
-export function MyWalletMoneroBalanceSkeleton() {
+export function MyWalletMeneroBalanceSkeleton() {
   const { formatMessage } = useIntl();
 
   return (
