@@ -16,7 +16,7 @@
 
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Box, Button, Group, Stack } from "@mantine/core";
+import { Box, Button, Group, Stack, Text } from "@mantine/core";
 import { LangKeys } from "@constants/lang";
 import { Heading } from "@atoms/Typography";
 import { AddressCard } from "@molecules/AddressCard/AddressCard";
@@ -37,6 +37,14 @@ export function MyWalletReceive() {
         Your Address
       </Heading>
 
+      {addresses.length === 0 && (
+        <Text mt="xs" color="gray">
+          <FormattedMessage
+            id={LangKeys.MyWalletReceiveNoAddressesMsg}
+            defaultMessage={`You don't have generated address, please generate one.`}
+          />
+        </Text>
+      )}
       <Stack>
         {addresses.map((address) => (
           <AddressCard key={address} address={address} />
@@ -51,6 +59,7 @@ export function MyWalletReceive() {
           type="submit"
           onClick={handleGenerateAddressBtn}
         >
+          +{" "}
           <FormattedMessage
             id={LangKeys.MyWalletGenerateAddressBtn}
             defaultMessage="Generate a new stub address"

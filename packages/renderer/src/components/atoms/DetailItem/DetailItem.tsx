@@ -19,17 +19,24 @@ import { Stack, createStyles, Text } from "@mantine/core";
 
 interface DetailProps extends DefaultProps {
   label?: string;
+  textAlign?: "left" | "right";
   children: React.ReactNode | string;
 }
+
+type DetailItemStyleProps = Pick<DetailProps, "textAlign">;
 
 export function DetailItem({
   label,
   children,
   classNames,
   className,
+  textAlign,
   ...other
 }: DetailProps) {
-  const { classes, cx } = useStyles({}, { name: "DetailItem", classNames });
+  const { classes, cx } = useStyles(
+    { textAlign },
+    { name: "DetailItem", classNames }
+  );
 
   return (
     <Stack spacing={0} className={cx(classes.root, className)} {...other}>
@@ -39,16 +46,20 @@ export function DetailItem({
   );
 }
 
-const useStyles = createStyles((theme) => ({
-  root: {},
-  label: {
-    textTransform: "uppercase",
-    fontSize: theme.fontSizes.sm,
-    letterSpacing: "0.075rem",
-    fontWeight: 600,
-    color: theme.colors.gray[6],
-  },
-  content: {
-    fontWeight: 500,
-  },
-}));
+const useStyles = createStyles(
+  (theme, { textAlign }: DetailItemStyleProps) => ({
+    root: {
+      textAlign: textAlign || undefined,
+    },
+    label: {
+      textTransform: "uppercase",
+      fontSize: theme.fontSizes.sm,
+      letterSpacing: "0.075rem",
+      fontWeight: 600,
+      color: theme.colors.gray[6],
+    },
+    content: {
+      fontWeight: 500,
+    },
+  })
+);

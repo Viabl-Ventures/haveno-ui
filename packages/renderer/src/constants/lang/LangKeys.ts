@@ -75,6 +75,7 @@ export enum LangKeys {
   MyWalletTabSend = "myWallet.sendTab",
   MyWalletTabReceive = "myWallet.receive",
   MyWalletGenerateAddressBtn = "myWallet.receive.generateAddrBtn",
+  MyWalletReceiveNoAddressesMsg = "myWallet.receive.noAddressesMsg",
   MyWalletSendSuccessNotif = "myWallet.send.successNotification",
 
   MyWalletDetailSent = "myWallet.detail.sent",

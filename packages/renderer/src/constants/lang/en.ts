@@ -79,6 +79,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletTabSend]: "Send",
   [LangKeys.MyWalletTabReceive]: "Receive",
   [LangKeys.MyWalletGenerateAddressBtn]: "Generate a new stub address",
+  [LangKeys.MyWalletReceiveNoAddressesMsg]:
+    "You don't have generated address, please generate one.",
   [LangKeys.MyWalletSendSuccessNotif]:
     "The XMR transaction has been sent successfully.",
 

@@ -43,8 +43,9 @@ const data = [
     fee: "0.000005096000",
   },
   {
-    type: MyWalletTransactionType.Sent,
+    type: MyWalletTransactionType.Received,
     date: "September 16, 2021",
+    time: "13:21",
     amount: 17.275849365201,
     foreignAmount: 4108.5,
     amountCurrency: "XMR",

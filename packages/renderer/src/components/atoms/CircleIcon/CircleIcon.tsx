@@ -30,14 +30,13 @@ const useStyles = createStyles((theme, { color, size }: CircleIconStyle) => ({
     borderRadius: "50%",
     height: size || 34,
     width: size || 34,
-    lineHeight: "34px",
+    lineHeight: 1,
     backgroundColor: "rgba(0, 0, 0, 0.08)",
-    textAlign: "center",
     color: color || theme.colors.gray[9],
+    display: "flex",
 
     svg: {
-      position: "relative",
-      top: 2,
+      margin: "auto",
     },
   },
 }));

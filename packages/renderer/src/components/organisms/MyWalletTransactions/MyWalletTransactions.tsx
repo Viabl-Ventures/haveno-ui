@@ -18,7 +18,6 @@ import { createTable } from "@tanstack/react-table";
 import { Table } from "@atoms/Table";
 import {
   MyWalletTransactionnSignCell,
-  MyWalletTransactionDescCell,
   MyWalletTransactionAmountCell,
   MyWalletTransactionRowExpanded,
 } from "./MyWalletTransactionsCells";
@@ -31,12 +30,6 @@ const columns = [
     id: "type",
     header: "Type",
     cell: MyWalletTransactionnSignCell,
-  }),
-  table.createDataColumn("date", {
-    id: "transaction",
-    header: "Date",
-    cell: MyWalletTransactionDescCell,
-    size: 600,
   }),
   table.createDataColumn("amount", {
     id: "transaction",
