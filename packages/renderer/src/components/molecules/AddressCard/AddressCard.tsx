@@ -1,6 +1,7 @@
 import type { MouseEventHandler } from "react";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import QRCode from "react-qr-code";
 import { useModals } from "@mantine/modals";
 import { Anchor, Box, createStyles, Group, Skeleton } from "@mantine/core";
@@ -12,14 +13,18 @@ interface AddressCardProps {
   label?: string;
   address: string;
   primary?: boolean;
+
   onCopyClick?: MouseEventHandler;
   onQRClick?: MouseEventHandler;
+  qrModalProps?: OpenConfirmModal;
 }
 
 interface AddressCardStyleProps {
-  primary: boolean;
+  primary?: boolean;
 }
 type AddressCardSkeletonProps = Pick<AddressCardProps, "label" | "primary">;
+
+const COPY_TEXT_TIMEOUT = 500;
 
 const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
   root: {
@@ -32,9 +37,6 @@ const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     borderRadius: theme.radius.md,
-  },
-  detailItemRoot: {
-    width: "100%",
   },
   contentGroup: {
     minWidth: "100%",
@@ -52,14 +54,18 @@ const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
     marginTop: theme.spacing.xl,
     textAlign: "center",
   },
+  qrModalAddress: {
+    fontSize: theme.fontSizes.lg,
+  },
 }));
-
-const COPY_TEXT_TIMEOUT = 500;
 
 export function AddressCard({
   label,
   address,
   primary = false,
+  onCopyClick,
+  onQRClick,
+  qrModalProps,
 }: AddressCardProps) {
   const modals = useModals();
   const { classes } = useStyles({ primary });
@@ -67,36 +73,46 @@ export function AddressCard({
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleCopyClick = () => {
-    copyTextToClipboard(address).then(() => {
-      setIsCopied(true);
+  const handleCopyClick =
+    onCopyClick &&
+    function () {
+      copyTextToClipboard(address).then(() => {
+        setIsCopied(true);
 
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(() => {
-        setIsCopied(false);
-      }, COPY_TEXT_TIMEOUT);
-    });
-  };
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+        timeoutRef.current = setTimeout(() => {
+          setIsCopied(false);
+        }, COPY_TEXT_TIMEOUT);
+      });
+    };
 
-  const handleQRClick = () => {
-    modals.openConfirmModal({
-      children: (
-        <Box>
-          <DetailItem label="Primary Address">{address}</DetailItem>
-          <Box className={classes.qrRoot}>
-            <QRCode value={address} size={370} />
+  const handleQRClick =
+    onQRClick &&
+    function () {
+      modals.openConfirmModal({
+        children: (
+          <Box>
+            <DetailItem
+              classNames={{ content: classes.qrModalAddress }}
+              label="Primary Address"
+            >
+              {address}
+            </DetailItem>
+            <Box className={classes.qrRoot}>
+              <QRCode value={address} size={370} />
+            </Box>
           </Box>
-        </Box>
-      ),
-      labels: { confirm: "Confirm", cancel: "Cancel" },
-      onCancel: () => console.log("Cancel"),
-      onConfirm: () => console.log("Confirmed"),
-      size: 690,
-      withCloseButton: false,
-    });
-  };
+        ),
+        labels: { confirm: "Confirm", cancel: "Cancel" },
+        onCancel: () => console.log("Cancel"),
+        onConfirm: () => console.log("Confirmed"),
+        size: 690,
+        withCloseButton: false,
+        ...qrModalProps,
+      });
+    };
 
   return (
     <Group className={classes.root}>

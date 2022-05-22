@@ -10,19 +10,20 @@ export function DetailItem({
   label,
   children,
   classNames,
+  className,
   ...other
 }: DetailProps) {
-  const { classes } = useStyles({}, { name: "DetailItem", classNames });
+  const { classes, cx } = useStyles({}, { name: "DetailItem", classNames });
 
   return (
-    <Stack spacing={0} className={classes.root} {...other}>
+    <Stack spacing={0} className={cx(classes.root, className)} {...other}>
       {label && <Text className={classes.label}>{label}</Text>}
       <Text className={classes.content}>{children}</Text>
     </Stack>
   );
 }
 
-const useStyles = createStyles((theme, {}) => ({
+const useStyles = createStyles((theme) => ({
   root: {},
   label: {
     textTransform: "uppercase",

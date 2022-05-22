@@ -15,6 +15,7 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Stack } from "@mantine/core";
 import { AddressCard } from "./AddressCard";
 
 export default {
@@ -23,7 +24,20 @@ export default {
 } as ComponentMeta<typeof AddressCard>;
 
 const Template: ComponentStory<typeof AddressCard> = (args) => {
-  return <AddressCard {...args} />;
+  return (
+    <Stack>
+      <AddressCard
+        {...args}
+        primary={true}
+        qrModalProps={{ target: "#root" }}
+      />
+      <AddressCard
+        {...args}
+        primary={false}
+        qrModalProps={{ target: "#root" }}
+      />
+    </Stack>
+  );
 };
 
 export const Default = Template.bind({});
