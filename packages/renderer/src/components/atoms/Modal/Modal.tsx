@@ -16,6 +16,8 @@
 
 import type { ModalProps as MModalProps } from "@mantine/core";
 import { createStyles, Modal as MModal } from "@mantine/core";
+import type { ModalsProviderProps } from "@mantine/modals";
+import { ModalsProvider as MModalsProvider } from "@mantine/modals";
 
 const useStyles = createStyles((theme) => ({
   root: {},
@@ -28,14 +30,26 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const commonModalProps = {
+  overlayOpacity: 0.25,
+  padding: 25,
+};
+
 export function Modal({ ...props }: MModalProps) {
   const style = useStyles();
 
+  return <MModal classNames={style.classes} {...commonModalProps} {...props} />;
+}
+
+export function ModalsProvider({ ...props }: ModalsProviderProps) {
+  const style = useStyles();
+
   return (
-    <MModal
-      classNames={style.classes}
-      overlayOpacity={0.25}
-      padding={25}
+    <MModalsProvider
+      modalProps={{
+        classNames: style.classes,
+        ...commonModalProps,
+      }}
       {...props}
     />
   );

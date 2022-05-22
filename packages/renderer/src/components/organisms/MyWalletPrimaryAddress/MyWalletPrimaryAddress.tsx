@@ -14,24 +14,44 @@
 //  limitations under the License.
 // =============================================================================
 
+import { useIntl } from "react-intl";
 import {
   AddressCard,
   AddressCardSkeleton,
 } from "@molecules/AddressCard/AddressCard";
 import { useXmrPrimaryAddress } from "@hooks/haveno/useXmrPrimaryAddress";
+import { LangKeys } from "@constants/lang";
 
 export function MyWalletPrimaryAddressContent() {
   const { isLoading, data: xmrAddress } = useXmrPrimaryAddress();
+  const { formatMessage } = useIntl();
 
   if (isLoading || !xmrAddress) return <>Loading...</>;
 
   return (
-    <AddressCard label="Primary Address" address={xmrAddress} primary={true} />
+    <AddressCard
+      label={formatMessage({
+        id: LangKeys.MyWalletBalancePrimaryAddress,
+        defaultMessage: "Primary Address",
+      })}
+      address={xmrAddress}
+      primary={true}
+    />
   );
 }
 
 export function MyWalletPrimaryAddressSkeleton() {
-  return <AddressCardSkeleton label="Primary Address" primary={true} />;
+  const { formatMessage } = useIntl();
+
+  return (
+    <AddressCardSkeleton
+      label={formatMessage({
+        id: LangKeys.MyWalletBalancePrimaryAddress,
+        defaultMessage: "Primary Address",
+      })}
+      primary={true}
+    />
+  );
 }
 
 export function MyWalletPrimaryAddress() {

@@ -16,6 +16,7 @@
 
 import { joiResolver, useForm } from "@mantine/form";
 import { Group, SimpleGrid, Stack, Text } from "@mantine/core";
+import { useModals } from "@mantine/modals";
 import { TextInput } from "@atoms/TextInput";
 import type { MyWalletSendFormValues } from "./_hooks";
 import { useMyWalletSendFormValidation } from "./_hooks";
@@ -23,10 +24,11 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { Button } from "@atoms/Buttons";
 import { useSetXmrSend } from "@hooks/haveno/useSetXmrSend";
-import { showNotification } from "@mantine/notifications";
 
 export function MyWalletSendForm() {
   const { formatMessage } = useIntl();
+  const modals = useModals();
+
   const { mutateAsync: setXmrSend } = useSetXmrSend();
   const validation = useMyWalletSendFormValidation();
 
@@ -40,13 +42,33 @@ export function MyWalletSendForm() {
   });
 
   const handleFormSubmit = (values: MyWalletSendFormValues) => {
-    setXmrSend(values).then(() => {
-      showNotification({
-        color: "green",
-        message: formatMessage({
-          id: LangKeys.MyWalletSendSuccessNotif,
-          defaultMessage: "The XMR transaction has been sent successfully.",
+    setXmrSend(values).then((hash: string) => {
+      const modalId = modals.openModal({
+        title: formatMessage({
+          id: LangKeys.MyWalletSendSuccessModalTitle,
+          defaultMessage: "Fund are sent!",
         }),
+        children: (
+          <>
+            <Text color="gray">
+              <FormattedMessage
+                id={LangKeys.MyWalletSendSuccessModalMsg}
+                defaultMessage="You’ve sent {amount} XMR to: {hash}"
+                values={{
+                  amount: values.amount,
+                  hash,
+                }}
+              />
+            </Text>
+
+            <Button onClick={() => modals.closeModal(modalId)} mt="md">
+              <FormattedMessage
+                id={LangKeys.MyWalletSendBackToWallet}
+                defaultMessage="Back to Wallet"
+              />
+            </Button>
+          </>
+        ),
       });
       form.reset();
     });

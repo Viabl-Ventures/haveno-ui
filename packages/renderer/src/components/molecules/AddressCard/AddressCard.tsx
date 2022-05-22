@@ -20,8 +20,16 @@ import { FormattedMessage } from "react-intl";
 import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import QRCode from "react-qr-code";
 import { useModals } from "@mantine/modals";
-import { Anchor, Box, createStyles, Group, Skeleton } from "@mantine/core";
+import {
+  Anchor,
+  Box,
+  createStyles,
+  Group,
+  SimpleGrid,
+  Skeleton,
+} from "@mantine/core";
 import { DetailItem } from "@atoms/DetailItem";
+import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 import { copyTextToClipboard } from "@utils/copy-to-clipboard";
 
@@ -32,6 +40,8 @@ interface AddressCardProps {
 
   onCopyClick?: MouseEventHandler;
   onQRClick?: MouseEventHandler;
+  onReturnClick?: MouseEventHandler;
+  onQRDownloadClick?: MouseEventHandler;
   qrModalProps?: OpenConfirmModal;
 }
 
@@ -81,6 +91,8 @@ export function AddressCard({
   primary = false,
   onCopyClick,
   onQRClick,
+  onReturnClick,
+  onQRDownloadClick,
   qrModalProps,
 }: AddressCardProps) {
   const modals = useModals();
@@ -107,7 +119,7 @@ export function AddressCard({
   const handleQRClick =
     onQRClick &&
     function () {
-      modals.openConfirmModal({
+      modals.openModal({
         children: (
           <Box>
             <DetailItem
@@ -119,6 +131,13 @@ export function AddressCard({
             <Box className={classes.qrRoot}>
               <QRCode value={address} size={370} />
             </Box>
+
+            <SimpleGrid cols={2} mt="xl">
+              <Button flavor="neutral" onClick={onReturnClick}>
+                Return
+              </Button>
+              <Button onClick={onQRDownloadClick}>Download QR</Button>
+            </SimpleGrid>
           </Box>
         ),
         labels: { confirm: "Confirm", cancel: "Cancel" },

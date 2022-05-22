@@ -84,4 +84,9 @@ export enum LangKeys {
   MyWalletDetailTransactionKey = "myWallet.detail.transactionKey",
   MyWalletDetailHeight = "myWallet.detail.height",
   MyWalletDetailReceiptAddress = "myWallet.detail.receiptAddress",
+
+  MyWalletBalancePrimaryAddress = "myWallet.balance.primaryAddress",
+  MyWalletSendBackToWallet = "myWallet.sendForm.backToWalletBtn",
+  MyWalletSendSuccessModalTitle = "myWallet.sendSuccessModal.title",
+  MyWalletSendSuccessModalMsg = "myWallet.sendSuccessModal.message",
 }

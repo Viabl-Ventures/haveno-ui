@@ -87,6 +87,10 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletDetailTransactionKey]: "Transaction Key",
   [LangKeys.MyWalletDetailHeight]: "Height",
   [LangKeys.MyWalletDetailReceiptAddress]: "Receipt Address",
+
+  [LangKeys.MyWalletBalancePrimaryAddress]: "Primary Address",
+  [LangKeys.MyWalletSendBackToWallet]: "Back to Wallet",
+  [LangKeys.MyWalletSendSuccessModalTitle]: "Fund are sent!",
 };
 
 export default LangPackEN;
