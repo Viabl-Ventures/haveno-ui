@@ -58,4 +58,30 @@ export enum LangKeys {
   AccountCardCopyBtn = "accountCard.copyButton",
   AccountCardCopiedBtn = "accountCard.copiedButton",
   AccountCardQRBtn = "accountCard.qrButton",
+
+  MyWalletSendFieldAmount = "myWallet.send.amountField",
+  MyWalletSendFieldPaymentId = "myWallet.send.paymentIdField",
+  MyWalletSendFieldPaymentIdPlaceholder = "myWallet.send.paymentIdFieldPlaceholder",
+  MyWalletSendFieldAddress = "myWallet.send.addressField",
+  MyWalletSendFieldAddressPlaceholder = "myWallet.send.addressFieldPlaceholder",
+
+  MyWalletReceiveTitle = "myWallet.receive.receiveTitle",
+
+  MyWalletMoneroAvaliableBalance = "myWallet.monero.avaliableBalance",
+  MyWalletMoneroReserveredFunds = "myWallet.monero.reserveredFunds",
+  MyWalletMoneroLockedFunds = "myWallet.monero.lockedFunds",
+
+  MyWalletTabTransactions = "myWallet.transactionsTab",
+  MyWalletTabSend = "myWallet.sendTab",
+  MyWalletTabReceive = "myWallet.receive",
+  MyWalletGenerateAddressBtn = "myWallet.receive.generateAddrBtn",
+  MyWalletSendSuccessNotif = "myWallet.send.successNotification",
+
+  MyWalletDetailSent = "myWallet.detail.sent",
+  MyWalletDetailReceived = "myWallet.detail.received",
+  MyWalletDetailTransactionId = "myWallet.detail.transactionId",
+  MyWalletDetailFee = "myWallet.detail.fee",
+  MyWalletDetailTransactionKey = "myWallet.detail.transactionKey",
+  MyWalletDetailHeight = "myWallet.detail.height",
+  MyWalletDetailReceiptAddress = "myWallet.detail.receiptAddress",
 }

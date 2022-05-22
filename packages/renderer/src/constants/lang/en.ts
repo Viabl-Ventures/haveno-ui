@@ -67,6 +67,26 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountCardCopyBtn]: "Copy",
   [LangKeys.AccountCardCopiedBtn]: "Copied",
   [LangKeys.AccountCardQRBtn]: "QR",
+
+  [LangKeys.MyWalletSendFieldAmount]: "Amount",
+  [LangKeys.MyWalletSendFieldAddress]: "Address",
+  [LangKeys.MyWalletSendFieldAddressPlaceholder]: "Paste in address here...",
+  [LangKeys.MyWalletSendFieldPaymentId]: "Payment ID",
+  [LangKeys.MyWalletSendFieldPaymentIdPlaceholder]: "Type",
+  [LangKeys.MyWalletMoneroAvaliableBalance]: "Avaliable Balance",
+  [LangKeys.MyWalletMoneroReserveredFunds]: "Reservered Funds",
+  [LangKeys.MyWalletMoneroLockedFunds]: "Locked Funds",
+  [LangKeys.MyWalletTabSend]: "Send",
+  [LangKeys.MyWalletTabReceive]: "Receive",
+  [LangKeys.MyWalletGenerateAddressBtn]: "Generate a new stub address",
+  [LangKeys.MyWalletSendSuccessNotif]:
+    "The XMR transaction has been sent successfully.",
+
+  [LangKeys.MyWalletDetailTransactionId]: "Transaction ID",
+  [LangKeys.MyWalletDetailFee]: "Fee",
+  [LangKeys.MyWalletDetailTransactionKey]: "Transaction Key",
+  [LangKeys.MyWalletDetailHeight]: "Height",
+  [LangKeys.MyWalletDetailReceiptAddress]: "Receipt Address",
 };
 
 export default LangPackEN;

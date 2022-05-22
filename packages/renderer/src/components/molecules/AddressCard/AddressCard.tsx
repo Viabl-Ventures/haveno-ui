@@ -1,8 +1,9 @@
-import { MouseEventHandler, useRef, useState } from "react";
+import type { MouseEventHandler } from "react";
+import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import QRCode from "react-qr-code";
 import { useModals } from "@mantine/modals";
-import { Anchor, Box, createStyles, Group } from "@mantine/core";
+import { Anchor, Box, createStyles, Group, Skeleton } from "@mantine/core";
 import { DetailItem } from "@atoms/DetailItem";
 import { LangKeys } from "@constants/lang";
 import { copyTextToClipboard } from "@utils/copy-to-clipboard";
@@ -18,6 +19,7 @@ interface AddressCardProps {
 interface AddressCardStyleProps {
   primary: boolean;
 }
+type AddressCardSkeletonProps = Pick<AddressCardProps, "label" | "primary">;
 
 const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
   root: {
@@ -31,10 +33,17 @@ const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
     paddingRight: theme.spacing.md,
     borderRadius: theme.radius.md,
   },
+  detailItemRoot: {
+    width: "100%",
+  },
+  contentGroup: {
+    minWidth: "100%",
+  },
   address: {
     textOverflow: "ellipsis",
     overflow: "hidden",
     whiteSpace: "nowrap",
+    width: "100%",
   },
   addressBtns: {
     marginLeft: "auto",
@@ -85,15 +94,14 @@ export function AddressCard({
       onCancel: () => console.log("Cancel"),
       onConfirm: () => console.log("Confirmed"),
       size: 690,
-      target: "#root",
       withCloseButton: false,
     });
   };
 
   return (
     <Group className={classes.root}>
-      <DetailItem label={label}>
-        <Group noWrap>
+      <DetailItem label={label} sx={{ width: "100%" }}>
+        <Group noWrap className={classes.contentGroup}>
           <Box className={classes.address}>{address}</Box>
           <Group noWrap className={classes.addressBtns}>
             <Anchor onClick={handleCopyClick} underline>
@@ -116,6 +124,25 @@ export function AddressCard({
               />
             </Anchor>
           </Group>
+        </Group>
+      </DetailItem>
+    </Group>
+  );
+}
+
+export function AddressCardSkeleton({
+  label,
+  primary,
+}: AddressCardSkeletonProps) {
+  const { classes } = useStyles({ primary });
+
+  return (
+    <Group className={classes.root}>
+      <DetailItem label={label}>
+        <Group noWrap className={classes.contentGroup}>
+          <Box className={classes.address}>
+            <Skeleton width="60%" height={8} mt="xs" />
+          </Box>
         </Group>
       </DetailItem>
     </Group>

@@ -14,23 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Sidebar } from ".";
+import { useMutation } from "react-query";
+import { useHavenoClient } from "./useHavenoClient";
 
-export default {
-  title: "organisms/Sidebar",
-  component: Sidebar,
-} as ComponentMeta<typeof Sidebar>;
+export function useSetXmrNewSubaddress() {
+  const client = useHavenoClient();
 
-const Template: ComponentStory<typeof Sidebar> = () => {
-  return (
-    <Stack>
-      <Sidebar />
-    </Stack>
-  );
-};
-
-export const Default = Template.bind({});
-
-Default.args = {};
+  return useMutation(async () => {
+    return client.getXmrNewSubaddress();
+  });
+}

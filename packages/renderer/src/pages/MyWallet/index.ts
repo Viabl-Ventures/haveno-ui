@@ -14,23 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Sidebar } from ".";
-
-export default {
-  title: "organisms/Sidebar",
-  component: Sidebar,
-} as ComponentMeta<typeof Sidebar>;
-
-const Template: ComponentStory<typeof Sidebar> = () => {
-  return (
-    <Stack>
-      <Sidebar />
-    </Stack>
-  );
-};
-
-export const Default = Template.bind({});
-
-Default.args = {};
+export * from "./MyWallet";

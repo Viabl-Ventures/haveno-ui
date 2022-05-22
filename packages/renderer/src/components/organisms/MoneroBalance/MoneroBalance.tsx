@@ -4,6 +4,7 @@ import { DetailItem } from "@atoms/DetailItem";
 
 const useStyles = createStyles((theme) => ({
   root: {
+    backgroundColor: theme.white,
     border: `1px solid ${theme.colors.gray[3]}`,
     paddingTop: theme.spacing.md,
     paddingBottom: theme.spacing.md,

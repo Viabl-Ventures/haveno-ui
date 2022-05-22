@@ -1,22 +1,28 @@
+import type { DefaultProps } from "@mantine/core";
 import { Stack, createStyles, Text } from "@mantine/core";
 
-interface DetailProps {
+interface DetailProps extends DefaultProps {
   label?: string;
   children: React.ReactNode | string;
 }
 
-export function DetailItem({ label, children }: DetailProps) {
-  const { classes } = useStyles();
+export function DetailItem({
+  label,
+  children,
+  classNames,
+  ...other
+}: DetailProps) {
+  const { classes } = useStyles({}, { name: "DetailItem", classNames });
 
   return (
-    <Stack spacing={0} className={classes.root}>
+    <Stack spacing={0} className={classes.root} {...other}>
       {label && <Text className={classes.label}>{label}</Text>}
       <Text className={classes.content}>{children}</Text>
     </Stack>
   );
 }
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, {}) => ({
   root: {},
   label: {
     textTransform: "uppercase",
