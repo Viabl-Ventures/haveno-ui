@@ -50,12 +50,14 @@ export function AddNode(props: AddNodeProps) {
       <form onSubmit={onFormSubmit(handleSubmit)}>
         <Stack>
           <TextInput
+            aria-label="Node address"
             id="address"
             label="Node address"
             required
             {...getInputProps("address")}
           />
           <TextInput
+            aria-label="Port"
             id="port"
             label="Port"
             required
