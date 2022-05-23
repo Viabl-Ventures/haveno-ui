@@ -46,19 +46,9 @@ export const store = {
   getAccountInfo: async (): Promise<AccountInfoDto> =>
     ipcRenderer.invoke(IpcChannels.GetAccountInfo),
 
-  // adds a new remote node to the list
-  saveRemoteNode: async (
-    data: IPreferences["remoteNodes"][number]
-  ): Promise<void> => ipcRenderer.invoke(IpcChannels.SetRemoteNode, data),
-
-  // selects the remote nodewith the specified id
-  setRemoteNode: async (id: string): Promise<void> =>
-    ipcRenderer.invoke(IpcChannels.SetRemoteNode, id),
-
-  setLocalNodeSettings: async (
-    value: IPreferences["localNodeSettings"]
-  ): Promise<void> =>
-    ipcRenderer.invoke(IpcChannels.SetLocalNodeSettings, value),
+  // sets the selected monero node url; empty indicates local node
+  setMoneroNode: async (uri?: string): Promise<void> =>
+    ipcRenderer.invoke(IpcChannels.SetMoneroNode, uri),
 
   getPreferences: async (): Promise<IPreferences> =>
     ipcRenderer.invoke(IpcChannels.GetPreferences),

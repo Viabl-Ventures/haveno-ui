@@ -15,27 +15,25 @@
 // =============================================================================
 
 import { Stack, createStyles } from "@mantine/core";
-import { AccountLayout } from "@templates/AccountLayout";
 import { FormattedMessage } from "react-intl";
 import { NodeConnectSwitch } from "@molecules/NodeConnectSwitch";
 import { BodyText, Heading } from "@atoms/Typography";
+import { AccountLayout } from "@templates/AccountLayout";
 import { ReactComponent as CloudIcon } from "@assets/setting-cloud.svg";
 import { ReactComponent as ServerIcon } from "@assets/setting-server.svg";
-// import { useIsMoneroNodeRunning } from "@hooks/haveno/useIsMoneroNodeRunning";
-// import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
+import { useIsLocalNodeSelected } from "@hooks/storage/useIsLocalNodeSelected";
 import { LangKeys } from "@constants/lang";
-import { LocalNodeSettings } from "./LocalNodeSettings";
-import { RemoteNodeSettings } from "./RemoteNodeSettings";
+import { LocalNode } from "./LocalNode";
+import { RemoteNode } from "./RemoteNode";
 
 enum NodeTypes {
   Local = "local",
   Remote = "remote",
 }
 
-export function NodeSettings() {
+export function Settings() {
   const { classes } = useStyles();
-  // const { isLoading: isNodeSettingsLoading } = useMoneroNodeSettings();
-  // const { isLoading: isMoneroNodeIsLoading } = useIsMoneroNodeRunning();
+  const { data: isLocalNodeSelected, isSuccess } = useIsLocalNodeSelected();
 
   return (
     <AccountLayout>
@@ -52,38 +50,42 @@ export function NodeSettings() {
           blockchain. Choose ‘remote node’ if you prefer a faster but less
           secure experience.
         </BodyText>
-        <NodeConnectSwitch
-          initialTab={NodeTypes.Local}
-          className={classes.connectSwitch}
-        >
-          <NodeConnectSwitch.Method
-            active={true}
-            current={true}
-            tabKey={NodeTypes.Local}
-            label={
-              <FormattedMessage
-                id={LangKeys.AccountNodeSettingsLocal}
-                defaultMessage="Local Node"
-              />
+        {isSuccess && (
+          <NodeConnectSwitch
+            initialTab={
+              isLocalNodeSelected ? NodeTypes.Local : NodeTypes.Remote
             }
-            icon={<ServerIcon width={32} height={62} />}
+            className={classes.connectSwitch}
           >
-            <LocalNodeSettings />
-          </NodeConnectSwitch.Method>
+            <NodeConnectSwitch.Method
+              current={isLocalNodeSelected}
+              tabKey={NodeTypes.Local}
+              label={
+                <FormattedMessage
+                  id={LangKeys.AccountNodeSettingsLocal}
+                  defaultMessage="Local Node"
+                />
+              }
+              icon={<ServerIcon width={32} height={62} />}
+            >
+              <LocalNode />
+            </NodeConnectSwitch.Method>
 
-          <NodeConnectSwitch.Method
-            tabKey={NodeTypes.Remote}
-            label={
-              <FormattedMessage
-                id={LangKeys.AccountNodeSettingsRemote}
-                defaultMessage="Remote Node"
-              />
-            }
-            icon={<CloudIcon height={54} width={58} />}
-          >
-            <RemoteNodeSettings />
-          </NodeConnectSwitch.Method>
-        </NodeConnectSwitch>
+            <NodeConnectSwitch.Method
+              current={!isLocalNodeSelected}
+              tabKey={NodeTypes.Remote}
+              label={
+                <FormattedMessage
+                  id={LangKeys.AccountNodeSettingsRemote}
+                  defaultMessage="Remote Node"
+                />
+              }
+              icon={<CloudIcon height={54} width={58} />}
+            >
+              <RemoteNode />
+            </NodeConnectSwitch.Method>
+          </NodeConnectSwitch>
+        )}
       </Stack>
     </AccountLayout>
   );

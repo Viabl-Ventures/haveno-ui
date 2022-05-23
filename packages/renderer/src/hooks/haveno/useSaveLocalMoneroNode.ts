@@ -15,27 +15,47 @@
 // =============================================================================
 
 import { useMutation, useQueryClient } from "react-query";
-import { useSaveRemoteNode } from "@hooks/storage/useSaveRemoteNode";
+import { MoneroNodeSettings } from "haveno-ts";
 import { havenod } from "@utils/havenod";
 import { QueryKeys } from "@constants/query-keys";
+import { useSaveRemoteNode } from "@hooks/storage/useSaveRemoteNode";
 
 interface Variables {
-  uri: string;
+  blockchainPath: string;
+  bootstrapUrl: string;
+  startupFlags: Array<string>;
 }
 
-export function useSetMoneroConnection() {
+export function useSaveLocalMoneroNode() {
   const queryClient = useQueryClient();
   const { mutateAsync: saveRemoteNode } = useSaveRemoteNode();
 
   return useMutation<void, Error, Variables>(
-    async (variables: Variables) => {
+    async (data: Variables) => {
       const client = await havenod.getClient();
-      await client.setMoneroConnection(variables.uri);
-      await saveRemoteNode({ uri: variables.uri });
+
+      const nodeSettings = new MoneroNodeSettings();
+      nodeSettings.setBlockchainPath(data.blockchainPath);
+      nodeSettings.setStartupFlagsList(data.startupFlags);
+      nodeSettings.setBootstrapUrl(data.bootstrapUrl);
+
+      if (await client.isMoneroNodeRunning()) {
+        // stop the node if it's running
+        await client.stopMoneroNode();
+      }
+      // start the node with new settings
+      try {
+        await client.startMoneroNode(nodeSettings);
+        await saveRemoteNode({}); // clear the saved remote node
+      } catch (ex) {
+        console.log(ex);
+        throw new Error("Failed to start the monero node");
+      }
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(QueryKeys.MoneroConnection);
+        queryClient.invalidateQueries(QueryKeys.MoneroConnections);
+        queryClient.invalidateQueries(QueryKeys.MoneroNodeIsRunning);
       },
     }
   );

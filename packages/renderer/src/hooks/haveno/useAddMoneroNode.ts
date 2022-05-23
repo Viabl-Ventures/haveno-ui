@@ -15,41 +15,39 @@
 // =============================================================================
 
 import { useMutation, useQueryClient } from "react-query";
+import { UrlConnection } from "haveno-ts";
+import { havenod } from "@utils/havenod";
 import { QueryKeys } from "@constants/query-keys";
-import { saveLocalNode } from "@src/utils/saveLocalNode";
-import { saveRemoteNode } from "@src/utils/saveRemoteNode";
 
 interface Variables {
-  local?: {
-    blockchainPath: string;
-    startupFlags: Array<string>;
-    address: string;
-    port: number;
-    daemonPassword: string;
-  };
-  remote?: {
-    address: string;
-    port: number;
-    login?: string;
-    password?: string;
-  };
+  address: string;
+  port: string;
+  user?: string;
+  password?: string;
 }
 
-export function useSaveMoneroNodeSettings() {
+export function useAddMoneroNode() {
   const queryClient = useQueryClient();
 
   return useMutation<void, Error, Variables>(
     async (data: Variables) => {
-      if (data.local) {
-        await saveLocalNode(data.local);
-      } else if (data.remote) {
-        await saveRemoteNode(data.remote, { apply: true });
+      const client = await havenod.getClient();
+      const url = new URL(data.address);
+      if (data.port) {
+        url.port = data.port + "";
       }
+      const conn = new UrlConnection().setUrl(url.toString()).setPriority(1);
+      if (data.user) {
+        conn.setUsername(data.user);
+      }
+      if (data.password) {
+        conn.setPassword(data.password);
+      }
+      client.addMoneroConnection(conn);
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(QueryKeys.MoneroNodeSettings);
-        queryClient.invalidateQueries(QueryKeys.MoneroNodeIsRunning);
+        queryClient.invalidateQueries(QueryKeys.MoneroConnections);
       },
     }
   );

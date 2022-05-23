@@ -14,26 +14,25 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Box, Stack, Grid, Group } from "@mantine/core";
-import { joiResolver, useForm } from "@mantine/form";
+import { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { Stack, Grid, Group } from "@mantine/core";
+import { joiResolver, useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { Button } from "@atoms/Buttons";
-import { LangKeys } from "@constants/lang";
 import { TextInput } from "@atoms/TextInput";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
-import { useSaveMoneroNodeSettings } from "@hooks/haveno/useSaveMoneroNodeSettings";
+import { useSaveLocalMoneroNode } from "@hooks/haveno/useSaveLocalMoneroNode";
+import { LangKeys } from "@constants/lang";
 import { StartStopDaemon } from "./StartStopDaemon";
-import type { LocalSettingsFormValues } from "./_hooks";
+import type { LocalSettingsFormValues } from "./_types";
 import { useLocalSettingsValidation } from "./_hooks";
 import { transformSettingsRequestToForm } from "./_utils";
-import { useEffect } from "react";
-import { PasswordInput } from "@atoms/PasswordInput";
 
-export function LocalNodeSettings() {
+export function LocalNode() {
   const { data: nodeSettings } = useMoneroNodeSettings();
-  const { mutate: saveNodeSettings, isLoading: isSaving } =
-    useSaveMoneroNodeSettings();
+  const { mutate: saveLocalNode, isLoading: isSaving } =
+    useSaveLocalMoneroNode();
   const intl = useIntl();
 
   const validation = useLocalSettingsValidation();
@@ -43,23 +42,20 @@ export function LocalNodeSettings() {
       initialValues: {
         blockchainLocation: "",
         startupFlags: "",
-        daemonAddress: "",
+        bootstrapUrl: "",
         port: "",
-        daemonPassword: "",
       },
       validate: joiResolver(validation),
     });
 
-  const handleFormSubmit = (values: LocalSettingsFormValues) => {
-    saveNodeSettings(
+  const handleSubmit = (values: LocalSettingsFormValues) => {
+    saveLocalNode(
       {
-        local: {
-          blockchainPath: values.blockchainLocation,
-          startupFlags: values.startupFlags.split(/\s|=/),
-          address: values.daemonAddress,
-          port: Number(values.port),
-          daemonPassword: values.daemonPassword,
-        },
+        blockchainPath: values.blockchainLocation,
+        startupFlags: values.startupFlags.split(/\s|=/),
+        bootstrapUrl: values.bootstrapUrl
+          ? (new URL(values.bootstrapUrl).port = values.port)
+          : "",
       },
       {
         onSuccess: () => {
@@ -67,7 +63,7 @@ export function LocalNodeSettings() {
             color: "green",
             message: intl.formatMessage({
               id: LangKeys.AccountNodeLocalSaveNotification,
-              defaultMessage: "Local node settings updated successfully",
+              defaultMessage: "Local node settings saved successfully",
             }),
           });
         },
@@ -90,10 +86,10 @@ export function LocalNodeSettings() {
   }, [nodeSettings]);
 
   return (
-    <Box>
+    <>
       <StartStopDaemon />
 
-      <form onSubmit={onSubmit(handleFormSubmit)}>
+      <form onSubmit={onSubmit(handleSubmit)}>
         <Stack spacing="lg">
           <TextInput
             id="blockchainLocation"
@@ -118,15 +114,14 @@ export function LocalNodeSettings() {
           <Grid>
             <Grid.Col span={9}>
               <TextInput
-                id="daemonAddress"
+                id="bootstrapUrl"
                 label={
                   <FormattedMessage
-                    id={LangKeys.AccountNodeFieldDaemonAddress}
-                    defaultMessage="Daemon Address"
+                    id={LangKeys.AccountNodeFieldBootstrapUrl}
+                    defaultMessage="Bootstrap URL"
                   />
                 }
-                required
-                {...getInputProps("daemonAddress")}
+                {...getInputProps("bootstrapUrl")}
               />
             </Grid.Col>
             <Grid.Col span={3}>
@@ -138,17 +133,10 @@ export function LocalNodeSettings() {
                     defaultMessage="Port"
                   />
                 }
-                required
                 {...getInputProps("port")}
               />
             </Grid.Col>
           </Grid>
-          <PasswordInput
-            id="daemonPassword"
-            label="Daemon password"
-            required
-            {...getInputProps("daemonPassword")}
-          />
 
           <Group position="right" mt="md">
             <Button
@@ -162,6 +150,6 @@ export function LocalNodeSettings() {
           </Group>
         </Stack>
       </form>
-    </Box>
+    </>
   );
 }

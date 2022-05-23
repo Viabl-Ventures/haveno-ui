@@ -14,25 +14,14 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useQuery } from "react-query";
-import { QueryKeys } from "@constants/query-keys";
-// import { havenod } from "@utils/havenod";
+import Joi from "joi";
+import type { LocalSettingsFormValues } from "./_types";
 
-interface MoneroRemoteNodes {
-  title: string;
-  isActive: boolean;
-}
-
-export function useMoneroRemoteNodes() {
-  return useQuery<MoneroRemoteNodes[], Error>(
-    QueryKeys.MoneroRemoteNodes,
-    async () => {
-      // const client = await havenod.getClient();
-      return Promise.resolve([
-        { title: "node.moneroworldcom:18089", isActive: true },
-        { title: "node.xmr.pt:18081", isActive: true },
-        { title: "node.monero.net:18081", isActive: true },
-      ]);
-    }
-  );
+export function useLocalSettingsValidation() {
+  return Joi.object<LocalSettingsFormValues>({
+    blockchainLocation: Joi.string().empty("").uri({ relativeOnly: true }),
+    startupFlags: Joi.string().empty(""),
+    bootstrapUrl: Joi.string().allow("").uri({ allowRelative: false }),
+    port: Joi.number().allow("").port(),
+  });
 }

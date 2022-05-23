@@ -14,22 +14,24 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ReactNode } from "react";
-import type { UnstyledButtonProps } from "@mantine/core";
-import { UnstyledButton } from "@mantine/core";
-import { BodyText } from "@atoms/Typography";
+import { QueryKeys } from "@constants/query-keys";
+import { useMutation, useQueryClient } from "react-query";
 
-interface TextButtonProps extends UnstyledButtonProps<"button"> {
-  children: ReactNode;
+interface Variables {
+  uri?: string;
 }
 
-export function TextButton(props: TextButtonProps) {
-  const { children, ...rest } = props;
-  return (
-    <UnstyledButton {...rest} sx={{ textAlign: "center" }}>
-      <BodyText component="span" heavy sx={{ textDecoration: "underline" }}>
-        {children}
-      </BodyText>
-    </UnstyledButton>
+export function useSaveRemoteNode() {
+  const queryClient = useQueryClient();
+
+  return useMutation<void, Error, Variables>(
+    async (variables: Variables) => {
+      return window.electronStore.setMoneroNode(variables.uri);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(QueryKeys.StoragePreferences);
+      },
+    }
   );
 }

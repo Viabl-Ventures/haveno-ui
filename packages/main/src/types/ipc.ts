@@ -21,11 +21,7 @@ export enum IpcChannels {
   VerifyPassword = "store:accountinfo.verifyPassword",
   SetPrimaryFiat = "store:accountinfo.primaryFiat",
   GetPreferences = "store:preferences",
-  SaveRemoteNode = "store:preferences.saveRemoteNode",
-  DeleteRemoteNode = "store:preferences.deleteRemoteNode",
-  SetRemoteNode = "store:preferences.setRemoteNode",
-  SetLocalNodeSettings = "store:preferences:setLocalNodeSettings",
-  SetNodeType = "store:preferences:setNodeType",
+  SetMoneroNode = "store:preferences.setMoneroNode",
 
   VerifyAuthToken = "verifyAuthToken",
 }

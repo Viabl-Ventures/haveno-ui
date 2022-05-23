@@ -14,22 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ReactNode } from "react";
-import type { UnstyledButtonProps } from "@mantine/core";
-import { UnstyledButton } from "@mantine/core";
-import { BodyText } from "@atoms/Typography";
-
-interface TextButtonProps extends UnstyledButtonProps<"button"> {
-  children: ReactNode;
-}
-
-export function TextButton(props: TextButtonProps) {
-  const { children, ...rest } = props;
-  return (
-    <UnstyledButton {...rest} sx={{ textAlign: "center" }}>
-      <BodyText component="span" heavy sx={{ textDecoration: "underline" }}>
-        {children}
-      </BodyText>
-    </UnstyledButton>
-  );
+export interface LocalSettingsFormValues {
+  blockchainLocation: string;
+  startupFlags: string;
+  bootstrapUrl: string;
+  port: string;
 }

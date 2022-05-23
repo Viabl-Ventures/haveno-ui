@@ -22,7 +22,7 @@ import { Login } from "@pages/Login";
 import { CreateAccount, Welcome } from "@pages/Onboarding";
 import {
   Backup,
-  NodeSettings,
+  Settings,
   PaymentAccounts,
   Security,
   Wallet,
@@ -49,7 +49,7 @@ export function AppRoutes() {
         path={ROUTES.NodeSettings}
         element={
           <ProtectedRoute>
-            <NodeSettings />
+            <Settings />
           </ProtectedRoute>
         }
       />
