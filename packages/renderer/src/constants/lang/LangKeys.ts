@@ -90,4 +90,8 @@ export enum LangKeys {
   MyWalletSendBackToWallet = "myWallet.sendForm.backToWalletBtn",
   MyWalletSendSuccessModalTitle = "myWallet.sendSuccessModal.title",
   MyWalletSendSuccessModalMsg = "myWallet.sendSuccessModal.message",
+
+  MyWalletQRModalPrimaryAddress = "myWallet.qrModal.primaryAddress",
+  MyWalletQRModalReturnBtn = "myWallet.qrModal.returnBtn",
+  MyWalletQRModalDownloadQRBtn = "myWallet.qrModal.downloadBtn",
 }

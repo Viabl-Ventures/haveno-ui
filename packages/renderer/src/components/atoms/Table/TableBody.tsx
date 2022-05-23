@@ -44,7 +44,7 @@ export function TableBody() {
             ))}
           </tr>
           {row.getIsExpanded() && rowSubComponent ? (
-            <tr>
+            <tr key={`${row.id}-subcomponent`}>
               <td colSpan={row.getVisibleCells()?.length}>
                 {rowSubComponent({ row })}
               </td>

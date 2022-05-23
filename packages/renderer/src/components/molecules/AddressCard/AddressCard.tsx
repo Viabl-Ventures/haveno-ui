@@ -16,7 +16,7 @@
 
 import type { MouseEventHandler } from "react";
 import { useRef, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import QRCode from "react-qr-code";
 import { useModals } from "@mantine/modals";
@@ -32,38 +32,26 @@ import { DetailItem } from "@atoms/DetailItem";
 import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 import { copyTextToClipboard } from "@utils/copy-to-clipboard";
+import { DetailItemCard } from "@atoms/DetailItemCard/DetailItemCard";
 
 interface AddressCardProps {
   label?: string;
   address: string;
   primary?: boolean;
-
-  onCopyClick?: MouseEventHandler;
-  onQRClick?: MouseEventHandler;
-  onReturnClick?: MouseEventHandler;
-  onQRDownloadClick?: MouseEventHandler;
   qrModalProps?: OpenConfirmModal;
 }
 
-interface AddressCardStyleProps {
-  primary?: boolean;
-}
 type AddressCardSkeletonProps = Pick<AddressCardProps, "label" | "primary">;
+
+interface AddressCardQRModalContentProps {
+  address: string;
+  onQRDownloadClick?: () => void;
+  onReturnClick?: () => void;
+}
 
 const COPY_TEXT_TIMEOUT = 500;
 
-const useStyles = createStyles((theme, { primary }: AddressCardStyleProps) => ({
-  root: {
-    background: primary ? theme.colors.gray[2] : theme.white,
-    border: `1px solid ${
-      primary ? theme.colors.gray[2] : theme.colors.gray[3]
-    }`,
-    paddingTop: theme.spacing.sm,
-    paddingBottom: theme.spacing.sm,
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
-    borderRadius: theme.radius.md,
-  },
+const useStyles = createStyles((theme) => ({
   contentGroup: {
     minWidth: "100%",
   },
@@ -89,14 +77,10 @@ export function AddressCard({
   label,
   address,
   primary = false,
-  onCopyClick,
-  onQRClick,
-  onReturnClick,
-  onQRDownloadClick,
   qrModalProps,
 }: AddressCardProps) {
   const modals = useModals();
-  const { classes } = useStyles({ primary });
+  const { classes } = useStyles();
   const [isCopied, setIsCopied] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -116,29 +100,8 @@ export function AddressCard({
 
   const handleQRClick = () => {
     modals.openModal({
-      children: (
-        <Box>
-          <DetailItem
-            classNames={{ content: classes.qrModalAddress }}
-            label="Primary Address"
-          >
-            {address}
-          </DetailItem>
-          <Box className={classes.qrRoot}>
-            <QRCode value={address} size={370} />
-          </Box>
-
-          <SimpleGrid cols={2} mt="xl">
-            <Button flavor="neutral" onClick={onReturnClick}>
-              Return
-            </Button>
-            <Button onClick={onQRDownloadClick}>Download QR</Button>
-          </SimpleGrid>
-        </Box>
-      ),
+      children: <AddressCardQRModalContent address={address} />,
       labels: { confirm: "Confirm", cancel: "Cancel" },
-      onCancel: () => console.log("Cancel"),
-      onConfirm: () => console.log("Confirmed"),
       size: 690,
       withCloseButton: false,
       ...qrModalProps,
@@ -146,34 +109,34 @@ export function AddressCard({
   };
 
   return (
-    <Group className={classes.root}>
-      <DetailItem label={label} sx={{ width: "100%" }}>
-        <Group noWrap className={classes.contentGroup}>
-          <Box className={classes.address}>{address}</Box>
-          <Group noWrap className={classes.addressBtns}>
-            <Anchor onClick={handleCopyClick} underline>
-              {!isCopied ? (
-                <FormattedMessage
-                  id={LangKeys.AccountCardCopyBtn}
-                  defaultMessage="Copy"
-                />
-              ) : (
-                <FormattedMessage
-                  id={LangKeys.AccountCardCopiedBtn}
-                  defaultMessage="Copied"
-                />
-              )}
-            </Anchor>
-            <Anchor onClick={handleQRClick} underline>
+    <DetailItemCard label={label} primary={primary}>
+      <Group noWrap className={classes.contentGroup}>
+        <Box className={classes.address}>{address}</Box>
+
+        <Group noWrap className={classes.addressBtns}>
+          <Anchor onClick={handleCopyClick} underline>
+            {!isCopied ? (
               <FormattedMessage
-                id={LangKeys.AccountCardQRBtn}
-                defaultMessage="QR"
+                id={LangKeys.AccountCardCopyBtn}
+                defaultMessage="Copy"
               />
-            </Anchor>
-          </Group>
+            ) : (
+              <FormattedMessage
+                id={LangKeys.AccountCardCopiedBtn}
+                defaultMessage="Copied"
+              />
+            )}
+          </Anchor>
+
+          <Anchor onClick={handleQRClick} underline>
+            <FormattedMessage
+              id={LangKeys.AccountCardQRBtn}
+              defaultMessage="QR"
+            />
+          </Anchor>
         </Group>
-      </DetailItem>
-    </Group>
+      </Group>
+    </DetailItemCard>
   );
 }
 
@@ -181,17 +144,72 @@ export function AddressCardSkeleton({
   label,
   primary,
 }: AddressCardSkeletonProps) {
-  const { classes } = useStyles({ primary });
+  const { classes } = useStyles();
 
   return (
-    <Group className={classes.root}>
-      <DetailItem label={label}>
-        <Group noWrap className={classes.contentGroup}>
-          <Box className={classes.address}>
-            <Skeleton width="60%" height={8} mt="xs" />
-          </Box>
-        </Group>
+    <DetailItemCard label={label} primary={primary}>
+      <Box className={classes.address}>
+        <Skeleton
+          width="80%"
+          height={8}
+          mt="xs"
+          sx={(theme) => ({
+            "&:before": {
+              backgroundColor: primary
+                ? theme.colors.gray[1]
+                : theme.colors.gray[0],
+            },
+            "&:after": {
+              backgroundColor: primary
+                ? theme.colors.gray[4]
+                : theme.colors.gray[3],
+            },
+          })}
+        />
+      </Box>
+    </DetailItemCard>
+  );
+}
+
+function AddressCardQRModalContent({
+  address,
+  onQRDownloadClick,
+  onReturnClick,
+}: AddressCardQRModalContentProps) {
+  const { classes } = useStyles();
+  const { formatMessage } = useIntl();
+
+  return (
+    <Box>
+      <DetailItem
+        classNames={{ content: classes.qrModalAddress }}
+        label={formatMessage({
+          id: LangKeys.MyWalletQRModalPrimaryAddress,
+          defaultMessage: "Primary Address",
+        })}
+      >
+        {address}
       </DetailItem>
-    </Group>
+
+      <Box className={classes.qrRoot}>
+        <QRCode value={address} size={370} />
+      </Box>
+
+      <SimpleGrid cols={2} mt="xl">
+        <Button flavor="neutral" onClick={onReturnClick}>
+          <FormattedMessage
+            id={LangKeys.MyWalletQRModalReturnBtn}
+            defaultMessage="Return"
+          />
+        </Button>
+
+        <Button onClick={onQRDownloadClick}>
+          <FormattedMessage
+            id={LangKeys.MyWalletQRModalDownloadQRBtn}
+            defaultMessage="Download QR"
+          />
+        </Button>
+      </SimpleGrid>
+    </Box>
   );
 }

@@ -84,15 +84,17 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletSendSuccessNotif]:
     "The XMR transaction has been sent successfully.",
 
-  [LangKeys.MyWalletDetailTransactionId]: "Transaction ID",
-  [LangKeys.MyWalletDetailFee]: "Fee",
-  [LangKeys.MyWalletDetailTransactionKey]: "Transaction Key",
-  [LangKeys.MyWalletDetailHeight]: "Height",
-  [LangKeys.MyWalletDetailReceiptAddress]: "Receipt Address",
+  [LangKeys.WalletDetailTransactionId]: "Transaction ID",
+  [LangKeys.WalletDetailFee]: "Fee",
+  [LangKeys.WalletDetailTransactionKey]: "Transaction Key",
+  [LangKeys.WalletDetailHeight]: "Height",
+  [LangKeys.WalletDetailReceiptAddress]: "Receipt Address",
 
   [LangKeys.MyWalletBalancePrimaryAddress]: "Primary Address",
   [LangKeys.MyWalletSendBackToWallet]: "Back to Wallet",
   [LangKeys.MyWalletSendSuccessModalTitle]: "Fund are sent!",
+
+  [LangKeys.MyWalletQRModalPrimaryAddress]: "Primary Address",
 };
 
 export default LangPackEN;

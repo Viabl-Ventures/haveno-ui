@@ -19,6 +19,7 @@ import { LangKeys } from "@constants/lang";
 import { useBalances } from "@hooks/haveno/useBalances";
 import { MoneroBalance } from "@organisms/MoneroBalance";
 import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
+import { Currency } from "@atoms/Currency";
 
 interface MyWalletMoneroBalanceBootProps {
   children: JSX.Element;
@@ -28,7 +29,7 @@ export function MyWalletMoneroBalanceContent() {
   const { formatMessage } = useIntl();
   const { isLoading: isBalancesLoading, data: balanceInfo } = useBalances();
 
-  if (isBalancesLoading) {
+  if (isBalancesLoading || !balanceInfo) {
     return <>Loading ...</>;
   }
   return (
@@ -40,7 +41,7 @@ export function MyWalletMoneroBalanceContent() {
         })}
         data-testid="avaliable-balance"
       >
-        {balanceInfo?.getBalance()}
+        <Currency value={balanceInfo.balance} />
       </MoneroBalance.Detail>
 
       <MoneroBalance.Detail
@@ -50,7 +51,7 @@ export function MyWalletMoneroBalanceContent() {
         })}
         data-testid="reserverd-funds"
       >
-        {balanceInfo?.getReservedOfferBalance()}
+        <Currency value={balanceInfo.reservedOfferBalance || 0} />
       </MoneroBalance.Detail>
 
       <MoneroBalance.Detail
@@ -60,7 +61,7 @@ export function MyWalletMoneroBalanceContent() {
         })}
         data-testid="locked-funds"
       >
-        {balanceInfo?.getLockedBalance()}
+        <Currency value={balanceInfo.lockedBalance || 0} />
       </MoneroBalance.Detail>
     </MoneroBalance>
   );

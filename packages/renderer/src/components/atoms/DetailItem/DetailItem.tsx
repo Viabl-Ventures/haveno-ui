@@ -17,13 +17,13 @@
 import type { DefaultProps } from "@mantine/core";
 import { Stack, createStyles, Text } from "@mantine/core";
 
-interface DetailProps extends DefaultProps {
+export interface DetailItemProps extends DefaultProps {
   label?: string;
   textAlign?: "left" | "right";
   children: React.ReactNode | string;
 }
 
-type DetailItemStyleProps = Pick<DetailProps, "textAlign">;
+type DetailItemStyleProps = Pick<DetailItemProps, "textAlign">;
 
 export function DetailItem({
   label,
@@ -32,7 +32,7 @@ export function DetailItem({
   className,
   textAlign,
   ...other
-}: DetailProps) {
+}: DetailItemProps) {
   const { classes, cx } = useStyles(
     { textAlign },
     { name: "DetailItem", classNames }

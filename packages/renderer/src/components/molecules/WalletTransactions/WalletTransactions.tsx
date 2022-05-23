@@ -24,7 +24,7 @@ import {
 import type { TWalletTransaction } from "./_types";
 import { createStyles } from "@mantine/core";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   root: {
     "tbody tr td:first-child": {
       paddingLeft: 0,
