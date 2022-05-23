@@ -63,6 +63,37 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountWalletDesc]:
     "La billetera Haveno está permanentemente conectada a su cuenta. Solo guardar su frase inicial no es suficiente para recuperar su cuenta, necesita descargar una copia de seguridad de su cuenta, que puede descargar a través de la sección de copia de seguridad.",
   [LangKeys.AccountWalletPassword]: "contraseña",
+  [LangKeys.AccountCardCopyBtn]: "Dupdo",
+  [LangKeys.AccountCardCopiedBtn]: "Copiada",
+  [LangKeys.AccountCardQRBtn]: "QR",
+
+  [LangKeys.MyWalletSendFieldAmount]: "Monto",
+  [LangKeys.MyWalletSendFieldAddress]: "Dirección",
+  [LangKeys.MyWalletSendFieldAddressPlaceholder]: "Pegue la dirección aquí...",
+  [LangKeys.MyWalletSendFieldPaymentId]: "ID de pago",
+  [LangKeys.MyWalletSendFieldPaymentIdPlaceholder]: "Tipo",
+  [LangKeys.MyWalletMoneroAvaliableBalance]: "Saldo disponible",
+  [LangKeys.MyWalletMoneroReserveredFunds]: "Fondos Reservados",
+  [LangKeys.MyWalletMoneroLockedFunds]: "Fondos bloqueados",
+  [LangKeys.MyWalletTabSend]: "Enviar",
+  [LangKeys.MyWalletTabReceive]: "Recibir",
+  [LangKeys.MyWalletGenerateAddressBtn]: "Generar una nueva dirección",
+  [LangKeys.MyWalletReceiveNoAddressesMsg]:
+    "No ha generado una dirección, por favor genere una.",
+  [LangKeys.MyWalletSendSuccessNotif]:
+    "La transacción XMR se ha enviado con éxito.",
+
+  [LangKeys.WalletDetailTransactionId]: "ID de transacción",
+  [LangKeys.WalletDetailFee]: "Tarifa",
+  [LangKeys.WalletDetailTransactionKey]: "Clave de transacción",
+  [LangKeys.WalletDetailHeight]: "Altura",
+  [LangKeys.WalletDetailReceiptAddress]: "Dirección de recibo",
+
+  [LangKeys.MyWalletBalancePrimaryAddress]: "Dirección primaria",
+  [LangKeys.MyWalletSendBackToWallet]: "Volver a Monedero",
+  [LangKeys.MyWalletSendSuccessModalTitle]: "¡Se envían fondos!",
+
+  [LangKeys.MyWalletQRModalPrimaryAddress]: "Dirección primaria",
 };
 
 export default LangPackES;

@@ -25,7 +25,7 @@ import { NavbarLayout } from "@templates/NavbarLayout";
 import { LangKeys } from "@constants/lang";
 import { MyWalletTransactions } from "@organisms/MyWalletTransactions/MyWalletTransactions";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   tabsRoot: {
     marginTop: "3rem",
   },

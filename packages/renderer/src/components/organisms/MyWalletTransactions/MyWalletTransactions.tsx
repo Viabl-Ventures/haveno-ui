@@ -83,7 +83,7 @@ export function MyWalletTransactionsTable() {
 }
 
 function MyWalletTransactionsBoot({ children }: MyWalletTransactionsBootProps) {
-  const { data: xmrTransactions, isLoading: isXmrTxsLoading } = useXmrTxs();
+  const { isLoading: isXmrTxsLoading } = useXmrTxs();
 
   return isXmrTxsLoading ? (
     <Group position="center" pt="lg" pb="lg">

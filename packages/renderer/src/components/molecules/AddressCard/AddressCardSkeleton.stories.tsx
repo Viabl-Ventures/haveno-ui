@@ -26,7 +26,7 @@ export default {
 const Template: ComponentStory<typeof AddressCardSkeleton> = (args) => {
   return (
     <Stack>
-      <AddressCardSkeleton {...args} primary={false}/>
+      <AddressCardSkeleton {...args} primary={false} />
       <AddressCardSkeleton {...args} primary={true} />
     </Stack>
   );

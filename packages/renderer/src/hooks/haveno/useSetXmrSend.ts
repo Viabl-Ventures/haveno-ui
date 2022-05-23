@@ -39,7 +39,7 @@ export function useSetXmrSend() {
       return client.relayXmrTx(tx.getMetadata());
     },
     {
-      onError: (err: any) => {
+      onError: (err) => {
         console.dir(err);
         showNotification({
           color: "red",
