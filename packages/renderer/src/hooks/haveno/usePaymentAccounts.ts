@@ -14,17 +14,17 @@
 //  limitations under the License.
 // =============================================================================
 
-import { QueryKeys } from "@constants/query-keys";
-import type { PaymentAccount } from "haveno-ts";
 import { useQuery } from "react-query";
-import { havenod } from "@utils/havenod";
+import type { PaymentAccount } from "haveno-ts";
+import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function usePaymentAccounts() {
+  const client = useHavenoClient();
   return useQuery<Array<PaymentAccount>, Error>(
     QueryKeys.PaymentAccounts,
     async () => {
       try {
-        const client = await havenod.getClient();
         const accounts = await client.getPaymentAccounts();
         return accounts.map((acc) => acc);
       } catch (ex) {

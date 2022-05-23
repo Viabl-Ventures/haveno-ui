@@ -16,13 +16,13 @@
 
 import { useQuery } from "react-query";
 import { QueryKeys } from "@constants/query-keys";
-import { havenod } from "@utils/havenod";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useIsMoneroNodeRunning() {
+  const client = useHavenoClient();
   return useQuery<boolean, Error>(
     QueryKeys.MoneroNodeIsRunning,
     async () => {
-      const client = await havenod.getClient();
       try {
         const value = await client.isMoneroNodeRunning();
         return value;

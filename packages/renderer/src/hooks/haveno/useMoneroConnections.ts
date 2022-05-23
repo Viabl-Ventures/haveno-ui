@@ -17,13 +17,13 @@
 import { useQuery } from "react-query";
 import type { UrlConnection } from "haveno-ts";
 import { QueryKeys } from "@constants/query-keys";
-import { havenod } from "@utils/havenod";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useMoneroConnections() {
+  const client = useHavenoClient();
   return useQuery<Array<UrlConnection.AsObject>, Error>(
     QueryKeys.MoneroConnections,
     async () => {
-      const client = await havenod.getClient();
       const connections = await client.getMoneroConnections();
       return connections.map((conn) => conn.toObject());
     }

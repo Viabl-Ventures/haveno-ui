@@ -15,12 +15,12 @@
 // =============================================================================
 
 import { useQuery } from "react-query";
-import { havenod } from "@utils/havenod";
 import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useGetMoneroConnection() {
-  return useQuery(QueryKeys.MoneroConnection, async () => {
-    const client = await havenod.getClient();
-    return client.getMoneroConnection();
-  });
+  const client = useHavenoClient();
+  return useQuery(QueryKeys.MoneroConnection, async () =>
+    client.getMoneroConnection()
+  );
 }

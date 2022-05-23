@@ -16,9 +16,9 @@
 
 import { useMutation, useQueryClient } from "react-query";
 import { MoneroNodeSettings } from "haveno-ts";
-import { havenod } from "@utils/havenod";
 import { QueryKeys } from "@constants/query-keys";
 import { useSaveRemoteNode } from "@hooks/storage/useSaveRemoteNode";
+import { useHavenoClient } from "./useHavenoClient";
 
 interface Variables {
   blockchainPath: string;
@@ -28,12 +28,11 @@ interface Variables {
 
 export function useSaveLocalMoneroNode() {
   const queryClient = useQueryClient();
+  const client = useHavenoClient();
   const { mutateAsync: saveRemoteNode } = useSaveRemoteNode();
 
   return useMutation<void, Error, Variables>(
     async (data: Variables) => {
-      const client = await havenod.getClient();
-
       const nodeSettings = new MoneroNodeSettings();
       nodeSettings.setBlockchainPath(data.blockchainPath);
       nodeSettings.setStartupFlagsList(data.startupFlags);

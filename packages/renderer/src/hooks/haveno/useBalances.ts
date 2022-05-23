@@ -17,11 +17,11 @@
 import { useQuery } from "react-query";
 import type { XmrBalanceInfo } from "haveno-ts";
 import { QueryKeys } from "@constants/query-keys";
-import { havenod } from "@utils/havenod";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useBalances() {
-  return useQuery<XmrBalanceInfo, Error>(QueryKeys.Balances, async () => {
-    const client = await havenod.getClient();
-    return client.getBalances();
-  });
+  const client = useHavenoClient();
+  return useQuery<XmrBalanceInfo, Error>(QueryKeys.Balances, async () =>
+    client.getBalances()
+  );
 }

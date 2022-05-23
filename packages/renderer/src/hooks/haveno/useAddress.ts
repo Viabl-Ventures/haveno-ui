@@ -14,13 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-import { QueryKeys } from "@constants/query-keys";
 import { useQuery } from "react-query";
-import { havenod } from "@utils/havenod";
+import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useAddress() {
-  return useQuery(QueryKeys.PrimaryAddress, async () => {
-    const client = await havenod.getClient();
-    return client.getXmrPrimaryAddress();
-  });
+  const client = useHavenoClient();
+  return useQuery(QueryKeys.PrimaryAddress, async () =>
+    client.getXmrPrimaryAddress()
+  );
 }

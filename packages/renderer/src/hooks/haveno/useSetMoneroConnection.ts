@@ -16,8 +16,8 @@
 
 import { useMutation, useQueryClient } from "react-query";
 import { useSaveRemoteNode } from "@hooks/storage/useSaveRemoteNode";
-import { havenod } from "@utils/havenod";
 import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 interface Variables {
   uri: string;
@@ -26,11 +26,12 @@ interface Variables {
 export function useSetMoneroConnection() {
   const queryClient = useQueryClient();
   const { mutateAsync: saveRemoteNode } = useSaveRemoteNode();
+  const client = useHavenoClient();
 
   return useMutation<void, Error, Variables>(
     async (variables: Variables) => {
-      const client = await havenod.getClient();
       await client.setMoneroConnection(variables.uri);
+      // save to storage
       await saveRemoteNode({ uri: variables.uri });
     },
     {

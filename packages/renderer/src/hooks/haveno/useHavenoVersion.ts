@@ -14,13 +14,11 @@
 //  limitations under the License.
 // =============================================================================
 
-import { QueryKeys } from "@constants/query-keys";
 import { useQuery } from "react-query";
-import { havenod } from "@utils/havenod";
+import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useHavenoVersion() {
-  return useQuery(QueryKeys.HavenoVersion, async () => {
-    const client = await havenod.getClient();
-    client.getVersion();
-  });
+  const client = useHavenoClient();
+  return useQuery(QueryKeys.HavenoVersion, async () => client.getVersion());
 }

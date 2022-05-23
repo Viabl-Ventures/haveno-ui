@@ -16,8 +16,8 @@
 
 import { useMutation, useQueryClient } from "react-query";
 import { UrlConnection } from "haveno-ts";
-import { havenod } from "@utils/havenod";
 import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 interface Variables {
   address: string;
@@ -28,10 +28,10 @@ interface Variables {
 
 export function useAddMoneroNode() {
   const queryClient = useQueryClient();
+  const client = useHavenoClient();
 
   return useMutation<void, Error, Variables>(
     async (data: Variables) => {
-      const client = await havenod.getClient();
       const url = new URL(data.address);
       if (data.port) {
         url.port = data.port + "";
