@@ -3004,6 +3004,18 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@tanstack/react-table@^8.0.0-alpha.87":
+  version "8.0.0-alpha.87"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.0.0-alpha.87.tgz#38cd0ffda4d9c89c34951894bf4abfe8b5754528"
+  integrity sha512-m4PTVemBtk8i9YbvI2Q7ODcD4aCQvyQaOnTx/NWL0r8ZTJXi8BD2bq5UhIfRGuvSd/amoLLYZnVanjldVdJ2Mw==
+  dependencies:
+    "@tanstack/table-core" "8.0.0-alpha.87"
+
+"@tanstack/table-core@8.0.0-alpha.87":
+  version "8.0.0-alpha.87"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.0.0-alpha.87.tgz#bd182861849cdff4bba8a01cfd0ad396f5c24849"
+  integrity sha512-6oFjMqlx37E4oYQGkZ5Ub4kJTqU78OOYVJk6dg2Zf14S5UETqBRx9UsN/3b13I0rY7KsKOAYDQJZV+rLmdl0qA==
+
 "@testing-library/dom@^8.0.0", "@testing-library/dom@^8.13.0":
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.13.0.tgz#bc00bdd64c7d8b40841e27a70211399ad3af46f5"
