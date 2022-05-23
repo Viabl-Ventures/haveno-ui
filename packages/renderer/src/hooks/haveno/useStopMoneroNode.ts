@@ -16,15 +16,19 @@
 
 import { QueryKeys } from "@constants/query-keys";
 import { useMutation, useQueryClient } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 export function useStopMoneroNode() {
   const queryClient = useQueryClient();
-  const client = useHavenoClient();
-
-  return useMutation(() => client.stopMoneroNode(), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(QueryKeys.MoneroNodeIsRunning);
+  return useMutation(
+    async () => {
+      const client = await havenod.getClient();
+      return client.stopMoneroNode();
     },
-  });
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(QueryKeys.MoneroNodeIsRunning);
+      },
+    }
+  );
 }

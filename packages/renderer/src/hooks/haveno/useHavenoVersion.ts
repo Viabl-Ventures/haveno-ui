@@ -16,9 +16,11 @@
 
 import { QueryKeys } from "@constants/query-keys";
 import { useQuery } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 export function useHavenoVersion() {
-  const client = useHavenoClient();
-  return useQuery(QueryKeys.HavenoVersion, async () => client.getVersion());
+  return useQuery(QueryKeys.HavenoVersion, async () => {
+    const client = await havenod.getClient();
+    client.getVersion();
+  });
 }

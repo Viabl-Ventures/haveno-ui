@@ -14,20 +14,22 @@
 //  limitations under the License.
 // =============================================================================
 
-import * as Joi from "joi";
+import Joi from "joi";
 
-export interface NodeLocalFormValues {
+export interface LocalSettingsFormValues {
   blockchainLocation: string;
   startupFlags: string;
   daemonAddress: string;
   port: string;
+  daemonPassword: string;
 }
 
-export function useNodeLocalFormValidation() {
-  return Joi.object<NodeLocalFormValues>({
+export function useLocalSettingsValidation() {
+  return Joi.object<LocalSettingsFormValues>({
     blockchainLocation: Joi.string().empty("").uri({ relativeOnly: true }),
     startupFlags: Joi.string().empty(""),
     daemonAddress: Joi.string().uri({ allowRelative: false }),
     port: Joi.number().port(),
+    daemonPassword: Joi.string().required(),
   });
 }

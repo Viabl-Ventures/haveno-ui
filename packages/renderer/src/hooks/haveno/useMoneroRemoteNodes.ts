@@ -16,7 +16,7 @@
 
 import { useQuery } from "react-query";
 import { QueryKeys } from "@constants/query-keys";
-// import { useHavenoClient } from "./useHavenoClient";
+// import { havenod } from "@utils/havenod";
 
 interface MoneroRemoteNodes {
   title: string;
@@ -24,11 +24,10 @@ interface MoneroRemoteNodes {
 }
 
 export function useMoneroRemoteNodes() {
-  // const client = useHavenoClient();
-
   return useQuery<MoneroRemoteNodes[], Error>(
     QueryKeys.MoneroRemoteNodes,
     async () => {
+      // const client = await havenod.getClient();
       return Promise.resolve([
         { title: "node.moneroworldcom:18089", isActive: true },
         { title: "node.xmr.pt:18081", isActive: true },

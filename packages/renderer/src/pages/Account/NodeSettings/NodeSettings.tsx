@@ -14,39 +14,85 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack, Box, createStyles } from "@mantine/core";
+import { Stack, createStyles } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
-import { LangKeys } from "@constants/lang";
-import { NodeSettingsSwitch } from "./NodeSettingsSwitch";
+import { FormattedMessage } from "react-intl";
+import { NodeConnectSwitch } from "@molecules/NodeConnectSwitch";
 import { BodyText, Heading } from "@atoms/Typography";
+import { ReactComponent as CloudIcon } from "@assets/setting-cloud.svg";
+import { ReactComponent as ServerIcon } from "@assets/setting-server.svg";
+// import { useIsMoneroNodeRunning } from "@hooks/haveno/useIsMoneroNodeRunning";
+// import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
+import { LangKeys } from "@constants/lang";
+import { LocalNodeSettings } from "./LocalNodeSettings";
+import { RemoteNodeSettings } from "./RemoteNodeSettings";
 
-export function AccountNodeSettings() {
+enum NodeTypes {
+  Local = "local",
+  Remote = "remote",
+}
+
+export function NodeSettings() {
   const { classes } = useStyles();
+  // const { isLoading: isNodeSettingsLoading } = useMoneroNodeSettings();
+  // const { isLoading: isMoneroNodeIsLoading } = useIsMoneroNodeRunning();
 
   return (
     <AccountLayout>
-      <Box className={classes.content}>
-        <Stack spacing="sm">
-          <Heading stringId={LangKeys.AccountNodeSettingsTitle} order={3}>
-            Your node settings
-          </Heading>
-          <BodyText
-            stringId={LangKeys.AccountNodeSettingsDesc}
-            size="md"
-            className={classes.paragraph}
+      <Stack className={classes.content} spacing="sm">
+        <Heading stringId={LangKeys.AccountNodeSettingsTitle} order={3}>
+          Your node settings
+        </Heading>
+        <BodyText
+          stringId={LangKeys.AccountNodeSettingsDesc}
+          size="md"
+          className={classes.paragraph}
+        >
+          Using a local node is recommended, but does require loading the entire
+          blockchain. Choose ‘remote node’ if you prefer a faster but less
+          secure experience.
+        </BodyText>
+        <NodeConnectSwitch
+          initialTab={NodeTypes.Local}
+          className={classes.connectSwitch}
+        >
+          <NodeConnectSwitch.Method
+            active={true}
+            current={true}
+            tabKey={NodeTypes.Local}
+            label={
+              <FormattedMessage
+                id={LangKeys.AccountNodeSettingsLocal}
+                defaultMessage="Local Node"
+              />
+            }
+            icon={<ServerIcon width={32} height={62} />}
           >
-            Using a local node is recommended, but does require loading the
-            entire blockchain. Choose ‘remote node’ if you prefer a faster but
-            less secure experience.
-          </BodyText>
-          <NodeSettingsSwitch />
-        </Stack>
-      </Box>
+            <LocalNodeSettings />
+          </NodeConnectSwitch.Method>
+
+          <NodeConnectSwitch.Method
+            tabKey={NodeTypes.Remote}
+            label={
+              <FormattedMessage
+                id={LangKeys.AccountNodeSettingsRemote}
+                defaultMessage="Remote Node"
+              />
+            }
+            icon={<CloudIcon height={54} width={58} />}
+          >
+            <RemoteNodeSettings />
+          </NodeConnectSwitch.Method>
+        </NodeConnectSwitch>
+      </Stack>
     </AccountLayout>
   );
 }
 
 const useStyles = createStyles((theme) => ({
+  connectSwitch: {
+    marginBottom: "2rem",
+  },
   content: {
     maxWidth: theme.other.contentWidthMd,
   },

@@ -21,7 +21,7 @@ import { NodeStatus, NodeStatusType } from "@atoms/NodeStatus";
 import { LangKeys } from "@constants/lang";
 import { useMoneroRemoteNodes } from "@hooks/haveno/useMoneroRemoteNodes";
 
-export function NodeRemoteStatus() {
+export function RemoteNodeSettings() {
   const { data: remoteNodes } = useMoneroRemoteNodes();
 
   return (

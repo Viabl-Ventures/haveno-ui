@@ -94,9 +94,7 @@ export function CreateAccount() {
           )}
 
           {step === Steps.Completed && (
-            <ReadyToUse
-              onSubmit={() => navigate(ROUTES.AccountPaymentAccounts)}
-            />
+            <ReadyToUse onSubmit={() => navigate(ROUTES.PaymentAccounts)} />
           )}
         </Container>
       </Stack>

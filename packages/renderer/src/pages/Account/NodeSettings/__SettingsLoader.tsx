@@ -14,17 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ReactNode } from "react";
+import type { FC } from "react";
 import { BodyText } from "@atoms/Typography";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
 import { useIsMoneroNodeRunning } from "@hooks/haveno/useIsMoneroNodeRunning";
 import { useMoneroRemoteNodes } from "@hooks/haveno/useMoneroRemoteNodes";
 
-interface NodeSettingsBootProps {
-  children: ReactNode;
-}
-
-export function LocalNodeSettingsBoot({ children }: NodeSettingsBootProps) {
+export const LocalNodeSettingsBoot: FC = ({ children }) => {
   const { isLoading: isNodeSettingsLoading } = useMoneroNodeSettings();
   const { isLoading: isMoneroNodeIsLoading } = useIsMoneroNodeRunning();
 
@@ -33,15 +29,9 @@ export function LocalNodeSettingsBoot({ children }: NodeSettingsBootProps) {
   ) : (
     <>{children}</>
   );
-}
+};
 
-interface RemoteNodeSettingsBootProps {
-  children: ReactNode;
-}
-
-export function RemoteNodeSettingsBoot({
-  children,
-}: RemoteNodeSettingsBootProps) {
+export const RemoteNodeSettingsBoot: FC = ({ children }) => {
   const { isLoading: isMoneroRemoteLoading } = useMoneroRemoteNodes();
 
   return isMoneroRemoteLoading ? (
@@ -49,4 +39,4 @@ export function RemoteNodeSettingsBoot({
   ) : (
     <>{children}</>
   );
-}
+};

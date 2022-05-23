@@ -16,30 +16,40 @@
 
 import { useMutation, useQueryClient } from "react-query";
 import { QueryKeys } from "@constants/query-keys";
-import { useHavenoClient } from "./useHavenoClient";
+import { saveLocalNode } from "@src/utils/saveLocalNode";
+import { saveRemoteNode } from "@src/utils/saveRemoteNode";
 
-interface SetMeneroNodeSettingsVariables {
-  blockchainPath?: string;
-  bootstrapUrl?: string;
-  startupFlags?: Array<string>;
+interface Variables {
+  local?: {
+    blockchainPath: string;
+    startupFlags: Array<string>;
+    address: string;
+    port: number;
+    daemonPassword: string;
+  };
+  remote?: {
+    address: string;
+    port: number;
+    login?: string;
+    password?: string;
+  };
 }
 
-export function useSetMoneroNodeSettings() {
+export function useSaveMoneroNodeSettings() {
   const queryClient = useQueryClient();
-  const client = useHavenoClient();
 
-  return useMutation(
-    async (data: SetMeneroNodeSettingsVariables) => {
-      const nodeSettings = await client.getMoneroNodeSettings();
-
-      data.blockchainPath &&
-        nodeSettings?.setBlockchainPath(data.blockchainPath);
-      data.startupFlags && nodeSettings?.setStartupFlagsList(data.startupFlags);
-      data.bootstrapUrl && nodeSettings?.setBootstrapUrl(data.bootstrapUrl);
+  return useMutation<void, Error, Variables>(
+    async (data: Variables) => {
+      if (data.local) {
+        await saveLocalNode(data.local);
+      } else if (data.remote) {
+        await saveRemoteNode(data.remote, { apply: true });
+      }
     },
     {
       onSuccess: () => {
         queryClient.invalidateQueries(QueryKeys.MoneroNodeSettings);
+        queryClient.invalidateQueries(QueryKeys.MoneroNodeIsRunning);
       },
     }
   );

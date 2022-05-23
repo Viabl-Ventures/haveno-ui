@@ -15,15 +15,15 @@
 // =============================================================================
 
 import { useMutation } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 interface Variables {
   password: string;
 }
 
 export function useCreateAccount() {
-  const client = useHavenoClient();
-  return useMutation(async (variables: Variables) =>
-    client.createAccount(variables.password)
-  );
+  return useMutation(async (variables: Variables) => {
+    const client = await havenod.getClient();
+    return client.createAccount(variables.password);
+  });
 }

@@ -15,15 +15,15 @@
 // =============================================================================
 
 import { useMutation } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 interface Variables {
   connection: string;
 }
 
 export function useSetMoneroConnection() {
-  const client = useHavenoClient();
-  return useMutation(async (variables: Variables) =>
-    client.setMoneroConnection(variables.connection)
-  );
+  return useMutation(async (variables: Variables) => {
+    const client = await havenod.getClient();
+    client.setMoneroConnection(variables.connection);
+  });
 }

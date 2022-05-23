@@ -20,7 +20,7 @@ import { AccountLayout } from "@templates/AccountLayout";
 import { Heading, BodyText } from "@atoms/Typography";
 import { ChangePassword } from "@organisms/ChangePassword";
 
-export function AccountSecurity() {
+export function Security() {
   const { classes } = useStyles();
 
   return (

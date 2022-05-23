@@ -41,7 +41,7 @@ export function Login() {
   const handleSubmit = (values: FormValues) => {
     login(values, {
       onSuccess: () => {
-        navigate(ROUTES.AccountPaymentAccounts, { replace: true });
+        navigate(ROUTES.PaymentAccounts, { replace: true });
       },
       onError: (err) => {
         showNotification({

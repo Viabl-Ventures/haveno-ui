@@ -31,7 +31,7 @@ export function useCreateAccount() {
       await Promise.all([
         window.electronStore.setPassword({ newPassword: variables.password }),
         window.electronStore.setPrimaryFiat(variables.primaryFiat),
-        window.electronStore.setMoneroNode(variables.moneroNode),
+        window.electronStore.setRemoteNode(variables.moneroNode),
       ]);
     },
     {

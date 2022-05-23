@@ -16,10 +16,10 @@
 
 import { AccountLayout } from "@templates/AccountLayout";
 
-export function AccountWallet() {
+export function Backup() {
   return (
     <AccountLayout>
-      <h1>Account Wallet</h1>
+      <h1>Account Backup</h1>
     </AccountLayout>
   );
 }

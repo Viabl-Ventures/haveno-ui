@@ -16,11 +16,11 @@
 
 import { QueryKeys } from "@constants/query-keys";
 import { useQuery } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 export function useAddress() {
-  const client = useHavenoClient();
-  return useQuery(QueryKeys.PrimaryAddress, async () =>
-    client.getXmrPrimaryAddress()
-  );
+  return useQuery(QueryKeys.PrimaryAddress, async () => {
+    const client = await havenod.getClient();
+    return client.getXmrPrimaryAddress();
+  });
 }

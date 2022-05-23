@@ -23,10 +23,10 @@ export const ROUTES = {
   RestoreBackup: "/onboarding/restore-backup",
 
   // Account routes
-  AccountPaymentAccounts: "/account/payment-accounts",
-  AccountAddPaymentAccount: "/account/payment-accounts/add",
-  AccountNodeSettings: "/account/node-settings",
-  AccountBackup: "/account/backup",
-  AccountWallet: "/account/wallet",
-  AccountSecurity: "/account/security",
+  PaymentAccounts: "/account/payment-accounts",
+  AddPaymentAccount: "/account/payment-accounts/add",
+  NodeSettings: "/account/node-settings",
+  Backup: "/account/backup",
+  Wallet: "/account/wallet",
+  Security: "/account/security",
 };

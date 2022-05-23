@@ -16,8 +16,8 @@
 
 export * from "./AddPaymentAccount";
 export * from "./PaymentMethods";
-export * from "./AccountBackup";
+export * from "./Backup";
 export * from "./NodeSettings";
-export * from "./AccountPaymentAccounts";
-export * from "./AccountSecurity";
-export * from "./AccountWallet";
+export * from "./PaymentAccounts";
+export * from "./Security";
+export * from "./Wallet";

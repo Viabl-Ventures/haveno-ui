@@ -117,15 +117,51 @@ export function registerStoreHandlers() {
     }
   );
 
-  ipcMain.handle(IpcChannels.SetMoneroNode, async (_, value: string) => {
-    store.set(StorageKeys.Preferences_MoneroNode, value);
+  // select a remote node with the specified ID
+  ipcMain.handle(IpcChannels.SetRemoteNode, async (_, id: string) => {
+    store.set(StorageKeys.Preferences_SelectedNode, id);
   });
 
+  // save and apply local node settings
+  ipcMain.handle(
+    IpcChannels.SetLocalNodeSettings,
+    async (_, value: IPreferences["localNodeSettings"]) => {
+      store.set(StorageKeys.Preferences_LocalNodeSettings, value);
+      store.set(StorageKeys.Preferences_SelectedNode, undefined); // clear any saved remote node id
+    }
+  );
+
+  // adds a new remote node to the list of saved remote nodes
+  ipcMain.handle(
+    IpcChannels.SaveRemoteNode,
+    async (_, data: IPreferences["remoteNodes"][number]) => {
+      const remoteNodes = store.get(StorageKeys.Preferences_RemoteNodes) ?? [];
+      store.set(StorageKeys.Preferences_RemoteNodes, [...remoteNodes, data]);
+    }
+  );
+
+  // deletes a remote node from the list of saved remote nodes
+  ipcMain.handle(IpcChannels.DeleteRemoteNode, async (_, id: string) => {
+    const remoteNodes = store.get(StorageKeys.Preferences_RemoteNodes) ?? [];
+    const selectedNode = store.get(StorageKeys.Preferences_SelectedNode);
+    if (id === selectedNode) {
+      throw new Error("[[Can't delete the currently seleected node]]");
+    }
+    const index = remoteNodes.findIndex((node) => node.id === id);
+    store.set(StorageKeys.Preferences_RemoteNodes, [
+      ...remoteNodes.slice(0, index),
+      ...remoteNodes.slice(index + 1),
+    ]);
+  });
+
+  // fetch the complete set of user preferences
   ipcMain.handle(
     IpcChannels.GetPreferences,
     async (): Promise<IPreferences> => {
       return {
-        moneroNode: store.get(StorageKeys.Preferences_MoneroNode),
+        localNodeSettings: store.get(StorageKeys.Preferences_LocalNodeSettings),
+        remoteNodes: store.get(StorageKeys.Preferences_RemoteNodes),
+        selectedNode: store.get(StorageKeys.Preferences_SelectedNode),
       };
     }
   );

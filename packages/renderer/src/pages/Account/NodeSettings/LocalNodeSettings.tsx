@@ -22,62 +22,78 @@ import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 import { TextInput } from "@atoms/TextInput";
 import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
-import { useSetMoneroNodeSettings } from "@hooks/haveno/useSetMoneroNodeSettings";
-import { NodeLocalStopDaemon } from "./NodeLocalStopDaemon";
-import type { NodeLocalFormValues } from "./_hooks";
-import { useNodeLocalFormValidation } from "./_hooks";
+import { useSaveMoneroNodeSettings } from "@hooks/haveno/useSaveMoneroNodeSettings";
+import { StartStopDaemon } from "./StartStopDaemon";
+import type { LocalSettingsFormValues } from "./_hooks";
+import { useLocalSettingsValidation } from "./_hooks";
 import { transformSettingsRequestToForm } from "./_utils";
+import { useEffect } from "react";
+import { PasswordInput } from "@atoms/PasswordInput";
 
-export function NodeLocalForm() {
+export function LocalNodeSettings() {
   const { data: nodeSettings } = useMoneroNodeSettings();
-  const { mutateAsync: updateNodeSettings } = useSetMoneroNodeSettings();
+  const { mutate: saveNodeSettings, isLoading: isSaving } =
+    useSaveMoneroNodeSettings();
   const intl = useIntl();
 
-  const validation = useNodeLocalFormValidation();
+  const validation = useLocalSettingsValidation();
 
-  const form = useForm<NodeLocalFormValues>({
-    initialValues: {
-      blockchainLocation: "",
-      startupFlags: "",
-      daemonAddress: "",
-      port: "",
-      ...(nodeSettings
-        ? transformSettingsRequestToForm(nodeSettings.toObject())
-        : {}),
-    },
-    validate: joiResolver(validation),
-  });
+  const { getInputProps, onSubmit, setValues } =
+    useForm<LocalSettingsFormValues>({
+      initialValues: {
+        blockchainLocation: "",
+        startupFlags: "",
+        daemonAddress: "",
+        port: "",
+        daemonPassword: "",
+      },
+      validate: joiResolver(validation),
+    });
 
-  const handleFormSubmit = (values: NodeLocalFormValues) => {
-    updateNodeSettings({
-      blockchainPath: values.blockchainLocation,
-      startupFlags: values.startupFlags.split(", "),
-      bootstrapUrl: `${values.daemonAddress}:${values.port}`,
-    })
-      .then(() => {
-        showNotification({
-          color: "green",
-          message: intl.formatMessage({
-            id: LangKeys.AccountNodeLocalSaveNotification,
-            defaultMessage: "Local node settings updated successfully",
-          }),
-        });
-      })
-      .catch((err) => {
-        console.dir(err);
-        showNotification({
-          color: "red",
-          message: err.message,
-          title: "Something went wrong",
-        });
-      });
+  const handleFormSubmit = (values: LocalSettingsFormValues) => {
+    saveNodeSettings(
+      {
+        local: {
+          blockchainPath: values.blockchainLocation,
+          startupFlags: values.startupFlags.split(/\s|=/),
+          address: values.daemonAddress,
+          port: Number(values.port),
+          daemonPassword: values.daemonPassword,
+        },
+      },
+      {
+        onSuccess: () => {
+          showNotification({
+            color: "green",
+            message: intl.formatMessage({
+              id: LangKeys.AccountNodeLocalSaveNotification,
+              defaultMessage: "Local node settings updated successfully",
+            }),
+          });
+        },
+        onError: (err: Error) => {
+          console.dir(err);
+          showNotification({
+            color: "red",
+            message: err.message,
+            title: "Something went wrong",
+          });
+        },
+      }
+    );
   };
+
+  useEffect(() => {
+    if (nodeSettings) {
+      setValues(transformSettingsRequestToForm(nodeSettings.toObject()));
+    }
+  }, [nodeSettings]);
 
   return (
     <Box>
-      <NodeLocalStopDaemon />
+      <StartStopDaemon />
 
-      <form onSubmit={form.onSubmit(handleFormSubmit)}>
+      <form onSubmit={onSubmit(handleFormSubmit)}>
         <Stack spacing="lg">
           <TextInput
             id="blockchainLocation"
@@ -87,7 +103,7 @@ export function NodeLocalForm() {
                 defaultMessage="Blockchain location"
               />
             }
-            {...form.getInputProps("blockchainLocation")}
+            {...getInputProps("blockchainLocation")}
           />
           <TextInput
             id="startupFlags"
@@ -97,7 +113,7 @@ export function NodeLocalForm() {
                 defaultMessage="Daemon startup flags"
               />
             }
-            {...form.getInputProps("startupFlags")}
+            {...getInputProps("startupFlags")}
           />
           <Grid>
             <Grid.Col span={9}>
@@ -110,7 +126,7 @@ export function NodeLocalForm() {
                   />
                 }
                 required
-                {...form.getInputProps("daemonAddress")}
+                {...getInputProps("daemonAddress")}
               />
             </Grid.Col>
             <Grid.Col span={3}>
@@ -123,13 +139,24 @@ export function NodeLocalForm() {
                   />
                 }
                 required
-                {...form.getInputProps("port")}
+                {...getInputProps("port")}
               />
             </Grid.Col>
           </Grid>
+          <PasswordInput
+            id="daemonPassword"
+            label="Daemon password"
+            required
+            {...getInputProps("daemonPassword")}
+          />
 
           <Group position="right" mt="md">
-            <Button size="md" type="submit">
+            <Button
+              loaderPosition="right"
+              loading={isSaving}
+              size="md"
+              type="submit"
+            >
               <FormattedMessage id={LangKeys.Save} defaultMessage="Save" />
             </Button>
           </Group>

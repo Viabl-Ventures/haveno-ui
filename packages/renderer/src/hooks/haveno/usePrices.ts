@@ -17,13 +17,13 @@
 import type { MarketPriceInfo } from "haveno-ts";
 import { QueryKeys } from "@constants/query-keys";
 import { useQuery } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 export function usePrices() {
-  const client = useHavenoClient();
   return useQuery<Array<MarketPriceInfo.AsObject>, Error>(
     QueryKeys.Prices,
     async () => {
+      const client = await havenod.getClient();
       const prices = await client.getPrices();
       return prices.map((price) => price.toObject());
     }

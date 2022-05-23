@@ -17,14 +17,13 @@
 import { QueryKeys } from "@constants/query-keys";
 import type { MoneroNodeSettings } from "haveno-ts";
 import { useQuery } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
+import { havenod } from "@utils/havenod";
 
 export function useMoneroNodeSettings() {
-  const client = useHavenoClient();
-
   return useQuery<MoneroNodeSettings | undefined, Error>(
     QueryKeys.MoneroNodeSettings,
     async () => {
+      const client = await havenod.getClient();
       return client.getMoneroNodeSettings();
     }
   );

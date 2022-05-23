@@ -16,19 +16,18 @@
 
 import { useQuery } from "react-query";
 import { QueryKeys } from "@constants/query-keys";
-// import { useHavenoClient } from "./useHavenoClient";
 import { SyncStatus } from "@constants/sync-status";
 
 export function useSyncStatus() {
-  // const client = useHavenoClient();
   return useQuery(
     QueryKeys.SyncStatus,
     async () => {
       // TODO: this is a stub
+      // const client = await havenod.getClient();
       return SyncStatus.NotSynced;
     },
     {
-      staleTime: 10000,
+      staleTime: 10_000,
     }
   );
 }
