@@ -9,6 +9,7 @@ exports[`organisms::MyWalletMeneroBalanceSkeleton > renders without exploding 1`
       class="mantine-Group-child mantine-wayqkp"
       fill="none"
       height="1em"
+      id="monero-icon"
       viewBox="0 0 32 32"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"

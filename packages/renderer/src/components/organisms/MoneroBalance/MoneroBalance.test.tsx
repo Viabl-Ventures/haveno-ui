@@ -15,7 +15,7 @@
 // =============================================================================
 
 import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MoneroBalance } from "./MoneroBalance";
 
 describe("organisms::MoneroBalance", () => {
@@ -26,6 +26,32 @@ describe("organisms::MoneroBalance", () => {
       </MoneroBalance>
     );
     expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renders children content.", () => {
+    const { unmount } = render(<MoneroBalance>Content here...</MoneroBalance>);
+
+    expect(screen.queryByText("Content here...")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("renders monero balance detail", () => {
+    const { unmount } = render(
+      <MoneroBalance>
+        <MoneroBalance.Detail label="Balance label">10.20</MoneroBalance.Detail>
+      </MoneroBalance>
+    );
+    expect(screen.queryByText("Balance label")).toBeInTheDocument();
+    expect(screen.queryByText("10.20")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("display Monero logo", () => {
+    const { unmount, container } = render(
+      <MoneroBalance>Content here...</MoneroBalance>
+    );
+    expect(container.querySelector("svg#monero-icon")).toBeInTheDocument();
     unmount();
   });
 });

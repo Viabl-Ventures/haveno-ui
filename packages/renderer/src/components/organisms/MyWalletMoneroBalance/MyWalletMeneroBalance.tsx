@@ -38,6 +38,7 @@ export function MyWalletMoneroBalanceContent() {
           id: LangKeys.MyWalletMoneroAvaliableBalance,
           defaultMessage: "Avaliable Balance",
         })}
+        data-testid="avaliable-balance"
       >
         {balanceInfo?.getBalance()}
       </MoneroBalance.Detail>
@@ -47,6 +48,7 @@ export function MyWalletMoneroBalanceContent() {
           id: LangKeys.MyWalletMoneroReserveredFunds,
           defaultMessage: "Reservered Funds",
         })}
+        data-testid="reserverd-funds"
       >
         {balanceInfo?.getReservedOfferBalance()}
       </MoneroBalance.Detail>
@@ -56,6 +58,7 @@ export function MyWalletMoneroBalanceContent() {
           id: LangKeys.MyWalletMoneroLockedFunds,
           defaultMessage: "Locked Funds",
         })}
+        data-testid="locked-funds"
       >
         {balanceInfo?.getLockedBalance()}
       </MoneroBalance.Detail>

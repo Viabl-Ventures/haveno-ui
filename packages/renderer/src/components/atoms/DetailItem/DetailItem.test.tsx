@@ -15,14 +15,29 @@
 // =============================================================================
 
 import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { DetailItem } from "./DetailItem";
 
 describe("atoms::DetailItem", () => {
   it("renders without exploding", () => {
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <DetailItem label="Label">Content</DetailItem>
     );
     expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renders detail label.", () => {
+    const { unmount } = render(<DetailItem label="Label">Content</DetailItem>);
+
+    expect(screen.queryByText("Label")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("renders detail content.", () => {
+    const { unmount } = render(<DetailItem>Content here ...</DetailItem>);
+
+    expect(screen.queryByText("Content here ...")).toBeInTheDocument();
+    unmount();
   });
 });

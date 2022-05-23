@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`organisms::MoneroBalance > renders without exploding. 1`] = `
+exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
 <DocumentFragment>
   <div
     class="mantine-Group-root mantine-1vmpc4q"
@@ -43,16 +43,47 @@ exports[`organisms::MoneroBalance > renders without exploding. 1`] = `
     >
       <div
         class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-2d5onn"
+        data-testid="avaliable-balance"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-r2okoi"
+          class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
         >
-          Balance
+          Avaliable Balance
         </div>
         <div
-          class="mantine-Text-root mantine-DetailItem-content mantine-1ummshc"
+          class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
         >
-          10.20
+          835120.34017
+        </div>
+      </div>
+      <div
+        class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-2d5onn"
+        data-testid="reserverd-funds"
+      >
+        <div
+          class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+        >
+          Reservered Funds
+        </div>
+        <div
+          class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
+        >
+          74610.12360
+        </div>
+      </div>
+      <div
+        class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-2d5onn"
+        data-testid="locked-funds"
+      >
+        <div
+          class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+        >
+          Locked Funds
+        </div>
+        <div
+          class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
+        >
+          90371.161239
         </div>
       </div>
     </div>
