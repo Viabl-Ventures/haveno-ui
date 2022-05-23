@@ -14,4 +14,22 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./MyWalletTransactions";
+export enum WalletTransactionType {
+  Sent = "Sent",
+  Received = "Received",
+}
+
+export type TWalletTransaction = {
+  type: WalletTransactionType;
+  date: string;
+  time: string;
+  amount: number;
+  amountCurrency: string;
+  foreignAmount: number;
+  foreignAmountCurrency: string;
+  transactionId: string;
+  receiptAddress: string;
+  transactionKey: string;
+  fee: string;
+  height: string;
+};

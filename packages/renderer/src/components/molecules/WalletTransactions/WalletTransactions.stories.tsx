@@ -15,18 +15,18 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { MyWalletTransactions } from "./MyWalletTransactions";
-import type { TMyWalletTransaction } from "./_types";
-import { MyWalletTransactionType } from "./_types";
+import { WalletTransactions } from "./WalletTransactions";
+import type { TWalletTransaction } from "./_types";
+import { WalletTransactionType } from "./_types";
 
 export default {
-  title: "organisms/MyWalletTransactions",
-  component: MyWalletTransactions,
-} as ComponentMeta<typeof MyWalletTransactions>;
+  title: "organisms/WalletTransactions",
+  component: WalletTransactions,
+} as ComponentMeta<typeof WalletTransactions>;
 
 const data = [
   {
-    type: MyWalletTransactionType.Sent,
+    type: WalletTransactionType.Sent,
     date: "September 16, 2021",
     time: "13:21",
     amount: 17.275849365201,
@@ -43,7 +43,7 @@ const data = [
     fee: "0.000005096000",
   },
   {
-    type: MyWalletTransactionType.Received,
+    type: WalletTransactionType.Received,
     date: "September 16, 2021",
     time: "13:21",
     amount: 17.275849365201,
@@ -60,7 +60,7 @@ const data = [
     fee: 0.000005096,
   },
   {
-    type: MyWalletTransactionType.Sent,
+    type: WalletTransactionType.Sent,
     date: "September 16, 2021",
     time: "13:21",
     amount: 17.275849365201,
@@ -76,10 +76,10 @@ const data = [
     height: 2482937,
     fee: 0.000005096,
   },
-] as TMyWalletTransaction[];
+] as TWalletTransaction[];
 
-const Template: ComponentStory<typeof MyWalletTransactions> = () => {
-  return <MyWalletTransactions data={data} />;
+const Template: ComponentStory<typeof WalletTransactions> = () => {
+  return <WalletTransactions data={data} />;
 };
 
 export const Default = Template.bind({});

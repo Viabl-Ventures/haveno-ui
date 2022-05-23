@@ -23,7 +23,8 @@ import { AddressCard } from "@molecules/AddressCard/AddressCard";
 import { useSetXmrNewSubaddress } from "@hooks/haveno/useSetXmrNewSubaddress";
 
 export function MyWalletReceive() {
-  const { mutateAsync: setXmrNewSubaddress } = useSetXmrNewSubaddress();
+  const { mutateAsync: setXmrNewSubaddress, isLoading: isSetXmrLoading } =
+    useSetXmrNewSubaddress();
   const [addresses, setAddresses] = useState<string[]>([]);
 
   const handleGenerateAddressBtn = () => {
@@ -33,7 +34,12 @@ export function MyWalletReceive() {
   };
   return (
     <Box>
-      <Heading order={4} stringId={LangKeys.MyWalletReceiveTitle}>
+      <Heading
+        order={4}
+        stringId={LangKeys.MyWalletReceiveTitle}
+        mb="sm"
+        mt="lg"
+      >
         Your Address
       </Heading>
 
@@ -57,6 +63,7 @@ export function MyWalletReceive() {
           color="dark"
           size="md"
           type="submit"
+          loading={isSetXmrLoading}
           onClick={handleGenerateAddressBtn}
         >
           +{" "}

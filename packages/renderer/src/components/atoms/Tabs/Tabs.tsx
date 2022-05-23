@@ -40,9 +40,16 @@ const useStyles = createStyles((theme, _undefined, getRef) => {
       color: theme.colors.gray[6],
       borderBottom: "2px solid transparent",
       marginBottom: -2,
+      paddingLeft: 0,
+      paddingRight: 0,
+      marginLeft: theme.spacing.md,
+      marginRight: theme.spacing.md,
 
-      "&:not(:first-child)": {
-        marginLeft: 6,
+      "&:first-child": {
+        marginLeft: 0,
+      },
+      "&:last-child": {
+        marginRight: 0,
       },
       [`&.${tabActiveRef}`]: {
         color: theme.colors.dark[9],

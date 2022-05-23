@@ -101,53 +101,49 @@ export function AddressCard({
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleCopyClick =
-    onCopyClick &&
-    function () {
-      copyTextToClipboard(address).then(() => {
-        setIsCopied(true);
+  const handleCopyClick = () => {
+    copyTextToClipboard(address).then(() => {
+      setIsCopied(true);
 
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
-        timeoutRef.current = setTimeout(() => {
-          setIsCopied(false);
-        }, COPY_TEXT_TIMEOUT);
-      });
-    };
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        setIsCopied(false);
+      }, COPY_TEXT_TIMEOUT);
+    });
+  };
 
-  const handleQRClick =
-    onQRClick &&
-    function () {
-      modals.openModal({
-        children: (
-          <Box>
-            <DetailItem
-              classNames={{ content: classes.qrModalAddress }}
-              label="Primary Address"
-            >
-              {address}
-            </DetailItem>
-            <Box className={classes.qrRoot}>
-              <QRCode value={address} size={370} />
-            </Box>
-
-            <SimpleGrid cols={2} mt="xl">
-              <Button flavor="neutral" onClick={onReturnClick}>
-                Return
-              </Button>
-              <Button onClick={onQRDownloadClick}>Download QR</Button>
-            </SimpleGrid>
+  const handleQRClick = () => {
+    modals.openModal({
+      children: (
+        <Box>
+          <DetailItem
+            classNames={{ content: classes.qrModalAddress }}
+            label="Primary Address"
+          >
+            {address}
+          </DetailItem>
+          <Box className={classes.qrRoot}>
+            <QRCode value={address} size={370} />
           </Box>
-        ),
-        labels: { confirm: "Confirm", cancel: "Cancel" },
-        onCancel: () => console.log("Cancel"),
-        onConfirm: () => console.log("Confirmed"),
-        size: 690,
-        withCloseButton: false,
-        ...qrModalProps,
-      });
-    };
+
+          <SimpleGrid cols={2} mt="xl">
+            <Button flavor="neutral" onClick={onReturnClick}>
+              Return
+            </Button>
+            <Button onClick={onQRDownloadClick}>Download QR</Button>
+          </SimpleGrid>
+        </Box>
+      ),
+      labels: { confirm: "Confirm", cancel: "Cancel" },
+      onCancel: () => console.log("Cancel"),
+      onConfirm: () => console.log("Confirmed"),
+      size: 690,
+      withCloseButton: false,
+      ...qrModalProps,
+    });
+  };
 
   return (
     <Group className={classes.root}>

@@ -23,15 +23,15 @@ import { DetailItem } from "@atoms/DetailItem";
 import { LangKeys } from "@constants/lang";
 import { Currency } from "@atoms/Currency";
 import { CircleIcon } from "@atoms/CircleIcon/CircleIcon";
-import { MyWalletTransactionType } from "./_types";
+import { WalletTransactionType } from "./_types";
 
-export function MyWalletTransactionnSignCell({ row }: { row: Row<any> }) {
+export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
   const { formatMessage } = useIntl();
 
   return (
     <Group>
       <CircleIcon>
-        {MyWalletTransactionType === row.original.type ? (
+        {WalletTransactionType === row.original.type ? (
           <ArrowNorth color="#0B65DA" width={18} height={18} />
         ) : (
           <ArrowWest color="#75B377" width={18} height={18} />
@@ -40,13 +40,13 @@ export function MyWalletTransactionnSignCell({ row }: { row: Row<any> }) {
 
       <Box>
         <Text weight="bold">
-          {row.original.type === MyWalletTransactionType.Sent
+          {row.original.type === WalletTransactionType.Sent
             ? formatMessage({
-                id: LangKeys.MyWalletDetailSent,
+                id: LangKeys.WalletDetailSent,
                 defaultMessage: "Sent",
               })
             : formatMessage({
-                id: LangKeys.MyWalletDetailReceived,
+                id: LangKeys.WalletDetailReceived,
                 defaultMessage: "Received",
               })}
         </Text>
@@ -63,7 +63,7 @@ export function MyWalletTransactionnSignCell({ row }: { row: Row<any> }) {
   );
 }
 
-export function MyWalletTransactionAmountCell({ row }: { row: Row<any> }) {
+export function WalletTransactionAmountCell({ row }: { row: Row<any> }) {
   return (
     <Stack spacing={0} sx={{ textAlign: "right" }}>
       <Text weight="bold">
@@ -93,7 +93,7 @@ const useRowExpanded = createStyles((theme) => ({
   },
 }));
 
-export function MyWalletTransactionRowExpanded({ row }: { row: Row<any> }) {
+export function WalletTransactionRowExpanded({ row }: { row: Row<any> }) {
   const { formatMessage } = useIntl();
   const { classes } = useRowExpanded();
 
@@ -102,7 +102,7 @@ export function MyWalletTransactionRowExpanded({ row }: { row: Row<any> }) {
       <Group>
         <DetailItem
           label={formatMessage({
-            id: LangKeys.MyWalletDetailTransactionId,
+            id: LangKeys.WalletDetailTransactionId,
             defaultMessage: "Transaction ID",
           })}
           classNames={{ label: classes.label }}
@@ -112,7 +112,7 @@ export function MyWalletTransactionRowExpanded({ row }: { row: Row<any> }) {
 
         <DetailItem
           label={formatMessage({
-            id: LangKeys.MyWalletDetailFee,
+            id: LangKeys.WalletDetailFee,
             defaultMessage: "Fee",
           })}
           ml="auto"
@@ -126,7 +126,7 @@ export function MyWalletTransactionRowExpanded({ row }: { row: Row<any> }) {
       <Group>
         <DetailItem
           label={formatMessage({
-            id: LangKeys.MyWalletDetailTransactionKey,
+            id: LangKeys.WalletDetailTransactionKey,
             defaultMessage: "Transaction Key",
           })}
           classNames={{ label: classes.label }}
@@ -136,7 +136,7 @@ export function MyWalletTransactionRowExpanded({ row }: { row: Row<any> }) {
 
         <DetailItem
           label={formatMessage({
-            id: LangKeys.MyWalletDetailHeight,
+            id: LangKeys.WalletDetailHeight,
             defaultMessage: "Height",
           })}
           ml="auto"
@@ -150,7 +150,7 @@ export function MyWalletTransactionRowExpanded({ row }: { row: Row<any> }) {
       <Group>
         <DetailItem
           label={formatMessage({
-            id: LangKeys.MyWalletDetailReceiptAddress,
+            id: LangKeys.WalletDetailReceiptAddress,
             defaultMessage: "Receipt Address",
           })}
           classNames={{ label: classes.label }}

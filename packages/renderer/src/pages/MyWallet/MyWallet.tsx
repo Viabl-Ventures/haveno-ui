@@ -16,51 +16,62 @@
 
 import { useIntl } from "react-intl";
 import { Tabs } from "@atoms/Tabs";
-import { Container, Stack } from "@mantine/core";
+import { Container, createStyles, Stack } from "@mantine/core";
 import { MyWalletMoneroBalance } from "@organisms/MyWalletMoneroBalance";
 import { MyWalletPrimaryAddress } from "@organisms/MyWalletPrimaryAddress";
 import { MyWalletSendForm } from "@organisms/MyWalletSendForm";
 import { MyWalletReceive } from "@organisms/MyWalletReceive";
 import { NavbarLayout } from "@templates/NavbarLayout";
 import { LangKeys } from "@constants/lang";
+import { MyWalletTransactions } from "@organisms/MyWalletTransactions/MyWalletTransactions";
+
+const useStyles = createStyles((theme) => ({
+  tabsRoot: {
+    marginTop: "3rem",
+  },
+  container: {
+    width: "100%",
+  },
+}));
 
 export function MyWallet() {
+  const { classes } = useStyles();
   const { formatMessage } = useIntl();
 
   return (
     <NavbarLayout>
-      <Container size={870} mt="xl">
-        <Stack>
+      <Container size={870} mt="xl" className={classes.container}>
+        <Stack spacing="lg">
           <MyWalletMoneroBalance />
           <MyWalletPrimaryAddress />
-
-          <Tabs>
-            <Tabs.Tab
-              label={formatMessage({
-                id: LangKeys.MyWalletTabTransactions,
-                defaultMessage: "Transactions",
-              })}
-            >
-              <MyWalletSendForm />
-            </Tabs.Tab>
-            <Tabs.Tab
-              label={formatMessage({
-                id: LangKeys.MyWalletTabSend,
-                defaultMessage: "Send",
-              })}
-            >
-              <MyWalletSendForm />
-            </Tabs.Tab>
-            <Tabs.Tab
-              label={formatMessage({
-                id: LangKeys.MyWalletTabReceive,
-                defaultMessage: "Receive",
-              })}
-            >
-              <MyWalletReceive />
-            </Tabs.Tab>
-          </Tabs>
         </Stack>
+
+        <Tabs className={classes.tabsRoot}>
+          <Tabs.Tab
+            label={formatMessage({
+              id: LangKeys.MyWalletTabTransactions,
+              defaultMessage: "Transactions",
+            })}
+          >
+            <MyWalletTransactions />
+          </Tabs.Tab>
+          <Tabs.Tab
+            label={formatMessage({
+              id: LangKeys.MyWalletTabSend,
+              defaultMessage: "Send",
+            })}
+          >
+            <MyWalletSendForm />
+          </Tabs.Tab>
+          <Tabs.Tab
+            label={formatMessage({
+              id: LangKeys.MyWalletTabReceive,
+              defaultMessage: "Receive",
+            })}
+          >
+            <MyWalletReceive />
+          </Tabs.Tab>
+        </Tabs>
       </Container>
     </NavbarLayout>
   );

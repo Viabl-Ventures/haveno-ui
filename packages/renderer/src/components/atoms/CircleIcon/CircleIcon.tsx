@@ -31,7 +31,7 @@ const useStyles = createStyles((theme, { color, size }: CircleIconStyle) => ({
     height: size || 34,
     width: size || 34,
     lineHeight: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.08)",
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
     color: color || theme.colors.gray[9],
     display: "flex",
 

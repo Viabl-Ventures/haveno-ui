@@ -14,22 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum MyWalletTransactionType {
-  Sent = "Sent",
-  Received = "Received",
-}
+import { QueryKeys } from "@constants/query-keys";
+import type { XmrTx } from "haveno-ts";
+import { useQuery } from "react-query";
+import { useHavenoClient } from "./useHavenoClient";
 
-export type TMyWalletTransaction = {
-  type: MyWalletTransactionType;
-  date: string;
-  time: string;
-  amount: number;
-  amountCurrency: string;
-  foreignAmount: number;
-  foreignAmountCurrency: string;
-  transactionId: string;
-  receiptAddress: string;
-  transactionKey: string;
-  fee: string;
-  height: string;
+export const useXmrTxs = () => {
+  const client = useHavenoClient();
+
+  return useQuery<XmrTx[]>(QueryKeys.XmrTxs, async () => client.getXmrTxs());
 };
