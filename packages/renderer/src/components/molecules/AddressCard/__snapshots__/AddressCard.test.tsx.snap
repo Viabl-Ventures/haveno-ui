@@ -1,5 +1,21 @@
 // Vitest Snapshot v1
 
+exports[`molecules::AddressCard > renderes the address hash code. 1`] = `
+<div
+  class="mantine-Group-child mantine-2w2ufd"
+>
+  ASDASDQWEKOOQLMWEM
+</div>
+`;
+
+exports[`molecules::AddressCard > renderes the address label. 1`] = `
+<div
+  class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+>
+  Primary Address
+</div>
+`;
+
 exports[`molecules::AddressCard > renders without exploding 1`] = `
 <DocumentFragment>
   <div

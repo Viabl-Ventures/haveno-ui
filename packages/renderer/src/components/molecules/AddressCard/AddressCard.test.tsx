@@ -15,17 +15,38 @@
 // =============================================================================
 
 import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { AddressCard } from "./AddressCard";
 import { AppProviders } from "@atoms/AppProviders";
 
 describe("molecules::AddressCard", () => {
   it("renders without exploding", () => {
-    const { asFragment } = render(
+    const { asFragment, unmount } = render(
       <AppProviders>
         <AddressCard address="Address here" label="Address label" />
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renderes the address hash code.", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <AddressCard address="ASDASDQWEKOOQLMWEM" />
+      </AppProviders>
+    );
+    expect(screen.queryByText("ASDASDQWEKOOQLMWEM")).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renderes the address label.", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <AddressCard label="Primary Address" address="ASDASDQWEKOOQLMWEM" />
+      </AppProviders>
+    );
+    expect(screen.queryByText("Primary Address")).toMatchSnapshot();
+    unmount();
   });
 });
