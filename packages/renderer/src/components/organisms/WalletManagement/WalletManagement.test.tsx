@@ -14,18 +14,49 @@
 //  limitations under the License.
 // =============================================================================
 
-import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
-import { WalletManagement } from ".";
+import { beforeAll, describe, expect, it, vi } from "vitest";
+import { render, waitForElementToBeRemoved } from "@testing-library/react";
 import { AppProviders } from "@atoms/AppProviders";
+import { WalletManagement } from ".";
+import { WalletItem } from "./WalletItem";
 
-describe("organisms::WalletManagement", () => {
-  it("renders without exploding", () => {
+describe("molecules::WalletManagement", () => {
+  beforeAll(() => {
+    vi.mock("@hooks/haveno/useValidatePassword", () => ({
+      useValidatePassword: () => ({
+        isLoading: false,
+        isSuccess: true,
+        data: "qwe123",
+      }),
+    }));
+
+    vi.mock("@hooks/haveno/useXmrSeed", () => ({
+      useXmrSeed: () => ({
+        isLoading: true,
+        isSuccess: true,
+        data: "baptism ounce solved gimmick cafe absorb pouch gesture fawns degrees bikini inline island oncoming menu tissue cajun inwardly chlorine popular sleepless taboo aces arises popular",
+      }),
+    }));
+  });
+
+  it("renders loading state", () => {
     const { asFragment } = render(
       <AppProviders>
         <WalletManagement />
       </AppProviders>
     );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("renders after loading data", async () => {
+    const { asFragment, queryByText } = render(
+      <AppProviders>
+        <WalletItem />
+      </AppProviders>
+    );
+    if (queryByText("Loading...")) {
+      await waitForElementToBeRemoved(() => queryByText("Loading..."));
+    }
     expect(asFragment()).toMatchSnapshot();
   });
 });
