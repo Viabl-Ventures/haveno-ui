@@ -63,14 +63,12 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountWalletDesc]:
     "The Haveno wallet is permanently connected to your account. Solely saving your seed phrase is not enough to recover your account, you need to download a backup of your account, which you can download via the backup section.",
   [LangKeys.AccountWalletPassword]: "Password",
-
   [LangKeys.AccountCardCopyBtn]: "Copy",
   [LangKeys.AccountCardCopiedBtn]: "Copied",
   [LangKeys.AccountCardQRBtn]: "QR",
   [LangKeys.AddressCardCopyBtn]: "Copy",
   [LangKeys.AddressCardCopiedBtn]: "Copied",
   [LangKeys.AddressCardQRBtn]: "QR",
-
   [LangKeys.MyWalletSendFieldAmount]: "Amount",
   [LangKeys.MyWalletSendFieldAddress]: "Address",
   [LangKeys.MyWalletSendFieldAddressPlaceholder]: "Paste in address here...",
@@ -79,7 +77,6 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletMoneroAvaliableBalance]: "Avaliable Balance",
   [LangKeys.MyWalletMoneroReserveredFunds]: "Reservered Funds",
   [LangKeys.MyWalletMoneroLockedFunds]: "Locked Funds",
-
   [LangKeys.MyWalletTabTransactions]: "Transactions",
   [LangKeys.MyWalletTabSend]: "Send",
   [LangKeys.MyWalletTabReceive]: "Receive",
@@ -88,7 +85,6 @@ const LangPackEN: { [key in LangKeys]: string } = {
     "You don't have generated address, please generate one.",
   [LangKeys.MyWalletSendSuccessNotif]:
     "The XMR transaction has been sent successfully.",
-
   [LangKeys.WalletDetailSent]: "Sent",
   [LangKeys.WalletDetailReceived]: "Received",
   [LangKeys.WalletDetailTransactionId]: "Transaction ID",
@@ -97,14 +93,11 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.WalletDetailIncomingAddress]: "Incoming Address",
   [LangKeys.WalletDetailHeight]: "Height",
   [LangKeys.WalletDetailReceiptAddress]: "Receipt Address",
-
   [LangKeys.MyWalletBalancePrimaryAddress]: "Primary Address",
   [LangKeys.MyWalletSendBackToWallet]: "Back to Wallet",
   [LangKeys.MyWalletSendSuccessModalTitle]: "Fund are sent!",
   [LangKeys.MyWalletSendSuccessModalMsg]: "",
-
   [LangKeys.MyWalletReceiveTitle]: "Your Address",
-
   [LangKeys.MyWalletQRModalPrimaryAddress]: "Primary Address",
   [LangKeys.MyWalletQRModalReturnBtn]: "Return",
   [LangKeys.MyWalletQRModalDownloadQRBtn]: "Download QR",

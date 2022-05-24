@@ -50,38 +50,30 @@ export enum LangKeys {
   AccountSecurityFieldCurrentPassword = "account.security.field.currentPassword",
   AccountSecurityFieldPasswordFormatMsg = "account.security.field.password.format.message",
   AccountSecurityFieldRepeatPasswordMatchMsg = "account.security.field.repeatPassword.match.message",
-
   AccountWalletTitle = "account.wallet.title",
   AccountWalletDesc = "account.wallet.desc",
   AccountWalletPassword = "account.wallet.field.password",
-
   AccountCardCopyBtn = "accountCard.copyButton",
   AccountCardCopiedBtn = "accountCard.copiedButton",
   AccountCardQRBtn = "accountCard.qrButton",
-
   AddressCardCopyBtn = "accountCard.copyButton",
   AddressCardCopiedBtn = "accountCard.copiedButton",
   AddressCardQRBtn = "accountCard.qrButton",
-
   MyWalletSendFieldAmount = "myWallet.send.amountField",
   MyWalletSendFieldPaymentId = "myWallet.send.paymentIdField",
   MyWalletSendFieldPaymentIdPlaceholder = "myWallet.send.paymentIdFieldPlaceholder",
   MyWalletSendFieldAddress = "myWallet.send.addressField",
   MyWalletSendFieldAddressPlaceholder = "myWallet.send.addressFieldPlaceholder",
-
   MyWalletReceiveTitle = "myWallet.receive.receiveTitle",
-
   MyWalletMoneroAvaliableBalance = "myWallet.monero.avaliableBalance",
   MyWalletMoneroReserveredFunds = "myWallet.monero.reserveredFunds",
   MyWalletMoneroLockedFunds = "myWallet.monero.lockedFunds",
-
   MyWalletTabTransactions = "myWallet.transactionsTab",
   MyWalletTabSend = "myWallet.sendTab",
   MyWalletTabReceive = "myWallet.receive",
   MyWalletGenerateAddressBtn = "myWallet.receive.generateAddrBtn",
   MyWalletReceiveNoAddressesMsg = "myWallet.receive.noAddressesMsg",
   MyWalletSendSuccessNotif = "myWallet.send.successNotification",
-
   WalletDetailSent = "myWallet.detail.sent",
   WalletDetailReceived = "myWallet.detail.received",
   WalletDetailTransactionId = "myWallet.detail.transactionId",
@@ -90,12 +82,10 @@ export enum LangKeys {
   WalletDetailIncomingAddress = "myWallet.detail.incomingAddress",
   WalletDetailHeight = "myWallet.detail.height",
   WalletDetailReceiptAddress = "myWallet.detail.receiptAddress",
-
   MyWalletBalancePrimaryAddress = "myWallet.balance.primaryAddress",
   MyWalletSendBackToWallet = "myWallet.sendForm.backToWalletBtn",
   MyWalletSendSuccessModalTitle = "myWallet.sendSuccessModal.title",
   MyWalletSendSuccessModalMsg = "myWallet.sendSuccessModal.message",
-
   MyWalletQRModalPrimaryAddress = "myWallet.qrModal.primaryAddress",
   MyWalletQRModalReturnBtn = "myWallet.qrModal.returnBtn",
   MyWalletQRModalDownloadQRBtn = "myWallet.qrModal.downloadBtn",

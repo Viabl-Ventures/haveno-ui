@@ -59,7 +59,6 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountSecurityFieldRepeatPasswordMatchMsg]:
     "La confirmación de la contraseña no coincide con la contraseña.",
   [LangKeys.CreatePassword]: "Crear contraseña",
-
   [LangKeys.AccountWalletTitle]: "Detalles de tu billetera",
   [LangKeys.AccountWalletDesc]:
     "La billetera Haveno está permanentemente conectada a su cuenta. Solo guardar su frase inicial no es suficiente para recuperar su cuenta, necesita descargar una copia de seguridad de su cuenta, que puede descargar a través de la sección de copia de seguridad.",
@@ -67,11 +66,9 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AccountCardCopyBtn]: "Dupdo",
   [LangKeys.AccountCardCopiedBtn]: "Copiada",
   [LangKeys.AccountCardQRBtn]: "QR",
-
   [LangKeys.AddressCardCopyBtn]: "Dupdo",
   [LangKeys.AddressCardCopiedBtn]: "Copiada",
   [LangKeys.AddressCardQRBtn]: "QR",
-
   [LangKeys.MyWalletSendFieldAmount]: "Monto",
   [LangKeys.MyWalletSendFieldAddress]: "Dirección",
   [LangKeys.MyWalletSendFieldAddressPlaceholder]: "Pegue la dirección aquí...",
@@ -80,7 +77,6 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletMoneroAvaliableBalance]: "Saldo disponible",
   [LangKeys.MyWalletMoneroReserveredFunds]: "Fondos Reservados",
   [LangKeys.MyWalletMoneroLockedFunds]: "Fondos bloqueados",
-
   [LangKeys.MyWalletTabTransactions]: "Transactions",
   [LangKeys.MyWalletTabSend]: "Enviar",
   [LangKeys.MyWalletTabReceive]: "Recibir",
@@ -89,7 +85,6 @@ const LangPackES: { [key in LangKeys]: string } = {
     "No ha generado una dirección, por favor genere una.",
   [LangKeys.MyWalletSendSuccessNotif]:
     "La transacción XMR se ha enviado con éxito.",
-
   [LangKeys.WalletDetailSent]: "Sent",
   [LangKeys.WalletDetailReceived]: "Received",
   [LangKeys.WalletDetailTransactionId]: "ID de transacción",
@@ -98,14 +93,11 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.WalletDetailIncomingAddress]: "Dirección entrante",
   [LangKeys.WalletDetailHeight]: "Altura",
   [LangKeys.WalletDetailReceiptAddress]: "Dirección de recibo",
-
   [LangKeys.MyWalletBalancePrimaryAddress]: "Dirección primaria",
   [LangKeys.MyWalletSendBackToWallet]: "Volver a Monedero",
   [LangKeys.MyWalletSendSuccessModalTitle]: "¡Se envían fondos!",
   [LangKeys.MyWalletSendSuccessModalMsg]: "You’ve sent {amount} XMR to: {hash}",
-
   [LangKeys.MyWalletReceiveTitle]: "Su dirección",
-
   [LangKeys.MyWalletQRModalPrimaryAddress]: "Dirección primaria",
   [LangKeys.MyWalletQRModalReturnBtn]: "Devolver",
   [LangKeys.MyWalletQRModalDownloadQRBtn]: "Descargar código QR",
