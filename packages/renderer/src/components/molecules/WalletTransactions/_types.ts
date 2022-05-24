@@ -21,7 +21,7 @@ export enum WalletTransactionType {
 
 export interface TWalletTransaction {
   type: WalletTransactionType; //
-  date: number;
+  date: number | Date;
 
   amount: number;
   amountCurrency: string;
@@ -34,6 +34,6 @@ export interface TWalletTransaction {
   destinationAddresses?: string[];
   incomingAddresses?: string[];
 
-  fee: number; //
+  fee: number;
   height: number;
 }

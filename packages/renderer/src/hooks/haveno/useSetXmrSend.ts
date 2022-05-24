@@ -45,7 +45,7 @@ export function useSetXmrSend() {
         queryClient.invalidateQueries(QueryKeys.XmrTxs);
         queryClient.invalidateQueries(QueryKeys.Balances);
       },
-      onError: (err) => {
+      onError: (err: Error) => {
         console.dir(err);
         showNotification({
           color: "red",
