@@ -21,14 +21,14 @@ import { WalletBalance } from ".";
 
 describe("molecules::WalletBalance", () => {
   beforeAll(() => {
-    vi.mock("@hooks/haveno/useHavenoClient", () => ({
-      useHavenoClient: () => ({
-        getBalances: async () => {
-          return {
-            lockedBalance: 12,
-            reservedTradeBalance: 14,
-            balance: 15,
-          };
+    vi.mock("@hooks/haveno/useBalances", () => ({
+      useBalances: () => ({
+        isLoading: false,
+        isSuccess: true,
+        data: {
+          lockedBalance: 12,
+          reservedTradeBalance: 14,
+          balance: 15,
         },
       }),
     }));
