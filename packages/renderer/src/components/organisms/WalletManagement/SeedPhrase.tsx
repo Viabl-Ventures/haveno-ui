@@ -25,7 +25,7 @@ import {
 import { BodyText } from "@atoms/Typography";
 import { useXmrSeed } from "@hooks/haveno/useXmrSeed";
 
-export function WalletItem() {
+export function SeedPhrase() {
   const { classes } = useStyles();
   const { data: xmrseeds, isLoading } = useXmrSeed();
   const seeds = xmrseeds?.split(" ");

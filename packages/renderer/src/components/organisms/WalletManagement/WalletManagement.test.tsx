@@ -18,7 +18,7 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 import { render, waitForElementToBeRemoved } from "@testing-library/react";
 import { AppProviders } from "@atoms/AppProviders";
 import { WalletManagement } from ".";
-import { WalletItem } from "./WalletItem";
+import { SeedPhrase } from "./SeedPhrase";
 
 describe("molecules::WalletManagement", () => {
   beforeAll(() => {
@@ -51,7 +51,7 @@ describe("molecules::WalletManagement", () => {
   it("renders after loading data", async () => {
     const { asFragment, queryByText } = render(
       <AppProviders>
-        <WalletItem />
+        <SeedPhrase />
       </AppProviders>
     );
     if (queryByText("Loading...")) {

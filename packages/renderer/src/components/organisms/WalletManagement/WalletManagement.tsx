@@ -15,29 +15,55 @@
 // =============================================================================
 
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useForm } from "@mantine/hooks";
 import { Group, Space, Stack } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { Button } from "@atoms/Buttons";
-import { TextInput } from "@atoms/TextInput";
-import { FormattedMessage } from "react-intl";
-import { LangKeys } from "@constants/lang";
-import { WalletItem } from "./WalletItem";
+import { PasswordInput } from "@atoms/PasswordInput";
 import { useValidatePassword } from "@hooks/haveno/useValidatePassword";
+import { LangKeys } from "@constants/lang";
+import { SeedPhrase } from "./SeedPhrase";
 
 export function WalletManagement() {
   const [isRevealed, setRevealed] = useState(false);
-  const { mutate: login } = useValidatePassword();
   const { getInputProps, onSubmit, values, reset } = useForm<FormValues>({
     initialValues: {
       password: "",
     },
   });
-  const ControlLayout = () => {
-    if (isRevealed) {
-      return (
+
+  const { refetch: validatePassword } = useValidatePassword(
+    {
+      password: values.password,
+    },
+    {
+      enabled: false,
+    }
+  );
+
+  const handleSubmit = () => {
+    validatePassword().then(({ data: isValidPassword }) => {
+      if (isValidPassword) {
+        setRevealed(true);
+        reset();
+      } else {
+        setRevealed(false);
+        showNotification({
+          color: "red",
+          title: "Invalid password",
+          message: "Please check your password",
+        });
+      }
+    });
+  };
+
+  return (
+    <Stack>
+      {isRevealed ? (
         <Stack>
-          <WalletItem />
+          <SeedPhrase />
+          <Space h="lg" />
           <Group position="left">
             <Button
               type="submit"
@@ -49,31 +75,13 @@ export function WalletManagement() {
             </Button>
           </Group>
         </Stack>
-      );
-    } else {
-      const handleSubmit = (values: FormValues) => {
-        login(values, {
-          onSuccess: () => {
-            setRevealed(true);
-            reset();
-          },
-          onError: (err) => {
-            showNotification({
-              title: "Invalid Password",
-              message: err.message,
-              color: "red",
-            });
-          },
-        });
-      };
-      return (
+      ) : (
         <form onSubmit={onSubmit(handleSubmit)}>
           <Stack>
             <Space h="sm" />
-            <TextInput
+            <PasswordInput
               autoFocus
               id="password"
-              type="password"
               required
               label={
                 <FormattedMessage
@@ -91,13 +99,7 @@ export function WalletManagement() {
             </Group>
           </Stack>
         </form>
-      );
-    }
-  };
-
-  return (
-    <Stack>
-      <ControlLayout />
+      )}
     </Stack>
   );
 }
