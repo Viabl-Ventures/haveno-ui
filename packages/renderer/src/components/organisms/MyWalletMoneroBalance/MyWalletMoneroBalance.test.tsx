@@ -20,9 +20,10 @@ import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 import { AppProviders } from "@atoms/AppProviders";
 
 const MoneroBalance = {
-  balance: "835120.34017",
-  reserverdBalance: "74610.12360",
-  lockedBalance: "90371.161239",
+  balance: 835120.34017,
+  reserverdBalance: 74610.1236,
+  lockedBalance: 90371.161239,
+  unlockedBalance: 0,
 };
 describe("organisms::MyWalletMoneroBalance", () => {
   beforeAll(() => {
@@ -31,15 +32,11 @@ describe("organisms::MyWalletMoneroBalance", () => {
         isLoading: false,
         isSuccess: true,
         data: {
-          getBalance: () => {
-            return MoneroBalance.balance;
-          },
-          getReservedOfferBalance: () => {
-            return MoneroBalance.reserverdBalance;
-          },
-          getLockedBalance: () => {
-            return MoneroBalance.lockedBalance;
-          },
+          balance: MoneroBalance.balance,
+          lockedBalance: MoneroBalance.lockedBalance,
+          reservedOfferBalance: MoneroBalance.reserverdBalance,
+          reservedTradeBalance: MoneroBalance.reserverdBalance,
+          unlockedBalance: MoneroBalance.unlockedBalance,
         },
       }),
     }));
@@ -74,13 +71,13 @@ describe("organisms::MyWalletMoneroBalance", () => {
       </AppProviders>
     );
     expect(screen.queryByTestId("avaliable-balance")).toHaveTextContent(
-      MoneroBalance.balance
+      "835,120.34017"
     );
     expect(screen.queryByTestId("reserverd-funds")).toHaveTextContent(
-      MoneroBalance.reserverdBalance
+      "74,610.1236"
     );
     expect(screen.queryByTestId("locked-funds")).toHaveTextContent(
-      MoneroBalance.lockedBalance
+      "90,371.161239"
     );
     unmount();
     unmount();

@@ -53,7 +53,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         <div
           class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
         >
-          835120.34017
+          835,120.34017
         </div>
       </div>
       <div
@@ -68,7 +68,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         <div
           class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
         >
-          74610.12360
+          74,610.1236
         </div>
       </div>
       <div
@@ -83,7 +83,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         <div
           class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
         >
-          90371.161239
+          90,371.161239
         </div>
       </div>
     </div>

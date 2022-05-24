@@ -22,7 +22,7 @@ exports[`molecules::AddressCard > renders without exploding 1`] = `
     class="mantine-Group-root mantine-567gvg"
   >
     <div
-      class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-1wa514l"
+      class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-1a4fzbd"
     >
       <div
         class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
