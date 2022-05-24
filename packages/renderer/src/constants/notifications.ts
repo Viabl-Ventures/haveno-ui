@@ -14,20 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Box, Stack } from "@mantine/core";
-import { AccountLayout } from "@templates/AccountLayout";
-import { AccountBackupDownload } from "./AccountBackupDownload";
-import { AccountRestoreDownload } from "./AccountBackupRestore";
-
-export function Backup() {
-  return (
-    <AccountLayout>
-      <Box>
-        <Stack spacing={40}>
-          <AccountBackupDownload />
-          <AccountRestoreDownload />
-        </Stack>
-      </Box>
-    </AccountLayout>
-  );
+export enum Notifications {
+  AccountRestoring = "AccountRestoring",
+  MoneroRestartAfterRestoring = "MoneroRestartAfterRestoring"
 }

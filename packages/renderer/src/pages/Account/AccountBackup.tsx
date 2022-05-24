@@ -108,7 +108,7 @@ export function AccountBackup() {
           </Heading>
 
           <BodyText
-            stringId={LangKeys.AccountBackupRestoreBtn}
+            stringId={LangKeys.AccountBackupRestoreDesc}
             className={classes.desc}
           >
             When you restore an existing backup file of your Haveno account, you

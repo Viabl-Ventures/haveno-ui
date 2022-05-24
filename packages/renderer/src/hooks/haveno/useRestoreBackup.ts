@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // =============================================================================
 //  Copyright 2022 Haveno
 //
@@ -14,23 +15,62 @@
 //  limitations under the License.
 // =============================================================================
 
-import { showNotification } from "@mantine/notifications";
+import { hideNotification, showNotification } from "@mantine/notifications";
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { useHavenoClient } from "./useHavenoClient";
+import { Notifications } from "@constants/notifications";
+import { deleteSession } from "@utils/session";
+import { ROUTES } from "@constants/routes";
 
 export function useRestoreBackup() {
   const client = useHavenoClient();
+  const navigate = useNavigate();
+
   return useMutation(
     async () => {
       const bytes = await window.haveno.getBackupData();
+
       if (!bytes.length) {
         return;
       }
+      showNotification({
+        id: Notifications.AccountRestoring,
+        title: "Account Restoring.",
+        message: "Account is restoring from the file.",
+        loading: true,
+      });
+      await client.deleteAccount();
       await client.restoreAccount(bytes);
-      // TODO @ahmed: restart daemon?
+
+      hideNotification(Notifications.AccountRestoring);
+      showNotification({
+        id: Notifications.MoneroRestartAfterRestoring,
+        title: "Monero restarting.",
+        message:
+          "The account has been restored, now the Monero node restarting.",
+        loading: true,
+      });
+      deleteSession();
+      navigate(ROUTES.Login);
+
+      if (await client.isMoneroNodeRunning()) {
+        await client.stopMoneroNode();
+      }
+      try {
+        // @ts-ignore
+        await client.startMoneroNode({});
+      } catch (ex) {
+        console.log(ex);
+        throw new Error("Failed to start the monero node");
+      }
+      hideNotification(Notifications.MoneroRestartAfterRestoring);
     },
     {
       onError: (err: Error) => {
+        hideNotification(Notifications.AccountRestoring);
+        hideNotification(Notifications.MoneroRestartAfterRestoring);
+
         showNotification({
           color: "red",
           message: err?.message ?? "Unable to restore backup",
