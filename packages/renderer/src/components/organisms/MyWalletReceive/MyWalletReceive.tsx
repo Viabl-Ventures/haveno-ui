@@ -21,15 +21,21 @@ import { LangKeys } from "@constants/lang";
 import { Heading } from "@atoms/Typography";
 import { AddressCard } from "@molecules/AddressCard/AddressCard";
 import { useSetXmrNewSubaddress } from "@hooks/haveno/useSetXmrNewSubaddress";
+import { getActiveReceiveAddresses, saveReceiveAddresss } from "./_utils";
 
 export function MyWalletReceive() {
   const { mutateAsync: setXmrNewSubaddress, isLoading: isSetXmrLoading } =
     useSetXmrNewSubaddress();
-  const [addresses, setAddresses] = useState<string[]>([]);
+  const [addresses, setAddresses] = useState<string[]>(
+    getActiveReceiveAddresses() || []
+  );
 
   const handleGenerateAddressBtn = () => {
     setXmrNewSubaddress().then((newSubaddress: string) => {
-      setAddresses((oldAddress) => [...oldAddress, newSubaddress]);
+      saveReceiveAddresss(newSubaddress);
+
+      const cachedSubaddress = getActiveReceiveAddresses();
+      setAddresses(cachedSubaddress);
     });
   };
   return (

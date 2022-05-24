@@ -76,6 +76,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletMoneroAvaliableBalance]: "Avaliable Balance",
   [LangKeys.MyWalletMoneroReserveredFunds]: "Reservered Funds",
   [LangKeys.MyWalletMoneroLockedFunds]: "Locked Funds",
+
+  [LangKeys.MyWalletTabTransactions]: "Transactions",
   [LangKeys.MyWalletTabSend]: "Send",
   [LangKeys.MyWalletTabReceive]: "Receive",
   [LangKeys.MyWalletGenerateAddressBtn]: "Generate a new stub address",
@@ -84,17 +86,25 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletSendSuccessNotif]:
     "The XMR transaction has been sent successfully.",
 
+  [LangKeys.WalletDetailSent]: "Sent",
+  [LangKeys.WalletDetailReceived]: "Received",
   [LangKeys.WalletDetailTransactionId]: "Transaction ID",
   [LangKeys.WalletDetailFee]: "Fee",
-  [LangKeys.WalletDetailTransactionKey]: "Transaction Key",
+  [LangKeys.WalletDetailDestinationAddress]: "Destination Address",
+  [LangKeys.WalletDetailIncomingAddress]: "Incoming Address",
   [LangKeys.WalletDetailHeight]: "Height",
   [LangKeys.WalletDetailReceiptAddress]: "Receipt Address",
 
   [LangKeys.MyWalletBalancePrimaryAddress]: "Primary Address",
   [LangKeys.MyWalletSendBackToWallet]: "Back to Wallet",
   [LangKeys.MyWalletSendSuccessModalTitle]: "Fund are sent!",
+  [LangKeys.MyWalletSendSuccessModalMsg]: "",
+
+  [LangKeys.MyWalletReceiveTitle]: "Your Address",
 
   [LangKeys.MyWalletQRModalPrimaryAddress]: "Primary Address",
+  [LangKeys.MyWalletQRModalReturnBtn]: "Return",
+  [LangKeys.MyWalletQRModalDownloadQRBtn]: "Download QR",
 };
 
 export default LangPackEN;

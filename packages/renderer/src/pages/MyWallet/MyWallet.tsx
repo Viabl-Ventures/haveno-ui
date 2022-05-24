@@ -46,7 +46,7 @@ export function MyWallet() {
           <MyWalletPrimaryAddress />
         </Stack>
 
-        <Tabs className={classes.tabsRoot}>
+        <Tabs className={classes.tabsRoot} pb="xl">
           <Tabs.Tab
             label={formatMessage({
               id: LangKeys.MyWalletTabTransactions,
@@ -55,6 +55,7 @@ export function MyWallet() {
           >
             <MyWalletTransactions />
           </Tabs.Tab>
+
           <Tabs.Tab
             label={formatMessage({
               id: LangKeys.MyWalletTabSend,
@@ -63,6 +64,7 @@ export function MyWallet() {
           >
             <MyWalletSendForm />
           </Tabs.Tab>
+
           <Tabs.Tab
             label={formatMessage({
               id: LangKeys.MyWalletTabReceive,

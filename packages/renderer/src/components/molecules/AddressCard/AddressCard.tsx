@@ -98,8 +98,13 @@ export function AddressCard({
   };
 
   const handleQRClick = () => {
-    modals.openModal({
-      children: <AddressCardQRModalContent address={address} />,
+    const modalId = modals.openModal({
+      children: (
+        <AddressCardQRModalContent
+          address={address}
+          onReturnClick={() => modals.closeModal(modalId)}
+        />
+      ),
       labels: { confirm: "Confirm", cancel: "Cancel" },
       size: 690,
       withCloseButton: false,

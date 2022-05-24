@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useIntl } from "react-intl";
-import { Box, Group, Stack, Text, createStyles } from "@mantine/core";
+import { FormattedDate, FormattedTime, useIntl } from "react-intl";
+import { Box, Group, Stack, Text, createStyles, Grid } from "@mantine/core";
 import type { Row } from "@tanstack/react-table";
 import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 import { ReactComponent as ArrowWest } from "@assets/arrow-west.svg";
@@ -31,7 +31,7 @@ export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
   return (
     <Group>
       <CircleIcon>
-        {WalletTransactionType === row.original.type ? (
+        {WalletTransactionType.Sent === row.original.type ? (
           <ArrowNorth color="#0B65DA" width={18} height={18} />
         ) : (
           <ArrowWest color="#75B377" width={18} height={18} />
@@ -50,12 +50,19 @@ export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
                 defaultMessage: "Received",
               })}
         </Text>
-        <Group>
+
+        <Group spacing="xs">
           <Text size="sm" color="gray">
-            {row.original.time}
+            <FormattedTime value={row.original.time} />
           </Text>
+
           <Text size="sm" color="gray">
-            {row.original.date}
+            <FormattedDate
+              value={row.original.date}
+              year="numeric"
+              month="long"
+              day="2-digit"
+            />
           </Text>
         </Group>
       </Box>
@@ -72,12 +79,15 @@ export function WalletTransactionAmountCell({ row }: { row: Row<any> }) {
           currencyCode={row.original.amountCurrency}
         />
       </Text>
-      <Text size="sm" color="gray">
-        <Currency
-          value={row.original.foreignAmount}
-          currencyCode={row.original.foreignAmountCurrency}
-        />
-      </Text>
+
+      {row.original.foreignAmount && (
+        <Text size="sm" color="gray">
+          <Currency
+            value={row.original.foreignAmount}
+            currencyCode={row.original.foreignAmountCurrency}
+          />
+        </Text>
+      )}
     </Stack>
   );
 }
@@ -91,6 +101,9 @@ const useRowExpanded = createStyles((theme) => ({
   label: {
     fontSize: 10,
   },
+  detailContent: {
+    wordBreak: "break-all",
+  },
 }));
 
 export function WalletTransactionRowExpanded({ row }: { row: Row<any> }) {
@@ -98,66 +111,91 @@ export function WalletTransactionRowExpanded({ row }: { row: Row<any> }) {
   const { classes } = useRowExpanded();
 
   return (
-    <Stack className={classes.root} spacing="xl">
-      <Group>
-        <DetailItem
-          label={formatMessage({
-            id: LangKeys.WalletDetailTransactionId,
-            defaultMessage: "Transaction ID",
-          })}
-          classNames={{ label: classes.label }}
-        >
-          {row.original.transactionId}
-        </DetailItem>
+    <Box className={classes.root}>
+      <Grid>
+        <Grid.Col span={9}>
+          <DetailItem
+            label={formatMessage({
+              id: LangKeys.WalletDetailTransactionId,
+              defaultMessage: "Transaction ID",
+            })}
+            classNames={{
+              label: classes.label,
+              content: classes.detailContent,
+            }}
+            mb="lg"
+          >
+            {row.original.transactionId}
+          </DetailItem>
 
-        <DetailItem
-          label={formatMessage({
-            id: LangKeys.WalletDetailFee,
-            defaultMessage: "Fee",
-          })}
-          ml="auto"
-          textAlign="right"
-          classNames={{ label: classes.label }}
-        >
-          <Currency value={row.original.fee} />
-        </DetailItem>
-      </Group>
+          {row.original?.destinationAddresses?.map((address: string) => (
+            <DetailItem
+              key={address}
+              label={formatMessage({
+                id: LangKeys.WalletDetailDestinationAddress,
+                defaultMessage: "Transaction Key",
+              })}
+              classNames={{
+                label: classes.label,
+                content: classes.detailContent,
+              }}
+              mb="lg"
+            >
+              {address}
+            </DetailItem>
+          ))}
+          {row.original?.incomingAddresses?.map((address: string) => (
+            <DetailItem
+              key={address}
+              label={formatMessage({
+                id: LangKeys.WalletDetailIncomingAddress,
+                defaultMessage: "Incoming Address",
+              })}
+              classNames={{
+                label: classes.label,
+                content: classes.detailContent,
+              }}
+              mb="lg"
+            >
+              {address}
+            </DetailItem>
+          ))}
+        </Grid.Col>
 
-      <Group>
-        <DetailItem
-          label={formatMessage({
-            id: LangKeys.WalletDetailTransactionKey,
-            defaultMessage: "Transaction Key",
-          })}
-          classNames={{ label: classes.label }}
-        >
-          {row.original.transactionKey}
-        </DetailItem>
+        <Grid.Col span={3}>
+          <DetailItem
+            label={formatMessage({
+              id: LangKeys.WalletDetailFee,
+              defaultMessage: "Fee",
+            })}
+            ml="auto"
+            textAlign="right"
+            classNames={{
+              label: classes.label,
+              content: classes.detailContent,
+            }}
+            mb="lg"
+          >
+            <Currency value={row.original.fee} />
+          </DetailItem>
 
-        <DetailItem
-          label={formatMessage({
-            id: LangKeys.WalletDetailHeight,
-            defaultMessage: "Height",
-          })}
-          ml="auto"
-          textAlign="right"
-          classNames={{ label: classes.label }}
-        >
-          <Currency value={row.original.height} />
-        </DetailItem>
-      </Group>
-
-      <Group>
-        <DetailItem
-          label={formatMessage({
-            id: LangKeys.WalletDetailReceiptAddress,
-            defaultMessage: "Receipt Address",
-          })}
-          classNames={{ label: classes.label }}
-        >
-          {row.original.receiptAddress}
-        </DetailItem>
-      </Group>
-    </Stack>
+          <DetailItem
+            label={formatMessage({
+              id: LangKeys.WalletDetailHeight,
+              defaultMessage: "Height",
+            })}
+            ml="auto"
+            textAlign="right"
+            classNames={{
+              label: classes.label,
+              content: classes.detailContent,
+            }}
+            mb="lg"
+          >
+            <Currency value={row.original.height} />
+          </DetailItem>
+        </Grid.Col>
+      </Grid>
+    </Box>
   );
 }

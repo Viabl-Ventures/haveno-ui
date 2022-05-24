@@ -29,7 +29,8 @@ export function MyWalletSendForm() {
   const { formatMessage } = useIntl();
   const modals = useModals();
 
-  const { mutateAsync: setXmrSend } = useSetXmrSend();
+  const { mutateAsync: setXmrSend, isLoading: isXmrSendLoading } =
+    useSetXmrSend();
   const validation = useMyWalletSendFormValidation();
 
   const form = useForm<MyWalletSendFormValues>({
@@ -95,6 +96,7 @@ export function MyWalletSendForm() {
             {...form.getInputProps("amount")}
           />
         </SimpleGrid>
+
         <TextInput
           id="address"
           label={
@@ -124,8 +126,9 @@ export function MyWalletSendForm() {
           {...form.getInputProps("paymentId")}
         />
       </Stack>
+
       <Group position="right" mt="xl">
-        <Button size="md" type="submit">
+        <Button size="md" type="submit" loading={isXmrSendLoading}>
           <FormattedMessage id={LangKeys.Save} defaultMessage="Save" />
         </Button>
       </Group>

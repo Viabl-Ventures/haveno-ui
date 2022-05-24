@@ -82,7 +82,8 @@ export enum LangKeys {
   WalletDetailReceived = "myWallet.detail.received",
   WalletDetailTransactionId = "myWallet.detail.transactionId",
   WalletDetailFee = "myWallet.detail.fee",
-  WalletDetailTransactionKey = "myWallet.detail.transactionKey",
+  WalletDetailDestinationAddress = "myWallet.detail.destinationAddress",
+  WalletDetailIncomingAddress = "myWallet.detail.incomingAddress",
   WalletDetailHeight = "myWallet.detail.height",
   WalletDetailReceiptAddress = "myWallet.detail.receiptAddress",
 

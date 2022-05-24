@@ -19,17 +19,21 @@ export enum WalletTransactionType {
   Received = "Received",
 }
 
-export type TWalletTransaction = {
-  type: WalletTransactionType;
-  date: string;
-  time: string;
+export interface TWalletTransaction {
+  type: WalletTransactionType; //
+  date: number;
+
   amount: number;
   amountCurrency: string;
-  foreignAmount: number;
-  foreignAmountCurrency: string;
+
+  foreignAmount?: number;
+  foreignAmountCurrency?: string;
+
   transactionId: string;
-  receiptAddress: string;
-  transactionKey: string;
-  fee: string;
-  height: string;
-};
+
+  destinationAddresses?: string[];
+  incomingAddresses?: string[];
+
+  fee: number; //
+  height: number;
+}

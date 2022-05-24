@@ -22,5 +22,9 @@ import { useHavenoClient } from "./useHavenoClient";
 export const useXmrTxs = () => {
   const client = useHavenoClient();
 
-  return useQuery<XmrTx[]>(QueryKeys.XmrTxs, async () => client.getXmrTxs());
+  return useQuery<XmrTx.AsObject[]>(QueryKeys.XmrTxs, async () => {
+    const txs = await client.getXmrTxs();
+
+    return txs?.map((tx) => tx.toObject());
+  });
 };
