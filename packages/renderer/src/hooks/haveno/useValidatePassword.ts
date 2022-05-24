@@ -33,7 +33,6 @@ export function useValidatePassword(variables: Variables, options?: Options) {
         const authToken = await window.electronStore.verifyPassword(
           variables.password
         );
-        console.log({ authToken });
         return Boolean(authToken);
       } catch {
         return false;

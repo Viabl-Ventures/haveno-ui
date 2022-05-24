@@ -26,7 +26,7 @@ describe("molecules::WalletManagement", () => {
       useValidatePassword: () => ({
         isLoading: false,
         isSuccess: true,
-        data: "qwe123",
+        data: true,
       }),
     }));
 
