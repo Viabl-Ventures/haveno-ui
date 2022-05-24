@@ -1,7 +1,7 @@
+import { isEmpty } from "lodash";
+import type { XmrTx } from "haveno-ts";
 import type { TWalletTransaction } from "@molecules/WalletTransactions/_types";
 import { WalletTransactionType } from "@molecules/WalletTransactions/_types";
-import type { XmrTx } from "haveno-ts";
-import { isEmpty } from "lodash";
 
 export const transfromXmrTxs = (
   xmrTxs: XmrTx.AsObject[]

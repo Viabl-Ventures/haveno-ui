@@ -14,10 +14,11 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { XmrDestination } from "haveno-ts";
-import { useHavenoClient } from "./useHavenoClient";
 import { showNotification } from "@mantine/notifications";
+import { QueryKeys } from "@constants/query-keys";
+import { useHavenoClient } from "./useHavenoClient";
 
 interface SetXmrSendVariables {
   address: string;
@@ -27,6 +28,7 @@ interface SetXmrSendVariables {
 
 export function useSetXmrSend() {
   const client = useHavenoClient();
+  const queryClient = useQueryClient();
 
   return useMutation(
     async (variables: SetXmrSendVariables) => {
@@ -39,6 +41,10 @@ export function useSetXmrSend() {
       return client.relayXmrTx(tx.getMetadata());
     },
     {
+      onSuccess: () => {
+        queryClient.invalidateQueries(QueryKeys.XmrTxs);
+        queryClient.invalidateQueries(QueryKeys.Balances);
+      },
       onError: (err) => {
         console.dir(err);
         showNotification({

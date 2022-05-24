@@ -16,13 +16,13 @@
 
 import { createTable } from "@tanstack/react-table";
 import { Table } from "@atoms/Table";
+import { createStyles } from "@mantine/core";
 import {
   WalletTransactionnSignCell,
   WalletTransactionAmountCell,
   WalletTransactionRowExpanded,
 } from "./WalletTransactionsCells";
 import type { TWalletTransaction } from "./_types";
-import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles(() => ({
   root: {

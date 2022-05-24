@@ -67,6 +67,9 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AccountCardCopyBtn]: "Copy",
   [LangKeys.AccountCardCopiedBtn]: "Copied",
   [LangKeys.AccountCardQRBtn]: "QR",
+  [LangKeys.AddressCardCopyBtn]: "Copy",
+  [LangKeys.AddressCardCopiedBtn]: "Copied",
+  [LangKeys.AddressCardQRBtn]: "QR",
 
   [LangKeys.MyWalletSendFieldAmount]: "Amount",
   [LangKeys.MyWalletSendFieldAddress]: "Address",

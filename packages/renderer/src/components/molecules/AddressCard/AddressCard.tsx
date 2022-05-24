@@ -121,12 +121,12 @@ export function AddressCard({
           <Anchor onClick={handleCopyClick} underline>
             {!isCopied ? (
               <FormattedMessage
-                id={LangKeys.AccountCardCopyBtn}
+                id={LangKeys.AddressCardCopyBtn}
                 defaultMessage="Copy"
               />
             ) : (
               <FormattedMessage
-                id={LangKeys.AccountCardCopiedBtn}
+                id={LangKeys.AddressCardCopiedBtn}
                 defaultMessage="Copied"
               />
             )}
@@ -134,7 +134,7 @@ export function AddressCard({
 
           <Anchor onClick={handleQRClick} underline>
             <FormattedMessage
-              id={LangKeys.AccountCardQRBtn}
+              id={LangKeys.AddressCardQRBtn}
               defaultMessage="QR"
             />
           </Anchor>

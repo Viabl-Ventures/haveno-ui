@@ -59,6 +59,10 @@ export enum LangKeys {
   AccountCardCopiedBtn = "accountCard.copiedButton",
   AccountCardQRBtn = "accountCard.qrButton",
 
+  AddressCardCopyBtn = "accountCard.copyButton",
+  AddressCardCopiedBtn = "accountCard.copiedButton",
+  AddressCardQRBtn = "accountCard.qrButton",
+
   MyWalletSendFieldAmount = "myWallet.send.amountField",
   MyWalletSendFieldPaymentId = "myWallet.send.paymentIdField",
   MyWalletSendFieldPaymentIdPlaceholder = "myWallet.send.paymentIdFieldPlaceholder",

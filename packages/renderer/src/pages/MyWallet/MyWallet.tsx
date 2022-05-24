@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { useIntl } from "react-intl";
-import { Tabs } from "@atoms/Tabs";
 import { Container, createStyles, Stack } from "@mantine/core";
+import { Tabs } from "@atoms/Tabs";
 import { MyWalletMoneroBalance } from "@organisms/MyWalletMoneroBalance";
 import { MyWalletPrimaryAddress } from "@organisms/MyWalletPrimaryAddress";
 import { MyWalletSendForm } from "@organisms/MyWalletSendForm";

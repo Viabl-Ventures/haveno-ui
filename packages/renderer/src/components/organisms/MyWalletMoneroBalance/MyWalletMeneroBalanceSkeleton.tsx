@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { useIntl } from "react-intl";
-import { LangKeys } from "@constants/lang";
 import { Skeleton } from "@mantine/core";
+import { LangKeys } from "@constants/lang";
 import { MoneroBalance } from "@organisms/MoneroBalance";
 
 export function MyWalletMeneroBalanceSkeleton() {

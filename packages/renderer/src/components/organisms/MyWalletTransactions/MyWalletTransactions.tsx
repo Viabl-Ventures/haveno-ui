@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { useMemo } from "react";
-import { useXmrTxs } from "@hooks/haveno/useXmrTxs";
 import { Group, Loader } from "@mantine/core";
+import { useXmrTxs } from "@hooks/haveno/useXmrTxs";
 import { WalletTransactions } from "@molecules/WalletTransactions";
 import { transfromXmrTxs } from "./_utils";
 
