@@ -16,5 +16,5 @@
 
 export enum Notifications {
   AccountRestoring = "AccountRestoring",
-  MoneroRestartAfterRestoring = "MoneroRestartAfterRestoring"
+  MoneroRestartAfterRestoring = "MoneroRestartAfterRestoring",
 }
