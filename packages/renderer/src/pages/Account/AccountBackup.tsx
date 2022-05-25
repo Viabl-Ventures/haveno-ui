@@ -117,7 +117,7 @@ export function AccountBackup() {
           </BodyText>
 
           <Button
-            disabled={isDownloading}
+            disabled={true}
             loading={isRestoring}
             loaderPosition="right"
             flavor="neutral"
