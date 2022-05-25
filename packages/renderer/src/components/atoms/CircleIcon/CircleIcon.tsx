@@ -25,22 +25,6 @@ export interface CircleIconProps extends DefaultProps {
 
 type CircleIconStyle = Pick<CircleIconProps, "color" | "size">;
 
-const useStyles = createStyles((theme, { color, size }: CircleIconStyle) => ({
-  root: {
-    borderRadius: "50%",
-    height: size || 34,
-    width: size || 34,
-    lineHeight: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.05)",
-    color: color || theme.colors.gray[9],
-    display: "flex",
-
-    svg: {
-      margin: "auto",
-    },
-  },
-}));
-
 export function CircleIcon({
   children,
   classNames,
@@ -63,3 +47,19 @@ export function CircleIcon({
     </Box>
   );
 }
+
+const useStyles = createStyles((theme, { color, size }: CircleIconStyle) => ({
+  root: {
+    borderRadius: "50%",
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
+    color: color || theme.colors.gray[9],
+    display: "flex",
+    height: size || 34,
+    lineHeight: 1,
+    width: size || 34,
+
+    svg: {
+      margin: "auto",
+    },
+  },
+}));

@@ -24,13 +24,11 @@ export default {
 
 const Template: ComponentStory<typeof Tabs> = () => {
   return (
-    <div>
-      <Tabs>
-        <Tabs.Tab label="Gallery">Gallery tab content</Tabs.Tab>
-        <Tabs.Tab label="Messages">Messages tab content</Tabs.Tab>
-        <Tabs.Tab label="Settings">Settings tab content</Tabs.Tab>
-      </Tabs>
-    </div>
+    <Tabs>
+      <Tabs.Tab label="Gallery">Gallery tab content</Tabs.Tab>
+      <Tabs.Tab label="Messages">Messages tab content</Tabs.Tab>
+      <Tabs.Tab label="Settings">Settings tab content</Tabs.Tab>
+    </Tabs>
   );
 };
 

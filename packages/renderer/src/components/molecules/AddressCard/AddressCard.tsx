@@ -40,37 +40,7 @@ interface AddressCardProps {
   qrModalProps?: OpenConfirmModal;
 }
 
-type AddressCardSkeletonProps = Pick<AddressCardProps, "label" | "primary">;
-
-interface AddressCardQRModalContentProps {
-  address: string;
-  onQRDownloadClick?: () => void;
-  onReturnClick?: () => void;
-}
-
 const COPY_TEXT_TIMEOUT = 500;
-
-const useStyles = createStyles((theme) => ({
-  contentGroup: {
-    minWidth: "100%",
-  },
-  address: {
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    width: "100%",
-  },
-  addressBtns: {
-    marginLeft: "auto",
-  },
-  qrRoot: {
-    marginTop: theme.spacing.xl,
-    textAlign: "center",
-  },
-  qrModalAddress: {
-    fontSize: theme.fontSizes.lg,
-  },
-}));
 
 export function AddressCard({
   label,
@@ -144,6 +114,8 @@ export function AddressCard({
   );
 }
 
+type AddressCardSkeletonProps = Pick<AddressCardProps, "label" | "primary">;
+
 export function AddressCardSkeleton({
   label,
   primary,
@@ -173,6 +145,12 @@ export function AddressCardSkeleton({
       </Box>
     </DetailItemCard>
   );
+}
+
+interface AddressCardQRModalContentProps {
+  address: string;
+  onQRDownloadClick?: () => void;
+  onReturnClick?: () => void;
 }
 
 function AddressCardQRModalContent({
@@ -217,3 +195,25 @@ function AddressCardQRModalContent({
     </Box>
   );
 }
+
+const useStyles = createStyles((theme) => ({
+  contentGroup: {
+    minWidth: "100%",
+  },
+  address: {
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    width: "100%",
+  },
+  addressBtns: {
+    marginLeft: "auto",
+  },
+  qrRoot: {
+    marginTop: theme.spacing.xl,
+    textAlign: "center",
+  },
+  qrModalAddress: {
+    fontSize: theme.fontSizes.lg,
+  },
+}));

@@ -15,28 +15,14 @@
 // =============================================================================
 
 import { createTable } from "@tanstack/react-table";
-import { Table } from "@atoms/Table";
+import { Table } from "@molecules/Table";
 import { createStyles } from "@mantine/core";
 import {
   WalletTransactionnSignCell,
   WalletTransactionAmountCell,
-  WalletTransactionRowExpanded,
 } from "./WalletTransactionsCells";
+import { WalletTransactionRowExpanded } from "./WalletTransactionsRowExpanded";
 import type { TWalletTransaction } from "./_types";
-
-const useStyles = createStyles(() => ({
-  root: {
-    "tbody tr td:first-child": {
-      paddingLeft: 0,
-    },
-    "tbody tr td:last-child": {
-      paddingRight: 0,
-    },
-    "tbody tr": {
-      cursor: "pointer",
-    },
-  },
-}));
 
 const table = createTable().setRowType<TWalletTransaction>();
 
@@ -75,3 +61,17 @@ export function WalletTransactions({ data }: WalletTransactionsProps) {
     />
   );
 }
+
+const useStyles = createStyles(() => ({
+  root: {
+    "tbody tr td:first-child": {
+      paddingLeft: 0,
+    },
+    "tbody tr td:last-child": {
+      paddingRight: 0,
+    },
+    "tbody tr": {
+      cursor: "pointer",
+    },
+  },
+}));

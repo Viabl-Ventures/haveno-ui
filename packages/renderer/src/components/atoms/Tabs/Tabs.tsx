@@ -33,17 +33,17 @@ const useStyles = createStyles((theme, _undefined, getRef) => {
       borderBottom: `2px solid ${theme.colors.gray[3]}`,
     },
     tabControl: {
-      height: 32,
-      textTransform: "uppercase",
-      fontWeight: 700,
-      letterSpacing: 0.8,
-      color: theme.colors.gray[6],
       borderBottom: "2px solid transparent",
+      color: theme.colors.gray[6],
+      fontWeight: 700,
+      height: 32,
+      letterSpacing: 0.8,
       marginBottom: -2,
-      paddingLeft: 0,
-      paddingRight: 0,
       marginLeft: theme.spacing.md,
       marginRight: theme.spacing.md,
+      paddingLeft: 0,
+      paddingRight: 0,
+      textTransform: "uppercase",
 
       "&:first-child": {
         marginLeft: 0,
@@ -52,8 +52,8 @@ const useStyles = createStyles((theme, _undefined, getRef) => {
         marginRight: 0,
       },
       [`&.${tabActiveRef}`]: {
-        color: theme.colors.dark[9],
         borderBottomColor: theme.primaryColor,
+        color: theme.colors.dark[9],
       },
     },
   };

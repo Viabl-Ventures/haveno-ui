@@ -52,11 +52,11 @@ const useStyles = createStyles(
       textAlign: textAlign || undefined,
     },
     label: {
-      textTransform: "uppercase",
-      fontSize: theme.fontSizes.sm,
-      letterSpacing: "0.075rem",
-      fontWeight: 600,
       color: theme.colors.gray[6],
+      fontSize: theme.fontSizes.sm,
+      fontWeight: 600,
+      textTransform: "uppercase",
+      letterSpacing: "0.075rem",
     },
     content: {
       fontWeight: 500,

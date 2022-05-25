@@ -26,7 +26,7 @@ import { getActiveReceiveAddresses, saveReceiveAddresss } from "./_utils";
 export function MyWalletReceive() {
   const { mutateAsync: setXmrNewSubaddress, isLoading: isSetXmrLoading } =
     useSetXmrNewSubaddress();
-  const [addresses, setAddresses] = useState<string[]>(
+  const [addresses, setAddresses] = useState<Array<string>>(
     getActiveReceiveAddresses() || []
   );
 

@@ -23,13 +23,18 @@ export default {
   component: DetailItemCard,
 } as ComponentMeta<typeof DetailItemCard>;
 
-const Template: ComponentStory<typeof DetailItemCard> = () => {
+const Template: ComponentStory<typeof DetailItemCard> = (props) => {
   return (
     <Stack>
-      <DetailItemCard label="Primary Label">Content here</DetailItemCard>
+      <DetailItemCard {...props} />
     </Stack>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+
+Default.args = {
+  label: "Primary Label",
+  children: "Content here",
+  primary: false,
+};

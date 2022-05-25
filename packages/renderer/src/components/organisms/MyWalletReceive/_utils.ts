@@ -16,7 +16,7 @@
 
 import { isEmpty } from "lodash";
 
-const LCOAL_STORAGE_KEY = "mywallet-received-addressees";
+const LCOAL_STORAGE_KEY = "mywallet-received-addresses";
 
 export const getActiveReceiveAddresses = (): Array<string> => {
   const storedAddressesString = sessionStorage.getItem(LCOAL_STORAGE_KEY);

@@ -19,17 +19,6 @@ import { createStyles, Modal as MModal } from "@mantine/core";
 import type { ModalsProviderProps } from "@mantine/modals";
 import { ModalsProvider as MModalsProvider } from "@mantine/modals";
 
-const useStyles = createStyles((theme) => ({
-  root: {},
-  modal: {
-    borderRadius: theme.radius.xl / 1.6,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 600,
-  },
-}));
-
 const commonModalProps = {
   overlayOpacity: 0.25,
   padding: 25,
@@ -54,3 +43,14 @@ export function ModalsProvider({ ...props }: ModalsProviderProps) {
     />
   );
 }
+
+const useStyles = createStyles((theme) => ({
+  root: {},
+  modal: {
+    borderRadius: theme.radius.xl / 1.6,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 600,
+  },
+}));

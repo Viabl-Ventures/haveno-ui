@@ -20,7 +20,7 @@ import type { TWalletTransaction } from "@molecules/WalletTransactions/_types";
 import { WalletTransactionType } from "@molecules/WalletTransactions/_types";
 
 export const transfromXmrTxs = (
-  xmrTxs: XmrTx.AsObject[]
+  xmrTxs: Array<XmrTx.AsObject>
 ): TWalletTransaction[] => {
   return xmrTxs.map(transfromXmrTx);
 };

@@ -25,14 +25,14 @@ export default {
   component: CircleIcon,
 } as ComponentMeta<typeof CircleIcon>;
 
-const Template: ComponentStory<typeof CircleIcon> = () => {
+const Template: ComponentStory<typeof CircleIcon> = ({ ...props }) => {
   return (
     <Stack>
-      <CircleIcon color="#0B65DA">
+      <CircleIcon {...props}>
         <ArrowNorth />
       </CircleIcon>
 
-      <CircleIcon color="#75B377">
+      <CircleIcon {...props}>
         <ArrowWest />
       </CircleIcon>
     </Stack>
@@ -40,4 +40,7 @@ const Template: ComponentStory<typeof CircleIcon> = () => {
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+
+Default.args = {
+  color: "#75B377",
+};

@@ -3,7 +3,7 @@
 exports[`atoms::CircleIcon > renders without exploding 1`] = `
 <DocumentFragment>
   <div
-    class="mantine-CircleIcon-root mantine-1juj82k"
+    class="mantine-CircleIcon-root mantine-hg5ly7"
   >
     <svg
       fill="none"

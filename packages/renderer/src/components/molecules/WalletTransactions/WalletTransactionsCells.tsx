@@ -15,11 +15,10 @@
 // =============================================================================
 
 import { FormattedDate, FormattedTime, useIntl } from "react-intl";
-import { Box, Group, Stack, Text, createStyles, Grid } from "@mantine/core";
+import { Box, Group, Stack, Text } from "@mantine/core";
 import type { Row } from "@tanstack/react-table";
 import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 import { ReactComponent as ArrowWest } from "@assets/arrow-west.svg";
-import { DetailItem } from "@atoms/DetailItem";
 import { LangKeys } from "@constants/lang";
 import { Currency } from "@atoms/Currency";
 import { CircleIcon } from "@atoms/CircleIcon/CircleIcon";
@@ -89,113 +88,5 @@ export function WalletTransactionAmountCell({ row }: { row: Row<any> }) {
         </Text>
       )}
     </Stack>
-  );
-}
-
-const useRowExpanded = createStyles((theme) => ({
-  root: {
-    paddingLeft: 50,
-    paddingTop: theme.spacing.sm,
-    paddingBottom: theme.spacing.sm,
-  },
-  label: {
-    fontSize: 10,
-  },
-  detailContent: {
-    wordBreak: "break-all",
-  },
-}));
-
-export function WalletTransactionRowExpanded({ row }: { row: Row<any> }) {
-  const { formatMessage } = useIntl();
-  const { classes } = useRowExpanded();
-
-  return (
-    <Box className={classes.root}>
-      <Grid>
-        <Grid.Col span={9}>
-          <DetailItem
-            label={formatMessage({
-              id: LangKeys.WalletDetailTransactionId,
-              defaultMessage: "Transaction ID",
-            })}
-            classNames={{
-              label: classes.label,
-              content: classes.detailContent,
-            }}
-            mb="lg"
-          >
-            {row.original.transactionId}
-          </DetailItem>
-
-          {row.original?.destinationAddresses?.map((address: string) => (
-            <DetailItem
-              key={address}
-              label={formatMessage({
-                id: LangKeys.WalletDetailDestinationAddress,
-                defaultMessage: "Transaction Key",
-              })}
-              classNames={{
-                label: classes.label,
-                content: classes.detailContent,
-              }}
-              mb="lg"
-            >
-              {address}
-            </DetailItem>
-          ))}
-          {row.original?.incomingAddresses?.map((address: string) => (
-            <DetailItem
-              key={address}
-              label={formatMessage({
-                id: LangKeys.WalletDetailIncomingAddress,
-                defaultMessage: "Incoming Address",
-              })}
-              classNames={{
-                label: classes.label,
-                content: classes.detailContent,
-              }}
-              mb="lg"
-            >
-              {address}
-            </DetailItem>
-          ))}
-        </Grid.Col>
-
-        <Grid.Col span={3}>
-          <DetailItem
-            label={formatMessage({
-              id: LangKeys.WalletDetailFee,
-              defaultMessage: "Fee",
-            })}
-            ml="auto"
-            textAlign="right"
-            classNames={{
-              label: classes.label,
-              content: classes.detailContent,
-            }}
-            mb="lg"
-          >
-            <Currency value={row.original.fee} />
-          </DetailItem>
-
-          <DetailItem
-            label={formatMessage({
-              id: LangKeys.WalletDetailHeight,
-              defaultMessage: "Height",
-            })}
-            ml="auto"
-            textAlign="right"
-            classNames={{
-              label: classes.label,
-              content: classes.detailContent,
-            }}
-            mb="lg"
-          >
-            <Currency value={row.original.height} />
-          </DetailItem>
-        </Grid.Col>
-      </Grid>
-    </Box>
   );
 }

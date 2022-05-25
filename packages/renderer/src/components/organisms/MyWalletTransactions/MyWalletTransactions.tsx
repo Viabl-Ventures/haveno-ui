@@ -27,11 +27,9 @@ interface MyWalletTransactionsBootProps {
 export function MyWalletTransactionsTable() {
   const { data: xmrTxs } = useXmrTxs();
 
-  if (!xmrTxs) return null;
-
   const transactions = useMemo(() => transfromXmrTxs(xmrTxs || []), [xmrTxs]);
 
-  return <WalletTransactions data={transactions} />;
+  return xmrTxs ? <WalletTransactions data={transactions} /> : null;
 }
 
 function MyWalletTransactionsBoot({ children }: MyWalletTransactionsBootProps) {

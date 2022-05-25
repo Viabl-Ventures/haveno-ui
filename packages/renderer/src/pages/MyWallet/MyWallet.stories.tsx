@@ -16,25 +16,22 @@
 
 import { Stack } from "@mantine/core";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { DetailItem } from "./DetailItem";
+
+import { MyWallet } from "./MyWallet";
 
 export default {
-  title: "atoms/DetailItem",
-  component: DetailItem,
-} as ComponentMeta<typeof DetailItem>;
+  title: "pages/MyWallet",
+  component: MyWallet,
+} as ComponentMeta<typeof MyWallet>;
 
-const Template: ComponentStory<typeof DetailItem> = ({ ...props }) => {
+const Template: ComponentStory<typeof MyWallet> = () => {
   return (
-    <Stack spacing="xl">
-      <DetailItem {...props} />
+    <Stack>
+      <MyWallet />
     </Stack>
   );
 };
 
 export const Default = Template.bind({});
 
-Default.args = {
-  label: "RECEIPIENT ADDRESS",
-  children: "a1b848fdf7fb77f1dae266331d23c522db267ced63566a6e35800421c988d9f1",
-  textAlign: "left",
-};
+Default.args = {};

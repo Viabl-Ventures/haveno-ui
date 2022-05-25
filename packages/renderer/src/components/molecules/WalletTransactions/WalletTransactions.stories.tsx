@@ -24,6 +24,14 @@ export default {
   component: WalletTransactions,
 } as ComponentMeta<typeof WalletTransactions>;
 
+const Template: ComponentStory<typeof WalletTransactions> = () => {
+  return <WalletTransactions data={data} />;
+};
+
+export const Default = Template.bind({});
+
+Default.args = {};
+
 const data = [
   {
     type: WalletTransactionType.Sent,
@@ -80,10 +88,3 @@ const data = [
     fee: 0.000005096,
   },
 ] as TWalletTransaction[];
-
-const Template: ComponentStory<typeof WalletTransactions> = () => {
-  return <WalletTransactions data={data} />;
-};
-
-export const Default = Template.bind({});
-Default.args = {};

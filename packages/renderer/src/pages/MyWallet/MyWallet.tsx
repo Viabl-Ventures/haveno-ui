@@ -25,15 +25,6 @@ import { NavbarLayout } from "@templates/NavbarLayout";
 import { LangKeys } from "@constants/lang";
 import { MyWalletTransactions } from "@organisms/MyWalletTransactions/MyWalletTransactions";
 
-const useStyles = createStyles(() => ({
-  tabsRoot: {
-    marginTop: "3rem",
-  },
-  container: {
-    width: "100%",
-  },
-}));
-
 export function MyWallet() {
   const { classes } = useStyles();
   const { formatMessage } = useIntl();
@@ -78,3 +69,12 @@ export function MyWallet() {
     </NavbarLayout>
   );
 }
+
+const useStyles = createStyles(() => ({
+  tabsRoot: {
+    marginTop: "3rem",
+  },
+  container: {
+    width: "100%",
+  },
+}));

@@ -25,12 +25,13 @@ export default {
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = () => {
+const Template: ComponentStory<typeof Modal> = ({ ...props }) => {
   const [opened, setOpened] = useState(false);
 
   return (
-    <div>
+    <>
       <Modal
+        {...props}
         opened={opened}
         onClose={() => setOpened(false)}
         title="Funds are sent!"
@@ -47,7 +48,7 @@ const Template: ComponentStory<typeof Modal> = () => {
       <Group position="center">
         <Button onClick={() => setOpened(true)}>Open Modal</Button>
       </Group>
-    </div>
+    </>
   );
 };
 

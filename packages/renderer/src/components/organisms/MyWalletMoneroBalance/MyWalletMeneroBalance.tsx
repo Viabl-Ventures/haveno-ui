@@ -14,16 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { FC } from "react";
 import { useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useBalances } from "@hooks/haveno/useBalances";
 import { MoneroBalance } from "@organisms/MoneroBalance";
 import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
 import { Currency } from "@atoms/Currency";
-
-interface MyWalletMoneroBalanceBootProps {
-  children: JSX.Element;
-}
 
 export function MyWalletMoneroBalanceContent() {
   const { formatMessage } = useIntl();
@@ -75,9 +72,7 @@ export function MyWalletMoneroBalance() {
   );
 }
 
-export function MyWalletMoneroBalanceBoot({
-  children,
-}: MyWalletMoneroBalanceBootProps): JSX.Element {
+export const MyWalletMoneroBalanceBoot: FC = ({ children }): JSX.Element => {
   const { isLoading: isBalancesLoading } = useBalances();
 
   return isBalancesLoading ? (
@@ -85,4 +80,4 @@ export function MyWalletMoneroBalanceBoot({
   ) : (
     <>{children}</>
   );
-}
+};

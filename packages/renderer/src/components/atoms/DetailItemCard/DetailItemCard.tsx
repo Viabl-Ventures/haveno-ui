@@ -30,6 +30,7 @@ const useStyles = createStyles(
   (theme, { primary }: DetailItemCardStyleProps) => ({
     root: {
       background: primary ? theme.colors.gray[2] : theme.white,
+      borderRadius: theme.radius.md,
       border: `1px solid ${
         primary ? theme.colors.gray[2] : theme.colors.gray[3]
       }`,
@@ -37,7 +38,6 @@ const useStyles = createStyles(
       paddingBottom: theme.spacing.sm,
       paddingLeft: theme.spacing.md,
       paddingRight: theme.spacing.md,
-      borderRadius: theme.radius.md,
     },
     detailRoot: {
       width: "100%",
