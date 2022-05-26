@@ -31,7 +31,7 @@ export function MyWallet() {
 
   return (
     <NavbarLayout>
-      <Container size={870} mt="xl" className={classes.container}>
+      <Container size="md" mt="xl" className={classes.container}>
         <Stack spacing="lg">
           <MyWalletMoneroBalance />
           <MyWalletPrimaryAddress />

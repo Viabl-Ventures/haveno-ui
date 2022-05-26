@@ -15,7 +15,7 @@
 // =============================================================================
 
 import { FormattedDate, FormattedTime, useIntl } from "react-intl";
-import { Box, Group, Stack, Text } from "@mantine/core";
+import { Box, Group, Stack, Text, useMantineTheme } from "@mantine/core";
 import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 import { ReactComponent as ArrowWest } from "@assets/arrow-west.svg";
 import { LangKeys } from "@constants/lang";
@@ -30,14 +30,15 @@ export function WalletTransactionnSignCell({
   row?: TWalletTransaction;
 }) {
   const { formatMessage } = useIntl();
+  const theme = useMantineTheme();
 
   return (
     <Group>
       <CircleIcon>
         {WalletTransactionType.Sent === row?.type ? (
-          <ArrowNorth color="#0B65DA" width={18} height={18} />
+          <ArrowNorth color={theme.colors.blue[5]} width={18} height={18} />
         ) : (
-          <ArrowWest color="#75B377" width={18} height={18} />
+          <ArrowWest color={theme.colors.green[4]} width={18} height={18} />
         )}
       </CircleIcon>
 
