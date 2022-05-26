@@ -101,6 +101,21 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletQRModalPrimaryAddress]: "Dirección primaria",
   [LangKeys.MyWalletQRModalReturnBtn]: "Devolver",
   [LangKeys.MyWalletQRModalDownloadQRBtn]: "Descargar código QR",
+  [LangKeys.AccountBackupDownloadTitle]:
+    "Descarga tu archivo de copia de seguridad",
+  [LangKeys.AccountBackupDownloadDesc]:
+    "Para poder restore your Haveno account you need to create a backup file of your account. Keep it somewhere safe.",
+  [LangKeys.AccountBackupDownloadBtn]:
+    "Descargar archivo de copia de seguridad",
+  [LangKeys.AccountBackupRestoreTitle]:
+    "Restaurar un archivo de copia de seguridad existente",
+  [LangKeys.AccountBackupRestoreDesc]:
+    "Cuando restaure un archivo de respaldo existente de su cuenta de Haveno, perderá la cuenta que está usando actualmente. Úselo con precaución.",
+  [LangKeys.AccountBackupRestoreBtn]: "Restaurar copia de seguridad",
+  [LangKeys.AccountBackupDownloadSuccessNotif]:
+    "La copia de seguridad se ha descargado correctamente.",
+  [LangKeys.AccountBackupRestoreSuccessNotif]:
+    "La copia de seguridad se ha restaurado correctamente.",
 };
 
 export default LangPackES;

@@ -89,4 +89,12 @@ export enum LangKeys {
   MyWalletQRModalPrimaryAddress = "myWallet.qrModal.primaryAddress",
   MyWalletQRModalReturnBtn = "myWallet.qrModal.returnBtn",
   MyWalletQRModalDownloadQRBtn = "myWallet.qrModal.downloadBtn",
+  AccountBackupDownloadTitle = "account.backup.download.title",
+  AccountBackupDownloadDesc = "account.backup.download.desc",
+  AccountBackupDownloadBtn = "account.backup.download.btn",
+  AccountBackupRestoreTitle = "account.backup.restore.title",
+  AccountBackupRestoreDesc = "account.backup.restore.desc",
+  AccountBackupRestoreBtn = "account.backup.restore.btn",
+  AccountBackupDownloadSuccessNotif = "account.backup.download.successNotification",
+  AccountBackupRestoreSuccessNotif = "account.backup.restore.successNotification",
 }
