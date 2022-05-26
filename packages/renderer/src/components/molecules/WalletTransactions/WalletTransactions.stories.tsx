@@ -35,7 +35,7 @@ Default.args = {};
 const data = [
   {
     type: WalletTransactionType.Sent,
-    date: Date.now(),
+    timestamp: Date.now(),
     amount: 17.275849365201,
     foreignAmount: 4108.5,
     amountCurrency: "XMR",
@@ -53,7 +53,7 @@ const data = [
   },
   {
     type: WalletTransactionType.Received,
-    date: Date.now(),
+    timestamp: Date.now(),
     amount: 17.275849365201,
     foreignAmount: 4108.5,
     amountCurrency: "XMR",
@@ -71,7 +71,7 @@ const data = [
   },
   {
     type: WalletTransactionType.Sent,
-    date: Date.now(),
+    timestamp: Date.now(),
     amount: 17.275849365201,
     foreignAmount: 4108.5,
     amountCurrency: "XMR",

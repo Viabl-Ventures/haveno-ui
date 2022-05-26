@@ -30,12 +30,12 @@ const columns = [
   table.createDataColumn("type", {
     id: "type",
     header: "Type",
-    cell: WalletTransactionnSignCell,
+    cell: ({ row }) => <WalletTransactionnSignCell row={row.original} />,
   }),
   table.createDataColumn("amount", {
     id: "transaction",
     header: "Amount",
-    cell: WalletTransactionAmountCell,
+    cell: ({ row }) => <WalletTransactionAmountCell row={row.original} />,
     size: 400,
   }),
 ];

@@ -16,21 +16,25 @@
 
 import { FormattedDate, FormattedTime, useIntl } from "react-intl";
 import { Box, Group, Stack, Text } from "@mantine/core";
-import type { Row } from "@tanstack/react-table";
 import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 import { ReactComponent as ArrowWest } from "@assets/arrow-west.svg";
 import { LangKeys } from "@constants/lang";
 import { Currency } from "@atoms/Currency";
 import { CircleIcon } from "@atoms/CircleIcon/CircleIcon";
+import type { TWalletTransaction } from "./_types";
 import { WalletTransactionType } from "./_types";
 
-export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
+export function WalletTransactionnSignCell({
+  row,
+}: {
+  row?: TWalletTransaction;
+}) {
   const { formatMessage } = useIntl();
 
   return (
     <Group>
       <CircleIcon>
-        {WalletTransactionType.Sent === row.original.type ? (
+        {WalletTransactionType.Sent === row?.type ? (
           <ArrowNorth color="#0B65DA" width={18} height={18} />
         ) : (
           <ArrowWest color="#75B377" width={18} height={18} />
@@ -39,7 +43,7 @@ export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
 
       <Box>
         <Text weight="bold">
-          {row.original.type === WalletTransactionType.Sent
+          {row?.type === WalletTransactionType.Sent
             ? formatMessage({
                 id: LangKeys.WalletDetailSent,
                 defaultMessage: "Sent",
@@ -52,12 +56,12 @@ export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
 
         <Group spacing="xs">
           <Text size="sm" color="gray">
-            <FormattedTime value={row.original.timestamp} />
+            <FormattedTime value={row?.timestamp} />
           </Text>
 
           <Text size="sm" color="gray">
             <FormattedDate
-              value={row.original.timestamp}
+              value={row?.timestamp}
               year="numeric"
               month="long"
               day="2-digit"
@@ -69,21 +73,22 @@ export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
   );
 }
 
-export function WalletTransactionAmountCell({ row }: { row: Row<any> }) {
+export function WalletTransactionAmountCell({
+  row,
+}: {
+  row?: TWalletTransaction;
+}) {
   return (
     <Stack spacing={0} sx={{ textAlign: "right" }}>
       <Text weight="bold">
-        <Currency
-          value={row.original.amount}
-          currencyCode={row.original.amountCurrency}
-        />
+        <Currency value={row?.amount || 0} currencyCode={row?.amountCurrency} />
       </Text>
 
-      {row.original.foreignAmount && (
+      {row?.foreignAmount && (
         <Text size="sm" color="gray">
           <Currency
-            value={row.original.foreignAmount}
-            currencyCode={row.original.foreignAmountCurrency}
+            value={row?.foreignAmount}
+            currencyCode={row?.foreignAmountCurrency}
           />
         </Text>
       )}
