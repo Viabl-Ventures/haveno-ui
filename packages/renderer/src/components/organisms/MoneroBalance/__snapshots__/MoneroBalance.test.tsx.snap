@@ -3,10 +3,10 @@
 exports[`organisms::MoneroBalance > renders without exploding. 1`] = `
 <DocumentFragment>
   <div
-    class="mantine-Group-root mantine-1vmpc4q"
+    class="mantine-Group-root mantine-3iq866"
   >
     <svg
-      class="mantine-Group-child mantine-wayqkp"
+      class="mantine-Group-child mantine-154defe"
       fill="none"
       height="1em"
       id="monero-icon"
@@ -45,7 +45,7 @@ exports[`organisms::MoneroBalance > renders without exploding. 1`] = `
         class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-2d5onn"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-r2okoi"
+          class="mantine-Text-root mantine-DetailItem-label mantine-4rkctf"
         >
           Balance
         </div>

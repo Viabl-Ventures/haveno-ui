@@ -3,10 +3,10 @@
 exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
 <DocumentFragment>
   <div
-    class="mantine-Group-root mantine-1vmpc4q"
+    class="mantine-Group-root mantine-3iq866"
   >
     <svg
-      class="mantine-Group-child mantine-wayqkp"
+      class="mantine-Group-child mantine-154defe"
       fill="none"
       height="1em"
       id="monero-icon"
@@ -46,7 +46,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         data-testid="avaliable-balance"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+          class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
         >
           Avaliable Balance
         </div>
@@ -61,7 +61,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         data-testid="reserverd-funds"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+          class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
         >
           Reservered Funds
         </div>
@@ -76,7 +76,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         data-testid="locked-funds"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+          class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
         >
           Locked Funds
         </div>

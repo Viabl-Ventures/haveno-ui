@@ -10,7 +10,7 @@ exports[`molecules::AddressCard > renderes the address hash code. 1`] = `
 
 exports[`molecules::AddressCard > renderes the address label. 1`] = `
 <div
-  class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+  class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
 >
   Primary Address
 </div>
@@ -19,13 +19,13 @@ exports[`molecules::AddressCard > renderes the address label. 1`] = `
 exports[`molecules::AddressCard > renders without exploding 1`] = `
 <DocumentFragment>
   <div
-    class="mantine-Group-root mantine-567gvg"
+    class="mantine-Group-root mantine-chiw4t"
   >
     <div
       class="mantine-Stack-root mantine-DetailItem-root mantine-Group-child mantine-1a4fzbd"
     >
       <div
-        class="mantine-Text-root mantine-DetailItem-label mantine-ctgcov"
+        class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
       >
         Address label
       </div>

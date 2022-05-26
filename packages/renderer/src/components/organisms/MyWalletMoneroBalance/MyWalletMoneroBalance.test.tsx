@@ -80,6 +80,5 @@ describe("organisms::MyWalletMoneroBalance", () => {
       "90,371.161239"
     );
     unmount();
-    unmount();
   });
 });
