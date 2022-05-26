@@ -14,6 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
+import { Fragment } from "react";
 import { useTableContext } from "./use-table-context";
 
 export function TableBody() {
@@ -25,7 +26,7 @@ export function TableBody() {
   return (
     <tbody>
       {table.getRowModel().rows.map((row) => (
-        <>
+        <Fragment key={row.id}>
           <tr
             key={row.id}
             onClick={() => {
@@ -50,7 +51,7 @@ export function TableBody() {
               </td>
             </tr>
           ) : null}
-        </>
+        </Fragment>
       ))}
     </tbody>
   );

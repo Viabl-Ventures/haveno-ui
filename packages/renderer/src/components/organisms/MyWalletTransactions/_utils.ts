@@ -41,7 +41,7 @@ const transfromXmrTx = (xmrTx: XmrTx.AsObject): TWalletTransaction => {
     amountCurrency: "XMR",
     transactionId: xmrTx.hash,
 
-    date: xmrTx.timestamp,
+    timestamp: xmrTx.timestamp,
 
     incomingAddresses: xmrTx.incomingTransfersList?.map((addr) => addr.address),
     destinationAddresses: xmrTx.outgoingTransfer?.destinationsList?.map(

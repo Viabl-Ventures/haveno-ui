@@ -52,12 +52,12 @@ export function WalletTransactionnSignCell({ row }: { row: Row<any> }) {
 
         <Group spacing="xs">
           <Text size="sm" color="gray">
-            <FormattedTime value={row.original.time} />
+            <FormattedTime value={row.original.timestamp} />
           </Text>
 
           <Text size="sm" color="gray">
             <FormattedDate
-              value={row.original.date}
+              value={row.original.timestamp}
               year="numeric"
               month="long"
               day="2-digit"
