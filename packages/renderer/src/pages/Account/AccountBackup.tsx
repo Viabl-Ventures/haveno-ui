@@ -24,15 +24,6 @@ import { Box, createStyles, Stack } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
 import { FormattedMessage, useIntl } from "react-intl";
 
-const useStyles = createStyles((theme) => ({
-  title: {
-    marginBottom: theme.spacing.md,
-  },
-  desc: {
-    marginBottom: theme.spacing.lg,
-  },
-}));
-
 export function AccountBackup() {
   const { classes } = useStyles();
   const intl = useIntl();
@@ -133,3 +124,12 @@ export function AccountBackup() {
     </AccountLayout>
   );
 }
+
+const useStyles = createStyles((theme) => ({
+  title: {
+    marginBottom: theme.spacing.md,
+  },
+  desc: {
+    marginBottom: theme.spacing.lg,
+  },
+}));
