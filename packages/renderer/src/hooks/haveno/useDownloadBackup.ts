@@ -35,6 +35,7 @@ async function getBackupData(client: HavenoClient) {
   let numBytes = 0;
 
   const writableStream = new WritableStream({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     write(chunk: Array<any>) {
       const len = chunk.length;
       if (numBytes + len > size) {

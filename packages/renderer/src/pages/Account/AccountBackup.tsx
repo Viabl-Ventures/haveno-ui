@@ -14,15 +14,15 @@
 //  limitations under the License.
 // =============================================================================
 
+import { FormattedMessage, useIntl } from "react-intl";
 import { showNotification } from "@mantine/notifications";
+import { Box, createStyles, Stack } from "@mantine/core";
 import { Button } from "@atoms/Buttons";
 import { BodyText, Heading } from "@atoms/Typography";
 import { LangKeys } from "@constants/lang";
 import { useDownloadBackup } from "@hooks/haveno/useDownloadBackup";
 import { useRestoreBackup } from "@hooks/haveno/useRestoreBackup";
-import { Box, createStyles, Stack } from "@mantine/core";
 import { AccountLayout } from "@templates/AccountLayout";
-import { FormattedMessage, useIntl } from "react-intl";
 
 export function AccountBackup() {
   const { classes } = useStyles();
