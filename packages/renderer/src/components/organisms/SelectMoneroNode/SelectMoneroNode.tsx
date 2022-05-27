@@ -15,14 +15,23 @@
 // =============================================================================
 
 import type { FormEvent } from "react";
+import { useState } from "react";
 import { Stack, Space, Group } from "@mantine/core";
 import { BodyText, Heading } from "@atoms/Typography";
 import { Button, TextButton } from "@atoms/Buttons";
-import { Select } from "@atoms/Select";
+import type { AddNodeFormValues } from "@organisms/SelectMoneroNode";
 import {
   HAVENO_DAEMON_PASSWORD,
   HAVENO_DAEMON_URL,
 } from "@constants/haveno-daemon";
+import { useMoneroConnections } from "@hooks/haveno/useMoneroConnections";
+import { MoneroNodeListItem, NodeStatus } from "@atoms/MoneroNodeListItem";
+import { FormattedMessage } from "react-intl";
+import { LangKeys } from "@constants/lang";
+import { AddNode } from "./AddNode";
+import { showNotification } from "@mantine/notifications";
+import { useAddMoneroNode } from "@hooks/haveno/useAddMoneroNode";
+import { TestNode } from "./TestNode";
 
 interface SelectMoneroNodeProps {
   onGoBack: () => void;
@@ -31,6 +40,11 @@ interface SelectMoneroNodeProps {
 
 export function SelectMoneroNode(props: SelectMoneroNodeProps) {
   const { onGoBack, onNext } = props;
+  const { data: connections } = useMoneroConnections();
+  const [selectedNode, setSelectedNode] = useState<string>();
+  const [isRevealed, setRevealed] = useState(false);
+  const [isRevealed2, setRevealed2] = useState(false);
+  const { mutate: addMoneroNode } = useAddMoneroNode();
 
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -41,22 +55,91 @@ export function SelectMoneroNode(props: SelectMoneroNodeProps) {
     });
   };
 
+  const handleAddNode = (data: AddNodeFormValues) => {
+    const { address, port, user, password } = data;
+    addMoneroNode(
+      {
+        address,
+        port,
+        user,
+        password,
+      },
+      {
+        onError: (err) => {
+          showNotification({
+            color: "red",
+            message: err.message,
+            title: "Something went wrong",
+          });
+        },
+        onSuccess: () => {
+          setRevealed2(true);
+          showNotification({
+            color: "green",
+            message: "Saved",
+          });
+        },
+      }
+    );
+  };
+  const setChange = () => {
+    setRevealed(false);
+  };
+  const setTest = () => {
+    setRevealed2(false);
+  };
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack>
-        <Heading order={1}>Select a node</Heading>
-        <BodyText size="lg">
-          We found a local node running on your machine, it’s recommended to use
-          this one. Alternatively you can select one of the curated nodes below
-          add another node.
-        </BodyText>
-        <Select id="fiat" data={[]} placeholder="Pick one" />
-        <Space h="lg" />
-        <Group position="apart">
-          <TextButton onClick={onGoBack}>Go Back</TextButton>
-          <Button type="submit">Next</Button>
-        </Group>
-      </Stack>
-    </form>
+    <Stack>
+      {isRevealed ? (
+        <Stack>
+          {isRevealed2 ? (
+            <TestNode setTest={setTest} onSubmit={handleAddNode} />
+          ) : (
+            <AddNode onSubmit={handleAddNode} setChange={setChange} />
+          )}
+        </Stack>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <Stack>
+            <Heading order={1}>Select a node</Heading>
+            <BodyText size="lg">
+              We found a local node running on your machine, it’s recommended to
+              use this one. Alternatively you can select one of the curated
+              nodes below add another node.
+            </BodyText>
+            <Space h="lg" />
+            <Space h="lg" />
+            {connections?.map((conn) => (
+              <MoneroNodeListItem
+                key={conn.url}
+                title={conn.url}
+                status={
+                  conn.onlineStatus === 1
+                    ? NodeStatus.Active
+                    : NodeStatus.Inactive
+                }
+                isSelected={conn.url === selectedNode}
+                onClick={() => setSelectedNode(conn.url)}
+              />
+            ))}
+            <Group position="apart" mt="sm">
+              <TextButton onClick={() => setRevealed(true)}>
+                <FormattedMessage
+                  id={LangKeys.AccountSettingsAddNode}
+                  defaultMessage="Add a new node"
+                />
+              </TextButton>
+            </Group>
+            <Space h="lg" />
+            <Group position="apart">
+              <TextButton onClick={onGoBack}>Go Back</TextButton>
+              <Button type="submit" disabled={!selectedNode}>
+                Next
+              </Button>
+            </Group>
+          </Stack>
+        </form>
+      )}
+    </Stack>
   );
 }

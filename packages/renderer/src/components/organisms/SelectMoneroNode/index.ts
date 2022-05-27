@@ -15,3 +15,5 @@
 // =============================================================================
 
 export * from "./SelectMoneroNode";
+export * from "./AddNode";
+export * from "./TestNode";
