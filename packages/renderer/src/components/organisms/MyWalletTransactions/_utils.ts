@@ -21,31 +21,29 @@ import { WalletTransactionType } from "@molecules/WalletTransactions/_types";
 
 export const transfromXmrTxs = (
   xmrTxs: Array<XmrTx.AsObject>
-): TWalletTransaction[] => {
+): Array<TWalletTransaction> => {
   return xmrTxs.map(transfromXmrTx);
 };
 
-const transfromXmrTx = (xmrTx: XmrTx.AsObject): TWalletTransaction => {
-  return {
-    type: isEmpty(xmrTx.incomingTransfersList)
-      ? WalletTransactionType.Sent
-      : WalletTransactionType.Received,
+const transfromXmrTx = (xmrTx: XmrTx.AsObject): TWalletTransaction => ({
+  type: isEmpty(xmrTx.incomingTransfersList)
+    ? WalletTransactionType.Sent
+    : WalletTransactionType.Received,
 
-    fee: parseFloat(xmrTx.fee),
-    height: xmrTx.height,
+  fee: parseFloat(xmrTx.fee),
+  height: xmrTx.height,
 
-    amount: !isEmpty(xmrTx.outgoingTransfer)
-      ? parseFloat(xmrTx.outgoingTransfer?.amount || "")
-      : parseFloat(xmrTx.incomingTransfersList[0]?.amount),
+  amount: !isEmpty(xmrTx.outgoingTransfer)
+    ? parseFloat(xmrTx.outgoingTransfer?.amount || "")
+    : parseFloat(xmrTx.incomingTransfersList[0]?.amount),
 
-    amountCurrency: "XMR",
-    transactionId: xmrTx.hash,
+  amountCurrency: "XMR",
+  transactionId: xmrTx.hash,
 
-    timestamp: xmrTx.timestamp,
+  timestamp: xmrTx.timestamp,
 
-    incomingAddresses: xmrTx.incomingTransfersList?.map((addr) => addr.address),
-    destinationAddresses: xmrTx.outgoingTransfer?.destinationsList?.map(
-      (addr) => addr.address
-    ),
-  };
-};
+  incomingAddresses: xmrTx.incomingTransfersList?.map((addr) => addr.address),
+  destinationAddresses: xmrTx.outgoingTransfer?.destinationsList?.map(
+    (addr) => addr.address
+  ),
+});

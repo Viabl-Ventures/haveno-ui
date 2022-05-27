@@ -75,7 +75,7 @@ export function MyWalletReceive() {
           +{" "}
           <FormattedMessage
             id={LangKeys.MyWalletGenerateAddressBtn}
-            defaultMessage="Generate a new stub address"
+            defaultMessage="Generate a new sub address"
           />
         </Button>
       </Group>

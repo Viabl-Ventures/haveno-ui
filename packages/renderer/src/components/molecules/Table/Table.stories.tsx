@@ -23,14 +23,30 @@ export default {
   component: Table,
 } as ComponentMeta<typeof Table>;
 
-type Person = {
+const Template: ComponentStory<typeof Table> = () => {
+  return (
+    <Table
+      table={table}
+      data={data}
+      columns={columns}
+      rowSubComponent={() => "asdasd"}
+    />
+  );
+};
+
+export const Default = Template.bind({});
+
+Default.args = {};
+
+interface Person {
   firstName: string;
   lastName: string;
   age: number;
   visits: number;
   status: string;
   progress: number;
-};
+}
+
 const table = createTable().setRowType<Person>();
 
 const columns = [
@@ -78,21 +94,6 @@ const columns = [
     ],
   }),
 ];
-
-const Template: ComponentStory<typeof Table> = () => {
-  return (
-    <Table
-      table={table}
-      data={data}
-      columns={columns}
-      rowSubComponent={() => "asdasd"}
-    />
-  );
-};
-
-export const Default = Template.bind({});
-
-Default.args = {};
 
 const data: Array<Person> = [
   {

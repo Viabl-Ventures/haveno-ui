@@ -24,7 +24,7 @@ const commonModalProps = {
   padding: 25,
 };
 
-export function Modal({ ...props }: MModalProps) {
+export function Modal(props: MModalProps) {
   const style = useStyles();
 
   return <MModal classNames={style.classes} {...commonModalProps} {...props} />;
@@ -45,12 +45,11 @@ export function ModalsProvider({ ...props }: ModalsProviderProps) {
 }
 
 const useStyles = createStyles((theme) => ({
-  root: {},
   modal: {
     borderRadius: theme.radius.xl / 1.6,
   },
   title: {
-    fontSize: 18,
+    fontSize: theme.fontSizes.xl,
     fontWeight: 600,
   },
 }));

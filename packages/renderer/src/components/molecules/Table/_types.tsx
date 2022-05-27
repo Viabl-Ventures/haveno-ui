@@ -14,13 +14,14 @@
 //  limitations under the License.
 // =============================================================================
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ColumnDef, Row } from "@tanstack/react-table";
 import type { TableProps as MTableProps } from "@mantine/core";
 
 export interface TableProps {
-  columns: ColumnDef<any>[];
+  columns: Array<ColumnDef<any>>;
   table: any;
-  data: any[];
+  data: Array<any>;
 
   showHeader?: boolean;
   showFooter?: boolean;

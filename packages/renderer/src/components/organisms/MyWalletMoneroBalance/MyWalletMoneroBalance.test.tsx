@@ -19,12 +19,6 @@ import { render, screen } from "@testing-library/react";
 import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 import { AppProviders } from "@atoms/AppProviders";
 
-const MoneroBalance = {
-  balance: 835120.34017,
-  reserverdBalance: 74610.1236,
-  lockedBalance: 90371.161239,
-  unlockedBalance: 0,
-};
 describe("organisms::MyWalletMoneroBalance", () => {
   beforeAll(() => {
     vi.mock("@hooks/haveno/useBalances", () => ({
@@ -82,3 +76,10 @@ describe("organisms::MyWalletMoneroBalance", () => {
     unmount();
   });
 });
+
+const MoneroBalance = {
+  balance: 835120.34017,
+  reserverdBalance: 74610.1236,
+  lockedBalance: 90371.161239,
+  unlockedBalance: 0,
+};

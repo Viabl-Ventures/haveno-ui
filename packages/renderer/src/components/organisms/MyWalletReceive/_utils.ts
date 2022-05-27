@@ -16,10 +16,10 @@
 
 import { isEmpty } from "lodash";
 
-const LCOAL_STORAGE_KEY = "mywallet-received-addresses";
+const LOCAL_STORAGE_KEY = "mywallet-received-addresses";
 
 export const getActiveReceiveAddresses = (): Array<string> => {
-  const storedAddressesString = sessionStorage.getItem(LCOAL_STORAGE_KEY);
+  const storedAddressesString = sessionStorage.getItem(LOCAL_STORAGE_KEY);
   const storedAddresses = JSON.parse(storedAddressesString || "[]");
 
   return !isEmpty(storedAddresses) ? storedAddresses : [];
@@ -29,7 +29,7 @@ export const saveReceiveAddresss = (address: string) => {
   const activeAddress = getActiveReceiveAddresses();
 
   sessionStorage.setItem(
-    LCOAL_STORAGE_KEY,
+    LOCAL_STORAGE_KEY,
     JSON.stringify([...activeAddress, address])
   );
 };

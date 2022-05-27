@@ -16,7 +16,7 @@
 
 import type { DefaultProps } from "@mantine/core";
 import { Stack, createStyles, Text } from "@mantine/core";
-
+import { BodyText } from "@atoms/Typography";
 export interface DetailItemProps extends DefaultProps {
   label?: string;
   textAlign?: "left" | "right";
@@ -41,7 +41,9 @@ export function DetailItem({
   return (
     <Stack spacing={0} className={cx(classes.root, className)} {...other}>
       {label && <Text className={classes.label}>{label}</Text>}
-      <Text className={classes.content}>{children}</Text>
+      <BodyText heavy className={classes.content}>
+        {children}
+      </BodyText>
     </Stack>
   );
 }
@@ -55,8 +57,8 @@ const useStyles = createStyles(
       color: theme.colors.gray[6],
       fontSize: theme.fontSizes.sm,
       fontWeight: 600,
-      textTransform: "uppercase",
       letterSpacing: "0.075rem",
+      textTransform: "uppercase",
     },
     content: {
       fontWeight: 500,

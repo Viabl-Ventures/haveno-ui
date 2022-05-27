@@ -14,15 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { FC } from "react";
 import { useMemo } from "react";
 import { Group, Loader } from "@mantine/core";
 import { useXmrTxs } from "@hooks/haveno/useXmrTxs";
 import { WalletTransactions } from "@molecules/WalletTransactions";
 import { transfromXmrTxs } from "./_utils";
-
-interface MyWalletTransactionsBootProps {
-  children: React.ReactNode;
-}
 
 export function MyWalletTransactionsTable() {
   const { data: xmrTxs } = useXmrTxs();
@@ -32,7 +29,7 @@ export function MyWalletTransactionsTable() {
   return xmrTxs ? <WalletTransactions data={transactions} /> : null;
 }
 
-function MyWalletTransactionsBoot({ children }: MyWalletTransactionsBootProps) {
+const MyWalletTransactionsBoot: FC = ({ children }) => {
   const { isLoading: isXmrTxsLoading } = useXmrTxs();
 
   return isXmrTxsLoading ? (
@@ -42,7 +39,7 @@ function MyWalletTransactionsBoot({ children }: MyWalletTransactionsBootProps) {
   ) : (
     <>{children}</>
   );
-}
+};
 
 export function MyWalletTransactions() {
   return (

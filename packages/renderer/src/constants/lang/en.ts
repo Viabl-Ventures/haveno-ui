@@ -80,7 +80,7 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MyWalletTabTransactions]: "Transactions",
   [LangKeys.MyWalletTabSend]: "Send",
   [LangKeys.MyWalletTabReceive]: "Receive",
-  [LangKeys.MyWalletGenerateAddressBtn]: "Generate a new stub address",
+  [LangKeys.MyWalletGenerateAddressBtn]: "Generate a new sub address",
   [LangKeys.MyWalletReceiveNoAddressesMsg]:
     "You don't have generated address, please generate one.",
   [LangKeys.MyWalletSendSuccessNotif]:

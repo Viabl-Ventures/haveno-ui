@@ -46,12 +46,12 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         data-testid="avaliable-balance"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
+          class="mantine-Text-root mantine-DetailItem-label mantine-10gsq91"
         >
           Avaliable Balance
         </div>
         <div
-          class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
+          class="mantine-Text-root mantine-DetailItem-content mantine-oat2gy"
         >
           835,120.34017
         </div>
@@ -61,12 +61,12 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         data-testid="reserverd-funds"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
+          class="mantine-Text-root mantine-DetailItem-label mantine-10gsq91"
         >
           Reservered Funds
         </div>
         <div
-          class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
+          class="mantine-Text-root mantine-DetailItem-content mantine-oat2gy"
         >
           74,610.1236
         </div>
@@ -76,12 +76,12 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding 1`] = `
         data-testid="locked-funds"
       >
         <div
-          class="mantine-Text-root mantine-DetailItem-label mantine-1brl26v"
+          class="mantine-Text-root mantine-DetailItem-label mantine-10gsq91"
         >
           Locked Funds
         </div>
         <div
-          class="mantine-Text-root mantine-DetailItem-content mantine-284mr4"
+          class="mantine-Text-root mantine-DetailItem-content mantine-oat2gy"
         >
           90,371.161239
         </div>

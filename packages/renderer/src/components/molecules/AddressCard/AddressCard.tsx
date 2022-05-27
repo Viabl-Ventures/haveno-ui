@@ -14,11 +14,11 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import QRCode from "react-qr-code";
+import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import { useModals } from "@mantine/modals";
+import { useClipboard } from "@mantine/hooks";
 import {
   Anchor,
   Box,
@@ -30,7 +30,6 @@ import {
 import { DetailItem } from "@atoms/DetailItem";
 import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
-import { copyTextToClipboard } from "@utils/copy-to-clipboard";
 import { DetailItemCard } from "@atoms/DetailItemCard/DetailItemCard";
 
 interface AddressCardProps {
@@ -50,23 +49,12 @@ export function AddressCard({
 }: AddressCardProps) {
   const modals = useModals();
   const { classes } = useStyles();
-  const [isCopied, setIsCopied] = useState(false);
 
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const clipboard = useClipboard({ timeout: COPY_TEXT_TIMEOUT });
 
   const handleCopyClick = () => {
-    copyTextToClipboard(address).then(() => {
-      setIsCopied(true);
-
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(() => {
-        setIsCopied(false);
-      }, COPY_TEXT_TIMEOUT);
-    });
+    clipboard.copy(address);
   };
-
   const handleQRClick = () => {
     const modalId = modals.openModal({
       children: (
@@ -76,7 +64,7 @@ export function AddressCard({
         />
       ),
       labels: { confirm: "Confirm", cancel: "Cancel" },
-      size: 690,
+      size: "lg",
       withCloseButton: false,
       ...qrModalProps,
     });
@@ -89,7 +77,7 @@ export function AddressCard({
 
         <Group noWrap className={classes.addressBtns}>
           <Anchor onClick={handleCopyClick} underline>
-            {!isCopied ? (
+            {!clipboard.copied ? (
               <FormattedMessage
                 id={LangKeys.AddressCardCopyBtn}
                 defaultMessage="Copy"

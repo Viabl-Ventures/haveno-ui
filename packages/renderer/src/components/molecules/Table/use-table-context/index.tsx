@@ -14,6 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useContext } from "react";
 import type { TableInstance } from "@tanstack/react-table";
 import type { TableProps } from "../_types";
@@ -22,6 +23,7 @@ interface TableContextValue {
   table: TableInstance<any>;
   props: TableProps;
 }
+
 interface TableProviderProps {
   value: TableContextValue;
   children: React.ReactNode;

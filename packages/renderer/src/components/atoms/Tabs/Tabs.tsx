@@ -17,7 +17,7 @@
 import type { TabsProps as MTabsProps } from "@mantine/core";
 import { Tabs as MTabs, Tab as MTab, createStyles } from "@mantine/core";
 
-export function Tabs({ ...props }: MTabsProps) {
+export function Tabs(props: MTabsProps) {
   const style = useStyles();
 
   return <MTabs classNames={style.classes} variant="unstyled" {...props} />;
@@ -25,7 +25,7 @@ export function Tabs({ ...props }: MTabsProps) {
 
 Tabs.Tab = MTab;
 
-const useStyles = createStyles((theme, _undefined, getRef) => {
+const useStyles = createStyles((theme, _params, getRef) => {
   const tabActiveRef = getRef("tabActive");
 
   return {
