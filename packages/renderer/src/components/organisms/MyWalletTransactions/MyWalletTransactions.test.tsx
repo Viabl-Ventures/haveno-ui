@@ -76,7 +76,7 @@ describe("organisms::MyWalletMoneroBalance", () => {
         <MyWalletTransactions />
       </AppProviders>
     );
-    expect(screen.queryByText("9:34 PM")).toBeInTheDocument();
+    expect(screen.queryByText("7:34 PM")).toBeInTheDocument();
     unmount();
   });
 });

@@ -14,25 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-import { mergeConfig } from "vite";
-import viteConfig from "./vite.config";
-
-/**
- * Config for global end-to-end tests
- * placed in project root tests folder
- * @type {import('vite').UserConfig}
- * @see https://vitest.dev/config/
- */
-const config = mergeConfig(viteConfig, {
-  test: {
-    globalSetup: ["./tests/global-setup.ts"],
-    setupFiles: ["../../tests/setup-tests.ts"],
-    environment: "jsdom",
-    include: ["./src/**/*.{test,spec}.{ts,tsx}"],
-    coverage: {
-      reporter: ["html"],
-    },
-  },
-});
-
-export default config;
+export default function () {
+  process.env.TZ = "UTC";
+}

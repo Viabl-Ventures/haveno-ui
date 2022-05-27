@@ -44,7 +44,7 @@ exports[`organisms::MyWalletMoneroBalance > renders without exploding. 1`] = `
                 <div
                   class="mantine-Text-root mantine-Group-child mantine-e2rvui"
                 >
-                  9:34 PM
+                  7:34 PM
                 </div>
                 <div
                   class="mantine-Text-root mantine-Group-child mantine-e2rvui"
