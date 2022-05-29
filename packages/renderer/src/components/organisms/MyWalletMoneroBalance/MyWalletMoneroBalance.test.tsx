@@ -16,8 +16,8 @@
 
 import { describe, expect, it, vi, beforeAll } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 import { AppProviders } from "@atoms/AppProviders";
+import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 
 describe("organisms::MyWalletMoneroBalance", () => {
   beforeAll(() => {

@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { MyWalletSendForm } from "./MyWalletSendForm";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "organisms/MyWalletSendForm",

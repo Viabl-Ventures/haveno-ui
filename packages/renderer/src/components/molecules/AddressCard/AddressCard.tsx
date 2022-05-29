@@ -16,7 +16,6 @@
 
 import { FormattedMessage, useIntl } from "react-intl";
 import QRCode from "react-qr-code";
-import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import { useModals } from "@mantine/modals";
 import { useClipboard } from "@mantine/hooks";
 import {
@@ -31,6 +30,7 @@ import { DetailItem } from "@atoms/DetailItem";
 import { Button } from "@atoms/Buttons";
 import { LangKeys } from "@constants/lang";
 import { DetailItemCard } from "@atoms/DetailItemCard/DetailItemCard";
+import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 
 interface AddressCardProps {
   label?: string;

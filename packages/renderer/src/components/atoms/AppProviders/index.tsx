@@ -14,7 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { RecoilRoot } from "recoil";
 import { HashRouter } from "react-router-dom";
 import { NotificationsProvider } from "@mantine/notifications";
@@ -22,6 +21,7 @@ import { ModalsProvider } from "@atoms/Modal";
 import { QueryClientProvider } from "./QueryClientProvider";
 import { IntlProvider } from "./IntlProvider";
 import { ThemeProvider } from "./ThemeProvider";
+import type { FC } from "react";
 
 export const AppProviders: FC = ({ children }) => (
   <HashRouter>

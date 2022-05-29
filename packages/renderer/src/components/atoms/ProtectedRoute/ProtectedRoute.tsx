@@ -14,12 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@hooks/session/useAuth";
 import { deleteSession } from "@utils/session";
 import { ROUTES } from "@constants/routes";
+import type { ReactNode } from "react";
 
 export function ProtectedRoute({ children }: { children: ReactNode }) {
   const { data: isAuthed, isLoading, isSuccess } = useAuth();

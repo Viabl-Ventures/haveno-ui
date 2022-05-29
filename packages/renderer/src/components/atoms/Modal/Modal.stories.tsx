@@ -16,9 +16,9 @@
 
 import { useState } from "react";
 import { Group, Text } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Modal } from "./Modal";
 import { Button } from "@atoms/Buttons";
+import { Modal } from "./Modal";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/Modal",

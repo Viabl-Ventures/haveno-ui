@@ -16,8 +16,8 @@
 
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { AddressCard } from "./AddressCard";
 import { AppProviders } from "@atoms/AppProviders";
+import { AddressCard } from "./AddressCard";
 
 describe("molecules::AddressCard", () => {
   it("renders without exploding", () => {

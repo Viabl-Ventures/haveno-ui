@@ -14,7 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FormEvent } from "react";
 import { Stack, Space, Group } from "@mantine/core";
 import { BodyText, Heading } from "@atoms/Typography";
 import { Button, TextButton } from "@atoms/Buttons";
@@ -23,6 +22,7 @@ import {
   HAVENO_DAEMON_PASSWORD,
   HAVENO_DAEMON_URL,
 } from "@constants/haveno-daemon";
+import type { FormEvent } from "react";
 
 interface SelectMoneroNodeProps {
   onGoBack: () => void;

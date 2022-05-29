@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import { LangKeys } from "@constants/lang";
 import { Box } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
+import { LangKeys } from "@constants/lang";
 import { useControlStyles } from "./NodeConnectSwitch.style";
 
 interface SettingTabProps {

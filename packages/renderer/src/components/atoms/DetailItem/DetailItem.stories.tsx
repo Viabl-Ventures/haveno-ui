@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DetailItem } from "./DetailItem";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/DetailItem",

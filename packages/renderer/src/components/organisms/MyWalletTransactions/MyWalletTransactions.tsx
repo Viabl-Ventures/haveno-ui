@@ -14,12 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { useMemo } from "react";
 import { Group, Loader } from "@mantine/core";
 import { useXmrTxs } from "@hooks/haveno/useXmrTxs";
 import { WalletTransactions } from "@molecules/WalletTransactions";
 import { transfromXmrTxs } from "./_utils";
+import type { FC } from "react";
 
 export function MyWalletTransactionsTable() {
   const { data: xmrTxs } = useXmrTxs();

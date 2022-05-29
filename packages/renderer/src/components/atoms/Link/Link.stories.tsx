@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
+import { Link } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import type { LinkProps } from ".";
-import { Link } from ".";
 
 export default {
   title: "atoms/Link",

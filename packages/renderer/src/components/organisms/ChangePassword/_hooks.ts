@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import { LangKeys } from "@constants/lang";
 import Joi from "joi";
 import { useIntl } from "react-intl";
+import { LangKeys } from "@constants/lang";
 import type { ChangePasswordFormValues } from "./_types";
 
 const MIN_PASSWORD_CHARS = 8;

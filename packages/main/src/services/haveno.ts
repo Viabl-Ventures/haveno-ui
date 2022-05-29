@@ -16,8 +16,8 @@
 
 import fsPromises from "fs/promises";
 import { ipcMain, dialog } from "electron";
-import type { DownloadBackupInput } from "@src/types";
 import { IpcChannels } from "@src/types";
+import type { DownloadBackupInput } from "@src/types";
 
 export function registerHavenoHandlers() {
   ipcMain.handle(

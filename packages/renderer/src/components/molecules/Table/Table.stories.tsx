@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { createTable } from "@tanstack/react-table";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Table } from "./Table";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/Table",

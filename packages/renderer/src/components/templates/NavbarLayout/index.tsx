@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { Box, createStyles, Group } from "@mantine/core";
 import { Sidebar } from "@organisms/Sidebar";
+import type { FC } from "react";
 
 export const NavbarLayout: FC = (props) => {
   const { children } = props;
