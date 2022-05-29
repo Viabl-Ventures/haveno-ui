@@ -23,15 +23,15 @@ import {
   Text,
   UnstyledButton,
 } from "@mantine/core";
-import type { PaymentAccount } from "haveno-ts";
 import { ReactComponent as MenuIcon } from "@assets/ellipsis.svg";
-import { HEIGHT, WIDTH } from "./_constants";
 import { BodyText } from "@atoms/Typography";
 import {
   getPaymentAccountLogo,
   getPaymentAccountName,
   getPaymentAccountNumber,
 } from "@src/utils/paymentAccount";
+import { HEIGHT, WIDTH } from "./_constants";
+import type { PaymentAccount } from "haveno-ts";
 
 interface PaymentMethodCardProps {
   data: PaymentAccount;

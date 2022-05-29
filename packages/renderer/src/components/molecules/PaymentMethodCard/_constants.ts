@@ -14,10 +14,10 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { ReactComponent as BtcLogo } from "@assets/btc.svg";
 import { ReactComponent as EthLogo } from "@assets/eth.svg";
 import { ReactComponent as EurLogo } from "@assets/eur.svg";
+import type { FC } from "react";
 import type { SupportedCurrencies } from "./_types";
 
 export const WIDTH = "17rem";

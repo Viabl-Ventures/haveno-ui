@@ -14,9 +14,10 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { DefaultProps } from "@mantine/core";
 import { Stack, createStyles, Text } from "@mantine/core";
 import { BodyText } from "@atoms/Typography";
+import type { DefaultProps } from "@mantine/core";
+
 export interface DetailItemProps extends DefaultProps {
   label?: string;
   textAlign?: "left" | "right";

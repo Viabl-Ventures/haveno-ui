@@ -25,9 +25,9 @@ import { useMoneroNodeSettings } from "@hooks/haveno/useMoneroNodeSettings";
 import { useSaveLocalMoneroNode } from "@hooks/haveno/useSaveLocalMoneroNode";
 import { LangKeys } from "@constants/lang";
 import { StartStopDaemon } from "./StartStopDaemon";
-import type { LocalSettingsFormValues } from "./_types";
 import { useLocalSettingsValidation } from "./_hooks";
 import { transformSettingsRequestToForm } from "./_utils";
+import type { LocalSettingsFormValues } from "./_types";
 
 export function LocalNode() {
   const { data: nodeSettings } = useMoneroNodeSettings();

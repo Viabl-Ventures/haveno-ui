@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { CSSObject } from "@mantine/core";
 import InterFont from "@assets/fonts/Inter-Variable.ttf";
+import type { CSSObject } from "@mantine/core";
 
 export const globalStyles: CSSObject = {
   "@font-face": {

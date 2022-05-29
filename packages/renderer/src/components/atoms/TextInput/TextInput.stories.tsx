@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ReactComponent as BtcIcon } from "@assets/btc.svg";
 import { TextInput } from ".";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/TextInput",

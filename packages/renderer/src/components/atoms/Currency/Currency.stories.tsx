@@ -14,10 +14,10 @@
 //  limitations under the License.
 // =============================================================================
 
-import { BodyText } from "@atoms/Typography";
 import { Stack } from "@mantine/core";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { BodyText } from "@atoms/Typography";
 import { Currency } from ".";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/Currency",

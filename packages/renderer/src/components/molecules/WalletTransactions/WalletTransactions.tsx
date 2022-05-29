@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { createTable } from "@tanstack/react-table";
-import { Table } from "@molecules/Table";
 import { createStyles } from "@mantine/core";
+import { Table } from "@molecules/Table";
 import {
   WalletTransactionnSignCell,
   WalletTransactionAmountCell,

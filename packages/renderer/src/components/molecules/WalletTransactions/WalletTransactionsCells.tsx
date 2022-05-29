@@ -21,8 +21,8 @@ import { ReactComponent as ArrowWest } from "@assets/arrow-west.svg";
 import { LangKeys } from "@constants/lang";
 import { Currency } from "@atoms/Currency";
 import { CircleIcon } from "@atoms/CircleIcon/CircleIcon";
-import type { TWalletTransaction } from "./_types";
 import { WalletTransactionType } from "./_types";
+import type { TWalletTransaction } from "./_types";
 
 export function WalletTransactionnSignCell({
   row,

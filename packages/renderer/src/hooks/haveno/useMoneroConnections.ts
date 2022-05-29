@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { useQuery } from "react-query";
-import type { UrlConnection } from "haveno-ts";
 import { QueryKeys } from "@constants/query-keys";
 import { useHavenoClient } from "./useHavenoClient";
+import type { UrlConnection } from "haveno-ts";
 
 export function useMoneroConnections() {
   const client = useHavenoClient();

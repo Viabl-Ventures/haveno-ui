@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { useState, useMemo } from "react";
-import type { SelectProps as MSelectProps } from "@mantine/core";
 import { createStyles, Select as MSelect } from "@mantine/core";
 import { ReactComponent as ArrowIcon } from "@assets/arrow-down.svg";
+import type { SelectProps as MSelectProps } from "@mantine/core";
 
 interface SelectProps extends MSelectProps {
   id: string;

@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Stack } from "@mantine/core";
 import { AddressCardSkeleton } from "./AddressCard";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "molecules/AddressCardSkeleton",

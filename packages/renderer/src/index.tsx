@@ -16,8 +16,8 @@
 
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { AppRoutes } from "./Routes";
 import { AppProviders } from "@atoms/AppProviders";
+import { AppRoutes } from "./Routes";
 
 ReactDOM.render(
   <StrictMode>

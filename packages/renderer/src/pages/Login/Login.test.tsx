@@ -21,8 +21,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { AppProviders } from "@atoms/AppProviders";
-import { Login } from ".";
 import { ROUTES } from "@constants/routes";
+import { Login } from ".";
 
 describe("pages::Login", () => {
   beforeEach(() => {

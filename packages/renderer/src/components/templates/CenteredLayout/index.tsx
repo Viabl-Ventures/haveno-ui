@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { Container, Stack } from "@mantine/core";
 import { HeaderWithLogo } from "@atoms/Header";
+import type { FC } from "react";
 
 interface CenteredLayoutProps {
   showHeader?: boolean;

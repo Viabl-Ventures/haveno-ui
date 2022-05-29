@@ -16,8 +16,8 @@
 
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
 import { AppProviders } from "@atoms/AppProviders";
+import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
 
 describe("organisms::MyWalletMeneroBalanceSkeleton", () => {
   it("renders without exploding", () => {

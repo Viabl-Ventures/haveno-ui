@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SelectMoneroNode } from ".";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "organisms/Select Monero Node",

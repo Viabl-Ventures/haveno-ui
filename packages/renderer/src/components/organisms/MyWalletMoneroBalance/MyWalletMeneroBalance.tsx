@@ -14,13 +14,13 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useBalances } from "@hooks/haveno/useBalances";
 import { MoneroBalance } from "@organisms/MoneroBalance";
-import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
 import { Currency } from "@atoms/Currency";
+import { MyWalletMeneroBalanceSkeleton } from "./MyWalletMeneroBalanceSkeleton";
+import type { FC } from "react";
 
 export function MyWalletMoneroBalanceContent() {
   const { formatMessage } = useIntl();

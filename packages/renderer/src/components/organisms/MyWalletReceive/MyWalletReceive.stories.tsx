@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { MyWalletReceive } from "./MyWalletReceive";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "organisms/MyWalletReceive",

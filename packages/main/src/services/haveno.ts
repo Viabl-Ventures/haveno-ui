@@ -16,11 +16,10 @@
 
 import fsPromises from "fs/promises";
 import { ipcMain, dialog } from "electron";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import QRCode from "qrcode/lib/server";
-import type { DownloadBackupInput } from "@src/types";
 import { IpcChannels } from "@src/types";
+import type { DownloadBackupInput } from "@src/types";
 
 export function registerHavenoHandlers() {
   ipcMain.handle(

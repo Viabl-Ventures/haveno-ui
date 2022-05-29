@@ -16,7 +16,6 @@
 
 import { FormattedMessage, useIntl } from "react-intl";
 import QRCode from "react-qr-code";
-import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 import { showNotification } from "@mantine/notifications";
 import { useModals } from "@mantine/modals";
 import { useClipboard } from "@mantine/hooks";
@@ -28,6 +27,7 @@ import { DetailItemCard } from "@atoms/DetailItemCard";
 import { LangKeys } from "@constants/lang";
 import { useSetDownloadQRCode } from "@hooks/haveno/useSetDownloadQRCode";
 import { Modals } from "@constants/modals";
+import type { OpenConfirmModal } from "@mantine/modals/lib/context";
 
 interface AddressCardProps {
   label?: string;
