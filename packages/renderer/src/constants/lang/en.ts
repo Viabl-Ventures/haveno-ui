@@ -69,7 +69,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AddressCardCopyBtn]: "Copy",
   [LangKeys.AddressCardCopiedBtn]: "Copied",
   [LangKeys.AddressCardQRBtn]: "QR",
-  [LangKeys.AddressCardQRCodeSavedSuccessNotif]: "The QR code has been saved successfully.",
+  [LangKeys.AddressCardQRCodeSavedSuccessNotif]:
+    "The QR code has been saved successfully.",
   [LangKeys.MyWalletSendFieldAmount]: "Amount",
   [LangKeys.MyWalletSendFieldAddress]: "Address",
   [LangKeys.MyWalletSendFieldAddressPlaceholder]: "Paste in address here...",
