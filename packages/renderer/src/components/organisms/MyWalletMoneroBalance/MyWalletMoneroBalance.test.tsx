@@ -28,8 +28,7 @@ describe("organisms::MyWalletMoneroBalance", () => {
         data: {
           balance: MoneroBalance.balance,
           lockedBalance: MoneroBalance.lockedBalance,
-          reservedOfferBalance: MoneroBalance.reservedBalance,
-          reservedTradeBalance: MoneroBalance.reservedBalance,
+          reservedBalance: MoneroBalance.reservedBalance,
           unlockedBalance: MoneroBalance.unlockedBalance,
           total: MoneroBalance.total,
           availableBalance: MoneroBalance.availableBalance,

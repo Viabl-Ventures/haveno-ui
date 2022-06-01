@@ -58,7 +58,7 @@ export function MyWalletMoneroBalanceContent() {
         })}
         data-testid="reserved-funds"
       >
-        <Currency value={balanceInfo.reservedOfferBalance || 0} />
+        <Currency value={balanceInfo.reservedBalance || 0} />
       </MoneroBalance.Detail>
 
       <MoneroBalance.Detail
