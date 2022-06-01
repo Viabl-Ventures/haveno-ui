@@ -47,7 +47,7 @@ exports[`organisms::MyWalletMeneroBalanceSkeleton > renders without exploding 1`
         <div
           class="mantine-Text-root mantine-DetailItem-label mantine-10gsq91"
         >
-          Available Balance
+          Total Balance
         </div>
         <div
           class="mantine-Text-root mantine-DetailItem-content mantine-oat2gy"
@@ -63,7 +63,7 @@ exports[`organisms::MyWalletMeneroBalanceSkeleton > renders without exploding 1`
         <div
           class="mantine-Text-root mantine-DetailItem-label mantine-10gsq91"
         >
-          Unreserved Funds
+          Available Balance
         </div>
         <div
           class="mantine-Text-root mantine-DetailItem-content mantine-oat2gy"

@@ -28,9 +28,11 @@ describe("organisms::MyWalletMoneroBalance", () => {
         data: {
           balance: MoneroBalance.balance,
           lockedBalance: MoneroBalance.lockedBalance,
-          reservedOfferBalance: MoneroBalance.reserverdBalance,
-          reservedTradeBalance: MoneroBalance.reserverdBalance,
+          reservedOfferBalance: MoneroBalance.reservedBalance,
+          reservedTradeBalance: MoneroBalance.reservedBalance,
           unlockedBalance: MoneroBalance.unlockedBalance,
+          total: MoneroBalance.total,
+          availableBalance: MoneroBalance.availableBalance,
         },
       }),
     }));
@@ -46,28 +48,30 @@ describe("organisms::MyWalletMoneroBalance", () => {
     unmount();
   });
 
-  it("contains available balance, reserved funds and locked funds details", () => {
+  it("contains total, available balance, reserved funds and locked funds details", () => {
     const { unmount } = render(
       <AppProviders>
         <MyWalletMoneroBalance />
       </AppProviders>
     );
+    expect(screen.queryByTestId("total-balance")).toBeInTheDocument();
     expect(screen.queryByTestId("available-balance")).toBeInTheDocument();
     expect(screen.queryByTestId("locked-funds")).toBeInTheDocument();
-    expect(screen.queryByTestId("reserverd-funds")).toBeInTheDocument();
+    expect(screen.queryByTestId("reserved-funds")).toBeInTheDocument();
     unmount();
   });
 
-  it("contains available balance, reserved funds and locked funds details values", () => {
+  it("contains total. available balance, reserved funds and locked funds details values.", () => {
     const { unmount } = render(
       <AppProviders>
         <MyWalletMoneroBalance />
       </AppProviders>
     );
+    expect(screen.queryByTestId("total-balance")).toHaveTextContent("1,000.1");
     expect(screen.queryByTestId("available-balance")).toHaveTextContent(
-      "835,120.34017"
+      "8,000.65"
     );
-    expect(screen.queryByTestId("reserverd-funds")).toHaveTextContent(
+    expect(screen.queryByTestId("reserved-funds")).toHaveTextContent(
       "74,610.1236"
     );
     expect(screen.queryByTestId("locked-funds")).toHaveTextContent(
@@ -79,7 +83,9 @@ describe("organisms::MyWalletMoneroBalance", () => {
 
 const MoneroBalance = {
   balance: 835120.34017,
-  reserverdBalance: 74610.1236,
+  reservedBalance: 74610.1236,
   lockedBalance: 90371.161239,
   unlockedBalance: 0,
+  total: 1000.1,
+  availableBalance: 8000.65,
 };

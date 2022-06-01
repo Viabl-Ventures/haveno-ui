@@ -33,22 +33,22 @@ export function MyWalletMoneroBalanceContent() {
     <MoneroBalance>
       <MoneroBalance.Detail
         label={formatMessage({
+          id: LangKeys.MyWalletMoneroTotalBalance,
+          defaultMessage: "Total Balance",
+        })}
+        data-testid="total-balance"
+      >
+        <Currency value={balanceInfo.total} />
+      </MoneroBalance.Detail>
+
+      <MoneroBalance.Detail
+        label={formatMessage({
           id: LangKeys.MyWalletMoneroAvailableBalance,
           defaultMessage: "Available Balance",
         })}
         data-testid="available-balance"
       >
-        <Currency value={balanceInfo.balance} />
-      </MoneroBalance.Detail>
-
-      <MoneroBalance.Detail
-        label={formatMessage({
-          id: LangKeys.MyWalletMoneroUnreservedFunds,
-          defaultMessage: "Unreserved Funds",
-        })}
-        data-testid="unreserved-funds"
-      >
-        <Currency value={balanceInfo.lockedBalance || 0} />
+        <Currency value={balanceInfo.availableBalance || 0} />
       </MoneroBalance.Detail>
 
       <MoneroBalance.Detail
@@ -56,7 +56,7 @@ export function MyWalletMoneroBalanceContent() {
           id: LangKeys.MyWalletMoneroReservedFunds,
           defaultMessage: "Reserved Funds",
         })}
-        data-testid="reserverd-funds"
+        data-testid="reserved-funds"
       >
         <Currency value={balanceInfo.reservedOfferBalance || 0} />
       </MoneroBalance.Detail>
