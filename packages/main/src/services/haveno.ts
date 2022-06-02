@@ -60,29 +60,32 @@ export function registerHavenoHandlers() {
     return new Uint8Array(await fsPromises.readFile(zipFile));
   });
 
-  ipcMain.handle(IpcChannels.DownloadQRCode, async (_, code: string) => {
-    const file = await dialog.showSaveDialog({
-      defaultPath: "qr-code",
-      filters: [
-        {
-          extensions: ["png"],
-          name: "*",
-        },
-      ],
-      properties: ["createDirectory", "dontAddToRecent"],
-    });
-    if (!file?.filePath) {
-      return 0;
-    }
-    QRCode.toFile(
-      file?.filePath,
-      code,
-      {
-        width: 500,
-      },
-      function (err: Error) {
-        if (err) throw err;
+  ipcMain.handle(
+    IpcChannels.DownloadQRCode,
+    async (_, code: string): Promise<void> => {
+      const file = await dialog.showSaveDialog({
+        defaultPath: "qr-code",
+        filters: [
+          {
+            extensions: ["png"],
+            name: "*",
+          },
+        ],
+        properties: ["createDirectory", "dontAddToRecent"],
+      });
+      if (!file?.filePath) {
+        return;
       }
-    );
-  });
+      QRCode.toFile(
+        file.filePath,
+        code,
+        {
+          width: 500,
+        },
+        (err: Error) => {
+          if (err) throw err;
+        }
+      );
+    }
+  );
 }

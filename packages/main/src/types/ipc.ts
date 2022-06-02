@@ -27,9 +27,8 @@ export enum IpcChannels {
   // haveno
   DownloadBackup = "haveno:downloadBackup",
   RestoreBackup = "haveno:restoreBackup",
+  DownloadQRCode = "haveno:downloadQRCode",
 
   // others
   VerifyAuthToken = "verifyAuthToken",
-
-  DownloadQRCode = "haveno:downloadQRCode",
 }

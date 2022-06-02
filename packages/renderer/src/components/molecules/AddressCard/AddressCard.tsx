@@ -24,7 +24,7 @@ import { Box, createStyles, Group, SimpleGrid, Skeleton } from "@mantine/core";
 import { DetailItem } from "@atoms/DetailItem";
 import { Button } from "@atoms/Buttons";
 import { Anchor } from "@atoms/Typography";
-import { DetailItemCard } from "@atoms/DetailItemCard/DetailItemCard";
+import { DetailItemCard } from "@atoms/DetailItemCard";
 import { LangKeys } from "@constants/lang";
 import { useSetDownloadQRCode } from "@hooks/haveno/useSetDownloadQRCode";
 import { Modals } from "@constants/modals";
