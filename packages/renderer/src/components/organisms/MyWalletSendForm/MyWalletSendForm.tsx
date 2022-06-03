@@ -18,12 +18,12 @@ import { joiResolver, useForm } from "@mantine/form";
 import { Group, SimpleGrid, Stack, Text } from "@mantine/core";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useModals } from "@mantine/modals";
+import { useMyWalletSendFormValidation } from "./_hooks";
+import type { MyWalletSendFormValues } from "./_hooks";
 import { TextInput } from "@atoms/TextInput";
 import { LangKeys } from "@constants/lang";
 import { Button } from "@atoms/Buttons";
 import { useSetXmrSend } from "@hooks/haveno/useSetXmrSend";
-import { useMyWalletSendFormValidation } from "./_hooks";
-import type { MyWalletSendFormValues } from "./_hooks";
 
 export function MyWalletSendForm() {
   const { formatMessage } = useIntl();
@@ -77,7 +77,7 @@ export function MyWalletSendForm() {
 
   return (
     <form onSubmit={form.onSubmit(handleFormSubmit)}>
-      <Stack spacing="xl">
+      <Stack spacing="xl" mt="md">
         <SimpleGrid cols={2}>
           <TextInput
             id="amount"
