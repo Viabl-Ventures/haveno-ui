@@ -16,8 +16,7 @@
 
 import fsPromises from "fs/promises";
 import { ipcMain, dialog } from "electron";
-// @ts-ignore
-import QRCode from "qrcode/lib/server";
+import QRCode from "qrcode";
 import { IpcChannels } from "@src/types";
 import type { DownloadBackupInput } from "@src/types";
 
