@@ -16,9 +16,10 @@
 
 import fsPromises from "fs/promises";
 import { ipcMain, dialog } from "electron";
-import QRCode from "qrcode";
 import { IpcChannels } from "@src/types";
 import type { DownloadBackupInput } from "@src/types";
+
+const { toFile } = require("qrcode/lib");
 
 export function registerHavenoHandlers() {
   ipcMain.handle(
@@ -74,7 +75,7 @@ export function registerHavenoHandlers() {
       if (!file?.filePath) {
         return;
       }
-      QRCode.toFile(
+      toFile(
         file.filePath,
         code,
         {
