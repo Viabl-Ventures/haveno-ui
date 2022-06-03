@@ -21,40 +21,26 @@
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/no-named-as-default": "off",
     "prettier/prettier": "error",
     "react/jsx-curly-brace-presence": "error",
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type"
-        ]
-      }]
+    "import/order": "error",
+    "import/newline-after-import": "error"
   },
   "settings": {
     "react": {
       "version": "detect"
     },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
       "typescript": {
-        "project": [
-          "packages/renderer/tsconfig.json"
-        ]
+        "project": ["packages/renderer/tsconfig.json"]
       }
     }
   }
