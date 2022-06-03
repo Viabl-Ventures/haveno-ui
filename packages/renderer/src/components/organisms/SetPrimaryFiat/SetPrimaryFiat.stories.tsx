@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { SetPrimaryFiat } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { SetPrimaryFiat } from ".";
 
 export default {
   title: "organisms/Set Primary Fiat",

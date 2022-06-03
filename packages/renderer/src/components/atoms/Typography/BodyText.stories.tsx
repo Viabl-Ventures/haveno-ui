@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { BodyText } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { BodyText } from ".";
 
 export default {
   title: "atoms/Typography/ BodyText",

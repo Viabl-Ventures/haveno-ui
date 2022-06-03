@@ -16,8 +16,8 @@
 
 import { beforeEach, expect, test, vi } from "vitest";
 import { BrowserWindow } from "electron";
-import { restoreOrCreateWindow } from "../src/mainWindow";
 import type { MaybeMocked } from "vitest";
+import { restoreOrCreateWindow } from "../src/mainWindow";
 
 /**
  * Mock real electron BrowserWindow API

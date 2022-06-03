@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { useQuery } from "react-query";
-import { QueryKeys } from "@constants/query-keys";
-import { useHavenoClient } from "./useHavenoClient";
 import type { PaymentAccount } from "haveno-ts";
+import { useHavenoClient } from "./useHavenoClient";
+import { QueryKeys } from "@constants/query-keys";
 
 export function usePaymentAccounts() {
   const client = useHavenoClient();

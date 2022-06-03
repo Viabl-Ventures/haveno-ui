@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { MyWallet } from "./MyWallet";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { MyWallet } from "./MyWallet";
 
 export default {
   title: "pages/MyWallet",

@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { WalletManagement } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { WalletManagement } from ".";
 
 export default {
   title: "organisms/Wallet Management",

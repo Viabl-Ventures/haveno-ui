@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SecondarySidebar } from "./SecondarySidebar";
 import { SecondarySidebarItem } from "./SecondarySidebarItem";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/SecondarySidebar",

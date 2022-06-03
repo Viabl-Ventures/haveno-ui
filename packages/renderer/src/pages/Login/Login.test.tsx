@@ -20,9 +20,9 @@ const loginSpy = vi.fn();
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Login } from ".";
 import { AppProviders } from "@atoms/AppProviders";
 import { ROUTES } from "@constants/routes";
-import { Login } from ".";
 
 describe("pages::Login", () => {
   beforeEach(() => {

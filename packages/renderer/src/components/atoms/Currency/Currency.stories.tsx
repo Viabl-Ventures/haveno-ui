@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { BodyText } from "@atoms/Typography";
-import { Currency } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Currency } from ".";
+import { BodyText } from "@atoms/Typography";
 
 export default {
   title: "atoms/Currency",

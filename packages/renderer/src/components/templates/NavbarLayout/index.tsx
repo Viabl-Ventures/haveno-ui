@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Box, createStyles, Group } from "@mantine/core";
-import { Sidebar } from "@organisms/Sidebar";
 import type { FC } from "react";
+import { Sidebar } from "@organisms/Sidebar";
 
 export const NavbarLayout: FC = (props) => {
   const { children } = props;

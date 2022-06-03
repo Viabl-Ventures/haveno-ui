@@ -16,12 +16,12 @@
 
 import { Stack, Space, Container, Group } from "@mantine/core";
 import { Link } from "react-router-dom";
+import { CONTENT_MAX_WIDTH } from "./_constants";
 import { LangKeys } from "@constants/lang/LangKeys";
 import { CenteredLayout } from "@templates/CenteredLayout";
 import { Button } from "@atoms/Buttons";
 import { BodyText, Heading } from "@atoms/Typography";
 import { ROUTES } from "@constants/routes";
-import { CONTENT_MAX_WIDTH } from "./_constants";
 
 export function Welcome() {
   return (

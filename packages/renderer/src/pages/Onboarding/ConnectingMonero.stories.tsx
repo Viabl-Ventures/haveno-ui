@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { ConnectingMonero } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ConnectingMonero } from ".";
 
 export default {
   title: "pages/Onboarding/Connecting Monero",

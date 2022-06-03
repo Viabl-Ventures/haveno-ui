@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { MoneroNodeListItem, NodeStatus } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { MoneroNodeListItem, NodeStatus } from ".";
 
 export default {
   title: "atoms/MoneroNodeListItem",

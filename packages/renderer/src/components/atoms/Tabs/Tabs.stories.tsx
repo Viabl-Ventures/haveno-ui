@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Tabs } from "./Tabs";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Tabs } from "./Tabs";
 
 export default {
   title: "atoms/Tabs",

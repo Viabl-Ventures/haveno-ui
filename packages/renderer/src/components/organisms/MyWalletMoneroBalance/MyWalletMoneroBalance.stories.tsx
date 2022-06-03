@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { MyWalletMoneroBalance } from "./MyWalletMeneroBalance";
 
 export default {
   title: "organisms/MyWalletMoneroBalance",

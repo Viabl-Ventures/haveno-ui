@@ -16,10 +16,10 @@
 
 import { useIntl } from "react-intl";
 import { Box, createStyles, Grid } from "@mantine/core";
+import type { Row } from "@tanstack/react-table";
 import { DetailItem } from "@atoms/DetailItem";
 import { LangKeys } from "@constants/lang";
 import { Currency } from "@atoms/Currency";
-import type { Row } from "@tanstack/react-table";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function WalletTransactionRowExpanded({ row }: { row: Row<any> }) {

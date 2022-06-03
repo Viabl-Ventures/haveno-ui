@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { MoneroBalance } from "./MoneroBalance";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { MoneroBalance } from "./MoneroBalance";
 
 export default {
   title: "molecules/MoneroBalance",

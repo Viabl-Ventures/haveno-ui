@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Group, Stack } from "@mantine/core";
-import { Button, TextButton } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Button, TextButton } from ".";
 
 export default {
   title: "atoms/Buttons",

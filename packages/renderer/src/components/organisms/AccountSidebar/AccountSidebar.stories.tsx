@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { AccountSidebar } from "./AccountSidebar";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { AccountSidebar } from "./AccountSidebar";
 
 export default {
   title: "organisms/AccountSidebar",

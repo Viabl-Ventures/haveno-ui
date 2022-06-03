@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { Select } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Select } from ".";
 
 export default {
   title: "atoms/Select",

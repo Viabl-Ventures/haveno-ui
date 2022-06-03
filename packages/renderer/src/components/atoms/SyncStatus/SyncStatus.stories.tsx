@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { SyncStatus as SyncStatusOptions } from "@constants/sync-status";
-import { SyncStatus } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { SyncStatus } from ".";
+import { SyncStatus as SyncStatusOptions } from "@constants/sync-status";
 
 export default {
   title: "molecules/Sync Status",

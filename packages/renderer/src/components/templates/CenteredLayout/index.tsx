@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Container, Stack } from "@mantine/core";
-import { HeaderWithLogo } from "@atoms/Header";
 import type { FC } from "react";
+import { HeaderWithLogo } from "@atoms/Header";
 
 interface CenteredLayoutProps {
   showHeader?: boolean;

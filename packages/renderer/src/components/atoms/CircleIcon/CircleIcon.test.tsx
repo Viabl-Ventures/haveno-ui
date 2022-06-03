@@ -16,8 +16,8 @@
 
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 import { CircleIcon } from "./CircleIcon";
+import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 
 describe("atoms::CircleIcon", () => {
   it("renders without exploding", () => {

@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { ConnectionProgress } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ConnectionProgress } from ".";
 
 export default {
   title: "atoms/ConnectionProgress",

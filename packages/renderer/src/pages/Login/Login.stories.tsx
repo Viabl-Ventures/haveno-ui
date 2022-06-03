@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Login } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Login } from ".";
 
 export default {
   title: "pages/Login",

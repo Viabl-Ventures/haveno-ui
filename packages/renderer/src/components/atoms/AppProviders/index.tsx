@@ -17,11 +17,11 @@
 import { RecoilRoot } from "recoil";
 import { HashRouter } from "react-router-dom";
 import { NotificationsProvider } from "@mantine/notifications";
-import { ModalsProvider } from "@atoms/Modal";
+import type { FC } from "react";
 import { QueryClientProvider } from "./QueryClientProvider";
 import { IntlProvider } from "./IntlProvider";
 import { ThemeProvider } from "./ThemeProvider";
-import type { FC } from "react";
+import { ModalsProvider } from "@atoms/Modal";
 
 export const AppProviders: FC = ({ children }) => (
   <HashRouter>

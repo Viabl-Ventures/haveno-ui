@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { useMutation } from "react-query";
-import { useHavenoClient } from "./useHavenoClient";
 import type { HavenoClient } from "haveno-ts";
+import { useHavenoClient } from "./useHavenoClient";
 
 export function useDownloadBackup() {
   const client = useHavenoClient();

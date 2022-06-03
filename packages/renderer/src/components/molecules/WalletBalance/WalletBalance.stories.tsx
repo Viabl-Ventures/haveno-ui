@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { WalletBalance } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { WalletBalance } from ".";
 
 export default {
   title: "molecules/WalletBalance",

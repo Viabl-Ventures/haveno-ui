@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Home } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Home } from ".";
 
 export default {
   title: "pages/Home",

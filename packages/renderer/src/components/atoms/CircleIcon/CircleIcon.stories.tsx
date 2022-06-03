@@ -15,10 +15,10 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { CircleIcon } from "./CircleIcon";
 import { ReactComponent as ArrowNorth } from "@assets/arrow-north.svg";
 import { ReactComponent as ArrowWest } from "@assets/arrow-west.svg";
-import { CircleIcon } from "./CircleIcon";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
   title: "atoms/CircleIcon",

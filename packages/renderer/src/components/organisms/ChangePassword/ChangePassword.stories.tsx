@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { ChangePassword } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ChangePassword } from ".";
 
 export default {
   title: "organisms/Change Password",

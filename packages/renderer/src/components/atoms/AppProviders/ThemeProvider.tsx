@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { MantineProvider, Global } from "@mantine/core";
-import { themeOverride, globalStyles } from "@src/theme";
 import type { FC } from "react";
+import { themeOverride, globalStyles } from "@src/theme";
 
 export const ThemeProvider: FC = ({ children }) => {
   return (

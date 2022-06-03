@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { WalletTransactions } from "./WalletTransactions";
 import { WalletTransactionType } from "./_types";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import type { TWalletTransaction } from "./_types";
 
 export default {

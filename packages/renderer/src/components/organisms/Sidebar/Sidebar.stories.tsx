@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { Sidebar } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Sidebar } from ".";
 
 export default {
   title: "organisms/Sidebar",

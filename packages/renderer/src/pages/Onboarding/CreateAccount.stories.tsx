@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { CreateAccount } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { CreateAccount } from ".";
 
 export default {
   title: "pages/Onboarding/Create Account",

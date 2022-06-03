@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { AddressCardSkeleton } from "./AddressCard";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { AddressCardSkeleton } from "./AddressCard";
 
 export default {
   title: "molecules/AddressCardSkeleton",

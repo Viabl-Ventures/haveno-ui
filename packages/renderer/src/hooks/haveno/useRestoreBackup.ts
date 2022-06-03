@@ -18,10 +18,10 @@ import { hideNotification, showNotification } from "@mantine/notifications";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { MoneroNodeSettings } from "haveno-ts";
+import { useHavenoClient } from "./useHavenoClient";
 import { Notifications } from "@constants/notifications";
 import { deleteSession } from "@utils/session";
 import { ROUTES } from "@constants/routes";
-import { useHavenoClient } from "./useHavenoClient";
 
 export function useRestoreBackup() {
   const client = useHavenoClient();

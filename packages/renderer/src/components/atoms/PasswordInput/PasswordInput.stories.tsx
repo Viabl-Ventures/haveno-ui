@@ -16,8 +16,8 @@
 
 import { Stack } from "@mantine/core";
 import { EyeCheck, EyeOff } from "tabler-icons-react";
-import { PasswordInput } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { PasswordInput } from ".";
 
 export default {
   title: "atoms/PasswordInput",

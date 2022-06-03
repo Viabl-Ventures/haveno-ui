@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { PaymentMethodList } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { PaymentMethodList } from ".";
 
 export default {
   title: "organisms/Payment Method List",

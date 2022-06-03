@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { LabelText } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { LabelText } from ".";
 
 export default {
   title: "atoms/Typography/LabelText",

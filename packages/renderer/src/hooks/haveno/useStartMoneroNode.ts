@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { useMutation, useQueryClient } from "react-query";
-import { QueryKeys } from "@constants/query-keys";
-import { useHavenoClient } from "./useHavenoClient";
 import type { MoneroNodeSettings } from "haveno-ts";
+import { useHavenoClient } from "./useHavenoClient";
+import { QueryKeys } from "@constants/query-keys";
 
 export function useStartMoneroNode() {
   const queryClient = useQueryClient();

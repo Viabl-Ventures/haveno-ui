@@ -15,9 +15,9 @@
 // =============================================================================
 
 import { Link as RouterLink } from "react-router-dom";
-import { BodyText } from "@atoms/Typography";
 import type { LinkProps as RouterLinkProps } from "react-router-dom";
 import type { ReactText } from "react";
+import { BodyText } from "@atoms/Typography";
 
 export interface LinkProps extends RouterLinkProps {
   children: ReactText;

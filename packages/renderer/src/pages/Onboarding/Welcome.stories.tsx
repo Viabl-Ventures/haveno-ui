@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Welcome } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Welcome } from ".";
 
 export default {
   title: "pages/Onboarding/Welcome",

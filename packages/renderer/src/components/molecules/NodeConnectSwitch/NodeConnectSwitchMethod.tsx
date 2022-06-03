@@ -16,8 +16,8 @@
 
 import { Box } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
-import { LangKeys } from "@constants/lang";
 import { useControlStyles } from "./NodeConnectSwitch.style";
+import { LangKeys } from "@constants/lang";
 
 interface SettingTabProps {
   active?: boolean;

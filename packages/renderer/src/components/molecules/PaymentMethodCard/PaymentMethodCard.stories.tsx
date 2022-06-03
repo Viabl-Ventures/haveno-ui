@@ -20,8 +20,8 @@ import {
   PaymentAccount,
   PaymentAccountPayload,
 } from "haveno-ts";
-import { AddPaymentMethodButton, PaymentMethodCard } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { AddPaymentMethodButton, PaymentMethodCard } from ".";
 
 export default {
   title: "molecules/PaymentMethodCard",

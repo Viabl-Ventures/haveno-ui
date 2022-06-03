@@ -16,8 +16,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { IntlProvider as ReacIntlProvider } from "react-intl";
-import { LangPack, SupportedLocales } from "@src/constants/lang";
 import type { FC } from "react";
+import { LangPack, SupportedLocales } from "@src/constants/lang";
 import type { LangKeys } from "@src/constants/lang";
 
 const DEFAULT_LOCALE = SupportedLocales.EN;

@@ -15,8 +15,8 @@
 // =============================================================================
 
 import { Stack } from "@mantine/core";
-import { Heading } from ".";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Heading } from ".";
 
 export default {
   title: "atoms/Typography/Heading",
