@@ -123,6 +123,12 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MarketsTransactionsColumnAccountTrades]: "Account Trades",
   [LangKeys.MarketsTransactionsColumnPaymentMethod]: "Payment Method",
   [LangKeys.MarketsTransactionsCashByMail]: "Cash by mail",
+  [LangKeys.MarketOffersAmount]: "Amount",
+  [LangKeys.MarketOffersPaymentMethod]: "Payment method",
+  [LangKeys.MarketOffersAccountDetails]: "Account details",
+  [LangKeys.MarketOffersShowMarketDepth]: "Show market depth",
+  [LangKeys.MarketOffersHideMarketDepth]: "Hide market depth",
+  [LangKeys.MarketOffersCreateOffer]: "Create offer",
 };
 
 export default LangPackEN;

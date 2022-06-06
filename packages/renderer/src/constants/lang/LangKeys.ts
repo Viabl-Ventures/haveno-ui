@@ -99,7 +99,6 @@ export enum LangKeys {
   AccountBackupRestoreBtn = "account.backup.restore.btn",
   AccountBackupDownloadSuccessNotif = "account.backup.download.successNotification",
   AccountBackupRestoreSuccessNotif = "account.backup.restore.successNotification",
-
   MarketsTransactionsColumnPrice = "marketsTransactions.columnPrice",
   MarketsTransactionsColumnAmount = "marketsTransactions.columnAmount",
   MarketsTransactionsColumnCost = "marketsTransactions.columnCost",
@@ -107,4 +106,10 @@ export enum LangKeys {
   MarketsTransactionsColumnAccountAge = "marketsTransactions.columnAccountAge",
   MarketsTransactionsColumnAccountTrades = "marketsTransactions.columnAccountTypes",
   MarketsTransactionsCashByMail = "marketsTransactions.cashByMail",
+  MarketOffersAmount = "marketOffers.filter.amount",
+  MarketOffersPaymentMethod = "marketOffers.filter.amount",
+  MarketOffersAccountDetails = "marketOffers.filter.accountDetails",
+  MarketOffersShowMarketDepth = "marketOffers.filter.showMarketDepth",
+  MarketOffersHideMarketDepth = "marketOffers.filter.hideMarketDepth",
+  MarketOffersCreateOffer = "marketOffers.filter.createOffer",
 }
