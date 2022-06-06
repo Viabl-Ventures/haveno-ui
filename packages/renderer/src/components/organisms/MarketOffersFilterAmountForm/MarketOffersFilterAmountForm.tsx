@@ -1,6 +1,7 @@
-import { TextInput } from "@atoms/TextInput";
-import { Box, Grid, Text } from "@mantine/core";
 import { useForm } from "@mantine/hooks";
+import { createStyles, Grid, Group, Text } from "@mantine/core";
+import { TextInput } from "@atoms/TextInput";
+import { Button, TextButton } from "@atoms/Buttons";
 
 export function MarketOffersFilterAmountForm() {
   const form = useForm({
@@ -11,6 +12,7 @@ export function MarketOffersFilterAmountForm() {
       maxAmountTo: null,
     },
   });
+  const { classes } = useStyles();
 
   return (
     <form
@@ -26,23 +28,15 @@ export function MarketOffersFilterAmountForm() {
 
         <Grid.Col span={4}>
           <TextInput
-            id={"minAmountFrom"}
+            id="minAmountFrom"
             {...form.getInputProps("minAmountFrom")}
-            rightSection={
-              <Text mr="xl" color="gray">
-                EUR
-              </Text>
-            }
+            rightSection={<Text color="gray">EUR</Text>}
             mb="lg"
           />
           <TextInput
-            id={"minAmountTo"}
+            id="minAmountTo"
             {...form.getInputProps("minAmountTo")}
-            rightSection={
-              <Text mr="xl" color="gray">
-                XMR
-              </Text>
-            }
+            rightSection={<Text color="gray">XMR</Text>}
           />
         </Grid.Col>
       </Grid>
@@ -55,26 +49,25 @@ export function MarketOffersFilterAmountForm() {
 
         <Grid.Col span={4}>
           <TextInput
-            id={"maxAmountFrom"}
+            id="maxAmountFrom"
             {...form.getInputProps("maxAmountFrom")}
-            rightSection={
-              <Text mr="xl" color="gray">
-                XMR
-              </Text>
-            }
+            rightSection={<Text color="gray">XMR</Text>}
             mb="lg"
           />
           <TextInput
-            id={"maxAmountTo"}
+            id="maxAmountTo"
             {...form.getInputProps("maxAmountTo")}
-            rightSection={
-              <Text mr="xl" color="gray">
-                EUR
-              </Text>
-            }
+            rightSection={<Text color="gray">EUR</Text>}
           />
         </Grid.Col>
       </Grid>
+
+      <Group position="apart" className={classes.footer}>
+        <TextButton className={classes.clearFilterBtn}>
+          Clear filters
+        </TextButton>
+        <Button flavor="primary">Save filters</Button>
+      </Group>
     </form>
   );
 }
@@ -85,3 +78,18 @@ interface MarketOffersFilterAmountFormValues {
   minAmountTo: string;
   minAmountFrom: string;
 }
+
+const useStyles = createStyles((theme) => ({
+  footer: {
+    paddingTop: theme.spacing.xl,
+    paddingLeft: theme.spacing.xl,
+    paddingRight: theme.spacing.xl,
+    borderTop: `1px solid ${theme.colors.gray[1]}`,
+    marginTop: theme.spacing.xl,
+    marginLeft: theme.spacing.xl * -1,
+    marginRight: theme.spacing.xl * -1,
+  },
+  clearFilterBtn: {
+    fontSize: theme.spacing.lg,
+  },
+}));

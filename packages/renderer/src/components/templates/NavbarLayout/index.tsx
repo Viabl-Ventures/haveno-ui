@@ -14,13 +14,24 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 import { Box, createStyles, Group } from "@mantine/core";
 import { Sidebar } from "@organisms/Sidebar";
 
+interface NavbarLayoutProps {
+  children: ReactNode;
+}
+
 export const NavbarLayout: FC = (props) => {
-  const { children } = props;
-  const { classes } = useStyles();
+  const { children, classNames } = props;
+  const { classes } = useStyles(
+    {},
+    {
+      name: "NavbarLayout",
+      classNames,
+    }
+  );
+
   return (
     <Group className={classes.container} spacing={0}>
       <Sidebar />

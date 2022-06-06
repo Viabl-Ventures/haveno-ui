@@ -1,8 +1,10 @@
+import { Button, TextButton } from "@atoms/Buttons";
 import { TextInput } from "@atoms/TextInput";
-import { Grid, Text, Checkbox } from "@mantine/core";
+import { Grid, Text, Checkbox, createStyles, Group } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
 export function MarketOffersFilterAccountsForm() {
+  const { classes } = useStyles();
   const form = useForm({
     initialValues: {
       signedAccounts: false,
@@ -24,7 +26,7 @@ export function MarketOffersFilterAccountsForm() {
 
         <Grid.Col sx={{ display: "flex" }} span={4}>
           <Checkbox
-            id={"minAmountFrom"}
+            id="minAmountFrom"
             {...form.getInputProps("signedAccounts")}
             radius="sm"
             size="md"
@@ -43,7 +45,7 @@ export function MarketOffersFilterAccountsForm() {
 
         <Grid.Col span={4}>
           <TextInput
-            id={"minAmountFrom"}
+            id="minAmountFrom"
             {...form.getInputProps("minAccountAge")}
             rightSection={
               <Text mr="xl" color="gray">
@@ -65,7 +67,7 @@ export function MarketOffersFilterAccountsForm() {
 
         <Grid.Col span={4}>
           <TextInput
-            id={"minAmountFrom"}
+            id="minAmountFrom"
             {...form.getInputProps("maxAmountTrades")}
             rightSection={
               <Text mr="xl" color="gray">
@@ -75,6 +77,13 @@ export function MarketOffersFilterAccountsForm() {
           />
         </Grid.Col>
       </Grid>
+
+      <Group position="apart" className={classes.footer}>
+        <TextButton className={classes.clearFilterBtn}>
+          Clear filters
+        </TextButton>
+        <Button flavor="primary">Save filters</Button>
+      </Group>
     </form>
   );
 }
@@ -84,3 +93,18 @@ interface MarketOffersFilterAccountsForm {
   minAccountAge: boolean;
   maxAmountTrades: boolean;
 }
+
+const useStyles = createStyles((theme) => ({
+  footer: {
+    paddingTop: theme.spacing.xl,
+    paddingLeft: theme.spacing.xl,
+    paddingRight: theme.spacing.xl,
+    borderTop: `1px solid ${theme.colors.gray[1]}`,
+    marginTop: theme.spacing.xl,
+    marginLeft: theme.spacing.xl * -1,
+    marginRight: theme.spacing.xl * -1,
+  },
+  clearFilterBtn: {
+    fontSize: theme.spacing.lg,
+  },
+}));
