@@ -47,11 +47,7 @@ export function MarketOffersFilterAccountsForm() {
           <TextInput
             id="minAmountFrom"
             {...form.getInputProps("minAccountAge")}
-            rightSection={
-              <Text mr="xl" color="gray">
-                Days
-              </Text>
-            }
+            rightSection={<Text color="gray">Days</Text>}
           />
         </Grid.Col>
       </Grid>
@@ -69,11 +65,7 @@ export function MarketOffersFilterAccountsForm() {
           <TextInput
             id="minAmountFrom"
             {...form.getInputProps("maxAmountTrades")}
-            rightSection={
-              <Text mr="xl" color="gray">
-                Trades
-              </Text>
-            }
+            rightSection={<Text color="gray">Trades</Text>}
           />
         </Grid.Col>
       </Grid>

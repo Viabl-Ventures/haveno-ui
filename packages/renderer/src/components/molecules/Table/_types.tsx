@@ -30,6 +30,11 @@ export interface TableProps {
 
   tableWrap?: MTableProps;
   variant?: TableVariant;
+
+  editableData: any[];
+  onEditableDataChange: (v: any[]) => void;
+
+  defaultColumn?: any;
 }
 
 export enum TableVariant {

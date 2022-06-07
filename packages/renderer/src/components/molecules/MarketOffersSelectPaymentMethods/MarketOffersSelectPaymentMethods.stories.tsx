@@ -39,4 +39,23 @@ const data = [
     rateTradeLimitCurrency: "XMR",
     info: "Global",
   },
+  {
+    method: "Celpay",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+  {
+    method: "Celpay",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+  {
+    method: "Celpay",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+  
 ];

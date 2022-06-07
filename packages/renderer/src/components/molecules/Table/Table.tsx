@@ -29,13 +29,41 @@ import { useStyles } from "./Table.style";
 
 export function Table(props: TableProps) {
   const { classes, cx } = useStyles();
-  const { table, columns, data, tableWrap, variant } = props;
+  const {
+    table,
+    columns,
+    data,
+    tableWrap,
+    variant,
+    onEditableDataChange,
+    editableData,
+    defaultColumn,
+  } = props;
 
   const tableInstance = useTableInstance(table, {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    meta: {
+      updateData: (rowIndex: number, columnId: string, value: unknown) => {
+        const newData = editableData.map((row, index) => {
+          if (index === rowIndex) {
+            return {
+              ...editableData[rowIndex]!,
+              [columnId]: value,
+            };
+          }
+          return row;
+        });
+        onEditableDataChange(newData);
+      },
+    },
+    ...(defaultColumn
+      ? {
+          defaultColumn,
+        }
+      : {}),
   });
 
   return (

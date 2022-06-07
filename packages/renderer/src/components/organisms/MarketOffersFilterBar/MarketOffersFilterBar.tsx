@@ -2,28 +2,26 @@ import { useModals } from "@mantine/modals";
 import { Divider, Group, Button, createStyles } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
-import { MarketOffersTradingPair } from "@organisms/MarketOffersTradingPair";
 import { MarketOffersFilterAccountsForm } from "@organisms/MarketOffersFilterAccountsForm/MarketOffersFilterAccountsForm";
 import { MarketOffersFilterAmountForm } from "@organisms/MarketOffersFilterAmountForm/MarketOffersFilterAmountForm";
-import { useMarketOffersPairModal } from "./hooks";
+import {
+  useMarketOffersPairModal,
+  useMarketOffersPaymentMethods,
+} from "./hooks";
 
 export function MarketOffersFilterBar() {
   const { classes } = useStyles();
   const modals = useModals();
 
   const marketOffersPairModal = useMarketOffersPairModal();
+  const marketOffersPaymentMethodsModal = useMarketOffersPaymentMethods();
 
   const handleParisBtnClick = () => {
     marketOffersPairModal.openModal();
   };
 
   const handlePaymentMethodsBtnClick = () => {
-    modals.openModal({
-      title: "Filter on payment methods",
-      children: <MarketOffersTradingPair />,
-      size: "lg",
-      withCloseButton: false,
-    });
+    marketOffersPaymentMethodsModal.openModal();
   };
 
   const handleAccountBtnClick = () => {
