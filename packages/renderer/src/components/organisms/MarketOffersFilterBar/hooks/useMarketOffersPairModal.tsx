@@ -24,6 +24,10 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.md,
     fontWeight: 600,
   },
+  header: {
+    marginBottom: 10,
+    marginTop: -10,
+  },
   body: {
     marginLeft: theme.spacing.sm * -2,
     marginRight: theme.spacing.sm * -2,

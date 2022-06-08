@@ -11,8 +11,8 @@ export const useMarketOffersPaymentMethods = () => {
       modals.openModal({
         title: "Filter on payment methods",
         children: <MarketOffersFilterPaymentMethods />,
-        size: "xl",
-        withCloseButton: false,
+        size: 970,
+        withCloseButton: true,
         classNames: classes,
       });
     },
@@ -20,13 +20,18 @@ export const useMarketOffersPaymentMethods = () => {
 };
 
 const useStyles = createStyles((theme) => ({
+  root: {
+    padding: "0 !important",
+  },
+  modal: {
+    padding: "0 !important",
+  },
   title: {
     fontSize: theme.fontSizes.md,
     fontWeight: 600,
   },
-  body: {
-    marginLeft: theme.spacing.sm * -2,
-    marginRight: theme.spacing.sm * -2,
-    marginBottom: theme.spacing.sm * -2,
+  header: {
+    padding: "12px 20px",
+    margin: 0,
   },
 }));

@@ -106,7 +106,7 @@ const useStyles = createStyles((theme) => ({
             paddingLeft: 25,
           },
           "&:last-of-type": {
-            paddingLeft: 25,
+            paddingRight: 25,
           },
         },
       },

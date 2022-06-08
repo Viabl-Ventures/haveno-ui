@@ -21,14 +21,17 @@ export function AmountChange({
     positive,
     negative,
   });
-
   return <Box className={classes.root}>{children}</Box>;
 }
 
 const useStyles = createStyles(
-  (theme, { position, negative }: AmountChangeStyleProps) => ({
+  (theme, { positive, negative }: AmountChangeStyleProps) => ({
     root: {
-      color: theme.colors.red,
+      color: negative
+        ? theme.colors.red[6]
+        : positive
+        ? theme.colors.green[6]
+        : undefined,
     },
   })
 );

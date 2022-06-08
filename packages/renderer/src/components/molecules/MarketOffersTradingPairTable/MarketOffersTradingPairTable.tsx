@@ -60,7 +60,7 @@ const columns = [
   }),
 ];
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   root: {
     paddingTop: 20,
     paddingBottom: 0,
@@ -88,12 +88,13 @@ const useStyles = createStyles((theme) => ({
         td: {
           fontSize: 14,
           fontWeight: 600,
+          borderBottomColor: "transparent",
 
           "&:first-of-type": {
             paddingLeft: 25,
           },
           "&:last-of-type": {
-            paddingLeft: 25,
+            paddingRight: 25,
           },
         },
       },

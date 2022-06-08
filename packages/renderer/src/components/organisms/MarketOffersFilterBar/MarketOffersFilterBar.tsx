@@ -29,7 +29,7 @@ export function MarketOffersFilterBar() {
       title: "Amount",
       children: <MarketOffersFilterAccountsForm />,
       size: "lg",
-      withCloseButton: false,
+      withCloseButton: true,
     });
   };
 

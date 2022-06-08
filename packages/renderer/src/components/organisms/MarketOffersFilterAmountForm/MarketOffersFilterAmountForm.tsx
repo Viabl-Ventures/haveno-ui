@@ -30,13 +30,25 @@ export function MarketOffersFilterAmountForm() {
           <TextInput
             id="minAmountFrom"
             {...form.getInputProps("minAmountFrom")}
-            rightSection={<Text color="gray">EUR</Text>}
+            rightSection={
+              <Text color="gray" pr="sm">
+                EUR
+              </Text>
+            }
+            rightSectionWidth={45}
             mb="lg"
+            type="number"
           />
           <TextInput
             id="minAmountTo"
             {...form.getInputProps("minAmountTo")}
-            rightSection={<Text color="gray">XMR</Text>}
+            rightSection={
+              <Text pr="sm" color="gray">
+                XMR
+              </Text>
+            }
+            rightSectionWidth={45}
+            type="number"
           />
         </Grid.Col>
       </Grid>
@@ -51,13 +63,25 @@ export function MarketOffersFilterAmountForm() {
           <TextInput
             id="maxAmountFrom"
             {...form.getInputProps("maxAmountFrom")}
-            rightSection={<Text color="gray">XMR</Text>}
+            rightSection={
+              <Text pr="sm" color="gray">
+                XMR
+              </Text>
+            }
+            rightSectionWidth={45}
             mb="lg"
+            type="number"
           />
           <TextInput
             id="maxAmountTo"
             {...form.getInputProps("maxAmountTo")}
-            rightSection={<Text color="gray">EUR</Text>}
+            rightSection={
+              <Text pr="sm" color="gray">
+                EUR
+              </Text>
+            }
+            rightSectionWidth={45}
+            type="number"
           />
         </Grid.Col>
       </Grid>

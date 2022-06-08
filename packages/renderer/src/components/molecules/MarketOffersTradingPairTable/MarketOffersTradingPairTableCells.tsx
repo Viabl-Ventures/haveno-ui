@@ -1,6 +1,6 @@
 import { AmountChange } from "@atoms/AmountChange/AmountChange";
 import { Currency } from "@atoms/Currency";
-import { BodyText } from "@atoms/Typography";
+import { Box, Group } from "@mantine/core";
 import type { TMarketOffersTradingPair } from "./_types";
 
 export function MarketOfferPairCell({
@@ -10,7 +10,7 @@ export function MarketOfferPairCell({
 }) {
   return (
     <>
-      ${row?.fromPair}/${row?.toPair}
+      {row?.fromPair}/{row?.toPair}
     </>
   );
 }
@@ -21,10 +21,12 @@ export function MarketOfferPairLastPriceCell({
   row?: TMarketOffersTradingPair;
 }) {
   return (
-    <>
-      ${row?.lastPriceCurrency}{" "}
-      <Currency value={row?.lastPrice || 0} minimumFractionDigits={0} />
-    </>
+    <Group spacing="md">
+      <Box>{row?.lastPriceCurrency} </Box>
+      <Box>
+        <Currency value={row?.lastPrice || 0} minimumFractionDigits={0} />
+      </Box>
+    </Group>
   );
 }
 
@@ -33,7 +35,7 @@ export function MarketOfferPair24thChange({
 }: {
   row?: TMarketOffersTradingPair;
 }) {
-  return <AmountChange>+3,5%</AmountChange>;
+  return <AmountChange positive={true}>+3,5%</AmountChange>;
 }
 
 export function MarketOfferPair24thChangeVolume({
