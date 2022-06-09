@@ -18,16 +18,12 @@ import { useIntl } from "react-intl";
 import { Group } from "@mantine/core";
 import { Currency } from "@atoms/Currency";
 import { BodyText } from "@atoms/Typography";
-import type { MarketTransaction } from "./_types";
-import { MarketTransactionPaymentMethod } from "./_types";
+import type { MarketOffer } from "./_types";
+import { MarketOfferPaymentMethod } from "./_types";
 import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";
 import { LangKeys } from "@constants/lang";
 
-export function MarketTransactionsAccountAgeCell({
-  row,
-}: {
-  row?: MarketTransaction;
-}) {
+export function MarketOffersAccountAgeCell({ row }: { row?: MarketOffer }) {
   return (
     <Group spacing="sm">
       <CheckCircle width={15} height={15} />
@@ -36,11 +32,7 @@ export function MarketTransactionsAccountAgeCell({
   );
 }
 
-export function MarketTransactionsPriceCell({
-  row,
-}: {
-  row?: MarketTransaction;
-}) {
+export function MarketOffersPriceCell({ row }: { row?: MarketOffer }) {
   return (
     <Group spacing="sm">
       <BodyText heavy>
@@ -55,11 +47,7 @@ export function MarketTransactionsPriceCell({
   );
 }
 
-export function MarketTransactionsAmountCell({
-  row,
-}: {
-  row?: MarketTransaction;
-}) {
+export function MarketOffersAmountCell({ row }: { row?: MarketOffer }) {
   return (
     <BodyText heavy>
       <Currency currencyCode={row?.amountCurrency} value={row?.amount || 0} />
@@ -67,11 +55,7 @@ export function MarketTransactionsAmountCell({
   );
 }
 
-export function MarketTransactionsCostsCell({
-  row,
-}: {
-  row?: MarketTransaction;
-}) {
+export function MarketOffersCostsCell({ row }: { row?: MarketOffer }) {
   return (
     <BodyText heavy>
       <Currency
@@ -83,11 +67,7 @@ export function MarketTransactionsCostsCell({
   );
 }
 
-export function MarketTransactionsAccountTradesCell({
-  row,
-}: {
-  row?: MarketTransaction;
-}) {
+export function MarketOffersAccountTradesCell({ row }: { row?: MarketOffer }) {
   return (
     <BodyText heavy>
       <Currency value={row?.accountTrades || 0} minimumFractionDigits={0} />
@@ -95,18 +75,14 @@ export function MarketTransactionsAccountTradesCell({
   );
 }
 
-export function MarketTransactionsPaymentCell({
-  row,
-}: {
-  row?: MarketTransaction;
-}) {
+export function MarketOffersPaymentCell({ row }: { row?: MarketOffer }) {
   const { formatMessage } = useIntl();
 
   return (
     <BodyText heavy>
-      {row?.paymentMethod === MarketTransactionPaymentMethod.CashByMail
+      {row?.paymentMethod === MarketOfferPaymentMethod.CashByMail
         ? formatMessage({
-            id: LangKeys.MarketsTransactionsCashByMail,
+            id: LangKeys.MarketsOffersCashByMail,
             defaultMessage: "Cash by mail",
           })
         : ""}

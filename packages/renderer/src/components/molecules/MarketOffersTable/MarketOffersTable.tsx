@@ -18,29 +18,27 @@ import { createStyles } from "@mantine/core";
 import { createTable } from "@tanstack/react-table";
 import { useIntl } from "react-intl";
 import { Table } from "@molecules/Table";
-import type { MarketTransaction } from "./_types";
+import type { MarketOffer } from "./_types";
 import {
-  MarketTransactionsPriceCell,
-  MarketTransactionsAmountCell,
-  MarketTransactionsAccountTradesCell,
-  MarketTransactionsCostsCell,
-  MarketTransactionsAccountAgeCell,
-  MarketTransactionsPaymentCell,
-} from "./MarketTransactionsTableCell";
+  MarketOffersPriceCell,
+  MarketOffersAmountCell,
+  MarketOffersAccountTradesCell,
+  MarketOffersCostsCell,
+  MarketOffersAccountAgeCell,
+  MarketOffersPaymentCell,
+} from "./MarketOffersTableCell";
 import { LangKeys } from "@constants/lang";
 import { TableVariant } from "@molecules/Table/_types";
 
-const table = createTable().setRowType<MarketTransaction>();
+const table = createTable().setRowType<MarketOffer>();
 
-interface MarketTransactionsTableProps {
-  data: MarketTransaction[];
+interface MarketOffersTableProps {
+  data: MarketOffer[];
 }
 
-export function MarketTransactionsTable({
-  data,
-}: MarketTransactionsTableProps) {
+export function MarketOffersTable({ data }: MarketOffersTableProps) {
   const { classes } = useStyles();
-  const columns = useMarketTransactionsColumns();
+  const columns = useMarketOffersColumns();
 
   return (
     <Table
@@ -58,8 +56,6 @@ export function MarketTransactionsTable({
 
 const useStyles = createStyles((theme) => ({
   root: {
-    borderBottom: `1px solid ${theme.colors.gray[2]}`,
-
     "thead tr th, tbody tr td": {
       "&:first-of-type": {
         paddingLeft: 30,
@@ -74,71 +70,72 @@ const useStyles = createStyles((theme) => ({
         paddingTop: 22,
         paddingBottom: 22,
       },
+      "&:last-of-type": {
+        td: {
+          borderBottom: `1px solid ${theme.colors.gray[2]}`,
+        },
+      },
     },
   },
 }));
 
-const useMarketTransactionsColumns = () => {
+const useMarketOffersColumns = () => {
   const { formatMessage } = useIntl();
 
   return [
     table.createDataColumn("price", {
       id: "price",
       header: formatMessage({
-        id: LangKeys.MarketsTransactionsColumnPrice,
+        id: LangKeys.MarketsOffersColumnPrice,
         defaultMessage: "Price",
       }),
-      cell: ({ row }) => <MarketTransactionsPriceCell row={row.original} />,
+      cell: ({ row }) => <MarketOffersPriceCell row={row.original} />,
       size: 400,
     }),
     table.createDataColumn("amount", {
       id: "amount",
       header: formatMessage({
-        id: LangKeys.MarketsTransactionsColumnAmount,
+        id: LangKeys.MarketsOffersColumnAmount,
         defaultMessage: "Amount",
       }),
+      cell: ({ row }) => <MarketOffersAmountCell row={row.original} />,
       size: 400,
-      cell: ({ row }) => <MarketTransactionsAmountCell row={row.original} />,
     }),
     table.createDataColumn("cost", {
       id: "costs",
       header: formatMessage({
-        id: LangKeys.MarketsTransactionsColumnCost,
+        id: LangKeys.MarketsOffersColumnCost,
         defaultMessage: "Costs",
       }),
+      cell: ({ row }) => <MarketOffersCostsCell row={row.original} />,
       size: 400,
-      cell: ({ row }) => <MarketTransactionsCostsCell row={row.original} />,
     }),
     table.createDataColumn("paymentMethod", {
       id: "paymentMethod",
       header: formatMessage({
-        id: LangKeys.MarketsTransactionsColumnPaymentMethod,
+        id: LangKeys.MarketsOffersColumnPaymentMethod,
         defaultMessage: "Payment Method",
       }),
+      cell: ({ row }) => <MarketOffersPaymentCell row={row.original} />,
       size: 400,
-      cell: ({ row }) => <MarketTransactionsPaymentCell row={row.original} />,
     }),
     table.createDataColumn("accountAge", {
       id: "accountAge",
       header: formatMessage({
-        id: LangKeys.MarketsTransactionsColumnAccountAge,
+        id: LangKeys.MarketsOffersColumnAccountAge,
         defaultMessage: "Account Age",
       }),
+      cell: ({ row }) => <MarketOffersAccountAgeCell row={row.original} />,
       size: 400,
-      cell: ({ row }) => (
-        <MarketTransactionsAccountAgeCell row={row.original} />
-      ),
     }),
     table.createDataColumn("accountTrades", {
       id: "accountTrades",
       header: formatMessage({
-        id: LangKeys.MarketsTransactionsColumnAccountTrades,
+        id: LangKeys.MarketsOffersColumnAccountTrades,
         defaultMessage: "Account Trades",
       }),
+      cell: ({ row }) => <MarketOffersAccountTradesCell row={row.original} />,
       size: 400,
-      cell: ({ row }) => (
-        <MarketTransactionsAccountTradesCell row={row.original} />
-      ),
       meta: {
         textAlign: "right",
       },

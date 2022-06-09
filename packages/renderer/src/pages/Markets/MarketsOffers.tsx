@@ -16,15 +16,15 @@
 
 import { createStyles, Stack } from "@mantine/core";
 import { NavbarLayout } from "@templates/NavbarLayout";
-import { MarketsTransactions } from "@organisms/MarketsTransactions";
+import { MarketsOffers } from "@organisms/MarketsOffers";
 
-export function MarketsTransactionsPage() {
+export function MarketsOffersPage() {
   const { classes } = useStyles();
 
   return (
     <NavbarLayout classNames={{ contentArea: classes.contentArea }}>
       <Stack spacing={0}>
-        <MarketsTransactions />
+        <MarketsOffers />
       </Stack>
     </NavbarLayout>
   );

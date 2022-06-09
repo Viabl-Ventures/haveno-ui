@@ -16,39 +16,42 @@
 
 import type { FC } from "react";
 import { useMemo } from "react";
-import { Loader } from "@mantine/core";
+import { Group, Loader } from "@mantine/core";
 import { useMarketsOffers } from "@hooks/haveno/useMarketsOffers";
-import { MarketTransactionsTable } from "@molecules/MarketTransactionsTable";
-import { transformToMarketsTransactions } from "./_utils";
+import { MarketOffersTable } from "@molecules/MarketOffersTable";
+import { transformToMarketsOffers } from "./_utils";
 
-export function MarketsTransactionsLoaded() {
+export function MarketsOffersLoaded() {
   const { data } = useMarketsOffers({
     assetCode: "ETH",
     direction: "sell",
   });
-  const tableData = useMemo(
-    () => transformToMarketsTransactions(data || []),
-    [data]
-  );
+  const tableData = useMemo(() => transformToMarketsOffers(data || []), [data]);
 
   if (!data) {
     return null;
   }
-  return <MarketTransactionsTable data={tableData} />;
+  return <MarketOffersTable data={tableData} />;
 }
 
-const MarketsTransactionsBoot: FC = ({ children }) => {
+const MarketsOffersBoot: FC = ({ children }) => {
   const { isLoading: isOffersLoading } = useMarketsOffers({
     assetCode: "ETH",
     direction: "buy",
   });
-  return isOffersLoading ? <Loader color="gray" /> : <>{children}</>;
+  return isOffersLoading ? (
+    <Group>
+      <Loader color="gray" style={{ margin: "auto" }} />
+    </Group>
+  ) : (
+    <>{children}</>
+  );
 };
 
-export function MarketsTransactions() {
+export function MarketsOffers() {
   return (
-    <MarketsTransactionsBoot>
-      <MarketsTransactionsLoaded />
-    </MarketsTransactionsBoot>
+    <MarketsOffersBoot>
+      <MarketsOffersLoaded />
+    </MarketsOffersBoot>
   );
 }

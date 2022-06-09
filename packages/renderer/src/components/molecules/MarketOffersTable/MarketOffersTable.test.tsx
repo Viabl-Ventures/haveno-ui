@@ -16,15 +16,15 @@
 
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { MarketTransactionsTable } from "./MarketTransactionsTable";
+import { MarketOffersTable } from "./MarketOffersTable";
 import { AppProviders } from "@atoms/AppProviders";
-import { MarketTransactionPaymentMethod } from "./_types";
+import { MarketOfferPaymentMethod } from "./_types";
 
-describe("molecules::MarketTransactionsTable", () => {
+describe("molecules::MarketOffersTable", () => {
   it("renders without exploding.", () => {
     const { asFragment, unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe("molecules::MarketTransactionsTable", () => {
   it("renders all columns.", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("Price")).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe("molecules::MarketTransactionsTable", () => {
   it("renders formatted price value with currency sign.", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("€5,000.96")).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe("molecules::MarketTransactionsTable", () => {
   it("renders formatted amount value with currency code.", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("XMR 7,564.94")).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("molecules::MarketTransactionsTable", () => {
   it("renders formatted cost value with currency sign.", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("$532.34")).toBeInTheDocument();
@@ -82,7 +82,7 @@ describe("molecules::MarketTransactionsTable", () => {
   it("renders formatted account trades.", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("3,412")).toBeInTheDocument();
@@ -93,7 +93,7 @@ describe("molecules::MarketTransactionsTable", () => {
   it("renders offer formatted payment method.", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketTransactionsTable data={data} />
+        <MarketOffersTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("Cash by mail")).toBeInTheDocument();
@@ -110,7 +110,7 @@ const data = [
     amountCurrency: "XMR",
     cost: 532.34,
     costCurrency: "USD",
-    paymentMethod: MarketTransactionPaymentMethod.CashByMail,
+    paymentMethod: MarketOfferPaymentMethod.CashByMail,
     accountAge: 12,
     accountTrades: 1212,
   },
@@ -122,7 +122,7 @@ const data = [
     amountCurrency: "XMR",
     cost: 983.32,
     costCurrency: "USD",
-    paymentMethod: MarketTransactionPaymentMethod.Other,
+    paymentMethod: MarketOfferPaymentMethod.Other,
     accountAge: 12,
     accountTrades: 3412,
   },

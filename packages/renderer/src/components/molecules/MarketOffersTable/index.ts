@@ -14,4 +14,5 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./MarketTransactionsTable";
+export * from "./MarketOffersTable";
+export * from "./_types";

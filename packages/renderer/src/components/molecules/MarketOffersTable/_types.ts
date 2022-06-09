@@ -14,7 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-export interface MarketTransaction {
+export interface MarketOffer {
   price: number;
   priceComparison: number;
   priceCurrency: string;
@@ -22,12 +22,12 @@ export interface MarketTransaction {
   amountCurrency: string;
   cost: number;
   costCurrency: string;
-  paymentMethod: MarketTransactionPaymentMethod;
+  paymentMethod: MarketOfferPaymentMethod;
   accountAge: number;
   accountTrades: number;
 }
 
-export enum MarketTransactionPaymentMethod {
+export enum MarketOfferPaymentMethod {
   CashByMail = "CashByMail",
   Other = "Other",
 }

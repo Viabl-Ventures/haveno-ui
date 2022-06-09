@@ -15,17 +15,45 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { MarketsTransactions } from "./MarketsTransactions";
+import { MarketOffersTable } from "./MarketOffersTable";
+import { MarketOfferPaymentMethod } from "./_types";
 
 export default {
-  title: "organisms/MarketsTransactions",
-  component: MarketsTransactions,
-} as ComponentMeta<typeof MarketsTransactions>;
+  title: "molecules/MarketOffersTable",
+  component: MarketOffersTable,
+} as ComponentMeta<typeof MarketOffersTable>;
 
-const Template: ComponentStory<typeof MarketsTransactions> = () => {
-  return <MarketsTransactions />;
+const Template: ComponentStory<typeof MarketOffersTable> = () => {
+  return <MarketOffersTable data={data} />;
 };
 
 export const Default = Template.bind({});
 
 Default.args = {};
+
+const data = [
+  {
+    price: 123,
+    priceCurrency: "EUR",
+    priceComparison: 0.12,
+    amount: 123123,
+    amountCurrency: "EUR",
+    cost: 123,
+    costCurrency: "USD",
+    paymentMethod: MarketOfferPaymentMethod.CashByMail,
+    accountAge: 12,
+    accountTrades: 1212,
+  },
+  {
+    price: 123,
+    priceCurrency: "EUR",
+    priceComparison: 0.12,
+    amount: 123123,
+    amountCurrency: "EUR",
+    cost: 123,
+    costCurrency: "USD",
+    paymentMethod: MarketOfferPaymentMethod.CashByMail,
+    accountAge: 12,
+    accountTrades: 1212,
+  },
+];
