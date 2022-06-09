@@ -1,53 +1,42 @@
-import { useModals } from "@mantine/modals";
-import { Divider, Group, Button, createStyles } from "@mantine/core";
+import { Divider, Group, Button, createStyles, Tabs } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
-import { MarketOffersFilterAccountsForm } from "@organisms/MarketOffersFilterAccountsForm/MarketOffersFilterAccountsForm";
-import { MarketOffersFilterAmountForm } from "@organisms/MarketOffersFilterAmountForm/MarketOffersFilterAmountForm";
 import {
   useMarketOffersPairModal,
   useMarketOffersPaymentMethods,
 } from "./hooks";
+import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch/MarketBuySellSwitch";
+import { useMarketOffersAccountModal } from "./hooks/useMarketOffersAccountModal";
+import { useMarketOffersAmountModal } from "./hooks/useMarketOffersAmountModal";
 
 export function MarketOffersFilterBar() {
   const { classes } = useStyles();
-  const modals = useModals();
 
   const marketOffersPairModal = useMarketOffersPairModal();
   const marketOffersPaymentMethodsModal = useMarketOffersPaymentMethods();
+  const marketOffersAccountModal = useMarketOffersAccountModal();
+  const marketOffersAmountModal = useMarketOffersAmountModal();
 
   const handleParisBtnClick = () => {
     marketOffersPairModal.openModal();
   };
-
   const handlePaymentMethodsBtnClick = () => {
     marketOffersPaymentMethodsModal.openModal();
   };
-
   const handleAccountBtnClick = () => {
-    modals.openModal({
-      title: "Amount",
-      children: <MarketOffersFilterAccountsForm />,
-      size: "lg",
-      withCloseButton: true,
-    });
+    marketOffersAccountModal.openModal();
   };
-
   const handleAmountBtnClick = () => {
-    modals.openModal({
-      title: "Amount",
-      children: <MarketOffersFilterAmountForm />,
-      size: "lg",
-      withCloseButton: false,
-    });
+    marketOffersAmountModal.openModal();
   };
 
   return (
     <Group position="apart" className={classes.root}>
       <Group>
-        <Button radius="md" size="md">
-          XMR/EUR
-        </Button>
+        <MarketBuySellSwitch>
+          <Tabs.Tab label="Sell XMR" />
+          <Tabs.Tab label="Buy XMR" />
+        </MarketBuySellSwitch>
 
         <Divider className={classes.divider} orientation="vertical" />
         <Button
