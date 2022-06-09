@@ -14,26 +14,23 @@
 //  limitations under the License.
 // =============================================================================
 
-import { createStyles } from "@mantine/core";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { Percentage } from "./Percentage";
 
-export const useStyles = createStyles((theme) => ({
-  primary: {
-    "thead tr": {
-      backgroundColor: theme.colors.gray[0],
+describe("atoms::Percentage", () => {
+  it("renders without exploding", () => {
+    const { asFragment } = render(<Percentage value={0.1} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-      th: {
-        fontSize: 10,
-        letterSpacing: "0.05em",
-        textTransform: "uppercase",
-        borderBottomColor: theme.colors.gray[2],
-        color: theme.colors.gray[5],
-        fontWeight: 700,
-      },
-    },
-    "tbody tr": {
-      td: {
-        borderBottomColor: theme.colors.gray[2],
-      },
-    },
-  },
-}));
+  it("renders value", () => {
+    const { asFragment } = render(<Percentage value={0.1} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("renders decimal value", () => {
+    const { asFragment } = render(<Percentage value={0.123456} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

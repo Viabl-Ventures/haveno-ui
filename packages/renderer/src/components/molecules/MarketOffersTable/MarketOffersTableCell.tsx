@@ -20,14 +20,15 @@ import { Currency } from "@atoms/Currency";
 import { BodyText } from "@atoms/Typography";
 import type { MarketOffer } from "./_types";
 import { MarketOfferPaymentMethod } from "./_types";
-import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";
 import { LangKeys } from "@constants/lang";
+import { Percentage } from "@atoms/Percentage/Percentage";
+import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";
 
 export function MarketOffersAccountAgeCell({ row }: { row?: MarketOffer }) {
   return (
     <Group spacing="sm">
       <CheckCircle width={15} height={15} />
-      <BodyText heavy>65 Days</BodyText>
+      <BodyText heavy>{row?.accountAge} Days</BodyText>
     </Group>
   );
 }
@@ -42,7 +43,10 @@ export function MarketOffersPriceCell({ row }: { row?: MarketOffer }) {
           currentDisplay="symbol"
         />
       </BodyText>
-      <BodyText color="gray">-1%</BodyText>
+
+      <BodyText color="gray">
+        <Percentage value={row?.priceComparison || 0} />
+      </BodyText>
     </Group>
   );
 }

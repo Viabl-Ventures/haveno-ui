@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
-exports[`molecules::MarketTransactionsTable > renders without exploding. 1`] = `
+exports[`molecules::MarketOffersTable > renders without exploding. 1`] = `
 <DocumentFragment>
   <table
-    class="mantine-Table-root mantine-19hj5t7"
+    class="mantine-Table-root mantine-dn174j"
   >
     <thead>
       <tr>
@@ -39,7 +39,7 @@ exports[`molecules::MarketTransactionsTable > renders without exploding. 1`] = `
         </th>
         <th
           colspan="1"
-          style="width: 400px;"
+          style="width: 400px; text-align: right;"
         >
           Account Trades
         </th>
@@ -61,7 +61,7 @@ exports[`molecules::MarketTransactionsTable > renders without exploding. 1`] = `
             <div
               class="mantine-Text-root mantine-Group-child mantine-1qscdi2"
             >
-              -1%
+              %12
             </div>
           </div>
         </td>
@@ -114,12 +114,12 @@ exports[`molecules::MarketTransactionsTable > renders without exploding. 1`] = `
             <div
               class="mantine-Text-root mantine-Group-child mantine-1h17kkk"
             >
-              65 Days
+              12 Days
             </div>
           </div>
         </td>
         <td
-          style="width: 400px;"
+          style="width: 400px; text-align: right;"
         >
           <div
             class="mantine-Text-root mantine-ix3vgq"
@@ -143,7 +143,7 @@ exports[`molecules::MarketTransactionsTable > renders without exploding. 1`] = `
             <div
               class="mantine-Text-root mantine-Group-child mantine-1qscdi2"
             >
-              -1%
+              %12
             </div>
           </div>
         </td>
@@ -194,12 +194,12 @@ exports[`molecules::MarketTransactionsTable > renders without exploding. 1`] = `
             <div
               class="mantine-Text-root mantine-Group-child mantine-1h17kkk"
             >
-              65 Days
+              12 Days
             </div>
           </div>
         </td>
         <td
-          style="width: 400px;"
+          style="width: 400px; text-align: right;"
         >
           <div
             class="mantine-Text-root mantine-ix3vgq"
