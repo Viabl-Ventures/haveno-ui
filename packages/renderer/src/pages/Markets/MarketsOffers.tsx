@@ -14,7 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-import { createStyles, Stack } from "@mantine/core";
+import { createStyles } from "@mantine/core";
 import { NavbarLayout } from "@templates/NavbarLayout";
 import { MarketsOffers } from "@organisms/MarketsOffers";
 
@@ -23,9 +23,7 @@ export function MarketsOffersPage() {
 
   return (
     <NavbarLayout classNames={{ contentArea: classes.contentArea }}>
-      <Stack spacing={0}>
-        <MarketsOffers />
-      </Stack>
+      <MarketsOffers />
     </NavbarLayout>
   );
 }

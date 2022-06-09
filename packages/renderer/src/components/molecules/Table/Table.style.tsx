@@ -22,12 +22,12 @@ export const useStyles = createStyles((theme) => ({
       backgroundColor: theme.colors.gray[0],
 
       th: {
-        fontSize: 10,
-        letterSpacing: "0.05em",
-        textTransform: "uppercase",
         borderBottomColor: theme.colors.gray[2],
         color: theme.colors.gray[5],
+        fontSize: 10,
         fontWeight: 700,
+        letterSpacing: "0.05em",
+        textTransform: "uppercase",
       },
     },
     "tbody tr": {
