@@ -14,13 +14,24 @@
 //  limitations under the License.
 // =============================================================================
 
+import { createStyles, Stack } from "@mantine/core";
 import { NavbarLayout } from "@templates/NavbarLayout";
 import { MarketsTransactions } from "@organisms/MarketsTransactions";
 
 export function MarketsTransactionsPage() {
+  const { classes } = useStyles();
+
   return (
-    <NavbarLayout>
-      <MarketsTransactions />
+    <NavbarLayout classNames={{ contentArea: classes.contentArea }}>
+      <Stack spacing={0}>
+        <MarketsTransactions />
+      </Stack>
     </NavbarLayout>
   );
 }
+
+const useStyles = createStyles(() => ({
+  contentArea: {
+    padding: 0,
+  },
+}));

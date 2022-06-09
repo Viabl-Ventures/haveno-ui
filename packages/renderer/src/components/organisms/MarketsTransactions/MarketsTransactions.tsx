@@ -14,22 +14,32 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { FC } from "react";
+import { useMemo } from "react";
 import { Loader } from "@mantine/core";
 import { useMarketsOffers } from "@hooks/haveno/useMarketsOffers";
 import { MarketTransactionsTable } from "@molecules/MarketTransactionsTable";
-import type { FC } from "react";
+import { transformToMarketsTransactions } from "./_utils";
 
 export function MarketsTransactionsLoaded() {
-  useMarketsOffers({
-    assetCode: "eth",
-    direction: "buy",
+  const { data } = useMarketsOffers({
+    assetCode: "ETH",
+    direction: "sell",
   });
-  return <MarketTransactionsTable data={[]} />;
+  const tableData = useMemo(
+    () => transformToMarketsTransactions(data || []),
+    [data]
+  );
+
+  if (!data) {
+    return null;
+  }
+  return <MarketTransactionsTable data={tableData} />;
 }
 
 const MarketsTransactionsBoot: FC = ({ children }) => {
   const { isLoading: isOffersLoading } = useMarketsOffers({
-    assetCode: "eth",
+    assetCode: "ETH",
     direction: "buy",
   });
   return isOffersLoading ? <Loader color="gray" /> : <>{children}</>;

@@ -56,10 +56,21 @@ export function MarketTransactionsTable({
   );
 }
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   root: {
+    borderBottom: `1px solid ${theme.colors.gray[2]}`,
+
+    "thead tr th, tbody tr td": {
+      "&:first-of-type": {
+        paddingLeft: 30,
+      },
+      "&:last-of-type": {
+        paddingRight: 30,
+      },
+    },
     "tbody tr": {
       td: {
+        background: theme.white,
         paddingTop: 22,
         paddingBottom: 22,
       },
@@ -128,6 +139,9 @@ const useMarketTransactionsColumns = () => {
       cell: ({ row }) => (
         <MarketTransactionsAccountTradesCell row={row.original} />
       ),
+      meta: {
+        textAlign: "right",
+      },
     }),
   ];
 };
