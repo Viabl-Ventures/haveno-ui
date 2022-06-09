@@ -15,7 +15,7 @@
 // =============================================================================
 
 import { useIntl } from "react-intl";
-import { Group } from "@mantine/core";
+import { Group, useMantineTheme } from "@mantine/core";
 import { Currency } from "@atoms/Currency";
 import { BodyText } from "@atoms/Typography";
 import type { MarketOffer } from "./_types";
@@ -25,9 +25,11 @@ import { Percentage } from "@atoms/Percentage/Percentage";
 import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";
 
 export function MarketOffersAccountAgeCell({ row }: { row?: MarketOffer }) {
+  const theme = useMantineTheme();
+
   return (
     <Group spacing="sm">
-      <CheckCircle width={15} height={15} />
+      <CheckCircle color={theme.colors.blue[6]} width={15} height={15} />
       <BodyText heavy>{row?.accountAge} Days</BodyText>
     </Group>
   );
