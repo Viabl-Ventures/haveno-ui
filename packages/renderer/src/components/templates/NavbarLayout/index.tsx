@@ -17,6 +17,7 @@
 import type { ReactNode } from "react";
 import type { DefaultProps } from "@mantine/core";
 import { Box, createStyles, Group } from "@mantine/core";
+import type { FC } from "react";
 import { Sidebar } from "@organisms/Sidebar";
 
 interface NavbarLayoutProps extends DefaultProps {
