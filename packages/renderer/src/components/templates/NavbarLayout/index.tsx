@@ -16,8 +16,8 @@
 
 import type { FC } from "react";
 import type { DefaultProps } from "@mantine/core";
-import { Box, createStyles, Group } from "@mantine/core";
-import { Sidebar } from "@organisms/Sidebar";
+import { Box, createStyles, Stack } from "@mantine/core";
+import { Navbar } from "@organisms/Navbar";
 
 export const NavbarLayout: FC<DefaultProps> = ({
   children,
@@ -31,10 +31,10 @@ export const NavbarLayout: FC<DefaultProps> = ({
   });
 
   return (
-    <Group className={cx(classes.container, className)} spacing={0} {...rest}>
-      <Sidebar />
+    <Stack className={cx(classes.container, className)} spacing={0}>
+      <Navbar />
       <Box className={classes.contentArea}>{children}</Box>
-    </Group>
+    </Stack>
   );
 };
 
