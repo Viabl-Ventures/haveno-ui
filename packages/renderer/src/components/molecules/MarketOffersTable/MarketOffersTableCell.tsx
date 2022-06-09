@@ -16,10 +16,10 @@
 
 import { useIntl } from "react-intl";
 import { Group, useMantineTheme } from "@mantine/core";
-import { Currency } from "@atoms/Currency";
-import { BodyText } from "@atoms/Typography";
 import type { MarketOffer } from "./_types";
 import { MarketOfferPaymentMethod } from "./_types";
+import { Currency } from "@atoms/Currency";
+import { BodyText } from "@atoms/Typography";
 import { LangKeys } from "@constants/lang";
 import { Percentage } from "@atoms/Percentage/Percentage";
 import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";

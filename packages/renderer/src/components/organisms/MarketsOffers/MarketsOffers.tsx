@@ -17,9 +17,9 @@
 import type { FC } from "react";
 import { useMemo } from "react";
 import { Group, Loader } from "@mantine/core";
+import { transformToMarketsOffers } from "./_utils";
 import { useMarketsOffers } from "@hooks/haveno/useMarketsOffers";
 import { MarketOffersTable } from "@molecules/MarketOffersTable";
-import { transformToMarketsOffers } from "./_utils";
 
 export function MarketsOffersLoaded() {
   const { data } = useMarketsOffers({

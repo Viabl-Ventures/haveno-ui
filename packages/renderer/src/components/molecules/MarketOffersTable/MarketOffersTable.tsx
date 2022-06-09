@@ -17,7 +17,6 @@
 import { createStyles } from "@mantine/core";
 import { createTable } from "@tanstack/react-table";
 import { useIntl } from "react-intl";
-import { Table } from "@molecules/Table";
 import type { MarketOffer } from "./_types";
 import {
   MarketOffersPriceCell,
@@ -27,6 +26,7 @@ import {
   MarketOffersAccountAgeCell,
   MarketOffersPaymentCell,
 } from "./MarketOffersTableCell";
+import { Table } from "@molecules/Table";
 import { LangKeys } from "@constants/lang";
 import { TableVariant } from "@molecules/Table/_types";
 

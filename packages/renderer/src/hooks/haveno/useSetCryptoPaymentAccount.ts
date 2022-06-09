@@ -16,8 +16,8 @@
 
 import { useMutation, useQueryClient } from "react-query";
 import { showNotification } from "@mantine/notifications";
-import { QueryKeys } from "@constants/query-keys";
 import { useHavenoClient } from "./useHavenoClient";
+import { QueryKeys } from "@constants/query-keys";
 
 interface SetCryptoPaymentAccount {
   accountName: string;
