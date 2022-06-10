@@ -17,7 +17,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MarketOffersTable } from "./MarketOffersTable";
-import { MarketOfferPaymentMethod } from "./_types";
 import { AppProviders } from "@atoms/AppProviders";
 
 describe("molecules::MarketOffersTable", () => {
@@ -41,8 +40,6 @@ describe("molecules::MarketOffersTable", () => {
     expect(screen.queryByText("Amount")).toBeInTheDocument();
     expect(screen.queryByText("Costs")).toBeInTheDocument();
     expect(screen.queryByText("Payment Method")).toBeInTheDocument();
-    expect(screen.queryByText("Account Age")).toBeInTheDocument();
-    expect(screen.queryByText("Account Trades")).toBeInTheDocument();
     unmount();
   });
 
@@ -68,35 +65,25 @@ describe("molecules::MarketOffersTable", () => {
     unmount();
   });
 
-  it("renders formatted cost value with currency sign.", () => {
-    const { unmount } = render(
-      <AppProviders>
-        <MarketOffersTable data={data} />
-      </AppProviders>
-    );
-    expect(screen.queryByText("$532.34")).toBeInTheDocument();
-    expect(screen.queryByText("$983.32")).toBeInTheDocument();
-    unmount();
-  });
-
-  it("renders formatted account trades.", () => {
-    const { unmount } = render(
-      <AppProviders>
-        <MarketOffersTable data={data} />
-      </AppProviders>
-    );
-    expect(screen.queryByText("3,412")).toBeInTheDocument();
-    expect(screen.queryByText("1,212")).toBeInTheDocument();
-    unmount();
-  });
-
   it("renders offer formatted payment method.", () => {
     const { unmount } = render(
       <AppProviders>
         <MarketOffersTable data={data} />
       </AppProviders>
     );
-    expect(screen.queryByText("Cash by mail")).toBeInTheDocument();
+    expect(screen.queryByText("Bitcoin")).toBeInTheDocument();
+    expect(screen.queryByText("Altcoins")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("renders formatted price percentage.", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <MarketOffersTable data={data} />
+      </AppProviders>
+    );
+    expect(screen.queryByText("12%")).toBeInTheDocument();
+    expect(screen.queryByText("15%")).toBeInTheDocument();
     unmount();
   });
 });
@@ -110,19 +97,19 @@ const data = [
     amountCurrency: "XMR",
     cost: 532.34,
     costCurrency: "USD",
-    paymentMethod: MarketOfferPaymentMethod.CashByMail,
+    paymentMethod: "Bitcoin",
     accountAge: 12,
     accountTrades: 1212,
   },
   {
     price: 9637.41,
-    priceComparison: 0.12,
+    priceComparison: 0.15,
     priceCurrency: "EUR",
     amount: 6483.23,
     amountCurrency: "XMR",
     cost: 983.32,
     costCurrency: "USD",
-    paymentMethod: MarketOfferPaymentMethod.Other,
+    paymentMethod: "Altcoins",
     accountAge: 12,
     accountTrades: 3412,
   },

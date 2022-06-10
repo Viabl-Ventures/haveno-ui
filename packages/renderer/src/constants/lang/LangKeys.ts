@@ -106,5 +106,4 @@ export enum LangKeys {
   MarketsOffersColumnPaymentMethod = "marketsOffers.columnPaymentMethod",
   MarketsOffersColumnAccountAge = "marketsOffers.columnAccountAge",
   MarketsOffersColumnAccountTrades = "marketsOffers.columnAccountTypes",
-  MarketsOffersCashByMail = "marketsOffers.cashByMail",
 }

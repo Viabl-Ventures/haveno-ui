@@ -14,7 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-import { MarketOfferPaymentMethod } from "@organisms/MarketOffersTable";
 import type { MarketOfferData } from "@hooks/haveno/useMarketsOffers";
 import type { MarketOffer } from "@organisms/MarketOffersTable";
 
@@ -27,9 +26,9 @@ export const transformToMarketsOffers = (
     amount: offer.amount,
     amountCurrency: offer.baseCurrencyCode,
     costCurrency: offer.baseCurrencyCode,
+    paymentMethod: offer.paymentMethodShortName,
+    cost: offer.txFee,
     priceComparison: 0.1,
-    paymentMethod: MarketOfferPaymentMethod.CashByMail,
-    cost: 1,
     accountAge: 1,
     accountTrades: 1,
   }));

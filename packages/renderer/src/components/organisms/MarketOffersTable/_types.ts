@@ -22,12 +22,7 @@ export interface MarketOffer {
   amountCurrency: string;
   cost: number;
   costCurrency: string;
-  paymentMethod: MarketOfferPaymentMethod;
+  paymentMethod: string;
   accountAge: number;
   accountTrades: number;
-}
-
-export enum MarketOfferPaymentMethod {
-  CashByMail = "CashByMail",
-  Other = "Other",
 }

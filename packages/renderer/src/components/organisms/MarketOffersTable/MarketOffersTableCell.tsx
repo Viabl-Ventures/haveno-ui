@@ -14,13 +14,10 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useIntl } from "react-intl";
 import { Group, useMantineTheme } from "@mantine/core";
 import type { MarketOffer } from "./_types";
-import { MarketOfferPaymentMethod } from "./_types";
 import { Currency } from "@atoms/Currency";
 import { BodyText } from "@atoms/Typography";
-import { LangKeys } from "@constants/lang";
 import { fractionToPercent } from "@src/utils/math";
 import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";
 
@@ -86,16 +83,5 @@ export function MarketOffersAccountTradesCell({ row }: { row?: MarketOffer }) {
 }
 
 export function MarketOffersPaymentCell({ row }: { row?: MarketOffer }) {
-  const { formatMessage } = useIntl();
-
-  return (
-    <BodyText heavy>
-      {row?.paymentMethod === MarketOfferPaymentMethod.CashByMail
-        ? formatMessage({
-            id: LangKeys.MarketsOffersCashByMail,
-            defaultMessage: "Cash by mail",
-          })
-        : ""}
-    </BodyText>
-  );
+  return <BodyText heavy>{row?.paymentMethod}</BodyText>;
 }

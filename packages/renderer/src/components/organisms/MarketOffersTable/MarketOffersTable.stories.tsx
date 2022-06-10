@@ -16,7 +16,6 @@
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { MarketOffersTable } from "./MarketOffersTable";
-import { MarketOfferPaymentMethod } from "./_types";
 
 export default {
   title: "molecules/MarketOffersTable",
@@ -40,7 +39,7 @@ const data = [
     amountCurrency: "EUR",
     cost: 123,
     costCurrency: "USD",
-    paymentMethod: MarketOfferPaymentMethod.CashByMail,
+    paymentMethod: "Bitcoin",
     accountAge: 12,
     accountTrades: 1212,
   },
@@ -52,7 +51,7 @@ const data = [
     amountCurrency: "EUR",
     cost: 123,
     costCurrency: "USD",
-    paymentMethod: MarketOfferPaymentMethod.CashByMail,
+    paymentMethod: "Altcoins",
     accountAge: 12,
     accountTrades: 1212,
   },
