@@ -27,7 +27,7 @@ interface MyOfferesQuery {
 export function useMarketsOffers(query: MyOfferesQuery) {
   const client = useHavenoClient();
 
-  return useQuery<OfferInfo[], Error>([QueryKeys.MyOffers, query], () =>
+  return useQuery<Array<OfferInfo>, Error>([QueryKeys.MyOffers, query], () =>
     client.getMyOffers(query.assetCode, query.direction)
   );
 }

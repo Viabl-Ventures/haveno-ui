@@ -14,6 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { ReactNode } from "react";
 import { ReactComponent as MarketsIcon } from "@assets/markets.svg";
 import { ReactComponent as OffersIcon } from "@assets/offers.svg";
 import { ReactComponent as TradesIcon } from "@assets/trades.svg";
@@ -21,6 +22,12 @@ import { ReactComponent as NotificationsIcon } from "@assets/notifications.svg";
 import { ReactComponent as AccountIcon } from "@assets/account.svg";
 
 export const WIDTH = 210;
+
+interface NavigationLink {
+  icon: ReactNode;
+  label: string;
+  link: string;
+}
 
 export const NAV_LINKS = [
   {
@@ -31,17 +38,21 @@ export const NAV_LINKS = [
   {
     icon: <OffersIcon />,
     label: "My Offers",
+    link: "/",
   },
   {
     icon: <TradesIcon />,
     label: "My Trades",
+    link: "/",
   },
   {
     icon: <NotificationsIcon />,
     label: "Notifications",
+    link: "/",
   },
   {
     icon: <AccountIcon />,
     label: "Account",
+    link: "/",
   },
-];
+] as Array<NavigationLink>;

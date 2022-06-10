@@ -33,7 +33,7 @@ import { TableVariant } from "@molecules/Table/_types";
 const table = createTable().setRowType<MarketOffer>();
 
 interface MarketOffersTableProps {
-  data: MarketOffer[];
+  data: Array<MarketOffer>;
 }
 
 export function MarketOffersTable({ data }: MarketOffersTableProps) {

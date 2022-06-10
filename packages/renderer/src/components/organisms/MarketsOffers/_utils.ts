@@ -19,8 +19,8 @@ import type { MarketOfferData } from "@hooks/haveno/useMarketsOffers";
 import type { MarketOffer } from "@molecules/MarketOffersTable";
 
 export const transformToMarketsOffers = (
-  offers: MarketOfferData[]
-): MarketOffer[] => {
+  offers: Array<MarketOfferData>
+): Array<MarketOffer> => {
   return offers.map((offer) => ({
     price: offer.price,
     priceCurrency: offer.counterCurrencyCode,

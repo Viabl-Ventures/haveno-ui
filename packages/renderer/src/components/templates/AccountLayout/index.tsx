@@ -19,7 +19,7 @@ import { NavbarLayout } from "@templates/NavbarLayout";
 import { AccountSidebar } from "@organisms/AccountSidebar";
 
 interface AccountContentProps {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | Array<JSX.Element>;
 }
 
 function AccountContent({ children }: AccountContentProps) {
@@ -34,7 +34,7 @@ function AccountContent({ children }: AccountContentProps) {
 }
 
 interface AccountLayoutProps {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | Array<JSX.Element>;
 }
 
 export function AccountLayout({ children }: AccountLayoutProps) {

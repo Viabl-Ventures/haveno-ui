@@ -27,7 +27,7 @@ interface MarketsOfferesQuery {
 export function useMarketsOffers(query: MarketsOfferesQuery) {
   const client = useHavenoClient();
 
-  return useQuery<MarketOfferData[], Error>(
+  return useQuery<Array<MarketOfferData>, Error>(
     [QueryKeys.MarketsOffers, query],
     async () => {
       const offers = await client.getMyOffers(query.assetCode);
@@ -36,7 +36,7 @@ export function useMarketsOffers(query: MarketsOfferesQuery) {
   );
 }
 
-const transformData = (offers: OfferInfo[]) => {
+const transformData = (offers: Array<OfferInfo>) => {
   return offers.map((offerObj: OfferInfo): MarketOfferData => {
     const offer = offerObj.toObject();
 
