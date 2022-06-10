@@ -38,5 +38,5 @@ export const Default = Template.bind({});
 Default.args = {
   currencyCode: "EUR",
   value: 400000.12,
-  currentDisplay: "symbol",
+  format: "symbol",
 };

@@ -22,12 +22,12 @@ type CurrencyFormatType = "symbol" | "code" | "name" | "narrowSymbol";
 
 interface CurrencyProps extends FormatNumberOptions {
   currencyCode?: string;
-  currentDisplay?: CurrencyFormatType;
+  format?: CurrencyFormatType;
   value: number;
 }
 
 export function Currency(props: CurrencyProps) {
-  const { currencyCode, currentDisplay, value, ...formatNumberProps } = props;
+  const { currencyCode, format, value, ...formatNumberProps } = props;
   const intl = useIntl();
 
   const formattedNumber = useMemo(
@@ -36,7 +36,7 @@ export function Currency(props: CurrencyProps) {
         ...(currencyCode
           ? {
               currency: currencyCode,
-              currencyDisplay: currentDisplay || "code",
+              currencyDisplay: format || "code",
               style: "currency",
             }
           : {

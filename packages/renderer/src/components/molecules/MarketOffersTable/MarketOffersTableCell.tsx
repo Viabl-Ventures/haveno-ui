@@ -42,7 +42,7 @@ export function MarketOffersPriceCell({ row }: { row?: MarketOffer }) {
         <Currency
           currencyCode={row?.priceCurrency}
           value={row?.price || 0}
-          currentDisplay="symbol"
+          format="symbol"
         />
       </BodyText>
 
@@ -67,7 +67,7 @@ export function MarketOffersCostsCell({ row }: { row?: MarketOffer }) {
       <Currency
         currencyCode={row?.costCurrency}
         value={row?.cost || 0}
-        currentDisplay="symbol"
+        format="symbol"
       />
     </BodyText>
   );
