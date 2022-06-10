@@ -21,7 +21,7 @@ import { MarketOfferPaymentMethod } from "./_types";
 import { Currency } from "@atoms/Currency";
 import { BodyText } from "@atoms/Typography";
 import { LangKeys } from "@constants/lang";
-import { Percentage } from "@atoms/Percentage/Percentage";
+import { fractionToPercent } from "@src/utils/math";
 import { ReactComponent as CheckCircle } from "@assets/check-circle.svg";
 
 export function MarketOffersAccountAgeCell({ row }: { row?: MarketOffer }) {
@@ -47,7 +47,11 @@ export function MarketOffersPriceCell({ row }: { row?: MarketOffer }) {
       </BodyText>
 
       <BodyText color="gray">
-        <Percentage value={row?.priceComparison || 0} />
+        <Currency
+          value={fractionToPercent(row?.priceComparison || 0)}
+          minimumFractionDigits={0}
+        />
+        %
       </BodyText>
     </Group>
   );

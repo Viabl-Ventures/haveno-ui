@@ -29,11 +29,12 @@ import { useStyles } from "./Table.style";
 
 export function Table(props: TableProps) {
   const { classes, cx } = useStyles();
-  const { table, columns, data, tableWrap, variant } = props;
+  const { table, columns, data, tableWrap, variant, state } = props;
 
   const tableInstance = useTableInstance(table, {
     data,
     columns,
+    state,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
   });

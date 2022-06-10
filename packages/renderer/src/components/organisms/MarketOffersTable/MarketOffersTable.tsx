@@ -46,6 +46,12 @@ export function MarketOffersTable({ data }: MarketOffersTableProps) {
       columns={columns}
       data={data}
       variant={TableVariant.Primary}
+      state={{
+        columnVisibility: {
+          accountAge: false,
+          accountTrades: false,
+        },
+      }}
       tableWrap={{
         verticalSpacing: "md",
         className: classes.root,
