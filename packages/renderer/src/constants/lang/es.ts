@@ -125,7 +125,6 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.MarketsOffersColumnAccountAge]: "Edad de la cuenta",
   [LangKeys.MarketsOffersColumnAccountTrades]: "Operaciones de cuenta",
   [LangKeys.MarketsOffersColumnPaymentMethod]: "Método de pago",
-  [LangKeys.MarketsOffersCashByMail]: "Efectivo por correo",
 };
 
 export default LangPackES;
