@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import { MarketOfferPaymentMethod } from "@molecules/MarketOffersTable";
+import { MarketOfferPaymentMethod } from "@organisms/MarketOffersTable";
 import type { MarketOfferData } from "@hooks/haveno/useMarketsOffers";
-import type { MarketOffer } from "@molecules/MarketOffersTable";
+import type { MarketOffer } from "@organisms/MarketOffersTable";
 
 export const transformToMarketsOffers = (
   offers: Array<MarketOfferData>
