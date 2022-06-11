@@ -51,12 +51,14 @@ const columns = [
     header: "24th Change",
     size: 400,
     cell: ({ row }) => <MarketOfferPair24thChange row={row?.original} />,
+    meta: { textAlign: "right" },
   }),
   table.createDataColumn("dayChangeVolume", {
     id: "dayChangeVolume",
     header: "24h Vol",
     size: 400,
     cell: ({ row }) => <MarketOfferPair24thChangeVolume row={row?.original} />,
+    meta: { textAlign: "right" },
   }),
 ];
 

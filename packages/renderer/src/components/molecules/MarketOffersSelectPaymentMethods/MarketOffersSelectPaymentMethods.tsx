@@ -65,6 +65,7 @@ const columns = [
     cell: ({ row }) => (
       <MarketOffersSelectPaymentMethodsInfo row={row.original} />
     ),
+    meta: { textAlign: "right" },
   }),
 ];
 
@@ -99,7 +100,6 @@ const useStyles = createStyles((theme) => ({
       tr: {
         td: {
           fontSize: 14,
-          fontWeight: 600,
           borderBottom: 0,
 
           "&:first-of-type": {

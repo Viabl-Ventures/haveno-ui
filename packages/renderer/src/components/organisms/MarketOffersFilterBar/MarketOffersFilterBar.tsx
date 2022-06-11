@@ -1,13 +1,17 @@
-import { Divider, Group, Button, createStyles, Tabs } from "@mantine/core";
+import { Divider, Group, createStyles, Tabs, Text, Box } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import {
   useMarketOffersPairModal,
   useMarketOffersPaymentMethods,
 } from "./hooks";
-import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch/MarketBuySellSwitch";
-import { useMarketOffersAccountModal } from "./hooks/useMarketOffersAccountModal";
-import { useMarketOffersAmountModal } from "./hooks/useMarketOffersAmountModal";
+import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch";
+import {
+  useMarketOffersAccountModal,
+  useMarketOffersAmountModal,
+} from "./hooks";
+import { MarketOffersFilterButton } from "./MarketOffersFilterButton";
+import { ReactComponent as BtcIcon } from "@assets/btc.svg";
 
 export function MarketOffersFilterBar() {
   const { classes } = useStyles();
@@ -33,73 +37,66 @@ export function MarketOffersFilterBar() {
   return (
     <Group position="apart" className={classes.root}>
       <Group>
-        <MarketBuySellSwitch>
-          <Tabs.Tab label="Sell XMR" />
-          <Tabs.Tab label="Buy XMR" />
-        </MarketBuySellSwitch>
+        <Group spacing="sm">
+          <MarketBuySellSwitch>
+            <Tabs.Tab label="Sell XMR" />
+            <Tabs.Tab label="Buy XMR" />
+          </MarketBuySellSwitch>
 
+          <Text color="gray">with</Text>
+          <MarketOffersFilterButton active={true} onClick={handleParisBtnClick}>
+            <Box mr="md">
+              <BtcIcon height={17} width={17} />
+            </Box>
+            BTC
+          </MarketOffersFilterButton>
+        </Group>
         <Divider className={classes.divider} orientation="vertical" />
-        <Button
-          color="gray"
-          variant="outline"
-          radius="md"
-          size="md"
-          onClick={handleParisBtnClick}
-        >
-          XMR/EUR
-        </Button>
 
-        <Button
-          onClick={handleAmountBtnClick}
-          color="gray"
-          variant="outline"
-          radius="md"
-          size="md"
-        >
+        <MarketOffersFilterButton onClick={handleAmountBtnClick}>
           <FormattedMessage
             id={LangKeys.MarketOffersAmount}
             defaultMessage="Amount"
           />
-        </Button>
+        </MarketOffersFilterButton>
 
-        <Button
-          color="gray"
-          variant="outline"
-          radius="md"
-          size="md"
+        <MarketOffersFilterButton
+          active={true}
+          bubbleText="7"
           onClick={handlePaymentMethodsBtnClick}
         >
           <FormattedMessage
             id={LangKeys.MarketOffersPaymentMethod}
             defaultMessage="Payment method"
           />
-        </Button>
+        </MarketOffersFilterButton>
 
-        <Button
-          onClick={handleAccountBtnClick}
-          color="gray"
-          variant="outline"
-          radius="md"
-          size="md"
-        >
+        <MarketOffersFilterButton onClick={handleAccountBtnClick}>
           <FormattedMessage
             id={LangKeys.MarketOffersAccountDetails}
             defaultMessage="Account details"
           />
-        </Button>
+        </MarketOffersFilterButton>
       </Group>
 
       <Group>
-        <Button variant="outline" color="dark" radius="md" size="md">
-          Show market depth
-        </Button>
+        <Divider className={classes.divider} orientation="vertical" />
 
-        <Button radius="md" size="md">
+        <MarketOffersFilterButton
+          variant="outline"
+          color="dark"
+          radius="md"
+          size="md"
+        >
+          Show market depth
+        </MarketOffersFilterButton>
+
+        <MarketOffersFilterButton variant="filled" color="blue" size="md">
           <FormattedMessage
             id={LangKeys.MarketOffersCreateOffer}
             defaultMessage="Create Offer"
           />
-        </Button>
+        </MarketOffersFilterButton>
       </Group>
     </Group>
   );
@@ -108,7 +105,7 @@ export function MarketOffersFilterBar() {
 const useStyles = createStyles((theme) => ({
   root: {
     minHeight: 84,
-    padding: 15,
+    padding: "18px 22px",
     borderBottom: `1px solid ${theme.colors.gray[3]}`,
     background: theme.white,
   },

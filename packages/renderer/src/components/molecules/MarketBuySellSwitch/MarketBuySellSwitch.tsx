@@ -1,4 +1,5 @@
-import { Tabs, TabsProps } from "@mantine/core";
+import type { TabsProps } from "@mantine/core";
+import { Tabs } from "@mantine/core";
 
 export function MarketBuySellSwitch(props: TabsProps) {
   return (
@@ -28,13 +29,11 @@ export function MarketBuySellSwitch(props: TabsProps) {
           "&:not(:first-of-type)": {
             borderLeft: 0,
           },
-
           "&:first-of-type": {
             borderTopLeftRadius: theme.radius.md,
             borderBottomLeftRadius: theme.radius.md,
             borderLeftWidth: 1,
           },
-
           "&:last-of-type": {
             borderTopRightRadius: theme.radius.md,
             borderBottomRightRadius: theme.radius.md,
