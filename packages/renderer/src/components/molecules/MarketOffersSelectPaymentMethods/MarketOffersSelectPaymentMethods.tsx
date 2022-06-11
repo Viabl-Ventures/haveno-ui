@@ -1,5 +1,6 @@
 import { createTable } from "@tanstack/react-table";
 import { createStyles } from "@mantine/core";
+import type { TableProps } from "@molecules/Table";
 import { CheckboxCell, Table } from "@molecules/Table";
 import {
   MarketOffersSelectPaymentMethodsInfo,
@@ -8,17 +9,19 @@ import {
 
 const table = createTable().setRowType<TMarketOfferPaymentMethod>();
 
-interface MarketoffersSelectPaymentMethods {
+interface MarketoffersSelectPaymentMethods extends Partial<TableProps> {
   data: TMarketOfferPaymentMethod[];
 }
 
 export function MarketoffersSelectPaymentMethods({
   data,
+  ...rest
 }: MarketoffersSelectPaymentMethods) {
   const { classes } = useStyles();
 
   return (
     <Table
+      {...rest}
       table={table}
       columns={columns}
       data={data}

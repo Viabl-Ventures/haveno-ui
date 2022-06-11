@@ -2,6 +2,7 @@ import { createTable } from "@tanstack/react-table";
 import { createStyles } from "@mantine/core";
 import { Table } from "@molecules/Table";
 import type { TMarketOffersTradingPair } from "./_types";
+import type { TableProps } from "@molecules/Table";
 import {
   MarketOfferPair24thChange,
   MarketOfferPairCell,
@@ -11,22 +12,25 @@ import {
 
 const table = createTable().setRowType<TMarketOffersTradingPair>();
 
-interface MarketOffersTradingPairTableProps {
+interface MarketOffersTradingPairTableProps extends TableProps {
   data: TMarketOffersTradingPair[];
 }
 
 export function MarketOffersTradingPairTable({
   data,
+  ...props
 }: MarketOffersTradingPairTableProps) {
   const { classes } = useStyles();
 
   return (
     <Table
+      {...props}
       table={table}
       columns={columns}
       data={data}
       tableWrap={{
         verticalSpacing: "md",
+        highlightOnHover: true,
         className: classes.root,
       }}
     />

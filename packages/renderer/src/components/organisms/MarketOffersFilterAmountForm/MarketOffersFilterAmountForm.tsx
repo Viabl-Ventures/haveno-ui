@@ -1,24 +1,44 @@
 import { useForm } from "@mantine/hooks";
 import { createStyles, Grid, Group, Text } from "@mantine/core";
-import { TextInput } from "@atoms/TextInput";
+import { NumberInput } from "@atoms/TextInput";
 import { Button, TextButton } from "@atoms/Buttons";
+import { useOffersFilterState } from "@src/state/offersFilter";
+import { transformToForm } from "@utils/misc";
 
-export function MarketOffersFilterAmountForm() {
-  const form = useForm({
+interface MarketOffersFilterAmountFormProps {
+  onSubmit?: (values: MarketOffersFilterAmountFormValues) => void;
+}
+
+export function MarketOffersFilterAmountForm({
+  onSubmit,
+}: MarketOffersFilterAmountFormProps) {
+  const { classes } = useStyles();
+  const [offersState, setOffersState] = useOffersFilterState();
+
+  const form = useForm<MarketOffersFilterAmountFormValues>({
     initialValues: {
-      minAmountFrom: null,
-      minAmountTo: null,
-      maxAmountFrom: null,
-      maxAmountTo: null,
+      ...initialValues,
+      ...transformToForm(offersState, initialValues),
     },
   });
-  const { classes } = useStyles();
+
+  const handleCreateFilter = () => {
+    form.reset();
+    setOffersState((oldFilter) => ({
+      ...oldFilter,
+      ...initialValues,
+    }));
+  };
 
   return (
     <form
-      onSubmit={form.onSubmit((values: MarketOffersFilterAmountFormValues) =>
-        console.log(values)
-      )}
+      onSubmit={form.onSubmit((values) => {
+        setOffersState((oldFilter) => ({
+          ...oldFilter,
+          ...values,
+        }));
+        onSubmit && onSubmit(values);
+      })}
     >
       <Grid>
         <Grid.Col span={8}>
@@ -27,9 +47,8 @@ export function MarketOffersFilterAmountForm() {
         </Grid.Col>
 
         <Grid.Col span={4}>
-          <TextInput
+          <NumberInput
             id="minAmountFrom"
-            {...form.getInputProps("minAmountFrom")}
             rightSection={
               <Text color="gray" pr="sm">
                 EUR
@@ -37,18 +56,17 @@ export function MarketOffersFilterAmountForm() {
             }
             rightSectionWidth={45}
             mb="lg"
-            type="number"
+            {...form.getInputProps("minimumBaseCurrencyAmount")}
           />
-          <TextInput
+          <NumberInput
             id="minAmountTo"
-            {...form.getInputProps("minAmountTo")}
             rightSection={
               <Text pr="sm" color="gray">
                 XMR
               </Text>
             }
             rightSectionWidth={45}
-            type="number"
+            {...form.getInputProps("minimumCryptoAmount")}
           />
         </Grid.Col>
       </Grid>
@@ -60,9 +78,9 @@ export function MarketOffersFilterAmountForm() {
         </Grid.Col>
 
         <Grid.Col span={4}>
-          <TextInput
+          <NumberInput
             id="maxAmountFrom"
-            {...form.getInputProps("maxAmountFrom")}
+            {...form.getInputProps("maximumCryptoAmount")}
             rightSection={
               <Text pr="sm" color="gray">
                 XMR
@@ -72,9 +90,9 @@ export function MarketOffersFilterAmountForm() {
             mb="lg"
             type="number"
           />
-          <TextInput
+          <NumberInput
             id="maxAmountTo"
-            {...form.getInputProps("maxAmountTo")}
+            {...form.getInputProps("maximumBaseCurrencyAmount")}
             rightSection={
               <Text pr="sm" color="gray">
                 EUR
@@ -87,20 +105,25 @@ export function MarketOffersFilterAmountForm() {
       </Grid>
 
       <Group position="apart" className={classes.footer}>
-        <TextButton className={classes.clearFilterBtn}>
+        <TextButton
+          onClick={handleCreateFilter}
+          className={classes.clearFilterBtn}
+        >
           Clear filters
         </TextButton>
-        <Button flavor="primary">Save filters</Button>
+        <Button type="submit" flavor="primary">
+          Save filters
+        </Button>
       </Group>
     </form>
   );
 }
 
 interface MarketOffersFilterAmountFormValues {
-  maxAmountTo: string;
-  maxAmountFrom: string;
-  minAmountTo: string;
-  minAmountFrom: string;
+  minimumCryptoAmount: number | null;
+  minimumBaseCurrencyAmount: number | null;
+  maximumCryptoAmount: number | null;
+  maximumBaseCurrencyAmount: number | null;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -117,3 +140,10 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.spacing.lg,
   },
 }));
+
+const initialValues = {
+  minimumCryptoAmount: null,
+  minimumBaseCurrencyAmount: null,
+  maximumCryptoAmount: null,
+  maximumBaseCurrencyAmount: null,
+};

@@ -12,15 +12,34 @@ import {
 } from "./hooks";
 import { MarketOffersFilterButton } from "./MarketOffersFilterButton";
 import { ReactComponent as BtcIcon } from "@assets/btc.svg";
+import {
+  useOffersFilterState,
+  useSetOffersFilterState,
+} from "@src/state/offersFilter";
+import {
+  useAccountDetailsLabel,
+  useMarketOffersFilterAmountLabel,
+} from "./_hooks";
 
 export function MarketOffersFilterBar() {
   const { classes } = useStyles();
+  const [offersFilterState] = useOffersFilterState();
+  const setOfferesFilterState = useSetOffersFilterState();
 
   const marketOffersPairModal = useMarketOffersPairModal();
   const marketOffersPaymentMethodsModal = useMarketOffersPaymentMethods();
   const marketOffersAccountModal = useMarketOffersAccountModal();
   const marketOffersAmountModal = useMarketOffersAmountModal();
 
+  const accountDetailsLabel = useAccountDetailsLabel();
+  const filterAmountLabel = useMarketOffersFilterAmountLabel();
+
+  const handleBuySellSwitch = (tabIndex: number, tabKey: string) => {
+    setOfferesFilterState((filter) => ({
+      ...filter,
+      direction: tabKey,
+    }));
+  };
   const handleParisBtnClick = () => {
     marketOffersPairModal.openModal();
   };
@@ -38,9 +57,9 @@ export function MarketOffersFilterBar() {
     <Group position="apart" className={classes.root}>
       <Group>
         <Group spacing="sm">
-          <MarketBuySellSwitch>
-            <Tabs.Tab label="Sell XMR" />
-            <Tabs.Tab label="Buy XMR" />
+          <MarketBuySellSwitch onTabChange={handleBuySellSwitch}>
+            <Tabs.Tab tabKey="sell" label="Sell XMR" />
+            <Tabs.Tab tabKey="buy" label="Buy XMR" />
           </MarketBuySellSwitch>
 
           <Text color="gray">with</Text>
@@ -48,16 +67,21 @@ export function MarketOffersFilterBar() {
             <Box mr="md">
               <BtcIcon height={17} width={17} />
             </Box>
-            BTC
+            {offersFilterState.assetCode?.toUpperCase()}
           </MarketOffersFilterButton>
         </Group>
         <Divider className={classes.divider} orientation="vertical" />
 
-        <MarketOffersFilterButton onClick={handleAmountBtnClick}>
-          <FormattedMessage
-            id={LangKeys.MarketOffersAmount}
-            defaultMessage="Amount"
-          />
+        <MarketOffersFilterButton
+          active={!!filterAmountLabel}
+          onClick={handleAmountBtnClick}
+        >
+          {filterAmountLabel || (
+            <FormattedMessage
+              id={LangKeys.MarketOffersAmount}
+              defaultMessage="Amount"
+            />
+          )}
         </MarketOffersFilterButton>
 
         <MarketOffersFilterButton
@@ -71,11 +95,16 @@ export function MarketOffersFilterBar() {
           />
         </MarketOffersFilterButton>
 
-        <MarketOffersFilterButton onClick={handleAccountBtnClick}>
-          <FormattedMessage
-            id={LangKeys.MarketOffersAccountDetails}
-            defaultMessage="Account details"
-          />
+        <MarketOffersFilterButton
+          active={!!accountDetailsLabel}
+          onClick={handleAccountBtnClick}
+        >
+          {accountDetailsLabel || (
+            <FormattedMessage
+              id={LangKeys.MarketOffersAccountDetails}
+              defaultMessage="Account details"
+            />
+          )}
         </MarketOffersFilterButton>
       </Group>
 

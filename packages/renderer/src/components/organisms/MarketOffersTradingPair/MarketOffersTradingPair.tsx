@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable/MarketOffersTradingPairTable";
+import { useOffersFilterState } from "@src/state/offersFilter";
 
 export function MarketOffersTradingPair() {
   return (
@@ -10,7 +11,17 @@ export function MarketOffersTradingPair() {
 }
 
 const MarketOffersTradingPairLoaded: FC = () => {
-  return <MarketOffersTradingPairTable data={data} />;
+  const [, setOffersState] = useOffersFilterState();
+
+  const handleRowClick = (row) => {
+    setOffersState((oldFilter) => ({
+      ...oldFilter,
+      assetCode: row.original.fromPair,
+    }));
+  };
+  return (
+    <MarketOffersTradingPairTable data={data} onRowClick={handleRowClick} />
+  );
 };
 
 const MarketOffersTradingPairBoot: FC = ({ children }) => {

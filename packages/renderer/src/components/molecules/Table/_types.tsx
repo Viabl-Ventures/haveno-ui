@@ -35,6 +35,8 @@ export interface TableProps {
   onEditableDataChange: (v: any[]) => void;
 
   defaultColumn?: any;
+  pointerRow?: boolean;
+  onRowClick: (column: any) => void;
 }
 
 export enum TableVariant {

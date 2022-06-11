@@ -1,20 +1,45 @@
 import { Button, TextButton } from "@atoms/Buttons";
-import { TextInput } from "@atoms/TextInput";
+import { NumberInput } from "@atoms/TextInput";
 import { Grid, Text, Checkbox, createStyles, Group } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useOffersFilterState } from "@src/state/offersFilter";
+import { transformToForm } from "@src/utils/misc";
 
-export function MarketOffersFilterAccountsForm() {
+interface MarketOffersFilterAccountsFormProps {
+  onSubmit?: (values: MarketOffersFilterAccountsForm) => void;
+}
+
+export function MarketOffersFilterAccountsForm({
+  onSubmit,
+}: MarketOffersFilterAccountsFormProps) {
   const { classes } = useStyles();
-  const form = useForm({
+  const [offersState, setOffersState] = useOffersFilterState();
+
+  const form = useForm<MarketOffersFilterAccountsForm>({
     initialValues: {
-      signedAccounts: false,
-      minAccountAge: null,
-      maxAmountTrades: null,
+      ...initialValues,
+      ...transformToForm(offersState, initialValues),
     },
   });
 
+  const handleClearFilter = () => {
+    form.reset();
+    setOffersState((oldFilter) => ({
+      ...oldFilter,
+      ...initialValues,
+    }));
+  };
+
   return (
-    <form onSubmit={form.onSubmit((values) => console.log(values))}>
+    <form
+      onSubmit={form.onSubmit((values) => {
+        setOffersState((oldFilter) => ({
+          ...oldFilter,
+          ...values,
+        }));
+        onSubmit && onSubmit(values);
+      })}
+    >
       <Grid mb="xl">
         <Grid.Col span={8}>
           <Text weight={500}>Signed accounts </Text>
@@ -26,11 +51,11 @@ export function MarketOffersFilterAccountsForm() {
 
         <Grid.Col sx={{ display: "flex" }} span={4}>
           <Checkbox
-            id="minAmountFrom"
-            {...form.getInputProps("signedAccounts")}
+            id="signedAccounts"
             radius="sm"
             size="md"
             sx={{ alignItems: "flex-start", marginLeft: "auto" }}
+            {...form.getInputProps("signedAccounts")}
           />
         </Grid.Col>
       </Grid>
@@ -44,9 +69,9 @@ export function MarketOffersFilterAccountsForm() {
         </Grid.Col>
 
         <Grid.Col span={4}>
-          <TextInput
-            id="minAmountFrom"
-            {...form.getInputProps("minAccountAge")}
+          <NumberInput
+            id="minimumAccountAge"
+            {...form.getInputProps("minimumAccountAge")}
             rightSection={
               <Text pr="md" color="gray">
                 Days
@@ -67,9 +92,9 @@ export function MarketOffersFilterAccountsForm() {
         </Grid.Col>
 
         <Grid.Col span={4}>
-          <TextInput
-            id="minAmountFrom"
-            {...form.getInputProps("maxAmountTrades")}
+          <NumberInput
+            id="minimumTradesAmount"
+            {...form.getInputProps("minimumTradesAmount")}
             rightSection={
               <Text mr="md" color="gray">
                 Trades
@@ -81,10 +106,15 @@ export function MarketOffersFilterAccountsForm() {
       </Grid>
 
       <Group position="apart" className={classes.footer}>
-        <TextButton className={classes.clearFilterBtn}>
+        <TextButton
+          onClick={handleClearFilter}
+          className={classes.clearFilterBtn}
+        >
           Clear filters
         </TextButton>
-        <Button flavor="primary">Save filters</Button>
+        <Button type="submit" flavor="primary">
+          Save filters
+        </Button>
       </Group>
     </form>
   );
@@ -92,8 +122,8 @@ export function MarketOffersFilterAccountsForm() {
 
 interface MarketOffersFilterAccountsForm {
   signedAccounts: boolean;
-  minAccountAge: boolean;
-  maxAmountTrades: boolean;
+  minimumTradesAmount: number | null;
+  minimumAccountAge: number | null;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -110,3 +140,9 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.spacing.lg,
   },
 }));
+
+const initialValues = {
+  signedAccounts: false,
+  minimumAccountAge: null,
+  minimumTradesAmount: null,
+};
