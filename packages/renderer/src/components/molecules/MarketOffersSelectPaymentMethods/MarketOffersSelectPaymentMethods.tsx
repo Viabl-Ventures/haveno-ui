@@ -23,6 +23,8 @@ import {
   MarketOffersSelectPaymentMethodsLimit,
 } from "./MarketOffersSelectPaymentMethodsCells";
 import type { TMarketOfferPaymentMethod } from "./_types";
+import { useIntl } from "react-intl";
+import { LangKeys } from "@constants/lang";
 
 const table = createTable().setRowType<TMarketOfferPaymentMethod>();
 
@@ -35,6 +37,7 @@ export function MarketoffersSelectPaymentMethods({
   ...rest
 }: MarketoffersSelectPaymentMethods) {
   const { classes } = useStyles();
+  const columns = useMarketOffersPaymentMethodsColumns();
 
   return (
     <Table
@@ -51,38 +54,51 @@ export function MarketoffersSelectPaymentMethods({
   );
 }
 
-const columns = [
-  table.createDataColumn("methodChecked", {
-    id: "methodChecked",
-    header: " ",
-    cell: ({ ...props }) => (
-      <CheckboxCell {...props} checkboxProps={{ radius: "xs", size: "sm" }} />
-    ),
-    size: 30,
-  }),
-  table.createDataColumn("methodName", {
-    id: "methodName",
-    header: "Method",
-    size: 300,
-  }),
-  table.createDataColumn("rateTradeLimit", {
-    id: "rateTradeLimit",
-    header: "Per Trade Limit",
-    size: 400,
-    cell: ({ row }) => (
-      <MarketOffersSelectPaymentMethodsLimit row={row?.original} />
-    ),
-  }),
-  table.createDataColumn("info", {
-    id: "info",
-    header: "Info",
-    size: 400,
-    cell: ({ row }) => (
-      <MarketOffersSelectPaymentMethodsInfo row={row?.original} />
-    ),
-    meta: { textAlign: "right" },
-  }),
-];
+const useMarketOffersPaymentMethodsColumns = () => {
+  const { formatMessage } = useIntl();
+
+  return [
+    table.createDataColumn("methodChecked", {
+      id: "methodChecked",
+      header: " ",
+      cell: ({ ...props }) => (
+        <CheckboxCell {...props} checkboxProps={{ radius: "xs", size: "sm" }} />
+      ),
+      size: 30,
+    }),
+    table.createDataColumn("methodName", {
+      id: "methodName",
+      header: formatMessage({
+        id: LangKeys.MarketPaymentMethodColMethodName,
+        defaultMessage: "Method",
+      }),
+      size: 300,
+    }),
+    table.createDataColumn("rateTradeLimit", {
+      id: "rateTradeLimit",
+      header: formatMessage({
+        id: LangKeys.MarketPaymentMethodColRateTradeLimit,
+        defaultMessage: "Rate Trade Limit",
+      }),
+      size: 400,
+      cell: ({ row }) => (
+        <MarketOffersSelectPaymentMethodsLimit row={row?.original} />
+      ),
+    }),
+    table.createDataColumn("info", {
+      id: "info",
+      header: formatMessage({
+        id: LangKeys.MarketPaymentMethodColInfo,
+        defaultMessage: "Info",
+      }),
+      size: 400,
+      cell: ({ row }) => (
+        <MarketOffersSelectPaymentMethodsInfo row={row?.original} />
+      ),
+      meta: { textAlign: "right" },
+    }),
+  ];
+};
 
 const useStyles = createStyles((theme) => ({
   root: {

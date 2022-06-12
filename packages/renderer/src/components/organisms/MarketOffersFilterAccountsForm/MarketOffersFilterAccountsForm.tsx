@@ -14,10 +14,12 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Button, TextButton } from "@atoms/Buttons";
-import { NumberInput } from "@atoms/TextInput";
+import { FormattedMessage } from "react-intl";
 import { Grid, Text, Checkbox, createStyles, Group } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { Button, TextButton } from "@atoms/Buttons";
+import { NumberInput } from "@atoms/TextInput";
+import { LangKeys } from "@constants/lang";
 import { useOffersFilterState } from "@src/state/offersFilter";
 import { transformToForm } from "@src/utils/misc";
 
@@ -53,10 +55,17 @@ export function MarketOffersFilterAccountsForm({
     >
       <Grid mb="xl">
         <Grid.Col span={8}>
-          <Text weight={500}>Signed accounts </Text>
+          <Text weight={500}>
+            <FormattedMessage
+              id={LangKeys.MarketFilterAccountLabelSignedAccounts}
+              defaultMessage="Signed Accounts"
+            />
+          </Text>
           <Text color="gray">
-            Only show accounts that have been signed. Please be aware that new
-            accounts need to get the chance to get signed.
+            <FormattedMessage
+              id={LangKeys.MarketFilterAccountDescSignedAccounts}
+              defaultMessage="Only show accounts that have been signed. Please be aware that new accounts need to get the chance to get signed."
+            />
           </Text>
         </Grid.Col>
 
@@ -73,9 +82,17 @@ export function MarketOffersFilterAccountsForm({
 
       <Grid mb="xl">
         <Grid.Col span={8}>
-          <Text weight={500}>Minimum account age</Text>
+          <Text weight={500}>
+            <FormattedMessage
+              id={LangKeys.MarketFilterAccountLabelMinAccountAge}
+              defaultMessage="Minimum account age"
+            />
+          </Text>
           <Text color="gray">
-            Only show trade offers with a minimum account age.
+            <FormattedMessage
+              id={LangKeys.MarketFilterAccountDescMinAccountAge}
+              defaultMessage="Only show trade offers with a minimum account age."
+            />
           </Text>
         </Grid.Col>
 
@@ -95,10 +112,17 @@ export function MarketOffersFilterAccountsForm({
 
       <Grid>
         <Grid.Col span={8}>
-          <Text weight={500}>Minimum amount of trades</Text>
+          <Text weight={500}>
+            <FormattedMessage
+              id={LangKeys.MarketFilterAccountLabelAmountTrades}
+              defaultMessage="Minimum amount of trades"
+            />
+          </Text>
           <Text color="gray">
-            Only show trade offers from accounts with a minimum amount of
-            completed trades
+            <FormattedMessage
+              id={LangKeys.MarketFilterAccountDescAmountTrades}
+              defaultMessage="Only show trade offers from accounts with a minimum amount of completed trades"
+            />
           </Text>
         </Grid.Col>
 
@@ -121,10 +145,16 @@ export function MarketOffersFilterAccountsForm({
           onClick={handleClearFilter}
           className={classes.clearFilterBtn}
         >
-          Clear filters
+          <FormattedMessage
+            id={LangKeys.MarketFilterAccountClearFiltersBtn}
+            defaultMessage="Clear filters"
+          />
         </TextButton>
         <Button type="submit" flavor="primary">
-          Save filters
+          <FormattedMessage
+            id={LangKeys.MarketFilterAccountClearFiltersBtn}
+            defaultMessage="Save filters"
+          />
         </Button>
       </Group>
     </form>

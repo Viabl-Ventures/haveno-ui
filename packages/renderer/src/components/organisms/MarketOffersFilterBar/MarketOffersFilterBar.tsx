@@ -77,7 +77,12 @@ export function MarketOffersFilterBar() {
             <Tabs.Tab tabKey="buy" label="Buy XMR" />
           </MarketBuySellSwitch>
 
-          <Text color="gray">with</Text>
+          <Text color="gray">
+            <FormattedMessage
+              id={LangKeys.MarketOffersWith}
+              defaultMessage="with"
+            />
+          </Text>
           <MarketOffersFilterButton
             active={!isEmpty(offersFilterState.assetCode)}
             onClick={handleParisBtnClick}
@@ -88,7 +93,10 @@ export function MarketOffersFilterBar() {
             {!isEmpty(offersFilterState.assetCode) ? (
               offersFilterState.assetCode?.toUpperCase()
             ) : (
-              <>Currency</>
+              <FormattedMessage
+                id={LangKeys.MarketOffersCurrency}
+                defaultMessage="Currency"
+              />
             )}
           </MarketOffersFilterButton>
         </Group>
@@ -136,7 +144,12 @@ export function MarketOffersFilterBar() {
 
       <Group>
         <Divider className={classes.divider} orientation="vertical" />
-        <MarketOffersFilterButton>Show market depth</MarketOffersFilterButton>
+        <MarketOffersFilterButton>
+          <FormattedMessage
+            id={LangKeys.MarketOffersShowMarketDepth}
+            defaultMessage="Show market depth"
+          />
+        </MarketOffersFilterButton>
 
         <MarketOffersFilterButton variant="filled" color="blue" size="md">
           <FormattedMessage

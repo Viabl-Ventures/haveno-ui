@@ -14,3 +14,82 @@
 //  limitations under the License.
 // =============================================================================
 
+import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { MarketoffersSelectPaymentMethods } from ".";
+import type { TMarketOfferPaymentMethod } from "./_types";
+import { AppProviders } from "@atoms/AppProviders";
+
+describe("molecules::MarketOffersSelectPaymentMethods", () => {
+  it("renders without exploding", () => {
+    const { asFragment, unmount } = render(
+      <AppProviders>
+        <MarketoffersSelectPaymentMethods data={data} />
+      </AppProviders>
+    );
+    expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renders all columns", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <MarketoffersSelectPaymentMethods data={data} />
+      </AppProviders>
+    );
+    expect(screen.queryByText("Method")).toBeInTheDocument();
+    expect(screen.queryByText("Rate Trade Limit")).toBeInTheDocument();
+    expect(screen.queryByText("Info")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("renders cells of method name ", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <MarketoffersSelectPaymentMethods data={data} />
+      </AppProviders>
+    );
+    expect(screen.queryByText("Celpay")).toBeInTheDocument();
+    expect(screen.queryByText("ACH")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("renders cells of rate trade limit ", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <MarketoffersSelectPaymentMethods data={data} />
+      </AppProviders>
+    );
+    expect(screen.queryByText("20 XMR")).toBeInTheDocument();
+    expect(screen.queryByText("40 XMR")).toBeInTheDocument();
+    unmount();
+  });
+
+  it("renders cells of rate trade limit ", () => {
+    const { unmount } = render(
+      <AppProviders>
+        <MarketoffersSelectPaymentMethods data={data} />
+      </AppProviders>
+    );
+    expect(screen.queryByText("USA")).toBeInTheDocument();
+    expect(screen.queryByText("Global (AUS, TRY, USD)")).toBeInTheDocument();
+    unmount();
+  });
+});
+
+const data = [
+  {
+    methodName: "Celpay",
+    methodKey: "celpay",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "USA",
+  },
+  {
+    methodName: "ACH",
+    methodKey: "ach",
+    rateTradeLimit: 40,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global (AUS, TRY, USD)",
+  },
+] as TMarketOfferPaymentMethod[];

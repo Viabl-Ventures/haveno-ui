@@ -25,7 +25,7 @@ export const MarketOffersSelectPaymentMethodsLimit = ({
 }) => {
   return (
     <Text size="sm" color="gray">
-      <Currency value={row?.rateTradeLimit || 0} />{" "}
+      <Currency value={row?.rateTradeLimit || 0} minimumFractionDigits={0} />{" "}
       {row?.rateTradeLimitCurrency}
     </Text>
   );

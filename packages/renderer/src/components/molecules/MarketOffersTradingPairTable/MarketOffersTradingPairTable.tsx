@@ -15,6 +15,7 @@
 // =============================================================================
 
 import { createTable } from "@tanstack/react-table";
+import { useIntl } from "react-intl";
 import { createStyles } from "@mantine/core";
 import { Table } from "@molecules/Table";
 import type { TMarketOffersTradingPair } from "./_types";
@@ -25,6 +26,7 @@ import {
   MarketOfferPairLastPriceCell,
   MarketOfferPair24thChangeVolume,
 } from "./MarketOffersTradingPairTableCells";
+import { LangKeys } from "@constants/lang";
 
 const table = createTable().setRowType<TMarketOffersTradingPair>();
 
@@ -37,6 +39,7 @@ export function MarketOffersTradingPairTable({
   ...props
 }: MarketOffersTradingPairTableProps) {
   const { classes } = useStyles();
+  const columns = useMarketTradingPairsColumns();
 
   return (
     <Table
@@ -53,34 +56,52 @@ export function MarketOffersTradingPairTable({
   );
 }
 
-const columns = [
-  table.createDataColumn("fromPair", {
-    id: "pair",
-    header: "Pair",
-    cell: ({ row }) => <MarketOfferPairCell row={row?.original} />,
-    size: 400,
-  }),
-  table.createDataColumn("lastPrice", {
-    id: "lastPrice",
-    header: "Last Price",
-    size: 400,
-    cell: ({ row }) => <MarketOfferPairLastPriceCell row={row?.original} />,
-  }),
-  table.createDataColumn("dayChangeRate", {
-    id: "dayChangeRate",
-    header: "24th Change",
-    size: 400,
-    cell: ({ row }) => <MarketOfferPair24thChange row={row?.original} />,
-    meta: { textAlign: "right" },
-  }),
-  table.createDataColumn("dayChangeVolume", {
-    id: "dayChangeVolume",
-    header: "24h Vol",
-    size: 400,
-    cell: ({ row }) => <MarketOfferPair24thChangeVolume row={row?.original} />,
-    meta: { textAlign: "right" },
-  }),
-];
+const useMarketTradingPairsColumns = () => {
+  const { formatMessage } = useIntl();
+
+  return [
+    table.createDataColumn("fromPair", {
+      id: "pair",
+      header: formatMessage({
+        id: LangKeys.MarketTradingPairColPair,
+        defaultMessage: "Pair",
+      }),
+      cell: ({ row }) => <MarketOfferPairCell row={row?.original} />,
+      size: 400,
+    }),
+    table.createDataColumn("lastPrice", {
+      id: "lastPrice",
+      header: formatMessage({
+        id: LangKeys.MarketTradingPairColLastPrice,
+        defaultMessage: "Last Price",
+      }),
+      size: 400,
+      cell: ({ row }) => <MarketOfferPairLastPriceCell row={row?.original} />,
+    }),
+    table.createDataColumn("dayChangeRate", {
+      id: "dayChangeRate",
+      header: formatMessage({
+        id: LangKeys.MarketTradingPairColDayChange,
+        defaultMessage: "24th Change",
+      }),
+      size: 400,
+      cell: ({ row }) => <MarketOfferPair24thChange row={row?.original} />,
+      meta: { textAlign: "right" },
+    }),
+    table.createDataColumn("dayChangeVolume", {
+      id: "dayChangeVolume",
+      header: formatMessage({
+        id: LangKeys.MarketTradingPairColDayChangeVolume,
+        defaultMessage: "24h Vol",
+      }),
+      size: 400,
+      cell: ({ row }) => (
+        <MarketOfferPair24thChangeVolume row={row?.original} />
+      ),
+      meta: { textAlign: "right" },
+    }),
+  ];
+};
 
 const useStyles = createStyles(() => ({
   root: {

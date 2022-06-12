@@ -38,7 +38,7 @@ export function MarketOfferPairLastPriceCell({
 }) {
   return (
     <Group spacing="md">
-      <Box>{row?.lastPriceCurrency} </Box>
+      <Box>{row?.lastPriceCurrency}</Box>
       <Box>
         <Currency value={row?.lastPrice || 0} minimumFractionDigits={0} />
       </Box>
@@ -59,5 +59,7 @@ export function MarketOfferPair24thChangeVolume({
 }: {
   row?: TMarketOffersTradingPair;
 }) {
-  return <Currency value={12312} minimumFractionDigits={0} />;
+  return (
+    <Currency value={row?.dayChangeVolume || 0} minimumFractionDigits={0} />
+  );
 }

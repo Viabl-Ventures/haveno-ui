@@ -14,9 +14,14 @@
 //  limitations under the License.
 // =============================================================================
 
+import type { CheckboxProps } from "@mantine/core";
 import { Checkbox } from "@mantine/core";
 import type { Cell } from "@tanstack/react-table";
 import { useState, useEffect } from "react";
+
+interface CheckboxCellProps extends Cell<any> {
+  checkboxProps?: CheckboxProps;
+}
 
 export const CheckboxCell = ({
   getValue,
@@ -24,7 +29,7 @@ export const CheckboxCell = ({
   column: { id },
   instance,
   checkboxProps,
-}: Cell<any>) => {
+}: CheckboxCellProps) => {
   const initialValue = getValue();
   const [value, setValue] = useState<boolean>(initialValue);
 
@@ -37,6 +42,7 @@ export const CheckboxCell = ({
 
   return (
     <Checkbox
+      id={`${id}-${index}`}
       checked={value as boolean}
       onChange={(e) => setValue(e.target.checked)}
       onBlur={onBlur}
