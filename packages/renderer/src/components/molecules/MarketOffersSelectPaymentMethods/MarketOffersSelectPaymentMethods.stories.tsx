@@ -15,7 +15,7 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import type { TMarketOfferPaymentMethod } from "./MarketOffersSelectPaymentMethods";
+import type { TMarketOfferPaymentMethod } from "./_types";
 import { MarketoffersSelectPaymentMethods } from ".";
 
 export default {

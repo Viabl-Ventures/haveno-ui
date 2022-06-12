@@ -6,6 +6,7 @@ import {
   MarketOffersSelectPaymentMethodsInfo,
   MarketOffersSelectPaymentMethodsLimit,
 } from "./MarketOffersSelectPaymentMethodsCells";
+import type { TMarketOfferPaymentMethod } from "./_types";
 
 const table = createTable().setRowType<TMarketOfferPaymentMethod>();
 
@@ -46,13 +47,14 @@ const columns = [
   table.createDataColumn("methodName", {
     id: "methodName",
     header: "Method",
+    size: 300,
   }),
   table.createDataColumn("rateTradeLimit", {
     id: "rateTradeLimit",
     header: "Per Trade Limit",
     size: 400,
     cell: ({ row }) => (
-      <MarketOffersSelectPaymentMethodsLimit row={row.original} />
+      <MarketOffersSelectPaymentMethodsLimit row={row?.original} />
     ),
   }),
   table.createDataColumn("info", {
@@ -60,25 +62,11 @@ const columns = [
     header: "Info",
     size: 400,
     cell: ({ row }) => (
-      <MarketOffersSelectPaymentMethodsInfo row={row.original} />
+      <MarketOffersSelectPaymentMethodsInfo row={row?.original} />
     ),
     meta: { textAlign: "right" },
   }),
 ];
-
-export interface TMarketOfferPaymentMethod {
-  methodChecked?: boolean;
-  methodName: string;
-  methodKey: string;
-  rateTradeLimit: number;
-  rateTradeLimitCurrency: string;
-  info: string;
-}
-
-export interface MarketOfferEditableData {
-  methodChecked: boolean;
-  methodKey: string;
-}
 
 const useStyles = createStyles((theme) => ({
   root: {

@@ -55,7 +55,7 @@ export function Table(props: TableProps) {
           }
           return row;
         });
-        onEditableDataChange(newData);
+        onEditableDataChange && onEditableDataChange(newData);
       },
     },
     ...(defaultColumn

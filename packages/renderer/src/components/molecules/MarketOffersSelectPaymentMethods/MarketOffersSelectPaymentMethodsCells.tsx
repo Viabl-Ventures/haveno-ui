@@ -1,17 +1,28 @@
+import { Currency } from "@atoms/Currency";
 import { Text } from "@mantine/core";
+import type { TMarketOfferPaymentMethod } from "./_types";
 
-export const MarketOffersSelectPaymentMethodsLimit = ({ row }) => {
+export const MarketOffersSelectPaymentMethodsLimit = ({
+  row,
+}: {
+  row?: TMarketOfferPaymentMethod;
+}) => {
   return (
     <Text size="sm" color="gray">
-      20 XMR
+      <Currency value={row?.rateTradeLimit || 0} />{" "}
+      {row?.rateTradeLimitCurrency}
     </Text>
   );
 };
 
-export const MarketOffersSelectPaymentMethodsInfo = ({ row }) => {
+export const MarketOffersSelectPaymentMethodsInfo = ({
+  row,
+}: {
+  row?: TMarketOfferPaymentMethod;
+}) => {
   return (
     <Text size="sm" color="gray">
-      Global (BRL, EUR, GBP, USD)
+      {row?.info}
     </Text>
   );
 };
