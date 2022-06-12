@@ -153,6 +153,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MarketFilterAccountLabelAmountTrades]: "Minimum amount of trades",
   [LangKeys.MarketFilterAccountDescAmountTrades]:
     "Only show trade offers from accounts with a minimum amount of completed trades",
+  [LangKeys.MarketFilterAccountTrades]: "Trades",
+  [LangKeys.MarketFilterAccountDays]: "Days",
   [LangKeys.MarketFilterAccountClearFiltersBtn]: "Clear filters",
   [LangKeys.MarketFilterAccountSaveBtn]: "Save filters",
   [LangKeys.MarketAmountFilterFieldMinAmountTrades]: "Minimum amount of trades",

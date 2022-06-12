@@ -31,7 +31,6 @@ const Template: ComponentStory<typeof Table> = () => {
       table={table}
       data={data}
       columns={columns}
-      rowSubComponent={() => "asdasd"}
       defaultColumn={defaultColumn}
       onEditableDataChange={(values) => {
         console.log(values);
@@ -131,19 +130,15 @@ const data: Array<Person> = [
   },
 ];
 
-// Give our default column cell renderer editing superpowers!
 const defaultColumn: Partial<ColumnDef<TableGenerics>> = {
   cell: ({ getValue, row: { index }, column: { id }, instance }) => {
     const initialValue = getValue();
-    // We need to keep and update the state of the cell normally
     const [value, setValue] = useState(initialValue);
 
-    // When the input is blurred, we'll call our table meta's updateData function
     const onBlur = () => {
       instance.options.meta?.updateData(index, id, value);
     };
 
-    // If the initialValue is changed external, sync it up with our state
     useEffect(() => {
       setValue(initialValue);
     }, [initialValue]);

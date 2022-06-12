@@ -103,7 +103,7 @@ const useMarketTradingPairsColumns = () => {
   ];
 };
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   root: {
     paddingTop: 20,
     paddingBottom: 0,
@@ -111,17 +111,17 @@ const useStyles = createStyles(() => ({
     thead: {
       tr: {
         th: {
-          textTransform: "uppercase",
-          color: "#111",
-          fontSize: 10,
+          color: theme.colors.gray[9],
+          fontSize: theme.fontSizes.xs,
           paddingTop: 8,
           paddingBottom: 8,
+          textTransform: "uppercase",
 
           "&:first-of-type": {
-            paddingLeft: 25,
+            paddingLeft: theme.spacing.xl,
           },
           "&:last-of-type": {
-            paddingRight: 25,
+            paddingRight: theme.spacing.xl,
           },
         },
       },
@@ -129,15 +129,15 @@ const useStyles = createStyles(() => ({
     tbody: {
       tr: {
         td: {
-          fontSize: 14,
-          fontWeight: 600,
           borderBottomColor: "transparent",
+          fontSize: theme.spacing.sm * 1.168,
+          fontWeight: 600,
 
           "&:first-of-type": {
-            paddingLeft: 25,
+            paddingLeft: theme.spacing.xl,
           },
           "&:last-of-type": {
-            paddingRight: 25,
+            paddingRight: theme.spacing.xl,
           },
         },
       },

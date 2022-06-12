@@ -102,7 +102,10 @@ export function MarketOffersFilterAccountsForm({
             {...form.getInputProps("minimumAccountAge")}
             rightSection={
               <Text pr="md" color="gray">
-                Days
+                <FormattedMessage
+                  id={LangKeys.MarketFilterAccountDays}
+                  defaultMessage="Days"
+                />
               </Text>
             }
             rightSectionWidth={50}
@@ -132,7 +135,10 @@ export function MarketOffersFilterAccountsForm({
             {...form.getInputProps("minimumTradesAmount")}
             rightSection={
               <Text mr="md" color="gray">
-                Trades
+                <FormattedMessage
+                  id={LangKeys.MarketFilterAccountTrades}
+                  defaultMessage="Trades"
+                />
               </Text>
             }
             rightSectionWidth={65}

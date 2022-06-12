@@ -133,6 +133,8 @@ export enum LangKeys {
   MarketFilterAccountDescMinAccountAge = "marketFilters.accountFilter.descMinAccountAge",
   MarketFilterAccountLabelAmountTrades = "marketFilters.accountFilter.labelAmountTrades",
   MarketFilterAccountDescAmountTrades = "marketFilters.accountFilter.descAmountTrades",
+  MarketFilterAccountTrades = "marketFilters.accountFilter.trades",
+  MarketFilterAccountDays = "marketFilters.accountFilter.days",
   MarketFilterAccountClearFiltersBtn = "marketFilters.accountFilter.clearFiltersBtn",
   MarketFilterAccountSaveBtn = "marketFilters.accountFilter.saveBtn",
   MarketAmountFilterFieldMinAmountTrades = "MarketFilterFieldMinAmountTrades",
