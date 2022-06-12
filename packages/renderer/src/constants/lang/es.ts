@@ -125,6 +125,13 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.MarketsOffersColumnAccountAge]: "Edad de la cuenta",
   [LangKeys.MarketsOffersColumnAccountTrades]: "Operaciones de cuenta",
   [LangKeys.MarketsOffersColumnPaymentMethod]: "Método de pago",
+  [LangKeys.MarketsTransactionsColumnPrice]: "Precio",
+  [LangKeys.MarketsTransactionsColumnAmount]: "Monto",
+  [LangKeys.MarketsTransactionsColumnCost]: "Costos",
+  [LangKeys.MarketsTransactionsColumnAccountAge]: "Edad de la cuenta",
+  [LangKeys.MarketsTransactionsColumnAccountTrades]: "Operaciones de cuenta",
+  [LangKeys.MarketsTransactionsColumnPaymentMethod]: "Método de pago",
+  [LangKeys.MarketsTransactionsCashByMail]: "Efectivo por correo",
 };
 
 export default LangPackES;

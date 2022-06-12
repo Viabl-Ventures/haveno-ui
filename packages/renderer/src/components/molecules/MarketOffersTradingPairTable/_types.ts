@@ -14,6 +14,11 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./_types";
-export * from "./Table";
-export * from "./cells";
+export interface TMarketOffersTradingPair {
+  fromPair: string;
+  toPair: string;
+  lastPrice: number;
+  lastPriceCurrency: string;
+  dayChangeRate: number;
+  dayChangeVolume: number;
+}

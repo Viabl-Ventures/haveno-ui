@@ -14,6 +14,24 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./_types";
-export * from "./Table";
-export * from "./cells";
+import { Tabs } from "@mantine/core";
+import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import { MarketBuySellSwitch } from "./MarketBuySellSwitch";
+
+export default {
+  title: "molecules/MarketBuySellSwitch",
+  component: MarketBuySellSwitch,
+} as ComponentMeta<typeof MarketBuySellSwitch>;
+
+const Template: ComponentStory<typeof MarketBuySellSwitch> = () => {
+  return (
+    <MarketBuySellSwitch>
+      <Tabs.Tab label="Sell XMR" />
+      <Tabs.Tab label="Buy XMR" />
+    </MarketBuySellSwitch>
+  );
+};
+
+export const Default = Template.bind({});
+
+Default.args = {};

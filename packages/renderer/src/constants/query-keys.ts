@@ -31,6 +31,7 @@ export enum QueryKeys {
   XmrTxs = "Haveno.XmrTransactions",
   MarketsOffers = "Haveno.MarketsOffers",
   MyOffers = "Haveno.MyOffers",
+  PaymentMethods = "Haveno.PaymentMethods",
 
   // Storage
   StorageAccountInfo = "Storage.AccountInfo",

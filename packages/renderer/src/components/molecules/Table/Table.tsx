@@ -29,7 +29,15 @@ import { useStyles } from "./Table.style";
 
 export function Table(props: TableProps) {
   const { classes, cx } = useStyles();
-  const { table, columns, data, tableWrap, variant, state } = props;
+  const {
+    table,
+    columns,
+    data,
+    tableWrap,
+    variant,
+    onEditableDataChange,
+    defaultColumn,
+  } = props;
 
   const tableInstance = useTableInstance(table, {
     data,
@@ -37,6 +45,25 @@ export function Table(props: TableProps) {
     state,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    meta: {
+      updateData: (rowIndex: number, columnId: string, value: unknown) => {
+        const newData = data.map((row, index) => {
+          if (index === rowIndex) {
+            return {
+              ...data[rowIndex]!,
+              [columnId]: value,
+            };
+          }
+          return row;
+        });
+        onEditableDataChange && onEditableDataChange(newData);
+      },
+    },
+    ...(defaultColumn
+      ? {
+          defaultColumn,
+        }
+      : {}),
   });
 
   return (

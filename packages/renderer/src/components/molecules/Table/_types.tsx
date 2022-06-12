@@ -23,6 +23,7 @@ export interface TableProps {
   table: any;
   data: Array<any>;
   state?: Partial<TableState>;
+  defaultColumn?: any;
 
   showHeader?: boolean;
   showFooter?: boolean;
@@ -31,6 +32,11 @@ export interface TableProps {
 
   tableWrap?: MTableProps;
   variant?: TableVariant;
+
+  onEditableDataChange?: (v: any[]) => void;
+
+  pointerRow?: boolean;
+  onRowClick?: (column: any) => void;
 }
 
 export enum TableVariant {

@@ -14,6 +14,19 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./_types";
-export * from "./Table";
-export * from "./cells";
+import { useQuery } from "react-query";
+import type { PaymentMethod } from "haveno-ts";
+import { useHavenoClient } from "./useHavenoClient";
+import { QueryKeys } from "@constants/query-keys";
+
+interface PaymentMethodsQuery {
+  assetCode: string;
+}
+
+export function usePaymentMethods(query: PaymentMethodsQuery) {
+  const client = useHavenoClient();
+
+  return useQuery<Array<PaymentMethod>, Error>(QueryKeys.PaymentAccounts, () =>
+    client.getPaymentMethods(query.assetCode)
+  );
+}
