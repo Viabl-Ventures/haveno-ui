@@ -5,12 +5,19 @@ export const useMarketOffersAmountModal = () => {
   const modals = useModals();
 
   return {
-    openModal: () =>
-      modals.openModal({
+    openModal: () => {
+      const modalId = modals.openModal({
         title: "Amount",
-        children: <MarketOffersFilterAmountForm />,
+        children: (
+          <MarketOffersFilterAmountForm
+            onSubmit={() => {
+              modals.closeModal(modalId);
+            }}
+          />
+        ),
         size: "lg",
         withCloseButton: false,
-      }),
+      });
+    },
   };
 };

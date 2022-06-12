@@ -18,10 +18,8 @@ export function MarketoffersSelectPaymentMethods({
   ...rest
 }: MarketoffersSelectPaymentMethods) {
   const { classes } = useStyles();
-
   return (
     <Table
-      {...rest}
       table={table}
       columns={columns}
       data={data}
@@ -30,26 +28,21 @@ export function MarketoffersSelectPaymentMethods({
         striped: true,
         className: classes.root,
       }}
+      {...rest}
     />
   );
 }
 
 const columns = [
-  table.createDataColumn("method", {
-    id: "method",
+  table.createDataColumn("methodChecked", {
+    id: "methodChecked",
     header: " ",
     cell: ({ ...props }) => (
-      <CheckboxCell
-        {...props}
-        checkboxProps={{
-          radius: "xs",
-          size: "sm",
-        }}
-      />
+      <CheckboxCell {...props} checkboxProps={{ radius: "xs", size: "sm" }} />
     ),
     size: 30,
   }),
-  table.createDataColumn("method", {
+  table.createDataColumn("methodName", {
     id: "methodName",
     header: "Method",
   }),
@@ -73,10 +66,17 @@ const columns = [
 ];
 
 export interface TMarketOfferPaymentMethod {
-  method: string;
+  methodChecked?: boolean;
+  methodName: string;
+  methodKey: string;
   rateTradeLimit: number;
   rateTradeLimitCurrency: string;
   info: string;
+}
+
+export interface MarketOfferEditableData {
+  methodChecked: boolean;
+  methodKey: string;
 }
 
 const useStyles = createStyles((theme) => ({

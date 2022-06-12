@@ -1,5 +1,6 @@
 import { Divider, Group, createStyles, Tabs, Text, Box } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
+import { isEmpty } from "lodash";
 import { LangKeys } from "@constants/lang";
 import {
   useMarketOffersPairModal,
@@ -63,11 +64,18 @@ export function MarketOffersFilterBar() {
           </MarketBuySellSwitch>
 
           <Text color="gray">with</Text>
-          <MarketOffersFilterButton active={true} onClick={handleParisBtnClick}>
-            <Box mr="md">
+          <MarketOffersFilterButton
+            active={!isEmpty(offersFilterState.assetCode)}
+            onClick={handleParisBtnClick}
+          >
+            <Box mr="sm">
               <BtcIcon height={17} width={17} />
             </Box>
-            {offersFilterState.assetCode?.toUpperCase()}
+            {!isEmpty(offersFilterState.assetCode) ? (
+              offersFilterState.assetCode?.toUpperCase()
+            ) : (
+              <>Currency</>
+            )}
           </MarketOffersFilterButton>
         </Group>
         <Divider className={classes.divider} orientation="vertical" />
@@ -85,8 +93,12 @@ export function MarketOffersFilterBar() {
         </MarketOffersFilterButton>
 
         <MarketOffersFilterButton
-          active={true}
-          bubbleText="7"
+          active={!isEmpty(offersFilterState.paymentMethods)}
+          bubbleText={
+            isEmpty(offersFilterState.paymentMethods)
+              ? ""
+              : offersFilterState?.paymentMethods?.length + ""
+          }
           onClick={handlePaymentMethodsBtnClick}
         >
           <FormattedMessage
@@ -110,15 +122,7 @@ export function MarketOffersFilterBar() {
 
       <Group>
         <Divider className={classes.divider} orientation="vertical" />
-
-        <MarketOffersFilterButton
-          variant="outline"
-          color="dark"
-          radius="md"
-          size="md"
-        >
-          Show market depth
-        </MarketOffersFilterButton>
+        <MarketOffersFilterButton>Show market depth</MarketOffersFilterButton>
 
         <MarketOffersFilterButton variant="filled" color="blue" size="md">
           <FormattedMessage

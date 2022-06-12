@@ -16,7 +16,6 @@
 
 import { createStyles, Stack } from "@mantine/core";
 import { NavbarLayout } from "@templates/NavbarLayout";
-import { MarketsTransactions } from "@organisms/MarketsTransactions";
 import { MarketOffersFilterBar } from "@organisms/MarketOffersFilterBar";
 
 export function MarketsTransactionsPage() {
@@ -24,16 +23,18 @@ export function MarketsTransactionsPage() {
 
   return (
     <NavbarLayout classNames={{ contentArea: classes.contentArea }}>
-      <Stack spacing={0}>
+      <Stack spacing={0} className={classes.innerContentArea}>
         <MarketOffersFilterBar />
-        <MarketsTransactions />
       </Stack>
     </NavbarLayout>
   );
 }
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   contentArea: {
     padding: 0,
+  },
+  innerContentArea: {
+    width: "100%",
   },
 }));

@@ -36,7 +36,6 @@ export function Table(props: TableProps) {
     tableWrap,
     variant,
     onEditableDataChange,
-    editableData,
     defaultColumn,
   } = props;
 
@@ -47,10 +46,10 @@ export function Table(props: TableProps) {
     getExpandedRowModel: getExpandedRowModel(),
     meta: {
       updateData: (rowIndex: number, columnId: string, value: unknown) => {
-        const newData = editableData.map((row, index) => {
+        const newData = data.map((row, index) => {
           if (index === rowIndex) {
             return {
-              ...editableData[rowIndex]!,
+              ...data[rowIndex]!,
               [columnId]: value,
             };
           }

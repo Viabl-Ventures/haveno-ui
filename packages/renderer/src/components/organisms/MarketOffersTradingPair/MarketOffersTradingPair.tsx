@@ -2,15 +2,21 @@ import type { FC } from "react";
 import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable/MarketOffersTradingPairTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
 
-export function MarketOffersTradingPair() {
+export function MarketOffersTradingPair({ onSubmit }) {
   return (
     <MarketOffersTradingPairBoot>
-      <MarketOffersTradingPairLoaded />
+      <MarketOffersTradingPairLoaded onSubmit={onSubmit} />
     </MarketOffersTradingPairBoot>
   );
 }
 
-const MarketOffersTradingPairLoaded: FC = () => {
+interface MarketOffersTradingPairLoadedProps {
+  onSubmit?: (row: any) => void;
+}
+
+const MarketOffersTradingPairLoaded = ({
+  onSubmit,
+}: MarketOffersTradingPairLoadedProps) => {
   const [, setOffersState] = useOffersFilterState();
 
   const handleRowClick = (row) => {
@@ -18,6 +24,7 @@ const MarketOffersTradingPairLoaded: FC = () => {
       ...oldFilter,
       assetCode: row.original.fromPair,
     }));
+    onSubmit && onSubmit(row.original);
   };
   return (
     <MarketOffersTradingPairTable data={data} onRowClick={handleRowClick} />

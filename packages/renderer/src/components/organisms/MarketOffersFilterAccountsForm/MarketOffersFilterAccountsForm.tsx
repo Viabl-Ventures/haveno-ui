@@ -23,13 +23,8 @@ export function MarketOffersFilterAccountsForm({
   });
 
   const handleClearFilter = () => {
-    form.reset();
-    setOffersState((oldFilter) => ({
-      ...oldFilter,
-      ...initialValues,
-    }));
+    form.setValues({ ...initialValues });
   };
-
   return (
     <form
       onSubmit={form.onSubmit((values) => {
@@ -55,7 +50,7 @@ export function MarketOffersFilterAccountsForm({
             radius="sm"
             size="md"
             sx={{ alignItems: "flex-start", marginLeft: "auto" }}
-            {...form.getInputProps("signedAccounts")}
+            {...form.getInputProps("signedAccounts", { type: "checkbox" })}
           />
         </Grid.Col>
       </Grid>
@@ -122,8 +117,8 @@ export function MarketOffersFilterAccountsForm({
 
 interface MarketOffersFilterAccountsForm {
   signedAccounts: boolean;
-  minimumTradesAmount: number | null;
-  minimumAccountAge: number | null;
+  minimumTradesAmount?: number | null;
+  minimumAccountAge?: number | null;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -143,6 +138,6 @@ const useStyles = createStyles((theme) => ({
 
 const initialValues = {
   signedAccounts: false,
-  minimumAccountAge: null,
-  minimumTradesAmount: null,
+  minimumAccountAge: undefined,
+  minimumTradesAmount: undefined,
 };

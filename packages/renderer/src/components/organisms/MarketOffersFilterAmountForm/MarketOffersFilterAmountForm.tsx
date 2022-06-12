@@ -23,11 +23,7 @@ export function MarketOffersFilterAmountForm({
   });
 
   const handleCreateFilter = () => {
-    form.reset();
-    setOffersState((oldFilter) => ({
-      ...oldFilter,
-      ...initialValues,
-    }));
+    form.setValues({ ...initialValues });
   };
 
   return (
@@ -119,13 +115,6 @@ export function MarketOffersFilterAmountForm({
   );
 }
 
-interface MarketOffersFilterAmountFormValues {
-  minimumCryptoAmount: number | null;
-  minimumBaseCurrencyAmount: number | null;
-  maximumCryptoAmount: number | null;
-  maximumBaseCurrencyAmount: number | null;
-}
-
 const useStyles = createStyles((theme) => ({
   footer: {
     paddingTop: theme.spacing.xl,
@@ -141,9 +130,16 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+interface MarketOffersFilterAmountFormValues {
+  minimumCryptoAmount?: number | null;
+  minimumBaseCurrencyAmount?: number | null;
+  maximumCryptoAmount?: number | null;
+  maximumBaseCurrencyAmount?: number | null;
+}
+
 const initialValues = {
-  minimumCryptoAmount: null,
-  minimumBaseCurrencyAmount: null,
-  maximumCryptoAmount: null,
-  maximumBaseCurrencyAmount: null,
+  minimumCryptoAmount: undefined,
+  minimumBaseCurrencyAmount: undefined,
+  maximumCryptoAmount: undefined,
+  maximumBaseCurrencyAmount: undefined,
 };

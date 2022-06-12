@@ -11,7 +11,7 @@ export const CheckboxCell = ({
 }) => {
   const initialValue = getValue();
   // We need to keep and update the state of the cell normally
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState<boolean>(initialValue);
 
   // When the input is blurred, we'll call our table meta's updateData function
   const onBlur = () => {
@@ -25,7 +25,7 @@ export const CheckboxCell = ({
 
   return (
     <Checkbox
-      value={value as string}
+      checked={value as boolean}
       onChange={(e) => setValue(e.target.checked)}
       onBlur={onBlur}
       {...checkboxProps}

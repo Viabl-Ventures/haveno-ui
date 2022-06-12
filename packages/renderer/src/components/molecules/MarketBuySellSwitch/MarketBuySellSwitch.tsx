@@ -46,7 +46,7 @@ export function MarketBuySellSwitch(props: TabsProps) {
 
           "&:before": {
             content: `""`,
-            backgroundColor: theme.colors.blue[5],
+            backgroundColor: theme.colors.blue[6],
             position: "absolute",
             left: -1,
             right: -1,
@@ -56,7 +56,7 @@ export function MarketBuySellSwitch(props: TabsProps) {
           },
         },
         tabInner: {
-          zIndex: 999,
+          zIndex: 1,
           position: "relative",
         },
       })}

@@ -11,26 +11,34 @@ interface MarketOffersFilterButtonStyleProps {
   variant: ButtonVariant;
 }
 
-export function MarketOffersFilterButton({
-  bubbleText,
-  className,
-  active,
-  variant,
-  ...props
-}: ButtonProps) {
+export function MarketOffersFilterButton(props: ButtonProps) {
+  const {
+    bubbleText,
+    className,
+    active,
+    variant = "outline",
+    ...others
+  } = props;
+
   const { cx, classes } = useStyles({
     active: active || false,
-    variant: variant || "outline",
+    variant: variant,
   });
 
   return (
     <Button
       color="gray"
-      variant="outline"
       radius="md"
       size="md"
-      {...props}
-      className={cx(classes.root, className)}
+      variant={variant}
+      {...others}
+      className={cx(
+        classes.root,
+        {
+          [classes.outline]: variant === "outline",
+        },
+        className
+      )}
     >
       {bubbleText && <Box className={classes.bubbleText}>{bubbleText}</Box>}
       {props.children}
@@ -39,14 +47,16 @@ export function MarketOffersFilterButton({
 }
 
 const useStyles = createStyles(
-  (theme, { active, variant }: MarketOffersFilterButtonStyleProps) => ({
+  (theme, { active }: MarketOffersFilterButtonStyleProps) => ({
     root: {
-      borderColor: active ? "#111" : "#E8E7EC",
-      borderWidth: active ? 2 : 1,
       paddingLeft: theme.spacing.sm,
       paddingRight: theme.spacing.sm,
-      color: "#111",
       position: "relative",
+    },
+    outline: {
+      borderColor: active ? "#111" : "#E8E7EC",
+      borderWidth: active ? 2 : 1,
+      color: "#111",
     },
     bubbleText: {
       padding: "2px 4px",

@@ -8,9 +8,15 @@ export const useMarketOffersPairModal = () => {
 
   return {
     openModal: () => {
-      modals.openModal({
+      const modalId = modals.openModal({
         title: "Select trading pair",
-        children: <MarketOffersTradingPair />,
+        children: (
+          <MarketOffersTradingPair
+            onSubmit={() => {
+              modals.closeModal(modalId);
+            }}
+          />
+        ),
         withCloseButton: true,
         size: 570,
         classNames: classes,

@@ -6,9 +6,15 @@ export const useMarketOffersAccountModal = () => {
 
   return {
     openModal: () => {
-      return modals.openModal({
+      const modalId = modals.openModal({
         title: "Amount",
-        children: <MarketOffersFilterAccountsForm />,
+        children: (
+          <MarketOffersFilterAccountsForm
+            onSubmit={() => {
+              modals.closeModal(modalId);
+            }}
+          />
+        ),
         size: "lg",
         withCloseButton: true,
       });
