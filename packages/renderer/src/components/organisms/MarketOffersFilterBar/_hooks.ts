@@ -14,19 +14,42 @@
 //  limitations under the License.
 // =============================================================================
 
+import { LangKeys } from "@constants/lang";
 import { useOffersFilterState } from "@src/state/offersFilter";
+import { useIntl } from "react-intl";
 
 export function useAccountDetailsLabel() {
+  const { formatMessage } = useIntl();
   const [offersFilterState] = useOffersFilterState();
 
   return [
-    ["Signed", offersFilterState.signedAccounts],
     [
-      `>${offersFilterState.minimumTradesAmount} trades`,
+      formatMessage({
+        id: LangKeys.MarketOffersSigned,
+        defaultMessage: "Signed",
+      }),
+      offersFilterState.signedAccounts,
+    ],
+    [
+      formatMessage(
+        {
+          id: LangKeys.MarketOffersTradesAmount,
+          defaultMessage: ">{value} days",
+        },
+        { value: offersFilterState.minimumTradesAmount }
+      ),
       offersFilterState.minimumTradesAmount,
     ],
     [
-      `>${offersFilterState.minimumAccountAge} days`,
+      formatMessage(
+        {
+          id: LangKeys.MarketOffersDaysAge,
+          defaultMessage: ">{value} days",
+        },
+        {
+          value: offersFilterState.minimumAccountAge,
+        }
+      ),
       offersFilterState.minimumAccountAge,
     ],
   ]
