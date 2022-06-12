@@ -1,8 +1,16 @@
+import { useCallback } from "react";
 import type { FC } from "react";
-import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable/MarketOffersTradingPairTable";
+import type { Row } from "@tanstack/react-table";
+import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
 
-export function MarketOffersTradingPair({ onSubmit }) {
+interface MarketOffersTradingPairProps {
+  onSubmit?: (row: any) => void;
+}
+
+export function MarketOffersTradingPair({
+  onSubmit,
+}: MarketOffersTradingPairProps) {
   return (
     <MarketOffersTradingPairBoot>
       <MarketOffersTradingPairLoaded onSubmit={onSubmit} />
@@ -19,13 +27,17 @@ const MarketOffersTradingPairLoaded = ({
 }: MarketOffersTradingPairLoadedProps) => {
   const [, setOffersState] = useOffersFilterState();
 
-  const handleRowClick = (row) => {
-    setOffersState((oldFilter) => ({
-      ...oldFilter,
-      assetCode: row.original.fromPair,
-    }));
-    onSubmit && onSubmit(row.original);
-  };
+  const handleRowClick = useCallback(
+    (row: Row<any>) => {
+      setOffersState((oldFilter) => ({
+        ...oldFilter,
+        assetCode: row.original.fromPair,
+      }));
+      onSubmit && onSubmit(row.original);
+    },
+    [onSubmit]
+  );
+
   return (
     <MarketOffersTradingPairTable data={data} onRowClick={handleRowClick} />
   );

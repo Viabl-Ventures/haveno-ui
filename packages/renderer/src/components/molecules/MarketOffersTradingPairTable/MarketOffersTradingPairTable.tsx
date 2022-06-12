@@ -12,7 +12,7 @@ import {
 
 const table = createTable().setRowType<TMarketOffersTradingPair>();
 
-interface MarketOffersTradingPairTableProps extends TableProps {
+export interface MarketOffersTradingPairTableProps extends Partial<TableProps> {
   data: TMarketOffersTradingPair[];
 }
 

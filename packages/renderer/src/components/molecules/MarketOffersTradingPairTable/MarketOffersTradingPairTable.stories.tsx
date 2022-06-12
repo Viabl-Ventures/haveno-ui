@@ -15,10 +15,8 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import {
-  MarketOffersTradingPairTable,
-  TMarketOffersTradingPair,
-} from "./MarketOffersTradingPairTable";
+import { MarketOffersTradingPairTable } from "./MarketOffersTradingPairTable";
+import type { TMarketOffersTradingPair } from "./_types";
 
 export default {
   title: "molecules/MarketOffersTradingPairTable",
@@ -42,4 +40,28 @@ const data = [
     dayChangeRate: 12.12,
     dayChangeVolume: 1222.123,
   },
-] as TMarketOffersTradingPair;
+  {
+    fromPair: "EUR",
+    toPair: "XMR",
+    lastPrice: 101.122,
+    lastPriceCurrency: "EUR",
+    dayChangeRate: 12.12,
+    dayChangeVolume: 1222.123,
+  },
+  {
+    fromPair: "EUR",
+    toPair: "XMR",
+    lastPrice: 101.122,
+    lastPriceCurrency: "EUR",
+    dayChangeRate: 12.12,
+    dayChangeVolume: 1222.123,
+  },
+  {
+    fromPair: "EUR",
+    toPair: "XMR",
+    lastPrice: 101.122,
+    lastPriceCurrency: "EUR",
+    dayChangeRate: 12.12,
+    dayChangeVolume: 1222.123,
+  },
+] as TMarketOffersTradingPair[];

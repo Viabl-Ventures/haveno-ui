@@ -5,25 +5,25 @@ import { MarketoffersSelectPaymentMethods } from "@molecules/MarketOffersSelectP
 import { useOffersFilterState } from "@src/state/offersFilter";
 
 export function MarketOffersFilterPaymentMethods() {
-  const [filterQuery, setFilterQuery] = useOffersFilterState();
+  const [filter, setFilter] = useOffersFilterState();
+
+  const tableData = useMemo(
+    () =>
+      data.map((item) => ({
+        ...item,
+        methodChecked: includes(filter.paymentMethods, item.methodKey),
+      })),
+    [filter]
+  );
 
   const handleEditableDataChange = (newData: TMarketOfferPaymentMethod[]) => {
-    setFilterQuery((oldQuery) => ({
+    setFilter((oldQuery) => ({
       ...oldQuery,
       paymentMethods: newData
         .filter((payment) => payment.methodChecked)
         .map((payment) => payment.methodKey),
     }));
   };
-
-  const tableData = useMemo(
-    () =>
-      data.map((item) => ({
-        ...item,
-        methodChecked: includes(filterQuery.paymentMethods, item.methodKey),
-      })),
-    [filterQuery]
-  );
 
   return (
     <MarketoffersSelectPaymentMethods

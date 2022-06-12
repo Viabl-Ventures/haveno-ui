@@ -18,8 +18,10 @@ export function MarketoffersSelectPaymentMethods({
   ...rest
 }: MarketoffersSelectPaymentMethods) {
   const { classes } = useStyles();
+
   return (
     <Table
+      {...rest}
       table={table}
       columns={columns}
       data={data}
@@ -28,7 +30,6 @@ export function MarketoffersSelectPaymentMethods({
         striped: true,
         className: classes.root,
       }}
-      {...rest}
     />
   );
 }

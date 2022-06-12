@@ -33,4 +33,5 @@ const Template: ComponentStory<typeof MarketBuySellSwitch> = () => {
 };
 
 export const Default = Template.bind({});
+
 Default.args = {};

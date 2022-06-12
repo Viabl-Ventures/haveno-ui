@@ -1,5 +1,5 @@
 import { useModals } from "@mantine/modals";
-import { MarketOffersFilterAmountForm } from "@organisms/MarketOffersFilterAmountForm/MarketOffersFilterAmountForm";
+import { MarketOffersFilterAmountForm } from "@organisms/MarketOffersFilterAmountForm";
 
 export const useMarketOffersAmountModal = () => {
   const modals = useModals();

@@ -15,6 +15,7 @@
 // =============================================================================
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { TMarketOfferPaymentMethod } from "./MarketOffersSelectPaymentMethods";
 import { MarketoffersSelectPaymentMethods } from ".";
 
 export default {
@@ -34,28 +35,31 @@ Default.args = {};
 
 const data = [
   {
-    method: "Celpay",
+    methodName: "Celpay",
+    methodKey: "celpay",
     rateTradeLimit: 20,
     rateTradeLimitCurrency: "XMR",
-    info: "Global",
+    info: "USA",
   },
   {
-    method: "Celpay",
+    methodName: "ACH",
+    methodKey: "ach",
     rateTradeLimit: 20,
     rateTradeLimitCurrency: "XMR",
-    info: "Global",
+    info: "Global (AUS, TRY, USD)",
   },
   {
-    method: "Celpay",
+    methodName: "Cash by mail",
+    methodKey: "cash-by-mail",
     rateTradeLimit: 20,
     rateTradeLimitCurrency: "XMR",
-    info: "Global",
+    info: "Spain",
   },
   {
-    method: "Celpay",
+    methodName: "Domestic Wire Transfer",
+    methodKey: "domestic-wire-transfer",
     rateTradeLimit: 20,
     rateTradeLimitCurrency: "XMR",
     info: "Global",
   },
-  
-];
+] as TMarketOfferPaymentMethod[];

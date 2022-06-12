@@ -5,12 +5,10 @@ import { LangKeys } from "@constants/lang";
 import {
   useMarketOffersPairModal,
   useMarketOffersPaymentMethods,
+  useMarketOffersAmountModal,
+  useMarketOffersAccountModal,
 } from "./hooks";
 import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch";
-import {
-  useMarketOffersAccountModal,
-  useMarketOffersAmountModal,
-} from "./hooks";
 import { MarketOffersFilterButton } from "./MarketOffersFilterButton";
 import { ReactComponent as BtcIcon } from "@assets/btc.svg";
 import {

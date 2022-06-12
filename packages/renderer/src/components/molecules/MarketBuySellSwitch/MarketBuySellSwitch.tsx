@@ -11,10 +11,6 @@ export function MarketBuySellSwitch(props: TabsProps) {
             theme.colorScheme === "dark"
               ? theme.colors.dark[6]
               : theme.colors.gray[0],
-          color:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[0]
-              : theme.colors.gray[9],
           border: `0 solid ${
             theme.colorScheme === "dark"
               ? theme.colors.dark[6]
@@ -22,9 +18,13 @@ export function MarketBuySellSwitch(props: TabsProps) {
           }`,
           borderTopWidth: 1,
           borderBottomWidth: 1,
+          color:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[0]
+              : theme.colors.gray[9],
           fontSize: theme.fontSizes.md,
-          padding: `${theme.spacing.lg}px ${theme.spacing.md}px`,
           fontWeight: 500,
+          padding: `${theme.spacing.lg}px ${theme.spacing.md}px`,
 
           "&:not(:first-of-type)": {
             borderLeft: 0,
@@ -45,14 +45,14 @@ export function MarketBuySellSwitch(props: TabsProps) {
           position: "relative",
 
           "&:before": {
-            content: `""`,
             backgroundColor: theme.colors.blue[6],
+            borderRadius: theme.radius.md,
+            content: `""`,
             position: "absolute",
             left: -1,
             right: -1,
             bottom: -1,
             top: -1,
-            borderRadius: theme.radius.md,
           },
         },
         tabInner: {
