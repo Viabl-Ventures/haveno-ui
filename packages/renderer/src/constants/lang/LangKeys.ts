@@ -135,4 +135,10 @@ export enum LangKeys {
   MarketFilterAccountDescAmountTrades = "marketFilters.accountFilter.descAmountTrades",
   MarketFilterAccountClearFiltersBtn = "marketFilters.accountFilter.clearFiltersBtn",
   MarketFilterAccountSaveBtn = "marketFilters.accountFilter.saveBtn",
+  MarketAmountFilterFieldMinAmountTrades = "MarketFilterFieldMinAmountTrades",
+  MarketAmountFilterFieldMinAmountTradesDesc = "MarketFilterFieldMinAmountTradesDesc",
+  MarketAmountFilterFieldMaxAmount = "MarketFilterFieldMaxAmount",
+  MarketAmountFilterFieldMaxAmountDesc = "MarketFilterFieldMaxAmountDesc",
+  MarketAmountFilterAmountClearFiltersBtn = "MarketFilterAmountClearFiltersBtn",
+  MarketAmountFilterAmountSaveBtn = "MarketFilterAmountSaveBtn",
 }

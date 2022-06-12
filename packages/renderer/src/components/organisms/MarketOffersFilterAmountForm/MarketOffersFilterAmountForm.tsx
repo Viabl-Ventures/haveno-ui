@@ -14,12 +14,14 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useForm } from "@mantine/hooks";
+import { FormattedMessage } from "react-intl";
 import { createStyles, Grid, Group, Text } from "@mantine/core";
+import { useForm } from "@mantine/hooks";
 import { NumberInput } from "@atoms/TextInput";
 import { Button, TextButton } from "@atoms/Buttons";
 import { useOffersFilterState } from "@src/state/offersFilter";
 import { transformToForm } from "@utils/misc";
+import { LangKeys } from "@constants/lang";
 
 interface MarketOffersFilterAmountFormProps {
   onSubmit?: (values: MarketOffersFilterAmountFormValues) => void;
@@ -54,8 +56,18 @@ export function MarketOffersFilterAmountForm({
     >
       <Grid>
         <Grid.Col span={8}>
-          <Text weight={500}>Minimum amount</Text>
-          <Text color="gray">Set the minimum amount you want to buy.</Text>
+          <Text weight={500}>
+            <FormattedMessage
+              id={LangKeys.MarketAmountFilterFieldMinAmountTrades}
+              defaultMessage="Minimum amount of trades"
+            />
+          </Text>
+          <Text color="gray">
+            <FormattedMessage
+              id={LangKeys.MarketAmountFilterFieldMinAmountTradesDesc}
+              defaultMessage="Set the minimum amount you want to buy."
+            />
+          </Text>
         </Grid.Col>
 
         <Grid.Col span={4}>
@@ -85,10 +97,19 @@ export function MarketOffersFilterAmountForm({
 
       <Grid mt="xl">
         <Grid.Col span={8}>
-          <Text weight={500}>Maximum amount</Text>
-          <Text color="gray">Set the maximum amount you want to buy.</Text>
-        </Grid.Col>
-
+          <Text weight={500}>
+            <FormattedMessage
+              id={LangKeys.MarketAmountFilterFieldMaxAmount}
+              defaultMessage="Maximum amount"
+            />
+          </Text>
+          <Text color="gray">
+            <FormattedMessage
+              id={LangKeys.MarketAmountFilterFieldMaxAmountDesc}
+              defaultMessage="Set the maximum amount you want to buy."
+            />
+          </Text>
+        </Grid.Col>{" "}
         <Grid.Col span={4}>
           <NumberInput
             id="maxAmountFrom"
@@ -121,10 +142,16 @@ export function MarketOffersFilterAmountForm({
           onClick={handleCreateFilter}
           className={classes.clearFilterBtn}
         >
-          Clear filters
+          <FormattedMessage
+            id={LangKeys.MarketAmountFilterAmountClearFiltersBtn}
+            defaultMessage="Clear filters"
+          />
         </TextButton>
         <Button type="submit" flavor="primary">
-          Save filters
+          <FormattedMessage
+            id={LangKeys.MarketAmountFilterAmountSaveBtn}
+            defaultMessage="Save filters"
+          />
         </Button>
       </Group>
     </form>

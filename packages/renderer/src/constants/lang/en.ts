@@ -155,6 +155,14 @@ const LangPackEN: { [key in LangKeys]: string } = {
     "Only show trade offers from accounts with a minimum amount of completed trades",
   [LangKeys.MarketFilterAccountClearFiltersBtn]: "Clear filters",
   [LangKeys.MarketFilterAccountSaveBtn]: "Save filters",
+  [LangKeys.MarketAmountFilterFieldMinAmountTrades]: "Minimum amount of trades",
+  [LangKeys.MarketAmountFilterFieldMinAmountTradesDesc]:
+    "Set the minimum amount you want to buy.",
+  [LangKeys.MarketAmountFilterFieldMaxAmount]: "Maximum amount",
+  [LangKeys.MarketAmountFilterFieldMaxAmountDesc]:
+    "Set the maximum amount you want to buy.",
+  [LangKeys.MarketAmountFilterAmountClearFiltersBtn]: "Clear filters",
+  [LangKeys.MarketAmountFilterAmountSaveBtn]: "Save filters",
 };
 
 export default LangPackEN;

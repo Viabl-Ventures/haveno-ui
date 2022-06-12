@@ -17,8 +17,8 @@
 import _ from "lodash";
 
 export const transformToForm = (
-  obj: Record<string, any>,
-  emptyInitialValues: Record<string, any>
+  obj: Record<string, unknown>,
+  emptyInitialValues: Record<string, unknown>
 ) => {
   return _.pickBy(
     obj,
