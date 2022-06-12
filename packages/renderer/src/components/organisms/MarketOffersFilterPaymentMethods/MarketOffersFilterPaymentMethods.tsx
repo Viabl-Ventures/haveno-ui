@@ -82,4 +82,4 @@ const data = [
     rateTradeLimitCurrency: "XMR",
     info: "Global",
   },
-] as TMarketOfferPaymentMethod[];
+] as Array<TMarketOfferPaymentMethod>;

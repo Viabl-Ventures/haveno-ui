@@ -17,6 +17,7 @@
 import { useCallback } from "react";
 import type { FC } from "react";
 import type { Row } from "@tanstack/react-table";
+import type { TMarketOffersTradingPair } from "@molecules/MarketOffersTradingPairTable";
 import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
 
@@ -96,4 +97,4 @@ const data = [
     dayChangeRate: 0.2,
     dayChangeVolume: 0.2,
   },
-];
+] as Array<TMarketOffersTradingPair>;

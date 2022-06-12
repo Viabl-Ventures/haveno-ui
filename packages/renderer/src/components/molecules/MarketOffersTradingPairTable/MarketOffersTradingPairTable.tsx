@@ -31,7 +31,7 @@ import { LangKeys } from "@constants/lang";
 const table = createTable().setRowType<TMarketOffersTradingPair>();
 
 export interface MarketOffersTradingPairTableProps extends Partial<TableProps> {
-  data: TMarketOffersTradingPair[];
+  data: Array<TMarketOffersTradingPair>;
 }
 
 export function MarketOffersTradingPairTable({

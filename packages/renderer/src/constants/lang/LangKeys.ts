@@ -114,6 +114,8 @@ export enum LangKeys {
   MarketsTransactionsCashByMail = "marketsTransactions.cashByMail",
   MarketOffersAmount = "marketOffers.filter.amount",
   MarketOffersWith = "marketOffers.filter.with",
+  MarketOffersSwitchSell = "marketOffers.filter.switchSellBuy.sell",
+  MarketOffersSwitchBuy = "marketOffers.filter.switchSellBuy.buy",
   MarketOffersPaymentMethod = "marketOffers.filter.paymentMethod",
   MarketOffersAccountDetails = "marketOffers.filter.accountDetails",
   MarketOffersShowMarketDepth = "marketOffers.filter.showMarketDepth",

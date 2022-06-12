@@ -160,13 +160,13 @@ export function MarketOffersFilterAmountForm({
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    paddingTop: theme.spacing.xl,
-    paddingLeft: theme.spacing.xl,
-    paddingRight: theme.spacing.xl,
     borderTop: `1px solid ${theme.colors.gray[1]}`,
-    marginTop: theme.spacing.xl,
     marginLeft: theme.spacing.xl * -1,
     marginRight: theme.spacing.xl * -1,
+    marginTop: theme.spacing.xl,
+    paddingLeft: theme.spacing.xl,
+    paddingRight: theme.spacing.xl,
+    paddingTop: theme.spacing.xl,
   },
   clearFilterBtn: {
     fontSize: theme.spacing.lg,

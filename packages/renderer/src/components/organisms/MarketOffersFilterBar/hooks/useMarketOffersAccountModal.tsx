@@ -15,7 +15,7 @@
 // =============================================================================
 
 import { useModals } from "@mantine/modals";
-import { MarketOffersFilterAccountsForm } from "@organisms/MarketOffersFilterAccountsForm/MarketOffersFilterAccountsForm";
+import { MarketOffersFilterAccountsForm } from "@organisms/MarketOffersFilterAccountsForm";
 
 export const useMarketOffersAccountModal = () => {
   const modals = useModals();

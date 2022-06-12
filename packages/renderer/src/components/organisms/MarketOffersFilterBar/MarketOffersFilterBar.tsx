@@ -27,10 +27,7 @@ import {
 import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch";
 import { MarketOffersFilterButton } from "./MarketOffersFilterButton";
 import { ReactComponent as BtcIcon } from "@assets/btc.svg";
-import {
-  useOffersFilterState,
-  useSetOffersFilterState,
-} from "@src/state/offersFilter";
+import { useOffersFilterState } from "@src/state/offersFilter";
 import {
   useAccountDetailsLabel,
   useMarketOffersFilterAmountLabel,
@@ -38,8 +35,7 @@ import {
 
 export function MarketOffersFilterBar() {
   const { classes } = useStyles();
-  const [offersFilterState] = useOffersFilterState();
-  const setOfferesFilterState = useSetOffersFilterState();
+  const [offersFilter, setOffersFilter] = useOffersFilterState();
 
   const marketOffersPairModal = useMarketOffersPairModal();
   const marketOffersPaymentMethodsModal = useMarketOffersPaymentMethods();
@@ -50,7 +46,7 @@ export function MarketOffersFilterBar() {
   const filterAmountLabel = useMarketOffersFilterAmountLabel();
 
   const handleBuySellSwitch = (tabIndex: number, tabKey: string) => {
-    setOfferesFilterState((filter) => ({
+    setOffersFilter((filter) => ({
       ...filter,
       direction: tabKey,
     }));
@@ -73,8 +69,26 @@ export function MarketOffersFilterBar() {
       <Group>
         <Group spacing="sm">
           <MarketBuySellSwitch onTabChange={handleBuySellSwitch}>
-            <Tabs.Tab tabKey="sell" label="Sell XMR" />
-            <Tabs.Tab tabKey="buy" label="Buy XMR" />
+            <Tabs.Tab
+              tabKey="sell"
+              label={
+                <FormattedMessage
+                  id={LangKeys.MarketOffersSwitchSell}
+                  defaultMessage="Sell {currency}"
+                  values={{ currency: "XMR" }}
+                />
+              }
+            />
+            <Tabs.Tab
+              tabKey="buy"
+              label={
+                <FormattedMessage
+                  id={LangKeys.MarketOffersSwitchBuy}
+                  defaultMessage="Buy {currency}"
+                  values={{ currency: "XMR" }}
+                />
+              }
+            />
           </MarketBuySellSwitch>
 
           <Text color="gray">
@@ -84,14 +98,14 @@ export function MarketOffersFilterBar() {
             />
           </Text>
           <MarketOffersFilterButton
-            active={!isEmpty(offersFilterState.assetCode)}
+            active={!isEmpty(offersFilter.assetCode)}
             onClick={handleParisBtnClick}
           >
             <Box mr="sm">
               <BtcIcon height={17} width={17} />
             </Box>
-            {!isEmpty(offersFilterState.assetCode) ? (
-              offersFilterState.assetCode?.toUpperCase()
+            {!isEmpty(offersFilter.assetCode) ? (
+              offersFilter.assetCode?.toUpperCase()
             ) : (
               <FormattedMessage
                 id={LangKeys.MarketOffersCurrency}
@@ -115,11 +129,11 @@ export function MarketOffersFilterBar() {
         </MarketOffersFilterButton>
 
         <MarketOffersFilterButton
-          active={!isEmpty(offersFilterState.paymentMethods)}
+          active={!isEmpty(offersFilter.paymentMethods)}
           bubbleText={
-            isEmpty(offersFilterState.paymentMethods)
+            isEmpty(offersFilter.paymentMethods)
               ? ""
-              : offersFilterState?.paymentMethods?.length + ""
+              : offersFilter?.paymentMethods?.length + ""
           }
           onClick={handlePaymentMethodsBtnClick}
         >
@@ -164,14 +178,14 @@ export function MarketOffersFilterBar() {
 
 const useStyles = createStyles((theme) => ({
   root: {
+    background: theme.white,
+    borderBottom: `1px solid ${theme.colors.gray[3]}`,
     minHeight: 84,
     padding: "18px 22px",
-    borderBottom: `1px solid ${theme.colors.gray[3]}`,
-    background: theme.white,
   },
   divider: {
-    marginTop: "auto",
     marginBottom: "auto",
+    marginTop: "auto",
     height: 28,
   },
 }));

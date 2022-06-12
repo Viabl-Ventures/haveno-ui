@@ -131,6 +131,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.MarketsTransactionsCashByMail]: "Cash by mail",
   [LangKeys.MarketOffersAmount]: "Amount",
   [LangKeys.MarketOffersWith]: "with",
+  [LangKeys.MarketOffersSwitchSell]: "Sell {currency}",
+  [LangKeys.MarketOffersSwitchBuy]: "Buy {currency}",
   [LangKeys.MarketOffersPaymentMethod]: "Payment method",
   [LangKeys.MarketOffersAccountDetails]: "Account details",
   [LangKeys.MarketOffersShowMarketDepth]: "Show market depth",
