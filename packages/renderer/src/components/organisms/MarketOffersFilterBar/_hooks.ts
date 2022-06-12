@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
+import { useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useOffersFilterState } from "@src/state/offersFilter";
-import { useIntl } from "react-intl";
 
 export function useAccountDetailsLabel() {
   const { formatMessage } = useIntl();

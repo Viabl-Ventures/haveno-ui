@@ -36,6 +36,8 @@ export function MarketOffersFilterAmountForm({
   const form = useForm<MarketOffersFilterAmountFormValues>({
     initialValues: {
       ...initialValues,
+      // We only care about the fields in the form and remove other fields.
+      // Previously unfilled optional values come as null, so remove those as well.
       ...transformToForm(offersState, initialValues),
     },
   });

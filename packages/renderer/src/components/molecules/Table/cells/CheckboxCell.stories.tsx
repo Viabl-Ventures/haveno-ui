@@ -31,7 +31,6 @@ const Template: ComponentStory<typeof Table> = () => {
       data={data}
       columns={columns}
       defaultColumn={CheckboxCell}
-      editableData={data}
       onEditableDataChange={(values) => {
         console.log(values);
       }}
