@@ -32,8 +32,8 @@ export function MarketBuySellSwitch(props: TabsProps) {
               ? theme.colors.dark[6]
               : theme.colors.gray[2]
           }`,
-          borderTopWidth: 1,
           borderBottomWidth: 1,
+          borderTopWidth: 1,
           color:
             theme.colorScheme === "dark"
               ? theme.colors.dark[0]
@@ -63,17 +63,17 @@ export function MarketBuySellSwitch(props: TabsProps) {
           "&:before": {
             backgroundColor: theme.colors.blue[6],
             borderRadius: theme.radius.md,
-            content: `""`,
-            position: "absolute",
-            left: -1,
-            right: -1,
             bottom: -1,
+            content: `""`,
+            left: -1,
+            position: "absolute",
+            right: -1,
             top: -1,
           },
         },
         tabInner: {
-          zIndex: 1,
           position: "relative",
+          zIndex: 1,
         },
       })}
       {...props}

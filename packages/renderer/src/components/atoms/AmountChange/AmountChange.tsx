@@ -25,15 +25,12 @@ interface AmountChangeProps extends BoxProps<"div"> {
 }
 
 interface AmountChangeStyleProps {
-  positive?: boolean;
-  negative?: boolean;
+  positive: boolean;
+  negative: boolean;
 }
 
-export function AmountChange({
-  children,
-  positive,
-  negative,
-}: AmountChangeProps) {
+export function AmountChange(props: AmountChangeProps) {
+  const { children, positive = false, negative = false } = props;
   const { classes } = useStyles({
     positive,
     negative,

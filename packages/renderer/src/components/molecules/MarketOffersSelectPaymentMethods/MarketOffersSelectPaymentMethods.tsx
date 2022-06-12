@@ -105,17 +105,17 @@ const useStyles = createStyles((theme) => ({
     thead: {
       tr: {
         th: {
-          textTransform: "uppercase",
-          color: "#111",
-          fontSize: 10,
-          paddingTop: 8,
+          color: theme.colors.gray[9],
+          fontSize: theme.fontSizes.xs,
           paddingBottom: 8,
+          paddingTop: 8,
+          textTransform: "uppercase",
 
           "&:first-of-type": {
-            paddingLeft: 25,
+            paddingLeft: theme.spacing.xl,
           },
           "&:last-of-type": {
-            paddingRight: 25,
+            paddingRight: theme.spacing.xl,
           },
         },
       },
@@ -123,14 +123,14 @@ const useStyles = createStyles((theme) => ({
     tbody: {
       tr: {
         td: {
-          fontSize: 14,
           borderBottom: 0,
+          fontSize: theme.fontSizes.md,
 
           "&:first-of-type": {
-            paddingLeft: 25,
+            paddingLeft: theme.spacing.xl,
           },
           "&:last-of-type": {
-            paddingRight: 25,
+            paddingRight: theme.spacing.xl,
           },
         },
       },

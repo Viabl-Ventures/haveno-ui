@@ -92,4 +92,4 @@ const data = [
     rateTradeLimitCurrency: "XMR",
     info: "Global (AUS, TRY, USD)",
   },
-] as TMarketOfferPaymentMethod[];
+] as Array<TMarketOfferPaymentMethod>;
