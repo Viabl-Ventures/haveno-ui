@@ -123,7 +123,6 @@ export function MarketOffersFilterAmountForm({
             }
             rightSectionWidth={45}
             mb="lg"
-            type="number"
           />
           <NumberInput
             id="maxAmountTo"
@@ -134,7 +133,6 @@ export function MarketOffersFilterAmountForm({
               </Text>
             }
             rightSectionWidth={45}
-            type="number"
           />
         </Grid.Col>
       </Grid>
