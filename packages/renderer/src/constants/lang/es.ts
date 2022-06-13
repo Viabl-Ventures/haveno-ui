@@ -158,14 +158,16 @@ const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.MarketFilterAccountLabelMinAccountAge]: "Edad mínima de la cuenta",
   [LangKeys.MarketFilterAccountDescMinAccountAge]:
     "Mostrar solo ofertas comerciales con una edad mínima de cuenta.",
-  [LangKeys.MarketFilterAccountLabelAmountTrades]: "Cantidad mínima de operaciones",
+  [LangKeys.MarketFilterAccountLabelAmountTrades]:
+    "Cantidad mínima de operaciones",
   [LangKeys.MarketFilterAccountDescAmountTrades]:
     "Mostrar solo ofertas comerciales de cuentas con una cantidad mínima de operaciones completadas",
   [LangKeys.MarketFilterAccountTrades]: "Vientos alisios",
   [LangKeys.MarketFilterAccountDays]: "Días",
   [LangKeys.MarketFilterAccountClearFiltersBtn]: "Borrar filtros",
   [LangKeys.MarketFilterAccountSaveBtn]: "Guardar filtros",
-  [LangKeys.MarketAmountFilterFieldMinAmountTrades]: "Cantidad mínima de operaciones",
+  [LangKeys.MarketAmountFilterFieldMinAmountTrades]:
+    "Cantidad mínima de operaciones",
   [LangKeys.MarketAmountFilterFieldMinAmountTradesDesc]:
     "Establece la cantidad mínima que deseas comprar.",
   [LangKeys.MarketAmountFilterFieldMaxAmount]: "Importe máximo",

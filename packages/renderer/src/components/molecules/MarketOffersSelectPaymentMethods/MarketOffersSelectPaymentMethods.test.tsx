@@ -16,8 +16,8 @@
 
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { MarketoffersSelectPaymentMethods } from ".";
 import type { TMarketOfferPaymentMethod } from "./_types";
+import { MarketoffersSelectPaymentMethods } from ".";
 import { AppProviders } from "@atoms/AppProviders";
 
 describe("molecules::MarketOffersSelectPaymentMethods", () => {

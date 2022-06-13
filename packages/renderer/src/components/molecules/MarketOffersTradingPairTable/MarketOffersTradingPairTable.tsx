@@ -17,15 +17,15 @@
 import { createTable } from "@tanstack/react-table";
 import { useIntl } from "react-intl";
 import { createStyles } from "@mantine/core";
-import { Table } from "@molecules/Table";
 import type { TMarketOffersTradingPair } from "./_types";
-import type { TableProps } from "@molecules/Table";
 import {
   MarketOfferPair24thChange,
   MarketOfferPairCell,
   MarketOfferPairLastPriceCell,
   MarketOfferPair24thChangeVolume,
 } from "./MarketOffersTradingPairTableCells";
+import type { TableProps } from "@molecules/Table";
+import { Table } from "@molecules/Table";
 import { LangKeys } from "@constants/lang";
 
 const table = createTable().setRowType<TMarketOffersTradingPair>();
@@ -85,7 +85,7 @@ const useMarketTradingPairsColumns = () => {
         defaultMessage: "24th Change",
       }),
       size: 400,
-      cell: ({ row }) => <MarketOfferPair24thChange row={row?.original} />,
+      cell: () => <MarketOfferPair24thChange />,
       meta: { textAlign: "right" },
     }),
     table.createDataColumn("dayChangeVolume", {

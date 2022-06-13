@@ -17,21 +17,21 @@
 import { Divider, Group, createStyles, Tabs, Text, Box } from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import { isEmpty } from "lodash";
-import { LangKeys } from "@constants/lang";
 import {
   useMarketOffersPairModal,
   useMarketOffersPaymentMethods,
   useMarketOffersAmountModal,
   useMarketOffersAccountModal,
 } from "./hooks";
-import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch";
 import { MarketOffersFilterButton } from "./MarketOffersFilterButton";
-import { ReactComponent as BtcIcon } from "@assets/btc.svg";
-import { useOffersFilterState } from "@src/state/offersFilter";
 import {
   useAccountDetailsLabel,
   useMarketOffersFilterAmountLabel,
 } from "./_hooks";
+import { LangKeys } from "@constants/lang";
+import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch";
+import { ReactComponent as BtcIcon } from "@assets/btc.svg";
+import { useOffersFilterState } from "@src/state/offersFilter";
 
 export function MarketOffersFilterBar() {
   const { classes } = useStyles();

@@ -16,14 +16,14 @@
 
 import { createTable } from "@tanstack/react-table";
 import { createStyles } from "@mantine/core";
-import type { TableProps } from "@molecules/Table";
-import { CheckboxCell, Table } from "@molecules/Table";
+import { useIntl } from "react-intl";
 import {
   MarketOffersSelectPaymentMethodsInfo,
   MarketOffersSelectPaymentMethodsLimit,
 } from "./MarketOffersSelectPaymentMethodsCells";
 import type { TMarketOfferPaymentMethod } from "./_types";
-import { useIntl } from "react-intl";
+import type { TableProps } from "@molecules/Table";
+import { CheckboxCell, Table } from "@molecules/Table";
 import { LangKeys } from "@constants/lang";
 
 const table = createTable().setRowType<TMarketOfferPaymentMethod>();

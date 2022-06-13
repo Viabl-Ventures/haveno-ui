@@ -14,9 +14,9 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Currency } from "@atoms/Currency";
 import { Text } from "@mantine/core";
 import type { TMarketOfferPaymentMethod } from "./_types";
+import { Currency } from "@atoms/Currency";
 
 export const MarketOffersSelectPaymentMethodsLimit = ({
   row,

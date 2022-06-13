@@ -14,10 +14,10 @@
 //  limitations under the License.
 // =============================================================================
 
-import { AmountChange } from "@atoms/AmountChange/AmountChange";
-import { Currency } from "@atoms/Currency";
 import { Box, Group } from "@mantine/core";
 import type { TMarketOffersTradingPair } from "./_types";
+import { AmountChange } from "@atoms/AmountChange/AmountChange";
+import { Currency } from "@atoms/Currency";
 
 export function MarketOfferPairCell({
   row,
@@ -46,11 +46,7 @@ export function MarketOfferPairLastPriceCell({
   );
 }
 
-export function MarketOfferPair24thChange({
-  row,
-}: {
-  row?: TMarketOffersTradingPair;
-}) {
+export function MarketOfferPair24thChange() {
   return <AmountChange positive={true}>+3,5%</AmountChange>;
 }
 

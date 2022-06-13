@@ -16,9 +16,9 @@
 
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { AppProviders } from "@atoms/AppProviders";
-import { MarketOffersTradingPairTable } from "./MarketOffersTradingPairTable";
 import type { TMarketOffersTradingPair } from "./_types";
+import { MarketOffersTradingPairTable } from "./MarketOffersTradingPairTable";
+import { AppProviders } from "@atoms/AppProviders";
 
 describe("molecules::MarketoffersTradingPairTable", () => {
   it("renders without exploding", () => {
