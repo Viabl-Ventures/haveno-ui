@@ -26,6 +26,7 @@ import { TableProvider } from "./use-table-context";
 import { TableHeader } from "./TableHeader";
 import { TableBody } from "./TableBody";
 import { useStyles } from "./Table.style";
+import { updateTableCell } from "./_utils";
 
 export function Table(props: TableProps) {
   const { classes, cx } = useStyles();
@@ -47,15 +48,7 @@ export function Table(props: TableProps) {
     getExpandedRowModel: getExpandedRowModel(),
     meta: {
       updateData: (rowIndex: number, columnId: string, value: unknown) => {
-        const newData = data.map((row, index) => {
-          if (index === rowIndex) {
-            return {
-              ...data[rowIndex]!,
-              [columnId]: value,
-            };
-          }
-          return row;
-        });
+        const newData = updateTableCell(data, rowIndex, columnId, value);
         onEditableDataChange && onEditableDataChange(newData);
       },
     },
@@ -85,3 +78,4 @@ Table.defaultProps = {
   showHeader: true,
   showFooter: true,
 };
+s

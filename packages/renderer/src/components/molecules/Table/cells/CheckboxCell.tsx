@@ -16,10 +16,15 @@
 
 import type { CheckboxProps } from "@mantine/core";
 import { Checkbox } from "@mantine/core";
-import type { Cell } from "@tanstack/react-table";
+import type { Cell, Column, Row, TableInstance } from "@tanstack/react-table";
 import { useState, useEffect } from "react";
 
-interface CheckboxCellProps extends Cell<any> {
+interface CheckboxCellProps {
+  instance: TableInstance<any>;
+  row: Row<any>;
+  column: Column<any>;
+  cell: Cell<any>;
+  getValue: () => any;
   checkboxProps?: CheckboxProps;
 }
 
