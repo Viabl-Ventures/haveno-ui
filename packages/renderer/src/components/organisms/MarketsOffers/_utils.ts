@@ -14,11 +14,11 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { MarketOfferData } from "@hooks/haveno/useMarketsOffers";
+import type { OfferInfo } from "haveno-ts";
 import type { MarketOffer } from "@organisms/MarketOffersTable";
 
 export const transformToMarketsOffers = (
-  offers: Array<MarketOfferData>
+  offers: Array<OfferInfo.AsObject>
 ): Array<MarketOffer> => {
   return offers.map((offer) => ({
     price: offer.price,

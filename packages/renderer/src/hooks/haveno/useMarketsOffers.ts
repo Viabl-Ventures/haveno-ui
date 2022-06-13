@@ -27,7 +27,7 @@ interface MarketsOfferesQuery {
 export function useMarketsOffers(query: MarketsOfferesQuery) {
   const client = useHavenoClient();
 
-  return useQuery<Array<MarketOfferData>, Error>(
+  return useQuery<Array<OfferInfo.AsObject>, Error>(
     [QueryKeys.MarketsOffers, query],
     async () => {
       const offers = await client.getMyOffers(query.assetCode);
@@ -37,46 +37,7 @@ export function useMarketsOffers(query: MarketsOfferesQuery) {
 }
 
 const transformData = (offers: Array<OfferInfo>) => {
-  return offers.map((offerObj: OfferInfo): MarketOfferData => {
-    const offer = offerObj.toObject();
-
-    return {
-      ...offer,
-      price: parseFloat(offer.price),
-      volume: parseFloat(offer.volume),
-      minVolume: parseFloat(offer.minVolume),
-      triggerPrice: parseFloat(offer.triggerPrice),
-    };
+  return offers.map((offerObj: OfferInfo): OfferInfo.AsObject => {
+    return offerObj.toObject();
   });
 };
-
-export interface MarketOfferData {
-  id: string;
-  direction: string;
-  price: number;
-  useMarketBasedPrice: boolean;
-  marketPriceMarginPct: number;
-  amount: number;
-  minAmount: number;
-  volume: number;
-  minVolume: number;
-  buyerSecurityDeposit: number;
-  triggerPrice: number;
-  paymentAccountId: string;
-  paymentMethodId: string;
-  paymentMethodShortName: string;
-  baseCurrencyCode: string;
-  counterCurrencyCode: string;
-  date: number;
-  state: string;
-  sellerSecurityDeposit: number;
-  offerFeePaymentTxId: string;
-  txFee: number;
-  makerFee: number;
-  isActivated: boolean;
-  isMyOffer: boolean;
-  ownerNodeAddress: string;
-  pubKeyRing: string;
-  versionNr: string;
-  protocolVersion: number;
-}
