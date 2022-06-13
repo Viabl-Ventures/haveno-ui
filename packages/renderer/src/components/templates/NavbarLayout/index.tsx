@@ -31,7 +31,7 @@ export const NavbarLayout: FC<DefaultProps> = ({
   });
 
   return (
-    <Stack className={cx(classes.container, className)} spacing={0}>
+    <Stack className={cx(classes.container, className)} spacing={0} {...rest}>
       <Navbar />
       <Box className={classes.contentArea}>{children}</Box>
     </Stack>
@@ -40,8 +40,8 @@ export const NavbarLayout: FC<DefaultProps> = ({
 
 const useStyles = createStyles((theme) => ({
   container: {
-    flex: 1,
     alignItems: "stretch",
+    flex: 1,
   },
   contentArea: {
     background: theme.colors.gray[0],
