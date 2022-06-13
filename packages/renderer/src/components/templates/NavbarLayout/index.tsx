@@ -14,20 +14,17 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { ReactNode } from "react";
+import type { FC } from "react";
 import type { DefaultProps } from "@mantine/core";
 import { Box, createStyles, Group } from "@mantine/core";
 import { Sidebar } from "@organisms/Sidebar";
 
-interface NavbarLayoutProps extends DefaultProps {
-  children: ReactNode;
-}
-export const NavbarLayout = ({
+export const NavbarLayout: FC<DefaultProps> = ({
   children,
   classNames,
   className,
   ...rest
-}: NavbarLayoutProps) => {
+}) => {
   const { classes, cx } = useStyles(undefined, {
     name: "NavbarLayout",
     classNames,
