@@ -78,4 +78,3 @@ Table.defaultProps = {
   showHeader: true,
   showFooter: true,
 };
-s
