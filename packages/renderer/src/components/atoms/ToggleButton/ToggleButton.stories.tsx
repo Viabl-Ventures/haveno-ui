@@ -29,6 +29,5 @@ const Template: ComponentStory<typeof ToggleButton> = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-  leftLabel: "Sell XMR",
-  rightLabel: "Buy XMR",
+  labels: ["Sell XMR", "Buy XMR"],
 };

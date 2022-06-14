@@ -78,24 +78,26 @@ export function MarketOffersFilterBar() {
       <Group>
         <Group spacing="sm">
           <ToggleButton
-            leftLabel={formatMessage(
-              {
-                id: LangKeys.MarketOffersSwitchSell,
-                defaultMessage: "Sell {currency}",
-              },
-              {
-                currency: "XMR",
-              }
-            )}
-            rightLabel={formatMessage(
-              {
-                id: LangKeys.MarketOffersSwitchBuy,
-                defaultMessage: "Buy {currency}",
-              },
-              {
-                currency: "XMR",
-              }
-            )}
+            labels={[
+              formatMessage(
+                {
+                  id: LangKeys.MarketOffersSwitchSell,
+                  defaultMessage: "Sell {currency}",
+                },
+                {
+                  currency: "XMR",
+                }
+              ),
+              formatMessage(
+                {
+                  id: LangKeys.MarketOffersSwitchBuy,
+                  defaultMessage: "Buy {currency}",
+                },
+                {
+                  currency: "XMR",
+                }
+              ),
+            ]}
             onChange={handleBuySellSwitch}
           />
           <Text color="gray">

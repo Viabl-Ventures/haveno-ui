@@ -17,25 +17,27 @@
 import { createStyles, Tabs } from "@mantine/core";
 
 interface ToggleButtonProps {
-  rightLabel: string;
-  leftLabel: string;
+  labels: string[];
   onChange?: (selectedIndex: number) => void;
+  active?: number;
 }
 
-export function ToggleButton({
-  rightLabel,
-  leftLabel,
-  onChange,
-}: ToggleButtonProps) {
+export function ToggleButton({ labels, onChange, active }: ToggleButtonProps) {
   const { classes } = useStyles();
 
   const handleChange = (tabIndex: number) => {
     onChange && onChange(tabIndex);
   };
   return (
-    <Tabs variant="unstyled" classNames={classes} onTabChange={handleChange}>
-      <Tabs.Tab label={leftLabel} />
-      <Tabs.Tab label={rightLabel} />
+    <Tabs
+      variant="unstyled"
+      classNames={classes}
+      active={active}
+      onTabChange={handleChange}
+    >
+      {labels.map((label, index) => (
+        <Tabs.Tab key={index} label={label} />
+      ))}
     </Tabs>
   );
 }
