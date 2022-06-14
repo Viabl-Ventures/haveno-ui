@@ -16,8 +16,8 @@
 
 import { includes } from "lodash";
 import { useMemo } from "react";
-import type { TMarketOfferPaymentMethod } from "@molecules/MarketOffersSelectPaymentMethods";
-import { MarketoffersSelectPaymentMethods } from "@molecules/MarketOffersSelectPaymentMethods";
+import type { TMarketOfferPaymentMethod } from "@organisms/MarketOffersSelectPaymentMethods";
+import { MarketoffersSelectPaymentMethods } from "@organisms/MarketOffersSelectPaymentMethods";
 import { useOffersFilterState } from "@src/state/offersFilter";
 
 export function MarketOffersFilterPaymentMethods() {

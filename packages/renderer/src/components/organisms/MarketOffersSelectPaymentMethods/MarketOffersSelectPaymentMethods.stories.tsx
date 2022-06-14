@@ -19,7 +19,7 @@ import type { TMarketOfferPaymentMethod } from "./_types";
 import { MarketoffersSelectPaymentMethods } from ".";
 
 export default {
-  title: "molecules/MarketoffersSelectPaymentMethods",
+  title: "organisms/MarketoffersSelectPaymentMethods",
   component: MarketoffersSelectPaymentMethods,
 } as ComponentMeta<typeof MarketoffersSelectPaymentMethods>;
 

@@ -17,8 +17,8 @@
 import { useCallback } from "react";
 import type { FC } from "react";
 import type { Row } from "@tanstack/react-table";
-import type { TMarketTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
-import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
+import type { TMarketTradingPairTable } from "@organisms/MarketOffersTradingPairTable";
+import { MarketOffersTradingPairTable } from "@organisms/MarketOffersTradingPairTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
 import { useMarketsPairs } from "@hooks/haveno/useMarketPairs";
 

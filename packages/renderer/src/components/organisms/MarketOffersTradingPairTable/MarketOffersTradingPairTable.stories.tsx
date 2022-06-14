@@ -19,7 +19,7 @@ import { MarketOffersTradingPairTable } from "./MarketOffersTradingPairTable";
 import type { TMarketOffersTradingPair } from "./_types";
 
 export default {
-  title: "molecules/MarketOffersTradingPairTable",
+  title: "organisms/MarketOffersTradingPairTable",
   component: MarketOffersTradingPairTable,
 } as ComponentMeta<typeof MarketOffersTradingPairTable>;
 
