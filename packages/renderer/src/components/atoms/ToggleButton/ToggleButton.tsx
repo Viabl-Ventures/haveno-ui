@@ -17,7 +17,7 @@
 import { createStyles, Tabs } from "@mantine/core";
 
 interface ToggleButtonProps {
-  labels: string[];
+  labels: Array<string>;
   onChange?: (selectedIndex: number) => void;
   active?: number;
 }
