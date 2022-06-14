@@ -14,7 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-import { createStyles } from "@mantine/core";
+import { createStyles, Stack } from "@mantine/core";
 import { NavbarLayout } from "@templates/NavbarLayout";
 import { MarketsOffers } from "@organisms/MarketsOffers";
 import { MarketOffersFilterBar } from "@organisms/MarketOffersFilterBar";
@@ -24,8 +24,10 @@ export function MarketsOffersPage() {
 
   return (
     <NavbarLayout classNames={{ contentArea: classes.contentArea }}>
-      <MarketOffersFilterBar />
-      <MarketsOffers />
+      <Stack spacing={0} className={classes.innerContent}>
+        <MarketOffersFilterBar />
+        <MarketsOffers />
+      </Stack>
     </NavbarLayout>
   );
 }
@@ -33,5 +35,8 @@ export function MarketsOffersPage() {
 const useStyles = createStyles(() => ({
   contentArea: {
     padding: 0,
+  },
+  innerContent: {
+    width: "100%",
   },
 }));

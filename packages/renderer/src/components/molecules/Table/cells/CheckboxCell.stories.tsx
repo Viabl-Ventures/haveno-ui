@@ -24,13 +24,12 @@ export default {
   component: Table,
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = () => {
+const Template: ComponentStory<typeof Table> = (args) => {
   return (
     <Table
       table={table}
-      data={data}
       columns={columns}
-      defaultColumn={CheckboxCell}
+      data={args.data}
       onEditableDataChange={(values) => {
         console.log(values);
       }}
@@ -39,8 +38,6 @@ const Template: ComponentStory<typeof Table> = () => {
 };
 
 export const Default = Template.bind({});
-
-Default.args = {};
 
 interface Person {
   firstName: string;
@@ -61,7 +58,7 @@ const columns = [
     footer: (props) => props.column.id,
     columns: [
       table.createDataColumn("firstName", {
-        cell: (info) => info.getValue(),
+        cell: (params) => <CheckboxCell {...params} />,
         footer: (props) => props.column.id,
       }),
       table.createDataColumn((row) => row.lastName, {
@@ -127,3 +124,5 @@ const data: Array<Person> = [
     progress: 10,
   },
 ];
+
+Default.args = { data };

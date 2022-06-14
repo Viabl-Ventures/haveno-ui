@@ -17,9 +17,9 @@
 import { useCallback } from "react";
 import type { FC } from "react";
 import type { Row } from "@tanstack/react-table";
-import type { TMarketOffersTradingPair } from "@molecules/MarketOffersTradingPairTable";
 import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
+import { useMarketsPairs } from "@hooks/haveno/useMarketPairs";
 
 interface MarketOffersTradingPairProps {
   onSubmit?: (row: any) => void;
@@ -42,6 +42,7 @@ interface MarketOffersTradingPairLoadedProps {
 const MarketOffersTradingPairLoaded = ({
   onSubmit,
 }: MarketOffersTradingPairLoadedProps) => {
+  const { data: marketsPairs } = useMarketsPairs();
   const [, setOffersState] = useOffersFilterState();
 
   const handleRowClick = useCallback(
@@ -55,46 +56,19 @@ const MarketOffersTradingPairLoaded = ({
     [onSubmit]
   );
 
+  if (!marketsPairs) {
+    return null;
+  }
   return (
-    <MarketOffersTradingPairTable data={data} onRowClick={handleRowClick} />
+    <MarketOffersTradingPairTable
+      data={marketsPairs}
+      onRowClick={handleRowClick}
+    />
   );
 };
 
 const MarketOffersTradingPairBoot: FC = ({ children }) => {
-  return <>{children}</>;
-};
+  const { isLoading } = useMarketsPairs();
 
-const data = [
-  {
-    fromPair: "XMR",
-    toPair: "USD",
-    lastPrice: 246.23,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 0.2,
-    dayChangeVolume: 0.2,
-  },
-  {
-    fromPair: "XMR",
-    toPair: "USD",
-    lastPrice: 246.23,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 0.2,
-    dayChangeVolume: 0.2,
-  },
-  {
-    fromPair: "XMR",
-    toPair: "USD",
-    lastPrice: 246.23,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 0.2,
-    dayChangeVolume: 0.2,
-  },
-  {
-    fromPair: "XMR",
-    toPair: "USD",
-    lastPrice: 246.23,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 0.2,
-    dayChangeVolume: 0.2,
-  },
-] as Array<TMarketOffersTradingPair>;
+  return isLoading ? <>Loading</> : <>{children}</>;
+};

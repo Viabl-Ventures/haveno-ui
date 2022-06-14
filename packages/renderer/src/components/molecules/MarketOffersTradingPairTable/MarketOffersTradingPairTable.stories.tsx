@@ -23,13 +23,13 @@ export default {
   component: MarketOffersTradingPairTable,
 } as ComponentMeta<typeof MarketOffersTradingPairTable>;
 
-const Template: ComponentStory<typeof MarketOffersTradingPairTable> = () => {
-  return <MarketOffersTradingPairTable data={data} />;
+const Template: ComponentStory<typeof MarketOffersTradingPairTable> = (
+  args
+) => {
+  return <MarketOffersTradingPairTable data={args.data} />;
 };
 
 export const Default = Template.bind({});
-
-Default.args = {};
 
 const data = [
   {
@@ -65,3 +65,5 @@ const data = [
     dayChangeVolume: 1222.123,
   },
 ] as Array<TMarketOffersTradingPair>;
+
+Default.args = { data };
