@@ -14,6 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { CheckboxProps } from "@mantine/core";
 import { Checkbox } from "@mantine/core";
 import type { Cell, Column, Row, TableInstance } from "@tanstack/react-table";

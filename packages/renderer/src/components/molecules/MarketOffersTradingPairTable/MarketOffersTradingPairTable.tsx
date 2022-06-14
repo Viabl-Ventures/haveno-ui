@@ -14,10 +14,10 @@
 //  limitations under the License.
 // =============================================================================
 
-import { createTable } from "@tanstack/react-table";
 import { useIntl } from "react-intl";
 import { createStyles } from "@mantine/core";
 import type { TMarketOffersTradingPair } from "./_types";
+import { marketTradingPairTable } from "./_types";
 import {
   MarketOfferPair24thChange,
   MarketOfferPairLastPriceCell,
@@ -26,8 +26,6 @@ import {
 import type { TableProps } from "@molecules/Table";
 import { Table } from "@molecules/Table";
 import { LangKeys } from "@constants/lang";
-
-const table = createTable().setRowType<TMarketOffersTradingPair>();
 
 export interface MarketOffersTradingPairTableProps extends Partial<TableProps> {
   data: Array<TMarketOffersTradingPair>;
@@ -43,7 +41,7 @@ export function MarketOffersTradingPairTable({
   return (
     <Table
       {...rest}
-      table={table}
+      table={marketTradingPairTable}
       columns={columns}
       data={data}
       tableWrap={{
@@ -59,15 +57,18 @@ const useMarketTradingPairsColumns = () => {
   const { formatMessage } = useIntl();
 
   return [
-    table.createDataColumn((r) => `${r.fromPair}/${r.toPair}`, {
-      id: "pair",
-      header: formatMessage({
-        id: LangKeys.MarketTradingPairColPair,
-        defaultMessage: "Pair",
-      }),
-      size: 400,
-    }),
-    table.createDataColumn("lastPrice", {
+    marketTradingPairTable.createDataColumn(
+      (r) => `${r.fromPair}/${r.toPair}`,
+      {
+        id: "pair",
+        header: formatMessage({
+          id: LangKeys.MarketTradingPairColPair,
+          defaultMessage: "Pair",
+        }),
+        size: 400,
+      }
+    ),
+    marketTradingPairTable.createDataColumn("lastPrice", {
       id: "lastPrice",
       header: formatMessage({
         id: LangKeys.MarketTradingPairColLastPrice,
@@ -76,7 +77,7 @@ const useMarketTradingPairsColumns = () => {
       size: 400,
       cell: ({ row }) => <MarketOfferPairLastPriceCell row={row?.original} />,
     }),
-    table.createDataColumn("dayChangeRate", {
+    marketTradingPairTable.createDataColumn("dayChangeRate", {
       id: "dayChangeRate",
       header: formatMessage({
         id: LangKeys.MarketTradingPairColDayChange,
@@ -86,7 +87,7 @@ const useMarketTradingPairsColumns = () => {
       cell: () => <MarketOfferPair24thChange />,
       meta: { textAlign: "right" },
     }),
-    table.createDataColumn("dayChangeVolume", {
+    marketTradingPairTable.createDataColumn("dayChangeVolume", {
       id: "dayChangeVolume",
       header: formatMessage({
         id: LangKeys.MarketTradingPairColDayChangeVolume,

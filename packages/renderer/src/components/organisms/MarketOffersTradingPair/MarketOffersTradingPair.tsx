@@ -17,12 +17,13 @@
 import { useCallback } from "react";
 import type { FC } from "react";
 import type { Row } from "@tanstack/react-table";
+import type { TMarketTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
 import { MarketOffersTradingPairTable } from "@molecules/MarketOffersTradingPairTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
 import { useMarketsPairs } from "@hooks/haveno/useMarketPairs";
 
 interface MarketOffersTradingPairProps {
-  onSubmit?: (row: any) => void;
+  onSubmit?: (row: Row<TMarketTradingPairTable>) => void;
 }
 
 export function MarketOffersTradingPair({
@@ -36,7 +37,7 @@ export function MarketOffersTradingPair({
 }
 
 interface MarketOffersTradingPairLoadedProps {
-  onSubmit?: (row: any) => void;
+  onSubmit?: (row: Row<TMarketTradingPairTable>) => void;
 }
 
 const MarketOffersTradingPairLoaded = ({
@@ -46,12 +47,13 @@ const MarketOffersTradingPairLoaded = ({
   const [, setOffersState] = useOffersFilterState();
 
   const handleRowClick = useCallback(
-    (row: Row<any>) => {
+    (row: Row<TMarketTradingPairTable>) => {
+      // Sync the selected pair to atom global filter state.
       setOffersState((oldFilter) => ({
         ...oldFilter,
-        assetCode: row.original.fromPair,
+        assetCode: row.original?.fromPair || "",
       }));
-      onSubmit && onSubmit(row.original);
+      onSubmit && onSubmit(row);
     },
     [onSubmit]
   );

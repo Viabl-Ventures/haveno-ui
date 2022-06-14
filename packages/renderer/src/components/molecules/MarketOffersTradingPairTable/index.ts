@@ -15,4 +15,7 @@
 // =============================================================================
 
 export * from "./MarketOffersTradingPairTable";
-export type { TMarketOffersTradingPair } from "./_types";
+export type {
+  TMarketOffersTradingPair,
+  TMarketTradingPairTable,
+} from "./_types";
