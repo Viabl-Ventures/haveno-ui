@@ -18,6 +18,7 @@
 import type { ColumnDef, Row, TableState } from "@tanstack/react-table";
 import type { TableProps as MTableProps } from "@mantine/core";
 
+// TODO: Add type or generic
 export interface TableProps {
   columns: Array<ColumnDef<any>>;
   table: any;

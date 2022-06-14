@@ -20,6 +20,7 @@ import { Checkbox } from "@mantine/core";
 import type { Cell, Column, Row, TableInstance } from "@tanstack/react-table";
 import { useState, useEffect } from "react";
 
+// TODO: Add type or generic
 interface CheckboxCellProps {
   instance: TableInstance<any>;
   row: Row<any>;

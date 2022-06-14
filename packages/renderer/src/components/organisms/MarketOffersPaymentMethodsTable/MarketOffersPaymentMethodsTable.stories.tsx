@@ -31,35 +31,35 @@ const Template: ComponentStory<typeof MarketOffersPaymentMethodsTable> = (
 
 export const Default = Template.bind({});
 
-const data = [
-  {
-    methodName: "Celpay",
-    methodKey: "celpay",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "USA",
-  },
-  {
-    methodName: "ACH",
-    methodKey: "ach",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Global (AUS, TRY, USD)",
-  },
-  {
-    methodName: "Cash by mail",
-    methodKey: "cash-by-mail",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Spain",
-  },
-  {
-    methodName: "Domestic Wire Transfer",
-    methodKey: "domestic-wire-transfer",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Global",
-  },
-] as Array<TMarketOfferPaymentMethod>;
-
-Default.args = { data };
+Default.args = {
+  data: [
+    {
+      methodName: "Celpay",
+      methodKey: "celpay",
+      rateTradeLimit: 20,
+      rateTradeLimitCurrency: "XMR",
+      info: "USA",
+    },
+    {
+      methodName: "ACH",
+      methodKey: "ach",
+      rateTradeLimit: 20,
+      rateTradeLimitCurrency: "XMR",
+      info: "Global (AUS, TRY, USD)",
+    },
+    {
+      methodName: "Cash by mail",
+      methodKey: "cash-by-mail",
+      rateTradeLimit: 20,
+      rateTradeLimitCurrency: "XMR",
+      info: "Spain",
+    },
+    {
+      methodName: "Domestic Wire Transfer",
+      methodKey: "domestic-wire-transfer",
+      rateTradeLimit: 20,
+      rateTradeLimitCurrency: "XMR",
+      info: "Global",
+    },
+  ] as Array<TMarketOfferPaymentMethod>,
+};

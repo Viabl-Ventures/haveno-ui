@@ -31,39 +31,39 @@ const Template: ComponentStory<typeof MarketOffersTradingPairTable> = (
 
 export const Default = Template.bind({});
 
-const data = [
-  {
-    fromPair: "EUR",
-    toPair: "XMR",
-    lastPrice: 101.122,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 12.12,
-    dayChangeVolume: 1222.123,
-  },
-  {
-    fromPair: "EUR",
-    toPair: "XMR",
-    lastPrice: 101.122,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 12.12,
-    dayChangeVolume: 1222.123,
-  },
-  {
-    fromPair: "EUR",
-    toPair: "XMR",
-    lastPrice: 101.122,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 12.12,
-    dayChangeVolume: 1222.123,
-  },
-  {
-    fromPair: "EUR",
-    toPair: "XMR",
-    lastPrice: 101.122,
-    lastPriceCurrency: "EUR",
-    dayChangeRate: 12.12,
-    dayChangeVolume: 1222.123,
-  },
-] as Array<TMarketOffersTradingPair>;
-
-Default.args = { data };
+Default.args = {
+  data: [
+    {
+      fromPair: "EUR",
+      toPair: "XMR",
+      lastPrice: 101.122,
+      lastPriceCurrency: "EUR",
+      dayChangeRate: 12.12,
+      dayChangeVolume: 1222.123,
+    },
+    {
+      fromPair: "EUR",
+      toPair: "XMR",
+      lastPrice: 101.122,
+      lastPriceCurrency: "EUR",
+      dayChangeRate: 12.12,
+      dayChangeVolume: 1222.123,
+    },
+    {
+      fromPair: "EUR",
+      toPair: "XMR",
+      lastPrice: 101.122,
+      lastPriceCurrency: "EUR",
+      dayChangeRate: 12.12,
+      dayChangeVolume: 1222.123,
+    },
+    {
+      fromPair: "EUR",
+      toPair: "XMR",
+      lastPrice: 101.122,
+      lastPriceCurrency: "EUR",
+      dayChangeRate: 12.12,
+      dayChangeVolume: 1222.123,
+    },
+  ] as Array<TMarketOffersTradingPair>,
+};
