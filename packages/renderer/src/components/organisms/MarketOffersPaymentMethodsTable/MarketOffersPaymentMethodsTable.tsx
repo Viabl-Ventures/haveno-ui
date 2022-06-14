@@ -18,9 +18,9 @@ import { createTable } from "@tanstack/react-table";
 import { createStyles } from "@mantine/core";
 import { useIntl } from "react-intl";
 import {
-  MarketOffersSelectPaymentMethodsInfo,
-  MarketOffersSelectPaymentMethodsLimit,
-} from "./MarketOffersSelectPaymentMethodsCells";
+  MarketOffersPaymentMethodsInfo,
+  MarketOffersPaymentMethodsLimit,
+} from "./MarketOffersPaymentMethodsTableCells";
 import type { TMarketOfferPaymentMethod } from "./_types";
 import type { TableProps } from "@molecules/Table";
 import { CheckboxCell, Table } from "@molecules/Table";
@@ -28,14 +28,14 @@ import { LangKeys } from "@constants/lang";
 
 const table = createTable().setRowType<TMarketOfferPaymentMethod>();
 
-interface MarketoffersSelectPaymentMethods extends Partial<TableProps> {
+interface MarketOffersPaymentMethodsTableProps extends Partial<TableProps> {
   data: Array<TMarketOfferPaymentMethod>;
 }
 
-export function MarketoffersSelectPaymentMethods({
+export function MarketOffersPaymentMethodsTable({
   data,
   ...rest
-}: MarketoffersSelectPaymentMethods) {
+}: MarketOffersPaymentMethodsTableProps) {
   const { classes } = useStyles();
   const columns = useMarketOffersPaymentMethodsColumns();
 
@@ -82,7 +82,7 @@ const useMarketOffersPaymentMethodsColumns = () => {
       }),
       size: 400,
       cell: ({ row }) => (
-        <MarketOffersSelectPaymentMethodsLimit row={row?.original} />
+        <MarketOffersPaymentMethodsLimit row={row?.original} />
       ),
     }),
     table.createDataColumn("info", {
@@ -92,9 +92,7 @@ const useMarketOffersPaymentMethodsColumns = () => {
         defaultMessage: "Info",
       }),
       size: 400,
-      cell: ({ row }) => (
-        <MarketOffersSelectPaymentMethodsInfo row={row?.original} />
-      ),
+      cell: ({ row }) => <MarketOffersPaymentMethodsInfo row={row?.original} />,
       meta: { textAlign: "right" },
     }),
   ];

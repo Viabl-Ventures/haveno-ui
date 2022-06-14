@@ -14,5 +14,5 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./MarketOffersSelectPaymentMethods";
+export * from "./MarketOffersPaymentMethodsTable";
 export type { TMarketOfferPaymentMethod } from "./_types";

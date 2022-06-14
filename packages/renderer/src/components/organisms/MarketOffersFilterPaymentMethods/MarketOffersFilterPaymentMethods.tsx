@@ -15,21 +15,24 @@
 // =============================================================================
 
 import { includes } from "lodash";
+import type { FC } from "react";
 import { useMemo } from "react";
-import type { TMarketOfferPaymentMethod } from "@organisms/MarketOffersSelectPaymentMethods";
-import { MarketoffersSelectPaymentMethods } from "@organisms/MarketOffersSelectPaymentMethods";
+import type { TMarketOfferPaymentMethod } from "@organisms/MarketOffersPaymentMethodsTable";
+import { MarketOffersPaymentMethodsTable } from "@organisms/MarketOffersPaymentMethodsTable";
 import { useOffersFilterState } from "@src/state/offersFilter";
+import { usePaymentMethods } from "@hooks/haveno/usePaymentMethods";
 
-export function MarketOffersFilterPaymentMethods() {
+export function MarketOffersFilterPaymentMethodsLoaded() {
+  const { data: paymentMethods } = usePaymentMethods();
   const [filter, setFilter] = useOffersFilterState();
 
   const tableData = useMemo(
     () =>
-      data.map((item) => ({
+      paymentMethods?.map((item) => ({
         ...item,
         methodChecked: includes(filter.paymentMethods, item.methodKey),
       })),
-    [filter]
+    [paymentMethods]
   );
 
   const handleEditableDataChange = (
@@ -42,46 +45,27 @@ export function MarketOffersFilterPaymentMethods() {
         .map((payment) => payment.methodKey),
     }));
   };
-
+  if (!tableData) {
+    return null;
+  }
   return (
-    <MarketoffersSelectPaymentMethods
+    <MarketOffersPaymentMethodsTable
       data={tableData}
       onEditableDataChange={handleEditableDataChange}
     />
   );
 }
 
-const data = [
-  {
-    methodName: "Celpay",
-    methodChecked: true,
-    methodKey: "celpay",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Global",
-  },
-  {
-    methodName: "Celpay",
-    methodChecked: false,
-    methodKey: "celpay2",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Global",
-  },
-  {
-    methodName: "Celpay",
-    methodChecked: false,
-    methodKey: "celpay3",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Global",
-  },
-  {
-    methodName: "Celpay",
-    methodChecked: false,
-    methodKey: "celpay4",
-    rateTradeLimit: 20,
-    rateTradeLimitCurrency: "XMR",
-    info: "Global",
-  },
-] as Array<TMarketOfferPaymentMethod>;
+const MarketOffersFilterPaymentMethodsBoot: FC = ({ children }) => {
+  const { isLoading } = usePaymentMethods();
+
+  return isLoading ? <>Loading</> : <>{children}</>;
+};
+
+export function MarketOffersFilterPaymentMethods() {
+  return (
+    <MarketOffersFilterPaymentMethodsBoot>
+      <MarketOffersFilterPaymentMethodsLoaded />
+    </MarketOffersFilterPaymentMethodsBoot>
+  );
+}

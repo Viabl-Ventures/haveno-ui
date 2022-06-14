@@ -15,18 +15,55 @@
 // =============================================================================
 
 import { useQuery } from "react-query";
-import type { PaymentMethod } from "haveno-ts";
-import { useHavenoClient } from "./useHavenoClient";
 import { QueryKeys } from "@constants/query-keys";
 
 interface PaymentMethodsQuery {
-  assetCode: string;
+  assetCode?: string;
 }
 
-export function usePaymentMethods(query: PaymentMethodsQuery) {
-  const client = useHavenoClient();
+interface PaymentMethodsValues {
+  methodName: string;
+  methodKey: string;
+  rateTradeLimit: number;
+  rateTradeLimitCurrency: string;
+  info: string;
+}
 
-  return useQuery<Array<PaymentMethod>, Error>(QueryKeys.PaymentAccounts, () =>
-    client.getPaymentMethods(query.assetCode)
+export function usePaymentMethods(query?: PaymentMethodsQuery) {
+  return useQuery<Array<PaymentMethodsValues>, Error>(
+    [QueryKeys.PaymentAccounts, query],
+    // TODO: replace with actual implementation once haveno-ts is feature complete.
+    () => Promise.resolve(data)
   );
 }
+
+const data = [
+  {
+    methodName: "Celpay",
+    methodKey: "celpay",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+  {
+    methodName: "Celpay",
+    methodKey: "celpay2",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+  {
+    methodName: "Celpay",
+    methodKey: "celpay3",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+  {
+    methodName: "Celpay",
+    methodKey: "celpay4",
+    rateTradeLimit: 20,
+    rateTradeLimitCurrency: "XMR",
+    info: "Global",
+  },
+] as Array<PaymentMethodsValues>;

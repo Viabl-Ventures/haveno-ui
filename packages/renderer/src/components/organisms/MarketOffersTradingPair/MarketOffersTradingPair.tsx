@@ -40,9 +40,9 @@ interface MarketOffersTradingPairLoadedProps {
   onSubmit?: (row: Row<TMarketTradingPairTable>) => void;
 }
 
-const MarketOffersTradingPairLoaded = ({
+function MarketOffersTradingPairLoaded({
   onSubmit,
-}: MarketOffersTradingPairLoadedProps) => {
+}: MarketOffersTradingPairLoadedProps) {
   const { data: marketsPairs } = useMarketsPairs();
   const [, setOffersState] = useOffersFilterState();
 
@@ -67,7 +67,7 @@ const MarketOffersTradingPairLoaded = ({
       onRowClick={handleRowClick}
     />
   );
-};
+}
 
 const MarketOffersTradingPairBoot: FC = ({ children }) => {
   const { isLoading } = useMarketsPairs();

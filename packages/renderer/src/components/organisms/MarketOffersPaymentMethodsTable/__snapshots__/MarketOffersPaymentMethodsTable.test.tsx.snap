@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`molecules::MarketOffersSelectPaymentMethods > renders without exploding 1`] = `
+exports[`molecules::MarketOffersPaymentMethodsTable > renders without exploding 1`] = `
 <DocumentFragment>
   <table
     class="mantine-Table-root __mantine-ref-striped mantine-Table-striped mantine-6859xh"

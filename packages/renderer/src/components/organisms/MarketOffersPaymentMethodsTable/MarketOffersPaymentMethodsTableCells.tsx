@@ -18,7 +18,7 @@ import { Text } from "@mantine/core";
 import type { TMarketOfferPaymentMethod } from "./_types";
 import { Currency } from "@atoms/Currency";
 
-export function MarketOffersSelectPaymentMethodsLimit({
+export function MarketOffersPaymentMethodsLimit({
   row,
 }: {
   row?: TMarketOfferPaymentMethod;
@@ -31,7 +31,7 @@ export function MarketOffersSelectPaymentMethodsLimit({
   );
 }
 
-export function MarketOffersSelectPaymentMethodsInfo({
+export function MarketOffersPaymentMethodsInfo({
   row,
 }: {
   row?: TMarketOfferPaymentMethod;

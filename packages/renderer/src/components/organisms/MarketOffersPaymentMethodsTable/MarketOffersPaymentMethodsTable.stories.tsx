@@ -16,22 +16,20 @@
 
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import type { TMarketOfferPaymentMethod } from "./_types";
-import { MarketoffersSelectPaymentMethods } from ".";
+import { MarketOffersPaymentMethodsTable } from ".";
 
 export default {
-  title: "organisms/MarketoffersSelectPaymentMethods",
-  component: MarketoffersSelectPaymentMethods,
-} as ComponentMeta<typeof MarketoffersSelectPaymentMethods>;
+  title: "organisms/MarketOffersPaymentMethodsTable",
+  component: MarketOffersPaymentMethodsTable,
+} as ComponentMeta<typeof MarketOffersPaymentMethodsTable>;
 
-const Template: ComponentStory<
-  typeof MarketoffersSelectPaymentMethods
-> = () => {
-  return <MarketoffersSelectPaymentMethods data={data} />;
+const Template: ComponentStory<typeof MarketOffersPaymentMethodsTable> = (
+  args
+) => {
+  return <MarketOffersPaymentMethodsTable data={args.data} />;
 };
 
 export const Default = Template.bind({});
-
-Default.args = {};
 
 const data = [
   {
@@ -63,3 +61,5 @@ const data = [
     info: "Global",
   },
 ] as Array<TMarketOfferPaymentMethod>;
+
+Default.args = { data };

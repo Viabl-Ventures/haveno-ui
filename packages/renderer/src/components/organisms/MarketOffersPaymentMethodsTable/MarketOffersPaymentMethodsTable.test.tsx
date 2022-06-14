@@ -17,14 +17,14 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import type { TMarketOfferPaymentMethod } from "./_types";
-import { MarketoffersSelectPaymentMethods } from ".";
+import { MarketOffersPaymentMethodsTable } from ".";
 import { AppProviders } from "@atoms/AppProviders";
 
-describe("molecules::MarketOffersSelectPaymentMethods", () => {
+describe("molecules::MarketOffersPaymentMethodsTable", () => {
   it("renders without exploding", () => {
     const { asFragment, unmount } = render(
       <AppProviders>
-        <MarketoffersSelectPaymentMethods data={data} />
+        <MarketOffersPaymentMethodsTable data={data} />
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe("molecules::MarketOffersSelectPaymentMethods", () => {
   it("renders all columns", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketoffersSelectPaymentMethods data={data} />
+        <MarketOffersPaymentMethodsTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("Method")).toBeInTheDocument();
@@ -46,7 +46,7 @@ describe("molecules::MarketOffersSelectPaymentMethods", () => {
   it("renders cells of method name ", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketoffersSelectPaymentMethods data={data} />
+        <MarketOffersPaymentMethodsTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("Celpay")).toBeInTheDocument();
@@ -57,7 +57,7 @@ describe("molecules::MarketOffersSelectPaymentMethods", () => {
   it("renders cells of rate trade limit ", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketoffersSelectPaymentMethods data={data} />
+        <MarketOffersPaymentMethodsTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("20 XMR")).toBeInTheDocument();
@@ -68,7 +68,7 @@ describe("molecules::MarketOffersSelectPaymentMethods", () => {
   it("renders cells of rate trade limit ", () => {
     const { unmount } = render(
       <AppProviders>
-        <MarketoffersSelectPaymentMethods data={data} />
+        <MarketOffersPaymentMethodsTable data={data} />
       </AppProviders>
     );
     expect(screen.queryByText("USA")).toBeInTheDocument();

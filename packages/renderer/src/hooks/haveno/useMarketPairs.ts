@@ -29,6 +29,7 @@ interface MarketsPairsData {
 export function useMarketsPairs() {
   return useQuery<Array<MarketsPairsData>, Error>(
     [QueryKeys.MarketsPairs],
+    // TODO: replace with actual implementation once haveno-ts is feature complete.
     () => Promise.resolve(data)
   );
 }
