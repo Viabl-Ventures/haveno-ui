@@ -3,7 +3,7 @@
 exports[`molecules::MarketOffersSelectPaymentMethods > renders without exploding 1`] = `
 <DocumentFragment>
   <table
-    class="mantine-Table-root __mantine-ref-striped mantine-Table-striped mantine-yovvwa"
+    class="mantine-Table-root __mantine-ref-striped mantine-Table-striped mantine-6859xh"
   >
     <thead>
       <tr>
@@ -74,7 +74,7 @@ exports[`molecules::MarketOffersSelectPaymentMethods > renders without exploding
           style="width: 400px;"
         >
           <div
-            class="mantine-Text-root mantine-127p861"
+            class="mantine-Text-root mantine-67rh7b"
           >
             20 XMR
           </div>
@@ -83,7 +83,7 @@ exports[`molecules::MarketOffersSelectPaymentMethods > renders without exploding
           style="width: 400px; text-align: right;"
         >
           <div
-            class="mantine-Text-root mantine-127p861"
+            class="mantine-Text-root mantine-67rh7b"
           >
             USA
           </div>
@@ -129,7 +129,7 @@ exports[`molecules::MarketOffersSelectPaymentMethods > renders without exploding
           style="width: 400px;"
         >
           <div
-            class="mantine-Text-root mantine-127p861"
+            class="mantine-Text-root mantine-67rh7b"
           >
             40 XMR
           </div>
@@ -138,7 +138,7 @@ exports[`molecules::MarketOffersSelectPaymentMethods > renders without exploding
           style="width: 400px; text-align: right;"
         >
           <div
-            class="mantine-Text-root mantine-127p861"
+            class="mantine-Text-root mantine-67rh7b"
           >
             Global (AUS, TRY, USD)
           </div>

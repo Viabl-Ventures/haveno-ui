@@ -1,58 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`molecules::MarketBuySellSwitch > renders all tabs 1`] = `
-<DocumentFragment>
-  <div
-    class="mantine-Tabs-root mantine-jjhffj"
-  >
-    <div
-      class="mantine-1s8spa1 mantine-Tabs-tabsListWrapper"
-    >
-      <div
-        aria-orientation="horizontal"
-        class="mantine-Group-root __mantine-ref-tabsList mantine-Tabs-tabsList mantine-1tggmaq"
-        role="tablist"
-      >
-        <button
-          aria-selected="true"
-          class="mantine-Tabs-tabControl __mantine-ref-tabActive mantine-Tabs-tabActive mantine-Group-child mantine-1tir037"
-          role="tab"
-          tabindex="0"
-          type="button"
-        >
-          <div
-            class="mantine-4za9xh mantine-Tabs-tabInner"
-          >
-            <div
-              class="mantine-1s8spa1 mantine-Tabs-tabLabel"
-            >
-              Sell XMR
-            </div>
-          </div>
-        </button>
-        <button
-          aria-selected="false"
-          class="mantine-Tabs-tabControl mantine-Group-child mantine-1biejal"
-          role="tab"
-          tabindex="-1"
-          type="button"
-        >
-          <div
-            class="mantine-4za9xh mantine-Tabs-tabInner"
-          >
-            <div
-              class="mantine-1s8spa1 mantine-Tabs-tabLabel"
-            >
-              Buy XMR
-            </div>
-          </div>
-        </button>
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`molecules::MarketBuySellSwitch > renders without exploding 1`] = `
 <DocumentFragment>
   <div
@@ -68,13 +15,13 @@ exports[`molecules::MarketBuySellSwitch > renders without exploding 1`] = `
       >
         <button
           aria-selected="true"
-          class="mantine-Tabs-tabControl __mantine-ref-tabActive mantine-Tabs-tabActive mantine-Group-child mantine-1tir037"
+          class="mantine-Tabs-tabControl __mantine-ref-tabActive mantine-Tabs-tabActive mantine-Group-child mantine-1wj8pak"
           role="tab"
           tabindex="0"
           type="button"
         >
           <div
-            class="mantine-4za9xh mantine-Tabs-tabInner"
+            class="mantine-17z8dyw mantine-Tabs-tabInner"
           >
             <div
               class="mantine-1s8spa1 mantine-Tabs-tabLabel"
@@ -85,13 +32,13 @@ exports[`molecules::MarketBuySellSwitch > renders without exploding 1`] = `
         </button>
         <button
           aria-selected="false"
-          class="mantine-Tabs-tabControl mantine-Group-child mantine-1biejal"
+          class="mantine-Tabs-tabControl mantine-Group-child mantine-1q3kfi9"
           role="tab"
           tabindex="-1"
           type="button"
         >
           <div
-            class="mantine-4za9xh mantine-Tabs-tabInner"
+            class="mantine-17z8dyw mantine-Tabs-tabInner"
           >
             <div
               class="mantine-1s8spa1 mantine-Tabs-tabLabel"

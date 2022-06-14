@@ -3,7 +3,7 @@
 exports[`molecules::MarketoffersTradingPairTable > renders without exploding 1`] = `
 <DocumentFragment>
   <table
-    class="mantine-Table-root __mantine-ref-hover mantine-Table-hover mantine-b1tb6e"
+    class="mantine-Table-root __mantine-ref-hover mantine-Table-hover mantine-1u8kzyn"
   >
     <thead>
       <tr>

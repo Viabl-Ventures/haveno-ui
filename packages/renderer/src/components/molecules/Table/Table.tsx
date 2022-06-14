@@ -38,6 +38,7 @@ export function Table(props: TableProps) {
     variant,
     onEditableDataChange,
     defaultColumn,
+    state,
   } = props;
 
   const tableInstance = useTableInstance(table, {
