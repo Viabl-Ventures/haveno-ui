@@ -17,12 +17,14 @@
 import { createStyles } from "@mantine/core";
 import { NavbarLayout } from "@templates/NavbarLayout";
 import { MarketsOffers } from "@organisms/MarketsOffers";
+import { MarketOffersFilterBar } from "@organisms/MarketOffersFilterBar";
 
 export function MarketsOffersPage() {
   const { classes } = useStyles();
 
   return (
     <NavbarLayout classNames={{ contentArea: classes.contentArea }}>
+      <MarketOffersFilterBar />
       <MarketsOffers />
     </NavbarLayout>
   );

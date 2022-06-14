@@ -61,7 +61,7 @@ const useMarketOffersPaymentMethodsColumns = () => {
     table.createDataColumn("methodChecked", {
       id: "methodChecked",
       header: " ",
-      cell: ({ ...props }) => (
+      cell: (props) => (
         <CheckboxCell {...props} checkboxProps={{ radius: "xs", size: "sm" }} />
       ),
       size: 30,
