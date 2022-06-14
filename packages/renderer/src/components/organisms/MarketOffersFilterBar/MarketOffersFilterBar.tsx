@@ -14,8 +14,8 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Divider, Group, createStyles, Tabs, Text, Box } from "@mantine/core";
-import { FormattedMessage } from "react-intl";
+import { Divider, Group, createStyles, Text, Box } from "@mantine/core";
+import { FormattedMessage, useIntl } from "react-intl";
 import { isEmpty } from "lodash";
 import {
   useMarketOffersPairModal,
@@ -29,11 +29,12 @@ import {
   useMarketOffersFilterAmountLabel,
 } from "./_hooks";
 import { LangKeys } from "@constants/lang";
-import { MarketBuySellSwitch } from "@molecules/MarketBuySellSwitch";
 import { ReactComponent as BtcIcon } from "@assets/btc.svg";
 import { useOffersFilterState } from "@src/state/offersFilter";
+import { ToggleButton } from "@atoms/ToggleButton/ToggleButton";
 
 export function MarketOffersFilterBar() {
+  const { formatMessage } = useIntl();
   const { classes } = useStyles();
   const [offersFilter, setOffersFilter] = useOffersFilterState();
 
@@ -52,10 +53,11 @@ export function MarketOffersFilterBar() {
   const accountDetailsLabel = useAccountDetailsLabel();
   const filterAmountLabel = useMarketOffersFilterAmountLabel();
 
-  const handleBuySellSwitch = (tabIndex: number, tabKey: string) => {
+  // Handles the buy/sell switch change.
+  const handleBuySellSwitch = (tabIndex: number) => {
     setOffersFilter((filter) => ({
       ...filter,
-      direction: tabKey,
+      direction: tabIndex === 0 ? "sell" : "buy",
     }));
   };
   const handleParisBtnClick = () => {
@@ -75,29 +77,27 @@ export function MarketOffersFilterBar() {
     <Group position="apart" className={classes.root}>
       <Group>
         <Group spacing="sm">
-          <MarketBuySellSwitch onTabChange={handleBuySellSwitch}>
-            <Tabs.Tab
-              tabKey="sell"
-              label={
-                <FormattedMessage
-                  id={LangKeys.MarketOffersSwitchSell}
-                  defaultMessage="Sell {currency}"
-                  values={{ currency: "XMR" }}
-                />
+          <ToggleButton
+            leftLabel={formatMessage(
+              {
+                id: LangKeys.MarketOffersSwitchSell,
+                defaultMessage: "Sell {currency}",
+              },
+              {
+                currency: "XMR",
               }
-            />
-            <Tabs.Tab
-              tabKey="buy"
-              label={
-                <FormattedMessage
-                  id={LangKeys.MarketOffersSwitchBuy}
-                  defaultMessage="Buy {currency}"
-                  values={{ currency: "XMR" }}
-                />
+            )}
+            rightLabel={formatMessage(
+              {
+                id: LangKeys.MarketOffersSwitchBuy,
+                defaultMessage: "Buy {currency}",
+              },
+              {
+                currency: "XMR",
               }
-            />
-          </MarketBuySellSwitch>
-
+            )}
+            onChange={handleBuySellSwitch}
+          />
           <Text color="gray">
             <FormattedMessage
               id={LangKeys.MarketOffersWith}

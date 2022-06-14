@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`molecules::MarketBuySellSwitch > renders without exploding 1`] = `
+exports[`atoms::ToggleButton > renders without exploding 1`] = `
 <DocumentFragment>
   <div
     class="mantine-Tabs-root mantine-jjhffj"
@@ -26,7 +26,7 @@ exports[`molecules::MarketBuySellSwitch > renders without exploding 1`] = `
             <div
               class="mantine-1s8spa1 mantine-Tabs-tabLabel"
             >
-              Sell XMR
+              Sell
             </div>
           </div>
         </button>
@@ -43,7 +43,7 @@ exports[`molecules::MarketBuySellSwitch > renders without exploding 1`] = `
             <div
               class="mantine-1s8spa1 mantine-Tabs-tabLabel"
             >
-              Buy XMR
+              Buy
             </div>
           </div>
         </button>

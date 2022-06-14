@@ -14,24 +14,21 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Tabs } from "@mantine/core";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { MarketBuySellSwitch } from "./MarketBuySellSwitch";
+import { ToggleButton } from "./ToggleButton";
 
 export default {
-  title: "molecules/MarketBuySellSwitch",
-  component: MarketBuySellSwitch,
-} as ComponentMeta<typeof MarketBuySellSwitch>;
+  title: "atoms/ToggleButton",
+  component: ToggleButton,
+} as ComponentMeta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof MarketBuySellSwitch> = () => {
-  return (
-    <MarketBuySellSwitch>
-      <Tabs.Tab label="Sell XMR" />
-      <Tabs.Tab label="Buy XMR" />
-    </MarketBuySellSwitch>
-  );
+const Template: ComponentStory<typeof ToggleButton> = (args) => {
+  return <ToggleButton {...args} />;
 };
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  leftLabel: "Sell XMR",
+  rightLabel: "Buy XMR",
+};

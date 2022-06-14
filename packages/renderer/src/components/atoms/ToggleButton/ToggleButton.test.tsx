@@ -14,4 +14,25 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./MarketBuySellSwitch";
+import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { ToggleButton } from "./ToggleButton";
+
+describe("atoms::ToggleButton", () => {
+  it("renders without exploding", () => {
+    const { asFragment, unmount } = render(
+      <ToggleButton leftLabel="Sell" rightLabel="Buy" />
+    );
+    expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renders all tabs", () => {
+    const { unmount } = render(
+      <ToggleButton leftLabel="Sell XMR" rightLabel="Buy XMR" />
+    );
+    expect(screen.queryByText("Sell XMR")).toBeInTheDocument();
+    expect(screen.queryByText("Buy XMR")).toBeInTheDocument();
+    unmount();
+  });
+});

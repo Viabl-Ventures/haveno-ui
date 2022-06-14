@@ -14,13 +14,30 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { TabsProps } from "@mantine/core";
 import { createStyles, Tabs } from "@mantine/core";
 
-export function MarketBuySellSwitch(props: TabsProps) {
+interface ToggleButtonProps {
+  rightLabel: string;
+  leftLabel: string;
+  onChange?: (selectedIndex: number) => void;
+}
+
+export function ToggleButton({
+  rightLabel,
+  leftLabel,
+  onChange,
+}: ToggleButtonProps) {
   const { classes } = useStyles();
 
-  return <Tabs variant="unstyled" classNames={classes} {...props} />;
+  const handleChange = (tabIndex: number) => {
+    onChange && onChange(tabIndex);
+  };
+  return (
+    <Tabs variant="unstyled" classNames={classes} onTabChange={handleChange}>
+      <Tabs.Tab label={leftLabel} />
+      <Tabs.Tab label={rightLabel} />
+    </Tabs>
+  );
 }
 
 const useStyles = createStyles((theme) => ({
