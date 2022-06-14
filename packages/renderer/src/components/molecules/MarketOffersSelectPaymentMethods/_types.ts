@@ -22,8 +22,3 @@ export interface TMarketOfferPaymentMethod {
   rateTradeLimitCurrency: string;
   info: string;
 }
-
-export interface MarketOfferEditableData {
-  methodChecked: boolean;
-  methodKey: string;
-}

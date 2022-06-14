@@ -28,7 +28,7 @@ export type OfferFilter = {
   maximumCryptoAmount?: number | null;
   minimumBaseCurrencyAmount?: number | null;
   maximumBaseCurrencyAmount?: number | null;
-  paymentMethods?: string[];
+  paymentMethods?: Array<string>;
   signedAccounts?: boolean;
   minimumAccountAge?: number | null;
   minimumTradesAmount?: number | null;

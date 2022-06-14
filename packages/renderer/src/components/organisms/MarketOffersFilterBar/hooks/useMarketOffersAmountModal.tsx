@@ -17,7 +17,7 @@
 import { useModals } from "@mantine/modals";
 import { MarketOffersFilterAmountForm } from "@organisms/MarketOffersFilterAmountForm";
 
-export const useMarketOffersAmountModal = () => {
+export function useMarketOffersAmountModal() {
   const modals = useModals();
 
   return {
@@ -36,4 +36,4 @@ export const useMarketOffersAmountModal = () => {
       });
     },
   };
-};
+}

@@ -32,7 +32,9 @@ export function MarketOffersFilterPaymentMethods() {
     [filter]
   );
 
-  const handleEditableDataChange = (newData: TMarketOfferPaymentMethod[]) => {
+  const handleEditableDataChange = (
+    newData: Array<TMarketOfferPaymentMethod>
+  ) => {
     setFilter((oldQuery) => ({
       ...oldQuery,
       paymentMethods: newData

@@ -15,7 +15,4 @@
 // =============================================================================
 
 export * from "./MarketOffersSelectPaymentMethods";
-export type {
-  TMarketOfferPaymentMethod,
-  MarketOfferEditableData,
-} from "./_types";
+export type { TMarketOfferPaymentMethod } from "./_types";

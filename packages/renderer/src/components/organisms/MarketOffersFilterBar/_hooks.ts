@@ -18,6 +18,10 @@ import { useIntl } from "react-intl";
 import { LangKeys } from "@constants/lang";
 import { useOffersFilterState } from "@src/state/offersFilter";
 
+/**
+ * Retrieve the active label of account details button.
+ * @returns {string}
+ */
 export function useAccountDetailsLabel() {
   const { formatMessage } = useIntl();
   const [offersFilterState] = useOffersFilterState();
@@ -58,6 +62,10 @@ export function useAccountDetailsLabel() {
     .join(", ");
 }
 
+/**
+ * Retrieve the active label of amount button.
+ * @returns {string}
+ */
 export function useMarketOffersFilterAmountLabel() {
   const [offersFilterState] = useOffersFilterState();
 

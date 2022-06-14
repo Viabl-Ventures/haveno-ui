@@ -16,9 +16,9 @@
 
 import { createStyles } from "@mantine/core";
 import { useModals } from "@mantine/modals";
-import { MarketOffersFilterPaymentMethods } from "@organisms/MarketOffersFilterPaymentMethods/MarketOffersFilterPaymentMethods";
+import { MarketOffersFilterPaymentMethods } from "@organisms/MarketOffersFilterPaymentMethods";
 
-export const useMarketOffersPaymentMethods = () => {
+export function useMarketOffersPaymentMethods() {
   const modals = useModals();
   const { classes } = useStyles();
 
@@ -33,7 +33,7 @@ export const useMarketOffersPaymentMethods = () => {
       });
     },
   };
-};
+}
 
 const useStyles = createStyles((theme) => ({
   root: {

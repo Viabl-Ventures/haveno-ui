@@ -29,7 +29,7 @@ import { LangKeys } from "@constants/lang";
 const table = createTable().setRowType<TMarketOfferPaymentMethod>();
 
 interface MarketoffersSelectPaymentMethods extends Partial<TableProps> {
-  data: TMarketOfferPaymentMethod[];
+  data: Array<TMarketOfferPaymentMethod>;
 }
 
 export function MarketoffersSelectPaymentMethods({

@@ -18,7 +18,7 @@ import { createStyles } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { MarketOffersTradingPair } from "@organisms/MarketOffersTradingPair";
 
-export const useMarketOffersPairModal = () => {
+export function useMarketOffersPairModal() {
   const modals = useModals();
   const { classes } = useStyles();
 
@@ -39,7 +39,7 @@ export const useMarketOffersPairModal = () => {
       });
     },
   };
-};
+}
 
 const useStyles = createStyles((theme) => ({
   title: {

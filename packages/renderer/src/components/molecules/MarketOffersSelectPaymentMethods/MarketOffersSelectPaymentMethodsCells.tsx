@@ -18,27 +18,27 @@ import { Text } from "@mantine/core";
 import type { TMarketOfferPaymentMethod } from "./_types";
 import { Currency } from "@atoms/Currency";
 
-export const MarketOffersSelectPaymentMethodsLimit = ({
+export function MarketOffersSelectPaymentMethodsLimit({
   row,
 }: {
   row?: TMarketOfferPaymentMethod;
-}) => {
+}) {
   return (
     <Text size="sm" color="gray">
       <Currency value={row?.rateTradeLimit || 0} minimumFractionDigits={0} />{" "}
       {row?.rateTradeLimitCurrency}
     </Text>
   );
-};
+}
 
-export const MarketOffersSelectPaymentMethodsInfo = ({
+export function MarketOffersSelectPaymentMethodsInfo({
   row,
 }: {
   row?: TMarketOfferPaymentMethod;
-}) => {
+}) {
   return (
     <Text size="sm" color="gray">
       {row?.info}
     </Text>
   );
-};
+}

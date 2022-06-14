@@ -1,5 +1,5 @@
 export const updateTableCell = (
-  data: any[],
+  data: Array<any>,
   rowIndex: number,
   columnId: string,
   value: unknown

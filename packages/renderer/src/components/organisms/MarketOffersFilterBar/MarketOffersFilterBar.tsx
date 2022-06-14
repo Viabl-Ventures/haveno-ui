@@ -37,9 +37,16 @@ export function MarketOffersFilterBar() {
   const { classes } = useStyles();
   const [offersFilter, setOffersFilter] = useOffersFilterState();
 
+  // Market offers pair filter modal.
   const marketOffersPairModal = useMarketOffersPairModal();
+
+  // Market offers payment methods filter modal.
   const marketOffersPaymentMethodsModal = useMarketOffersPaymentMethods();
+
+  // Market offers account filter modal.
   const marketOffersAccountModal = useMarketOffersAccountModal();
+
+  // Market offers amount filter modal.
   const marketOffersAmountModal = useMarketOffersAmountModal();
 
   const accountDetailsLabel = useAccountDetailsLabel();

@@ -64,4 +64,4 @@ const data = [
     dayChangeRate: 12.12,
     dayChangeVolume: 1222.123,
   },
-] as TMarketOffersTradingPair[];
+] as Array<TMarketOffersTradingPair>;

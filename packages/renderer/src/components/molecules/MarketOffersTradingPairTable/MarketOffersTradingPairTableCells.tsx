@@ -19,18 +19,6 @@ import type { TMarketOffersTradingPair } from "./_types";
 import { AmountChange } from "@atoms/AmountChange/AmountChange";
 import { Currency } from "@atoms/Currency";
 
-export function MarketOfferPairCell({
-  row,
-}: {
-  row?: TMarketOffersTradingPair;
-}) {
-  return (
-    <>
-      {row?.fromPair}/{row?.toPair}
-    </>
-  );
-}
-
 export function MarketOfferPairLastPriceCell({
   row,
 }: {

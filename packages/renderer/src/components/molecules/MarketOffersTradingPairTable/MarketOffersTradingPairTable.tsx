@@ -20,7 +20,6 @@ import { createStyles } from "@mantine/core";
 import type { TMarketOffersTradingPair } from "./_types";
 import {
   MarketOfferPair24thChange,
-  MarketOfferPairCell,
   MarketOfferPairLastPriceCell,
   MarketOfferPair24thChangeVolume,
 } from "./MarketOffersTradingPairTableCells";
@@ -36,14 +35,14 @@ export interface MarketOffersTradingPairTableProps extends Partial<TableProps> {
 
 export function MarketOffersTradingPairTable({
   data,
-  ...props
+  ...rest
 }: MarketOffersTradingPairTableProps) {
   const { classes } = useStyles();
   const columns = useMarketTradingPairsColumns();
 
   return (
     <Table
-      {...props}
+      {...rest}
       table={table}
       columns={columns}
       data={data}
@@ -60,13 +59,12 @@ const useMarketTradingPairsColumns = () => {
   const { formatMessage } = useIntl();
 
   return [
-    table.createDataColumn("fromPair", {
+    table.createDataColumn((r) => `${r.fromPair}/${r.toPair}`, {
       id: "pair",
       header: formatMessage({
         id: LangKeys.MarketTradingPairColPair,
         defaultMessage: "Pair",
       }),
-      cell: ({ row }) => <MarketOfferPairCell row={row?.original} />,
       size: 400,
     }),
     table.createDataColumn("lastPrice", {

@@ -33,13 +33,20 @@ export function MarketOffersFilterButton(props: ButtonProps) {
     className,
     active,
     variant = "outline",
+    classNames,
     ...others
   } = props;
 
-  const { cx, classes } = useStyles({
-    active: active || false,
-    variant: variant,
-  });
+  const { cx, classes } = useStyles(
+    {
+      active: active || false,
+      variant: variant,
+    },
+    {
+      name: "MarketOffersFilterButton",
+      classNames,
+    }
+  );
 
   return (
     <Button

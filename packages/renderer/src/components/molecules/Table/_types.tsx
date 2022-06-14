@@ -33,7 +33,7 @@ export interface TableProps {
   tableWrap?: MTableProps;
   variant?: TableVariant;
 
-  onEditableDataChange?: (v: any[]) => void;
+  onEditableDataChange?: (v: Array<any>) => void;
 
   pointerRow?: boolean;
   onRowClick?: (column: any) => void;
