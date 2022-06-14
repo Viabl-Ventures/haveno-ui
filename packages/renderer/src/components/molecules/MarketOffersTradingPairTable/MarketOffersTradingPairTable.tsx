@@ -23,6 +23,7 @@ import {
   MarketOfferPairLastPriceCell,
   MarketOfferPair24thChangeVolume,
 } from "./MarketOffersTradingPairTableCells";
+import { pairColumnAccessor } from "./_utils";
 import type { TableProps } from "@molecules/Table";
 import { Table } from "@molecules/Table";
 import { LangKeys } from "@constants/lang";
@@ -57,17 +58,14 @@ const useMarketTradingPairsColumns = () => {
   const { formatMessage } = useIntl();
 
   return [
-    marketTradingPairTable.createDataColumn(
-      (r) => `${r.fromPair}/${r.toPair}`,
-      {
-        id: "pair",
-        header: formatMessage({
-          id: LangKeys.MarketTradingPairColPair,
-          defaultMessage: "Pair",
-        }),
-        size: 400,
-      }
-    ),
+    marketTradingPairTable.createDataColumn(pairColumnAccessor, {
+      id: "pair",
+      header: formatMessage({
+        id: LangKeys.MarketTradingPairColPair,
+        defaultMessage: "Pair",
+      }),
+      size: 400,
+    }),
     marketTradingPairTable.createDataColumn("lastPrice", {
       id: "lastPrice",
       header: formatMessage({
